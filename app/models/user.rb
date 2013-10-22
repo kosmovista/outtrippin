@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   serialize :personal_info, Hash
   serialize :expert_info, Hash
 
+  # Authlogic configuration
   acts_as_authentic
 
   validates_presence_of :email
@@ -23,4 +24,8 @@ class User < ActiveRecord::Base
     roles.include?(role.to_s)
   end
   # (end) ROLE MANAGER LOGIC
+
+  def name
+    self.personal_info[:name]
+  end
 end

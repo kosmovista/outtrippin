@@ -1,50 +1,135 @@
-<%= form_for @expert_registration, url: expert_path do |f| %>
-  <%= f.fields_for :personal_info do |personal| %>
-    <%= personal.label :name %>
-    <%= personal.text_field :name %><br/>
-  <% end %>
+<div class="row">
+  <div class="large-10 large-centered columns">
+    <%= form_for @expert_registration, url: expert_path do |f| %>
 
-  <%= f.label :email %>
-  <%= f.text_field :email %><br/>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.fields_for :personal_info do |personal| %>
+        <%= personal.label :name, "Your Name" %>
+        <%= personal.text_field :name %>
+        <% end %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.label :email, "Email *" %>
+        <%= f.text_field :email %>
+      </div>
+    </div>
 
-  <%= f.fields_for :expert_info do |expert| %>
-    <%= expert.label :hometown %>
-    <%= expert.text_field :hometown %><br/>
+    <%= f.fields_for :expert_info do |expert| %>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= expert.label :hometown %>
+        <%= expert.text_field :hometown, class: "location-autocomplete" %>
+      </div>
+      <div class="large-6 columns">
+        <%= expert.label :current_location, "Current Location" %>
+        <%= expert.text_field :current_location, class: "location-autocomplete" %>
+      </div>
+    </div>
 
-    <%= expert.label :current_location %>
-    <%= expert.text_field :current_location %><br/>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= expert.label :bio, "A short travel bio about yourself" %>
+        <%= expert.text_field :bio %>
+      </div>
+    </div>
 
-    <%= expert.label :bio %>
-    <%= expert.text_field :bio %><br/>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= expert.label :style, "What is your style of travel?" %>
+        <%= expert.fields_for :style do |styles| %>
+          <ul class="small-block-grid-2 large-block-grid-3">
+            <% @styles.each do |k,v| %>
+              <li><%= styles.check_box k %><%= k %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    </div>
 
-    <%= expert.label :style %>
-    <%= expert.text_field :style %><br/>
+    <div class="row">
+      <div class="large-6 columns">
 
-    <%= expert.label :website %>
-    <%= expert.text_field :website %><br/>
+        <%= expert.label :website, "Your Website" %>
+        <%= expert.text_field :website %>
+      </div>
+      <div class="large-6 columns">
+        <%= expert.label :instagram, "Instagram" %>
+        <%= expert.text_field :instagram %>
+      </div>
+    </div>
 
-    <%= expert.label :instagram %>
-    <%= expert.text_field :instagram %><br/>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= expert.label :facebook, "Facebook Page" %>
+        <%= expert.text_field :facebook %>
 
-    <%= expert.label :facebook %>
-    <%= expert.text_field :facebook %><br/>
+      </div>
+      <div class="large-6 columns">
+        <%= expert.label :twitter, "Twitter Handle" %>
+        <%= expert.text_field :twitter %>
+      </div>
+    </div>
 
-    <%= expert.label :twitter %>
-    <%= expert.text_field :twitter %><br/>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= expert.label :countries, "List your specialty countries" %>
+      </div>
+      <div class="large-6 columns">
+        <%= expert.label :cities, "List your speciality cities" %>
+      </div>
+    </div>
 
-    <%= expert.label :countries %>
-    <%= expert.text_field :countries %><br/>
 
-    <%= expert.label :cities %>
-    <%= expert.text_field :cities %><br/>
+    <div class="row">
+      <div class="large-6 columns">
+        <ul class="expert_registration_expert_info_countries">
+        </ul>
+      </div>
+      <div class="large-6 columns">
+        <ul class="expert_registration_expert_info_cities">
+        </ul>
+      </div>
+    </div>
 
-    <%= expert.label :story %>
-    <%= expert.text_field :story %><br/>
-  <% end %>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= expert.text_field :countries, class: "location-autocomplete add-to-list" %>
+      </div>
+      <div class="large-6 columns">
+        <%= expert.text_field :cities, class: "location-autocomplete add-to-list" %>
+      </div>
+    </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br/>
+    <div class="row">
+      <div class="large-12 columns">
+        <%= expert.label :story, "Include a favorite travel memory" %>
+        <%= expert.text_field :story %>
+        <% end %>
+      </div>
+    </div>
 
-  <%= f.submit %>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :password, "Create Password *" %>
+        <%= f.password_field :password %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.label :password_confirmation, "Confirm Password *" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="large-12 columns">
+        <%= f.submit "Sign up", class: "button" %>
+      </div>
+    </div>
+
+    <% end %>
+  </div>
+</div>
+
+<%= content_for :head do %>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
 <% end %>
