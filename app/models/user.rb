@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   serialize :personal_info, Hash
   serialize :expert_info, Hash
 
+  acts_as_authentic
+
+  validates_presence_of :email
+
   # ROLE MANAGER LOGIC
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
