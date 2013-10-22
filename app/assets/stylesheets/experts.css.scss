@@ -1,3 +1,17 @@
 // Place all the styles related to the experts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.expert_registration_expert_info_cities, .expert_registration_expert_info_countries {
+  list-style-type: none;
+}
+
+.expert_registration_expert_info_cities li, .expert_registration_expert_info_countries li {
+  padding-left: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: whitesmoke;
+  background-image: url('map_marker.png');
+  background-repeat: no-repeat;
+  margin-bottom: 5px;
+}

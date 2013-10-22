@@ -2,6 +2,8 @@
 // Foundation Variables
 //
 
+$serif-font-family: georgia, serif;
+$sans-font-family: helvetica, sans-serif;
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 $base-font-size: 100% !default;
@@ -65,7 +67,7 @@ $default-float: left;
 
 // $body-bg: #fff;
 // $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: $serif-font-family;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -79,9 +81,9 @@ $default-float: left;
 
 // Colors
 
-// $primary-color: #2ba6cb;
+$primary-color: #00cccc;
 // $secondary-color: #e9e9e9;
-// $alert-color: #c60f13;
+$alert-color: #F54828;
 // $success-color: #5da423;
 
 // Make sure border radius matches unless we want it different.
@@ -172,10 +174,10 @@ $default-float: left;
 
 // Control header font styles
 
-// $header-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$header-font-family: $sans-font-family;
 // $header-font-weight: bold;
 // $header-font-style: normal;
-// $header-font-color: #222;
+$header-font-color: $primary-color;
 // $header-line-height: 1.4;
 // $header-top-margin: .2em;
 // $header-bottom-margin: .5em;
@@ -290,26 +292,28 @@ $default-float: left;
 
 // We use this to set the base for lots of form spacing and positioning styles
 
-// $form-spacing: em-calc(16);
+$form-spacing: em-calc(20);
 
 // We use these to style the labels in different ways
 
 // $form-label-pointer: pointer;
-// $form-label-font-size: em-calc(14);
-// $form-label-font-weight: 500;
+$form-label-font-family: $sans-font-family;
+$form-label-font-size: em-calc(19);
+$form-label-font-weight: bold;
 // $form-label-font-color: lighten(#000, 30%);
-// $form-label-bottom-margin: em-calc(3);
+$form-label-bottom-margin: em-calc(10);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
-// $input-font-size: em-calc(14);
+$input-font-size: em-calc(19);
 // $input-bg-color: #fff;
-// $input-focus-bg-color: darken(#fff, 2%);
-// $input-border-color: darken(#fff, 20%);
-// $input-focus-border-color: darken(#fff, 40%);
+$input-focus-bg-color: #fff;
+$input-border-color: #c8c8c8;
+$input-focus-border-color: $primary-color;
 // $input-border-style: solid;
-// $input-border-width: 1px;
+$input-border-width: 2px;
+$input-border-radius: 4px;
 // $input-disabled-bg: #ddd;
-// $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-box-shadow: none;
 // $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
@@ -338,10 +342,11 @@ $default-float: left;
 
 // We use these to style the error states for inputs and labels
 
-// $input-error-message-padding: em-calc(6 4);
+$input-error-message-padding: em-calc(10 4);
 // $input-error-message-top: 0;
-// $input-error-message-font-size: em-calc(12);
-// $input-error-message-font-weight: bold;
+$input-error-message-font-family: $sans-font-family;
+$input-error-message-font-size: em-calc(14);
+$input-error-message-font-weight: normal;
 // $input-error-message-font-color: #fff;
 // $input-error-message-font-color-alt: #333;
 
@@ -368,7 +373,7 @@ $default-float: left;
 
 // We use these to control button text styles.
 
-// $button-font-family: inherit;
+$button-font-family: $sans-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-med: em-calc(16);
@@ -602,14 +607,14 @@ $default-float: left;
 // We use these to control the basic form styles input styles
 
 // $custom-form-border-color: #ccc;
-// $custom-form-border-size: 1px;
+$custom-form-border-size: 2px;
 // $custom-form-bg: #fff;
 // $custom-form-bg-disabled: #ddd;
-// $custom-form-input-size: 16px;
-// $custom-form-check-color: #222;
-// $custom-form-check-size: 16px;
+$custom-form-input-size: 25px;
+$custom-form-check-color: $primary-color;
+$custom-form-check-size: 25px;
 // $custom-form-radio-size: 8px;
-// $custom-form-checkbox-radius: 0;
+$custom-form-checkbox-radius: $input-border-radius;
 
 // We use these to style the custom select form element.
 
@@ -1255,12 +1260,12 @@ $default-float: left;
 
 // Background color for the top bar
 
-// $topbar-bg-color: #111;
+$topbar-bg-color: $primary-color;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 
-// $topbar-height: 45px;
+$topbar-height: 70px;
 // $topbar-margin-bottom: 0;
 
 // Control Input height for top bar
@@ -1324,4 +1329,11 @@ $default-float: left;
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
-@import 'foundation';
+@import "foundation/components/global";
+@import "foundation/components/grid";
+@import "foundation/components/block-grid";
+@import "foundation/components/type";
+@import "foundation/components/buttons";
+@import "forms";
+@import "custom-forms";
+@import "foundation/components/top-bar";

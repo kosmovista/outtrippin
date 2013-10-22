@@ -33,3 +33,7 @@ $ ->
 
     $('#expert_registration_expert_info_countries').val(countries)
     $('#expert_registration_expert_info_cities').val(cities)
+
+  # handle errors
+  $('.field_with_errors').children().addClass("error")
+  $('.field_with_errors').next().removeClass("hide")
