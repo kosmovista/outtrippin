@@ -1,0 +1,50 @@
+<%= form_for @expert_registration, url: expert_path do |f| %>
+  <%= f.fields_for :personal_info do |personal| %>
+    <%= personal.label :name %>
+    <%= personal.text_field :name %><br/>
+  <% end %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email %><br/>
+
+  <%= f.fields_for :expert_info do |expert| %>
+    <%= expert.label :hometown %>
+    <%= expert.text_field :hometown %><br/>
+
+    <%= expert.label :current_location %>
+    <%= expert.text_field :current_location %><br/>
+
+    <%= expert.label :bio %>
+    <%= expert.text_field :bio %><br/>
+
+    <%= expert.label :style %>
+    <%= expert.text_field :style %><br/>
+
+    <%= expert.label :website %>
+    <%= expert.text_field :website %><br/>
+
+    <%= expert.label :instagram %>
+    <%= expert.text_field :instagram %><br/>
+
+    <%= expert.label :facebook %>
+    <%= expert.text_field :facebook %><br/>
+
+    <%= expert.label :twitter %>
+    <%= expert.text_field :twitter %><br/>
+
+    <%= expert.label :countries %>
+    <%= expert.text_field :countries %><br/>
+
+    <%= expert.label :cities %>
+    <%= expert.text_field :cities %><br/>
+
+    <%= expert.label :story %>
+    <%= expert.text_field :story %><br/>
+  <% end %>
+
+  <%= f.label :password %>
+  <%= f.password_field :password %><br/>
+
+  <%= f.submit %>
+
+<% end %>

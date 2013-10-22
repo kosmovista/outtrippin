@@ -3,8 +3,9 @@ Outtrippin::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  resource 'expert', only: [:create]
 
+  root 'experts#new'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
@@ -39,7 +40,7 @@ Outtrippin::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
