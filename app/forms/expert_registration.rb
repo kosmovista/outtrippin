@@ -26,7 +26,6 @@ class ExpertRegistration
   # VALIDATIONS
   validate do
     if personal_info[:name].blank?
-      errors[:name] << "lorem"
     end
   end
 

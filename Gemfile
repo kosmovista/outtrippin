@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# file uploading
 gem 'carrierwave'
 
 # authentication
@@ -20,7 +21,12 @@ gem 'turbolinks'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
-gem 'capistrano', group: :development
+gem 'capistrano', '= 2.15.5', group: :development
+
+group :production do
+  gem 'pg'
+  gem 'unicorn'
+end
 
 group :development, :test do
   gem 'sqlite3'

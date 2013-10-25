@@ -2,7 +2,6 @@ class ExpertsController < ApplicationController
   before_action :load_styles
 
   def new
-    ap User.last
     @expert_registration = ExpertRegistration.new
   end
 
@@ -11,7 +10,7 @@ class ExpertsController < ApplicationController
     if @expert_registration.save
       redirect_to expert_path
     else
-      ap @expert_registration
+      ap @expert_registration.errors
       render 'new'
     end
   end
