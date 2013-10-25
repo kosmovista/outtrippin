@@ -50,14 +50,14 @@ namespace :deploy do
     end
   end
 
-  after "deploy:update", "newrelic:notice_deployment"
-  after "deploy:update", "delayed_job:restart"
+  # after "deploy:update", "newrelic:notice_deployment"
+  # after "deploy:update", "delayed_job:restart"
   before "deploy", "deploy:check_revision"
 end
 
-namespace :delayed_job do
-  desc "Restart the delayed_job process"
-  task :restart, :roles => :app do
-    run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-  end
-end
+# namespace :delayed_job do
+#   desc "Restart the delayed_job process"
+#   task :restart, :roles => :app do
+#     run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
+#   end
+# end
