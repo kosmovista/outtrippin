@@ -5,13 +5,13 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :name, "Your Name *" %>
-        <%= f.text_field :name %>
+        <%= f.text_field :name, placeholder: "Indiana June" %>
         <%= errors_for(:name) %>
 
       </div>
       <div class="large-6 columns">
         <%= f.label :email, "Email *" %>
-        <%= f.text_field :email %>
+        <%= f.text_field :email, placeholder: "indiana@june.com" %>
         <%= errors_for(:email) %>
       </div>
     </div>
@@ -29,14 +29,14 @@
     <div class="row">
       <div class="large-12 columns">
         <%= f.label :bio, "A short travel bio about yourself" %>
-        <%= f.text_area :bio, class: 'medium-textarea' %>
+        <%= f.text_area :bio, class: 'medium-textarea', placeholder: "eg: Indiana June is the main character in a real-life Pick-A-Path Adventure story. She cycles the globe, letting people vote what she does and where she goes next and writes stories about the places and faces she meets along the way." %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <% if @expert_registration.errors[:style].empty? %>
-        <%= f.label :style, "What is your style of travel?" %>
+        <%= f.label :style, "What is your style of travel? *" %>
         <% else %>
         <%= f.label :style, "What is your style of travel? (#{@expert_registration.errors[:style][0]})" %>
         <% end %>
@@ -52,34 +52,34 @@
 
     <div class="row">
       <div class="large-6 columns">
-        <%= f.label :website, "Your Website" %>
-        <%= f.text_field :website %>
+        <%= f.label :website, "Your Website *" %>
+        <%= f.text_field :website, placeholder: "indianajune.com" %>
         <%= errors_for(:website) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>
-        <%= f.text_field :instagram %>
+        <%= f.text_field :instagram, placeholder: "indiana_june" %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :facebook, "Facebook Page" %>
-        <%= f.text_field :facebook %>
+        <%= f.text_field :facebook, placeholder: "www.facebook.com/followindianajune" %>
 
       </div>
       <div class="large-6 columns">
         <%= f.label :twitter, "Twitter Handle" %>
-        <%= f.text_field :twitter %>
+        <%= f.text_field :twitter, placeholder: "@indiana_june" %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 columns">
-        <%= f.label :countries, "List your specialty countries" %>
+        <%= f.label :countries, "List your specialty countries *" %>
       </div>
       <div class="large-6 columns">
-        <%= f.label :cities, "List your speciality cities" %>
+        <%= f.label :cities, "List your speciality cities *" %>
 
       </div>
     </div>
@@ -120,14 +120,14 @@
     <div class="row">
       <div class="large-12 columns">
         <%= f.label :story, "Include a favorite travel memory" %>
-        <%= f.text_area :story, class: 'medium-textarea' %>
+        <%= f.text_area :story, class: 'medium-textarea', placeholder: "eg: I'll never forget the time I ate my first Portuguese tart from a tiny bakery in Belém. It was so amazing I bought 8 more! ...or... I climbed Mt Sinai in Egypt in the dark and watched the sun come up from the peak of the mountain." %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
         <%= f.label :travel_hack, "Best travel hack" %>
-        <%= f.text_area :travel_hack, class: 'medium-textarea', placeholder: 'e.g. "Most museums have special discount times or free nights. Before I visit, I look on their website to find out if they offer free visiting hours."' %>
+        <%= f.text_area :travel_hack, class: 'medium-textarea', placeholder: "eg: Most museums have special discount times or free nights. Before I visit, I look on their website to find out if they offer free visiting hours." %>
       </div>
     </div>
 
@@ -135,12 +135,12 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :password, "Create Password *" %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, placeholder: "Your password" %>
         <%= errors_for(:password) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :password_confirmation, "Confirm Password *" %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, placeholder: "Your password again" %>
         <%= errors_for(:password_confirmation) %>
       </div>
     </div>
@@ -157,7 +157,7 @@
 
     <div class="row">
       <div class="large-6 columns">
-        <%= f.submit "Sign up", class: "large button expand" %>
+        <%= f.submit "Sign up", class: "large button radius expand" %>
       </div>
     </div>
 

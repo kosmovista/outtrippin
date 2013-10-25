@@ -8,15 +8,23 @@
   <div class="large-10 large-centered columns">
     <div class="row">
       <div class="large-9 columns">
-        <p><em>Hi there! Thanks for your interest in becoming a super-duper OutTrippin expert. This form helps me get to know your special talents and favorite destinations so I can match you to the trips and stories you're most interested in creating. Once you've completed the form I'll be in touch. Got a question? Drop me a line at indi@outtrippin.com.</em></p>
-        <p><strong>Indi Tansey</strong><br/>Community Manager</p>
+
+        <% if @expert_registration.errors.any? %>
+          <p style="margin-bottom:0px"><strong>Something went wrong, and <u>we could not receive you registration</u>. Please check the fields bellow and make sure everything is in place!</strong></p>
+          <p style="float:right;text-align:right"><small><strong>Indi Tansey</strong><br/>Community Manager</small></p>
+        <% else %>
+          <p style="margin-bottom:0px"><em>Hi there! Thanks for your interest in becoming a super-duper OutTrippin expert. This form helps me get to know your special talents and favorite destinations so I can match you to the trips and stories you're most interested in creating. Once you've completed the form I'll be in touch. Got a question? Drop me a line at indi@outtrippin.com.</em></p>
+          <p style="float:right;text-align:right"><small><strong>Indi Tansey</strong><br/>Community Manager</small></p>
+        <% end %>
       </div>
-      <div class="large-3 columns">
+      <div class="large-3 columns avatar">
         <%= image_tag 'indi.jpeg' %>
       </div>
     </div>
   </div>
 </div>
+
+<br />
 
 <%= render 'form' %>
 
