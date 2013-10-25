@@ -46,7 +46,18 @@ class ExpertRegistration
       name: name
     },
     expert_info: {
-     website: website
+      website:      website,
+      countries:    countries,
+      cities:       cities,
+      style:        style,
+      bio:          bio,
+      travel_hack:  travel_hack,
+      facebook:     facebook,
+      twitter:      twitter,
+      instagram:    instagram,
+      hometown:     hometown,
+      current_location: current_location,
+      story:        story
     })
     return @user
   end
