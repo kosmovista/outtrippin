@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require 'new_relic/recipes'
 
 server "166.78.23.121", :web, :app, :db, primary: true
 
