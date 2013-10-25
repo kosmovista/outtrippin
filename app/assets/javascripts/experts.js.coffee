@@ -2,9 +2,11 @@ window.loadAutocomplete = (input) ->
   autocomplete = new google.maps.places.Autocomplete(input[0], {types: ['geocode']})
   google.maps.event.addListener autocomplete, 'place_changed', ->
     $('.' + input.attr('id')).append("<li>" + input.val() + "<a class='delete' href='#'><img src='/assets/delete.png'/></li>")
-    setTimeout ( ->
-     input.val('')
-     input.focus()), 1
+    if input.hasClass("add-to-list")
+      setTimeout ( ->
+        input.val('')
+        input.focus()), 1
+
     $('.delete').on "click", ->
       $(this).parent().remove()
       return false
@@ -26,16 +28,16 @@ $ ->
   $('#new_expert_registration').submit (e) ->
     cities = []
     countries = []
-    $('.expert_registration_expert_info_countries li').each (i, elem) ->
+    $('.expert_registration_countries li').each (i, elem) ->
       countries.push $(elem).text()
       countries.push '+'
 
-    $('.expert_registration_expert_info_cities li').each (i, elem) ->
+    $('.expert_registration_cities li').each (i, elem) ->
       cities.push $(elem).text()
       cities.push '+'
 
-    $('#expert_registration_expert_info_countries').val(countries)
-    $('#expert_registration_expert_info_cities').val(cities)
+    $('#expert_registration_countries').val(countries)
+    $('#expert_registration_cities').val(cities)
 
   # handle errors
   $('.field_with_errors').children().addClass("error")

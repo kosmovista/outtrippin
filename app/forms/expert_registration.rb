@@ -5,28 +5,30 @@ class ExpertRegistration
     false
   end
 
-  ATTRIBUTES = [:email, :personal_info, :expert_info, :avatar, :password, :password_confirmation]
+  ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :instagram, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack ]
 
   attr_accessor *ATTRIBUTES
 
   def initialize(attributes = {})
-
     ATTRIBUTES.each do |attribute|
       send("#{attribute}=", attributes[attribute])
     end
 
-    unless expert_info.nil?
-      expert_info[:countries] = parsed_countries
-      expert_info[:cities] = parsed_cities
-      expert_info[:style] = parsed_style
-    end
+    send("countries=", parsed_countries)
+    send("cities=", parsed_cities)
+    send("style=", parsed_styles)
 
+    ap self
   end
 
   # VALIDATIONS
   validate do
-    if personal_info[:name].blank?
-    end
+    errors[:name] = "Can't be blank" if name.blank?
+    errors[:website] = "Can't be blank" if website.blank?
+    errors[:cities] = "Enter at least one city" if cities.empty?
+    errors[:countries] = "Enter at least one country" if countries.empty?
+    errors[:style] = "Select at least one style" if style.empty?
+
   end
 
 
@@ -41,7 +43,7 @@ class ExpertRegistration
 
   ##
   def user
-    @user ||= User.new(email: email, personal_info: personal_info, avatar: avatar, expert_info: expert_info, password: password, password_confirmation: password_confirmation)
+    @user ||= User.new(email: email, avatar: avatar, password: password, password_confirmation: password_confirmation)
     return @user
   end
 
@@ -59,19 +61,24 @@ class ExpertRegistration
   private
 
   def parsed_countries
-    acountries = expert_info[:countries].split('+')
+    return nil if countries.nil?
+    acountries = countries.split('+')
     acountries.each { |c| c = c.chomp!(',').sub!(/^,/, '') }
+    acountries
   end
 
   def parsed_cities
-    acities = expert_info[:cities].split('+')
+    return nil if cities.nil?
+    acities = cities.split('+')
     acities.each { |c| c = c.chomp!(',').sub!(/^,/, '')}
+    acities
   end
 
-  def parsed_style
-    style = []
-    expert_info[:style].each { |k, v| style << k if v != "0" }
-    return style
+  def parsed_styles
+    return nil if style.nil?
+    _style = []
+    style.each { |k, v| _style << k if v != "0" }
+    _style
   end
 
 

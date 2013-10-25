@@ -4,10 +4,10 @@
 
     <div class="row">
       <div class="large-6 columns">
-        <%= f.fields_for :personal_info do |personal| %>
-        <%= personal.label :name, "Your Name" %>
-        <%= personal.text_field :name, value: (@expert_registration.personal_info.blank? ? "" : @expert_registration.personal_info[:name]) %>
-        <% end %>
+        <%= f.label :name, "Your Name *" %>
+        <%= f.text_field :name %>
+        <%= errors_for(:name) %>
+
       </div>
       <div class="large-6 columns">
         <%= f.label :email, "Email *" %>
@@ -15,33 +15,35 @@
         <%= errors_for(:email) %>
       </div>
     </div>
-
-    <%= f.fields_for :expert_info do |expert| %>
     <div class="row">
       <div class="large-6 columns">
-        <%= expert.label :hometown %>
-        <%= expert.text_field :hometown, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:hometown]), class: "location-autocomplete" %>
+        <%= f.label :hometown %>
+        <%= f.text_field :hometown, class: "location-autocomplete" %>
       </div>
       <div class="large-6 columns">
-        <%= expert.label :current_location, "Current Location" %>
-        <%= expert.text_field :current_location, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:current_location]), class: "location-autocomplete" %>
+        <%= f.label :current_location, "Current Location" %>
+        <%= f.text_field :current_location, class: "location-autocomplete" %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
-        <%= expert.label :bio, "A short travel bio about yourself" %>
-        <%= expert.text_area :bio, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:bio]), class: 'medium-textarea' %>
+        <%= f.label :bio, "A short travel bio about yourself" %>
+        <%= f.text_area :bio, class: 'medium-textarea' %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
-        <%= expert.label :style, "What is your style of travel?" %>
-        <%= expert.fields_for :style do |styles| %>
+        <% if @expert_registration.errors[:style].empty? %>
+        <%= f.label :style, "What is your style of travel?" %>
+        <% else %>
+        <%= f.label :style, "What is your style of travel? (#{@expert_registration.errors[:style][0]})" %>
+        <% end %>
+        <%= f.fields_for :style do |styles| %>
           <ul class="small-block-grid-2 large-block-grid-3">
             <% @styles.each do |k,v| %>
-              <li><%= styles.check_box k, { checked: (@expert_registration.expert_info.blank? ? false : (@expert_registration.expert_info[:style].include?(k))) } %><%= k %></li>
+              <li><%= styles.check_box k, checked: (@expert_registration.style.blank? ? false : (@expert_registration.style.include?(k) ? true : false)) %><%= k %></li>
             <% end %>
           </ul>
         <% end %>
@@ -50,51 +52,53 @@
 
     <div class="row">
       <div class="large-6 columns">
-        <%= expert.label :website, "Your Website" %>
-        <%= expert.text_field :website, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:website]) %>
+        <%= f.label :website, "Your Website" %>
+        <%= f.text_field :website %>
+        <%= errors_for(:website) %>
       </div>
       <div class="large-6 columns">
-        <%= expert.label :instagram, "Instagram" %>
-        <%= expert.text_field :instagram, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:instagram]) %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-6 columns">
-        <%= expert.label :facebook, "Facebook Page" %>
-        <%= expert.text_field :facebook, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:facebook]) %>
-
-      </div>
-      <div class="large-6 columns">
-        <%= expert.label :twitter, "Twitter Handle" %>
-        <%= expert.text_field :twitter, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:twitter]) %>
+        <%= f.label :instagram, "Instagram" %>
+        <%= f.text_field :instagram %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 columns">
-        <%= expert.label :countries, "List your specialty countries" %>
+        <%= f.label :facebook, "Facebook Page" %>
+        <%= f.text_field :facebook %>
+
       </div>
       <div class="large-6 columns">
-        <%= expert.label :cities, "List your speciality cities" %>
+        <%= f.label :twitter, "Twitter Handle" %>
+        <%= f.text_field :twitter %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :countries, "List your specialty countries" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.label :cities, "List your speciality cities" %>
+
       </div>
     </div>
 
 
     <div class="row">
       <div class="large-6 columns">
-        <ul class="expert_registration_expert_info_countries">
-          <% unless @expert_registration.expert_info.blank? %>
-            <% @expert_registration.expert_info[:countries].each do |c| %>
+        <ul class="expert_registration_countries">
+          <% unless @expert_registration.countries.blank? %>
+            <% @expert_registration.countries.each do |c| %>
             <li><%= c %><a class="delete" href="#"><%= image_tag 'delete.png'%></a></li>
             <% end %>
           <% end %>
         </ul>
       </div>
       <div class="large-6 columns">
-        <ul class="expert_registration_expert_info_cities">
-          <% unless @expert_registration.expert_info.blank? %>
-            <% @expert_registration.expert_info[:cities].each do |c| %>
+        <ul class="expert_registration_cities">
+          <% unless @expert_registration.cities.blank? %>
+            <% @expert_registration.cities.each do |c| %>
             <li><%= c %><a class="delete" href="#"><%= image_tag 'delete.png'%></a></li>
             <% end %>
           <% end %>
@@ -104,25 +108,26 @@
 
     <div class="row">
       <div class="large-6 columns">
-        <%= expert.text_field :countries, class: "location-autocomplete add-to-list" %>
+        <%= f.text_field :countries, value: "", class: "location-autocomplete add-to-list" %>
+        <%= errors_for(:countries) %>
       </div>
       <div class="large-6 columns">
-        <%= expert.text_field :cities, class: "location-autocomplete add-to-list" %>
+        <%= f.text_field :cities, value: "", class: "location-autocomplete add-to-list" %>
+        <%= errors_for(:cities) %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
-        <%= expert.label :story, "Include a favorite travel memory" %>
-        <%= expert.text_area :story, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:story]), class: 'medium-textarea' %>
+        <%= f.label :story, "Include a favorite travel memory" %>
+        <%= f.text_area :story, class: 'medium-textarea' %>
       </div>
     </div>
 
     <div class="row">
       <div class="large-12 columns">
-        <%= expert.label :travel_hack, "Best travel hack" %>
-        <%= expert.text_area :travel_hack, value: (@expert_registration.expert_info.blank? ? "" : @expert_registration.expert_info[:travel_hack]), class: 'medium-textarea', placeholder: 'e.g. "Most museums have special discount times or free nights. Before I visit, I look on their website to find out if they offer free visiting hours."' %>
-        <% end %>
+        <%= f.label :travel_hack, "Best travel hack" %>
+        <%= f.text_area :travel_hack, class: 'medium-textarea', placeholder: 'e.g. "Most museums have special discount times or free nights. Before I visit, I look on their website to find out if they offer free visiting hours."' %>
       </div>
     </div>
 
