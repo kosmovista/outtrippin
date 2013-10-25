@@ -25,6 +25,14 @@ class ExpertRegistration
 
   # VALIDATIONS
   validate do
+    if personal_info[:name].blank?
+      errors[:name] << "lorem"
+    end
+  end
+
+
+  # USER
+  validate do
     unless user.valid?
       user.errors.each do |key, values|
         errors[key] = values
@@ -34,7 +42,7 @@ class ExpertRegistration
 
   ##
   def user
-    @user ||= User.new(email: email, personal_info: personal_info, expert_info: expert_info, password: password, password_confirmation: password_confirmation)
+    @user ||= User.new(email: email, personal_info: personal_info, avatar: avatar, expert_info: expert_info, password: password, password_confirmation: password_confirmation)
     return @user
   end
 

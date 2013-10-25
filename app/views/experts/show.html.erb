@@ -1,0 +1,28 @@
+<div id='overlay'></div>
+<div id='map'></div>
+
+<div class="row">
+  <div class="large-7 large-centered small-12 columns text-center login">
+    <h3>Thank You</h3>
+    <p>Thanks for your application to become an OutTrippin expert. Indi will review your special talents and favorite destinations and be in touch shortly.<br> Happy Trippin!</p>
+  </div>
+</div>
+
+<% content_for :head do %>
+<%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+<!--[if lte IE 8]>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+<![endif]-->
+<% end %>
+
+
+<% content_for :body do %>
+<script type='text/javascript'>
+var map = L.mapbox.map('map', 'jvalente.map-2usavnxz');
+map.touchZoom.disable()
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
+</script>
+<% end %>

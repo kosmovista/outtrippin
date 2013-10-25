@@ -1,11 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
-
 window.loadAutocomplete = (input) ->
   autocomplete = new google.maps.places.Autocomplete(input[0], {types: ['geocode']})
   google.maps.event.addListener autocomplete, 'place_changed', ->
-    $('.' + input.attr('id')).append("<li>" + input.val() + "</li>")
+    $('.' + input.attr('id')).append("<li>" + input.val() + "<a class='delete' href='#'><img src='/assets/delete.png'/></li>")
+    setTimeout ( ->
+     input.val('')
+     input.focus()), 1
+    $('.delete').on "click", ->
+      $(this).parent().remove()
+      return false
+
 
 window.disableSubmitOnEnter = (input) ->
   input.keypress (e) ->
@@ -37,3 +40,8 @@ $ ->
   # handle errors
   $('.field_with_errors').children().addClass("error")
   $('.field_with_errors').next().removeClass("hide")
+
+  # delete countries / cities from the list
+  $('.delete').on "click", ->
+    $(this).parent().remove()
+    return false

@@ -9,8 +9,9 @@ class ExpertsController < ApplicationController
   def create
     @expert_registration = ExpertRegistration.new(params[:expert_registration])
     if @expert_registration.save
-      redirect_to root_path
+      redirect_to expert_path
     else
+      ap @expert_registration
       render 'new'
     end
   end

@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
   # Authlogic configuration
   acts_as_authentic
 
+  # Carrierwave
+  mount_uploader :avatar, AvatarUploader
+
   validates_presence_of :email
 
   # ROLE MANAGER LOGIC
