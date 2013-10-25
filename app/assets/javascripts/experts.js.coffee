@@ -1,7 +1,7 @@
 window.loadAutocomplete = (input) ->
   autocomplete = new google.maps.places.Autocomplete(input[0], {types: ['geocode']})
   google.maps.event.addListener autocomplete, 'place_changed', ->
-    $('.' + input.attr('id')).append("<li>" + input.val() + "<a class='delete' href='#'><img src='/assets/delete.png'/></li>")
+    $('.' + input.attr('id')).append("<li>" + input.val() + "<a class='delete' href='#'></a></li>")
     if input.hasClass("add-to-list")
       setTimeout ( ->
         input.val('')
