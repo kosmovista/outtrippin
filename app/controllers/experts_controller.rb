@@ -10,7 +10,6 @@ class ExpertsController < ApplicationController
     if @expert_registration.save
       redirect_to expert_path
     else
-      ap @expert_registration.errors
       render 'new'
     end
   end

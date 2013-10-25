@@ -17,8 +17,6 @@ class ExpertRegistration
     send("countries=", parsed_countries)
     send("cities=", parsed_cities)
     send("style=", parsed_styles)
-
-    ap self
   end
 
   # VALIDATIONS
@@ -43,7 +41,13 @@ class ExpertRegistration
 
   ##
   def user
-    @user ||= User.new(email: email, avatar: avatar, password: password, password_confirmation: password_confirmation)
+    @user ||= User.new(email: email, avatar: avatar, password: password, password_confirmation: password_confirmation,
+    personal_info: {
+      name: name
+    },
+    expert_info: {
+     website: website
+    })
     return @user
   end
 
