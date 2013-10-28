@@ -6,13 +6,13 @@
       <div class="large-6 columns">
         <%= f.label :name, "Your Name *" %>
         <%= f.text_field :name, placeholder: "Indiana June" %>
-        <%= errors_for(:name) %>
+        <%= errors_for(@expert_registration, :name) %>
 
       </div>
       <div class="large-6 columns">
         <%= f.label :email, "Email *" %>
         <%= f.text_field :email, placeholder: "indiana@june.com" %>
-        <%= errors_for(:email) %>
+        <%= errors_for(@expert_registration, :email) %>
       </div>
     </div>
     <div class="row">
@@ -54,7 +54,7 @@
       <div class="large-6 columns">
         <%= f.label :website, "Your Website *" %>
         <%= f.text_field :website, placeholder: "indianajune.com" %>
-        <%= errors_for(:website) %>
+        <%= errors_for(@expert_registration, :website) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>
@@ -109,11 +109,11 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.text_field :countries, value: "", class: "location-autocomplete add-to-list" %>
-        <%= errors_for(:countries) %>
+        <%= errors_for(@expert_registration, :countries) %>
       </div>
       <div class="large-6 columns">
         <%= f.text_field :cities, value: "", class: "location-autocomplete add-to-list" %>
-        <%= errors_for(:cities) %>
+        <%= errors_for(@expert_registration, :cities) %>
       </div>
     </div>
 
@@ -136,12 +136,12 @@
       <div class="large-6 columns">
         <%= f.label :password, "Create Password *" %>
         <%= f.password_field :password, placeholder: "Your password" %>
-        <%= errors_for(:password) %>
+        <%= errors_for(@expert_registration, :password) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :password_confirmation, "Confirm Password *" %>
         <%= f.password_field :password_confirmation, placeholder: "Your password again" %>
-        <%= errors_for(:password_confirmation) %>
+        <%= errors_for(@expert_registration, :password_confirmation) %>
       </div>
     </div>
 
