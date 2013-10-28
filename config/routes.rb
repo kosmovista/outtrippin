@@ -4,8 +4,15 @@ Outtrippin::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resource 'expert', only: [:create, :show]
+  resources 'user_sessions', only: [:new, :create, :destroy]
 
+  get 'login' => 'user_sessions#new'
+  delete 'logout' => 'user_sessions#destroy'
   get 'register' => 'experts#new'
+
+  namespace :admin do
+    get '' => 'dashboard#index', as: '/'
+  end
 
   root 'experts#new'
   # Example of regular route:
