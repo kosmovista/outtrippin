@@ -100,7 +100,7 @@ class ExpertRegistration
   def create_objects
     ActiveRecord::Base.transaction do
       user.roles = ["expert"]
-      user.save!
+      user.save_without_session_maintenance
     end
   rescue
     false
