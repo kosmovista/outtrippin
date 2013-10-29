@@ -1281,9 +1281,9 @@ $topbar-height: 70px;
 
 // Style the top bar dropdown elements
 
-// $topbar-dropdown-bg: #222;
+$topbar-dropdown-bg: $topbar-bg-color;
 // $topbar-dropdown-link-color: #fff;
-// // $topbar-dropdown-link-bg: lighten($topbar-bg-color, 5%);
+$topbar-dropdown-link-bg: $topbar-bg-color;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.5;
@@ -1295,7 +1295,7 @@ $topbar-height: 70px;
 // $topbar-link-color-active: #fff;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: em-calc(13);
-// $topbar-link-hover-lightness: -30%; // Darken by 30%
+$topbar-link-hover-lightness: 3%; // Darken by 30%
 // $topbar-link-bg-hover: darken($topbar-bg-color, 3%);
 // $topbar-link-bg-active: darken($topbar-bg-color, 3%);
 
@@ -1340,6 +1340,10 @@ $topbar-height: 70px;
 @import "custom-forms";
 @import "foundation/components/top-bar";
 @import "panels";
+
+// ADMIN
+@import "foundation/components/side-nav";
+@import "foundation/components/tables";
 
 .error {
   border-radius: 4px;
