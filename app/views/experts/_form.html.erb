@@ -77,16 +77,6 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :countries, "List your specialty countries *" %>
-      </div>
-      <div class="large-6 columns">
-        <%= f.label :cities, "List your speciality cities *" %>
-
-      </div>
-    </div>
-
-
-    <div class="row">
-      <div class="large-6 columns">
         <ul class="expert_registration_countries">
           <% unless @expert_registration.countries.blank? %>
             <% @expert_registration.countries.each do |c| %>
@@ -94,8 +84,11 @@
             <% end %>
           <% end %>
         </ul>
+        <%= f.text_field :countries, value: "", class: "location-autocomplete add-to-list" %>
+        <%= errors_for(@expert_registration, :countries) %>
       </div>
       <div class="large-6 columns">
+        <%= f.label :cities, "List your speciality cities *" %>
         <ul class="expert_registration_cities">
           <% unless @expert_registration.cities.blank? %>
             <% @expert_registration.cities.each do |c| %>
@@ -103,15 +96,6 @@
             <% end %>
           <% end %>
         </ul>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-6 columns">
-        <%= f.text_field :countries, value: "", class: "location-autocomplete add-to-list" %>
-        <%= errors_for(@expert_registration, :countries) %>
-      </div>
-      <div class="large-6 columns">
         <%= f.text_field :cities, value: "", class: "location-autocomplete add-to-list" %>
         <%= errors_for(@expert_registration, :cities) %>
       </div>
