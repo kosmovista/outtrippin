@@ -5,9 +5,12 @@
 @import "foundation_and_overrides";
 
 div.container { margin-top: 30px; }
-
 .medium-textarea { height: 200px !important; }
-
-.hide { display: none !important; }
-
 .top-bar { font-family: $sans-font-family; font-size: 20px !important; }
+
+
+/* HELPERS */
+.hide { display: none !important; }
+.white { color: #fff !important; }
+.top { margin-top: 30px; }
+

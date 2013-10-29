@@ -1,15 +1,44 @@
 <div class="expert-cover">
-
+   <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
+   <h1 class="white" style="margin-bottom:10px"><%= @user.name %></h1>
+   <hr style="border:2px solid #fff;width:60px;margin:0 auto 10px auto" />
+   <p class="white"><%= @user.expert_info[:bio] %></p>
 </div>
 
-<div class="row">
+<div class="row top">
   <div class="large-4 columns">
     <p><%= @user.expert_info[:website] %></p>
     <p><%= @user.expert_info[:facebook] %></p>
     <p><%= @user.expert_info[:twitter] %></p>
     <p><%= @user.expert_info[:instagram] %></p>
   </div>
+
   <div class="large-8 columns">
+    <ul class="inline-list skill-list">
+      <% @user.expert_info[:style].each do |s| %>
+        <li><span class="label secondary round"><%= s %></span></li>
+      <% end %>
+    </ul>
+
+    <h2 class="subheader">My Story</h2>
+    <p><%= @user.expert_info[:story] %></p>
+
+
+    <h2 class="subheader">My Best Travel Hack</h2>
+    <p><%= @user.expert_info[:travel_hack] %></p>
+
+
+    <h2 class="subheader">My Places</h2>
+    <ul class="inline-list skill-list">
+      <% @user.expert_info[:countries].each do |c| %>
+        <li><span class="label secondary round"><%= c %></span></li>
+      <% end %>
+    </ul>
+    <ul class="inline-list skill-list">
+      <% @user.expert_info[:cities].each do |c| %>
+        <li><span class="label secondary round"><%= c %></span></li>
+      <% end %>
+    </ul>
   </div>
 </div>
 
