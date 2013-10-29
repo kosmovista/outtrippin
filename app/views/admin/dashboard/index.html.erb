@@ -1,5 +1,38 @@
 <div class="row">
-  <div class="large-12 columns">
+  <div class="large-12 large-offset-2 columns">
     <h1>Admin Dashboard</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-2 columns">
+    <ul class="side-nav">
+      <li><a href="#">Users</a></li>
+      <li><a href="#">Trips</a></li>
+      <!-- <li class="divider"></li> -->
+      <!-- <li><a href="#">Link 3</a></li> -->
+      <!-- <li><a href="#">Link 4</a></li> -->
+    </ul>
+  </div>
+
+  <div class="large-10 columns">
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Roles</th>
+          <th>Signed Up</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% User.all.each do |u| %>
+        <tr>
+          <td><%= link_to (u.name || u.email), "#" %></td>
+          <td><%= u.roles %> </td>
+          <td><%= time_ago_in_words u.created_at %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>
