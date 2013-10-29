@@ -1,0 +1,18 @@
+<div class="expert-cover">
+
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+    <p><%= @user.expert_info[:website] %></p>
+    <p><%= @user.expert_info[:facebook] %></p>
+    <p><%= @user.expert_info[:twitter] %></p>
+    <p><%= @user.expert_info[:instagram] %></p>
+  </div>
+  <div class="large-8 columns">
+  </div>
+</div>
+
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+<% end %>

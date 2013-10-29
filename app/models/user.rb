@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
   end
   # (end) ROLE MANAGER LOGIC
 
+  def expert?
+    self.is?("expert")
+  end
+
   def name
     self.personal_info[:name]
   end
