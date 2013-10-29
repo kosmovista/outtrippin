@@ -66,7 +66,7 @@ class ExpertRegistration
   def save
     return false unless valid?
     if create_objects
-      # SEND EMAILS AND STUFF
+      AdminMailer.new_expert_email(user).deliver # TODO ADD DELAYED JOB
       true
     else
       false
@@ -99,6 +99,7 @@ class ExpertRegistration
 
   def create_objects
     ActiveRecord::Base.transaction do
+      user.roles = ["expert"]
       user.save!
     end
   rescue
