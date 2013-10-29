@@ -11,6 +11,7 @@ gem 'exceptional'
 # file uploading
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog'
 
 # authentication
 gem 'authlogic'
