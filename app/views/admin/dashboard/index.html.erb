@@ -27,7 +27,7 @@
       <tbody>
         <% User.all.each do |u| %>
         <tr>
-          <td><%= link_to (u.name || u.email), "#" %></td>
+          <td><%= link_to (u.name || u.email), user_path(u) %></td>
           <td><%= u.roles %> </td>
           <td><%= time_ago_in_words u.created_at %></td>
         </tr>

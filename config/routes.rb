@@ -1,9 +1,7 @@
 Outtrippin::Application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
   resource 'expert', only: [:create, :show]
+
+  resources 'users', only: [:show]
   resources 'user_sessions', only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new'
