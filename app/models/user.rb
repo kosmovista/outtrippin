@@ -53,4 +53,14 @@ class User < ActiveRecord::Base
   def twitter
     self.expert_info[:twitter]
   end
+
+  def hometown
+    self.expert_info[:hometown]
+  end
+
+  def location
+    self.expert_info[:location]
+  end
+
+
 end

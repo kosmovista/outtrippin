@@ -7,14 +7,17 @@
 
 <div class="row top">
   <div class="large-4 columns">
-    <p class="geo hometown"><strong><%= @user.expert_info[:hometown] %></strong></p>
-    <p class="geo location"><strong><%= @user.expert_info[:location] %></strong></p>
+    <%= content_tag :p, @user.expert_info[:hometown], class: "geo hometown" unless @user.hometown.blank? %>
+    <%= content_tag :p, @user.expert_info[:location], class: "geo location" unless @user.location.blank? %>
     <br />
     <br />
     <%= link_to @user.website, "http://joaovalente.com", class: "www social", target: "_blank" unless @user.website.blank? %>
     <%= link_to @user.facebook, "http://#{@user.facebook}", class: "facebook social", target: "_blank" unless @user.facebook.blank? %>
     <%= link_to @user.twitter, "http://twitter.com/#{@user.twitter}", class: "twitter social", target: "_blank" unless @user.twitter.blank? %>
     <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
+    <br />
+    <br />
+    <%#= link_to "Edit Profile", "#", class: "small button" %>
   </div>
 
   <div class="large-8 columns">
