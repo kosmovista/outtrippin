@@ -1,8 +1,9 @@
 /*
  *= require_self
+ *= require footer
  */
 
-@import "foundation_and_overrides";
+@import "foundation/foundation_and_overrides";
 
 div.container { margin-top: 30px; }
 .medium-textarea { height: 200px !important; }
@@ -13,4 +14,3 @@ div.container { margin-top: 30px; }
 .hide { display: none !important; }
 .white { color: #fff !important; }
 .top { margin-top: 30px; }
-

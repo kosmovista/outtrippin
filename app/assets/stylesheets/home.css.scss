@@ -1,0 +1,20 @@
+div#destinations {
+  margin-top: -30px;
+  height: 500px;
+  background: url('http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg') no-repeat center center fixed; background-size: cover;
+}
+
+div#start-contest {
+  padding: 30px 0;
+  background-color: whitesmoke;
+}
+
+div#steps {
+  padding: 30px 0;
+  text-align: center;
+}
+
+form#new_itinerary input[type="submit"] {
+  margin-left: -20px;
+  height: 52px;
+}
