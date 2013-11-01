@@ -22,6 +22,7 @@
           <th>Name</th>
           <th>Roles</th>
           <th>Signed Up</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -30,6 +31,7 @@
           <td><%= link_to (u.name || u.email), user_path(u) %></td>
           <td><%= u.roles %> </td>
           <td><%= time_ago_in_words u.created_at %></td>
+          <td><%= link_to "Delete", user_path(u), method: :delete, confirm: "Please confirm that you want to delete user #{u.name}." %></td>
         </tr>
         <% end %>
       </tbody>
