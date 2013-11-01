@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
 
   validates_presence_of :email
 
+  has_many :itineraries, dependent: :destroy, inverse_of: :user
+
   # ROLE MANAGER LOGIC
   def roles=(roles)
     self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)

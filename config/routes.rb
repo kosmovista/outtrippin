@@ -3,62 +3,21 @@ Outtrippin::Application.routes.draw do
 
   resources 'users', only: [:show, :destroy]
   resources 'user_sessions', only: [:new, :create, :destroy]
-
-  get 'login' => 'user_sessions#new'
-  delete 'logout' => 'user_sessions#destroy'
-  get 'register' => 'experts#new'
-
-  namespace :admin do
-    get '' => 'dashboard#index', as: '/'
+  resources 'itineraries', only: [:create, :update] do
+    member do
+      get 'details'
+      get 'finalize'
+    end
   end
 
-  root 'experts#new'
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  get     'login'     => 'user_sessions#new'
+  delete  'logout'    => 'user_sessions#destroy'
+  get     'register'  => 'experts#new'
 
-  # Example of named route that can be invoked with purchase_url(id: product.id)
-  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  namespace :admin do
+    get ''  => 'dashboard#index', as: '/'
+    resources 'itineraries'
+  end
 
-  # Example resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+  root 'home#index'
 end
