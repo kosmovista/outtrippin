@@ -7,36 +7,36 @@
 
 <div class="row top">
   <div class="large-4 columns">
-    <p><%= @user.expert_info[:website] %></p>
-    <p><%= @user.expert_info[:facebook] %></p>
-    <p><%= @user.expert_info[:twitter] %></p>
-    <p><%= @user.expert_info[:instagram] %></p>
+    <p class="geo hometown"><strong><%= @user.expert_info[:hometown] %></strong></p>
+    <p class="geo location"><strong><%= @user.expert_info[:location] %></strong></p>
+    <br />
+    <br />
+    <%= link_to @user.website, "http://joaovalente.com", class: "www social", target: "_blank" unless @user.website.blank? %>
+    <%= link_to @user.facebook, "http://#{@user.facebook}", class: "facebook social", target: "_blank" unless @user.facebook.blank? %>
+    <%= link_to @user.twitter, "http://twitter.com/#{@user.twitter}", class: "twitter social", target: "_blank" unless @user.twitter.blank? %>
+    <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
   </div>
 
   <div class="large-8 columns">
     <ul class="inline-list skill-list">
       <% @user.expert_info[:style].each do |s| %>
-        <li><span class="label secondary round"><%= s %></span></li>
+        <li><span class="label light round"><%= s %></span></li>
       <% end %>
     </ul>
 
     <h2 class="subheader">My Story</h2>
     <p><%= @user.expert_info[:story] %></p>
 
-
     <h2 class="subheader">My Best Travel Hack</h2>
     <p><%= @user.expert_info[:travel_hack] %></p>
-
 
     <h2 class="subheader">My Places</h2>
     <ul class="inline-list skill-list">
       <% @user.expert_info[:countries].each do |c| %>
-        <li><span class="label secondary round"><%= c %></span></li>
+        <li><span class="label light round"><%= c %></span></li>
       <% end %>
-    </ul>
-    <ul class="inline-list skill-list">
       <% @user.expert_info[:cities].each do |c| %>
-        <li><span class="label secondary round"><%= c %></span></li>
+        <li><span class="label light round"><%= c %></span></li>
       <% end %>
     </ul>
   </div>

@@ -63,8 +63,6 @@ GEM
       delayed_job (>= 3.0, < 4.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
-    exceptional (2.0.33)
-      rack
     excon (0.27.6)
     execjs (2.0.2)
     fog (1.17.0)
@@ -186,7 +184,6 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   compass-rails
   delayed_job_active_record
-  exceptional
   fog
   jquery-rails
   mini_magick

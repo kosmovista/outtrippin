@@ -37,4 +37,20 @@ class User < ActiveRecord::Base
   def name
     self.personal_info[:name]
   end
+
+  def website
+    self.expert_info[:website]
+  end
+
+  def facebook
+    self.expert_info[:facebook]
+  end
+
+  def instagram
+    self.expert_info[:instagram]
+  end
+
+  def twitter
+    self.expert_info[:twitter]
+  end
 end

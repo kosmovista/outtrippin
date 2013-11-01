@@ -18,3 +18,27 @@
   border-radius: 90px;
   border: 4px solid #fff;
 }
+
+a.social {
+  line-height: 40px;
+  font-family: "calluna-sans", helvetica, sans-serif;
+  display: block;
+  height: 40px;
+  padding-left: 45px;
+  color: #4a4a4a;
+}
+
+.www { background: image-url('website.png') no-repeat; }
+.facebook { background: image-url('facebook.png') no-repeat; }
+.twitter { background: image-url('twitter.png') no-repeat; }
+.instagram { background: image-url('instagram.png') no-repeat; }
+
+p.geo {
+  margin: 0;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 45px;
+}
+
+.hometown { background: image-url('home.png') no-repeat; }
+.location { background: image-url('location.png') no-repeat; }

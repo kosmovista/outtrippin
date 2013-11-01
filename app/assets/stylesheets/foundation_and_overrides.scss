@@ -306,7 +306,7 @@ $form-label-bottom-margin: em-calc(10);
 // $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: em-calc(19);
 // $input-bg-color: #fff;
-$input-focus-bg-color: #fff;
+$input-focus-bg-color: red;
 $input-border-color: #c8c8c8;
 $input-focus-border-color: $primary-color;
 // $input-border-style: solid;
@@ -713,7 +713,7 @@ $custom-form-checkbox-radius: $input-border-radius;
 // $inline-list-top-margin: 0;
 // $inline-list-opposite-margin: 0;
 // $inline-list-bottom-margin: em-calc(17);
-// $inline-list-default-float-margin: em-calc(-22);
+$inline-list-default-float-margin: em-calc(10);
 
 // $inline-list-padding: 0;
 
@@ -798,15 +798,16 @@ $custom-form-checkbox-radius: $input-border-radius;
 
 // We use these to style the labels
 
-// $label-padding: em-calc(3 10 4);
+$label-padding: em-calc(7 15);
 // $label-radius: $global-radius;
 
 // We use these to style the label text
 
+$label-font-family: $sans-font-family;
 // $label-font-sizing: em-calc(14);
 // $label-font-weight: bold;
-// $label-font-color: #333;
-// $label-font-color-alt: #fff;
+$label-font-color: $body-font-color;
+$label-font-color-alt: $body-font-color;
 
 //
 // Magellan Variables
@@ -1346,8 +1347,8 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 @import "foundation/components/tables";
 
 // EXPERT PROFILE
-@import "foundation/components/inline-lists"; // THIS CAN BE REMOVED
-@import "foundation/components/labels"; // THIS CAN BE REMOVED
+@import "inline-lists";     // THIS CAN BE REMOVED
+@import "labels";           // THIS CAN BE REMOVED
 
 .error {
   border-radius: 4px;
