@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="large-4 columns">
+    <h5>Your Trip, So Far:</h5>
+    Destination: <%= @itinerary.destination %>
+  </div>
+  <div class="large-8 columns">
+    <%= form_for @itinerary_finalize, url: publish_itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :name, "Give your trip a spectacular name" %>
+          <%= f.text_field :name %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :budget, "What's your budget per person, per day?" %>
+          <%= f.text_field :budget %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :travelers, "Who's traveling?" %>
+          <%= f.text_field :travelers %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :email, "And your email?" %>
+          <%= f.text_field :email %>
+          <%= errors_for(@itinerary_finalize, :email) %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :details, "Any extra details or ideas?" %>
+          <%= f.text_field :details %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.submit "Launch!", class: "button" %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

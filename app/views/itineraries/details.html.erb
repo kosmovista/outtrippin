@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="large-4 columns">
+    <h5>Your Trip, So Far:</h5>
+    Destination: <%= @itinerary.destination %>
+  </div>
+  <div class="large-8 columns">
+    <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.text_field :departure %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.text_field :duration %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <% if @itinerary_details.errors[:style].empty? %>
+          <%= f.label :style, "What is your style of travel? *" %>
+          <% else %>
+          <%= f.label :style, "What is your style of travel? (#{@itinerary_details.errors[:style][0]})" %>
+          <% end %>
+          <%= f.fields_for :style do |styles| %>
+            <ul class="small-block-grid-2 large-block-grid-3">
+              <% @styles.each do |k,v| %>
+                <li><%= styles.check_box k, checked: (@itinerary_details.style.blank? ? false : (@itinerary_details.style.include?(k) ? true : false)) %><%= k %></li>
+              <% end %>
+            </ul>
+          <% end %>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.submit "Next", class: "button" %>
+        </div>
+      </div>
+
+    <% end %>
+  </div>
+</div>

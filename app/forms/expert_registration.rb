@@ -26,7 +26,6 @@ class ExpertRegistration
     errors[:cities] = "Enter at least one city" if cities.empty?
     errors[:countries] = "Enter at least one country" if countries.empty?
     errors[:style] = "Select at least one style" if style.empty?
-
   end
 
 

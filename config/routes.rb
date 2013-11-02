@@ -7,6 +7,7 @@ Outtrippin::Application.routes.draw do
     member do
       get 'details'
       get 'finalize'
+      put 'publish'
     end
   end
 

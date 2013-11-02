@@ -1,15 +1,16 @@
-class ItineraryDetails
+class ItineraryFinalize
   include ActiveModel::Model
 
   def persisted?
     false
   end
 
-  ATTRIBUTES = [:departure, :duration, :style]
+  ATTRIBUTES = [:name, :budget, :travelers, :email, :details]
 
   attr_accessor *ATTRIBUTES
 
   def initialize(options = {})
+    ap options
     attributes = options[:attributes]
     @itinerary = options[:itinerary]
     raise ArgumentError, "You need to supply an itinerary" if @itinerary.nil?
@@ -19,12 +20,22 @@ class ItineraryDetails
         send("#{attribute}=", attributes[attribute])
       end
 
-      send("style=", parsed_styles)
     end
   end
 
   validate do
-    errors[:style] = "Select at least one style" if style.empty?
+    @user = User.find_by_email(email)
+    unless user.valid?
+      puts user.errors.inspect
+      user.errors.each do |key, values|
+        errors[key] = values
+      end
+    end
+  end
+
+  def user
+    password = "taxasman"
+    @user ||= User.new(email: email, password: password, password_confirmation: password)
   end
 
   def save
@@ -42,19 +53,12 @@ class ItineraryDetails
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { style: style }
-      @itinerary.update_attributes(extra_info: extra_info)
+      extra_info = { name: name, budget: budget, travelers: travelers, details: details, style: @itinerary.extra_info[:style] }
+      user.save!
+      @itinerary.update_attributes(extra_info: extra_info, user: user)
       @itinerary.save!
     end
   rescue
     false
-  end
-
-  # TODO repeated code
-  def parsed_styles
-    return nil if style.nil?
-    _style = []
-    style.each { |k, v| _style << k if v != "0" }
-    _style
   end
 end

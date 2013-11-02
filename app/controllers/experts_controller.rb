@@ -16,6 +16,7 @@ class ExpertsController < ApplicationController
 
   private
 
+  # TODO REFACTOR THIS
   def load_styles
     configuration_file = File.join(Rails.root.to_s, 'config', 'styles.yml')
     @styles = YAML.load_file(configuration_file)
