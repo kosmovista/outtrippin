@@ -10,7 +10,6 @@ class ItineraryFinalize
   attr_accessor *ATTRIBUTES
 
   def initialize(options = {})
-    ap options
     attributes = options[:attributes]
     @itinerary = options[:itinerary]
     raise ArgumentError, "You need to supply an itinerary" if @itinerary.nil?
@@ -26,7 +25,6 @@ class ItineraryFinalize
   validate do
     @user = User.find_by_email(email)
     unless user.valid?
-      puts user.errors.inspect
       user.errors.each do |key, values|
         errors[key] = values
       end

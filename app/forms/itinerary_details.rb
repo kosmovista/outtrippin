@@ -43,7 +43,7 @@ class ItineraryDetails
   def create_objects
     ActiveRecord::Base.transaction do
       extra_info = { style: style }
-      @itinerary.update_attributes(extra_info: extra_info)
+      @itinerary.update_attributes(departure: departure, duration: duration, extra_info: extra_info)
       @itinerary.save!
     end
   rescue

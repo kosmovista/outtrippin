@@ -1,0 +1,25 @@
+<div class="row ">
+  <div class="large-10 large-centered columns itinerary">
+    <div class="row">
+      <div class="large-9 columns">
+        <h3><%= itinerary.extra_info[:name] %></h3>
+      </div>
+      <div class="large-3 columns">
+        <%= link_to "Trip Details", itinerary_path(itinerary), class: "right radius button" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <p><strong>Travelers:</strong> <%= itinerary.extra_info[:travelers] %></p>
+        <p><strong>Destination:</strong> <%= itinerary.destination %></p>
+        <p><strong>Duration:</strong> <%= itinerary.duration %></p>
+        <p><strong>Travel Dates:</strong> <%= itinerary.departure %></p>
+        <p><strong>Budget:</strong> <%= itinerary.extra_info[:budget] %></p>
+      </div>
+      <div class="large-6 columns">
+        <p><strong>Style:</strong> <%= itinerary.extra_info[:style] %></p>
+        <p><strong>Additional details:</strong> <%= itinerary.extra_info[:details] %></p>
+      </div>
+    </div>
+  </div>
+</div>

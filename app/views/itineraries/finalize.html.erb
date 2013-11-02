@@ -1,52 +1,61 @@
+<%= content_for :left_col do %>
+<h5>Your Trip, So Far:</h5>
+<p>Destination: <%= @itinerary.destination %></p>
+<p>Duration: <%= @itinerary.duration %></p>
+<p>Travel Dates: <%= @itinerary.departure %></p>
+<p>Interested in: <%= @itinerary.extra_info[:style].join(", ") %></p>
+<% end %>
+<%= form_for @itinerary_finalize, url: publish_itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
 <div class="row">
-  <div class="large-4 columns">
-    <h5>Your Trip, So Far:</h5>
-    Destination: <%= @itinerary.destination %>
+  <div class="large-5 columns">
+    <%= f.label :name, "Give your trip a spectacular name", class: "left inline" %>
   </div>
-  <div class="large-8 columns">
-    <%= form_for @itinerary_finalize, url: publish_itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :name, "Give your trip a spectacular name" %>
-          <%= f.text_field :name %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :budget, "What's your budget per person, per day?" %>
-          <%= f.text_field :budget %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :travelers, "Who's traveling?" %>
-          <%= f.text_field :travelers %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :email, "And your email?" %>
-          <%= f.text_field :email %>
-          <%= errors_for(@itinerary_finalize, :email) %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :details, "Any extra details or ideas?" %>
-          <%= f.text_field :details %>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="large-12 columns">
-          <%= f.submit "Launch!", class: "button" %>
-        </div>
-      </div>
-
-    <% end %>
+  <div class="large-7 columns">
+    <%= f.text_field :name, placeholder: "Our amazing adventure to Costa Rica!" %>
   </div>
 </div>
+
+<div class="row">
+  <div class="large-5 columns">
+    <%= f.label :budget, "What's your budget per person, per day?", class: "left inline" %>
+  </div>
+  <div class="large-7 columns">
+    <%= f.select :budget, options_for_select(budget_options) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-5 columns">
+    <%= f.label :travelers, "Who's traveling?" %>
+  </div>
+  <div class="large-7 columns">
+    <%= f.text_field :travelers, placeholder: "Nadia & Thomas" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-5 columns">
+    <%= f.label :email, "And your email?" %>
+  </div>
+  <div class="large-7 columns">
+    <%= f.text_field :email, placeholder: "brilliant@awesome.com" %>
+    <%= errors_for(@itinerary_finalize, :email) %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-5 columns">
+    <%= f.label :details, "Any extra details or ideas?" %>
+  </div>
+  <div class="large-7 columns">
+    <%= f.text_area :details, placeholder: "eg: My husband loves adventure so would like to hear your ideas for activities we can do. I love hiking and I'm a vegetarian.", class: "medium-textarea" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 large-offset-8 columns">
+    <%= f.submit "Launch!", class: "radius large button expand right" %>
+  </div>
+</div>
+
+<% end %>
