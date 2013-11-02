@@ -1,16 +1,10 @@
 /*
  *= require_self
- *= require footer
  */
 
 @import "foundation/foundation_and_overrides";
+@import "footer";
+@import "helpers";
 
+.top-bar { font-family: $sans-font-family; font-size: 20px !important; }  // this should go into foundation
 div.container { margin-top: 30px; }
-.medium-textarea { height: 200px !important; }
-.top-bar { font-family: $sans-font-family; font-size: 20px !important; }
-
-
-/* HELPERS */
-.hide { display: none !important; }
-.white { color: #fff !important; }
-.top { margin-top: 30px; }

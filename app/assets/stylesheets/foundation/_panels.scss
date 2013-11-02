@@ -83,5 +83,9 @@ $callout-panel-link-color: #fff !default;
     }
 
   }
-
+  // display itinerary at itinerary#index
+  .itinerary { @include panel(white, 20px);
+    border: 1px #e6e6e6 solid;
+    border-left: 3px $primary-color solid;
+  }
 }

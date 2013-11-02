@@ -151,7 +151,6 @@ $alert-color: #C46752;
 // Grid Variables
 //
 
-// $row-width: em-calc(1000);
 // $column-gutter: em-calc(30);
 // $total-columns: 12;
 
@@ -1349,9 +1348,3 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 // EXPERT PROFILE
 @import "inline-lists";     // THIS CAN BE REMOVED
 @import "labels";           // THIS CAN BE REMOVED
-
-.error {
-  border-radius: 4px;
-  opacity: 0.8;
-
-}
