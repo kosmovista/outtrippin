@@ -9,7 +9,6 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       redirect_to role_login_path
     else
-      puts @user_session.errors.inspect
       render :action => :new
     end
   end

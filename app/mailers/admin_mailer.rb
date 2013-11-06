@@ -6,4 +6,9 @@ class AdminMailer < ActionMailer::Base
     @user = user
     mail to: ADMINS, subject: "[outtrippin.com] new expert registered"
   end
+
+  def new_user_email(user)
+    @user = user
+    mail to: ADMINS, subject: "[outtrippin.com] new user registered"
+  end
 end

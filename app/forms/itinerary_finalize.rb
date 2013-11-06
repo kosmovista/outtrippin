@@ -18,7 +18,6 @@ class ItineraryFinalize
       ATTRIBUTES.each do |attribute|
         send("#{attribute}=", attributes[attribute])
       end
-
     end
   end
 
@@ -32,15 +31,20 @@ class ItineraryFinalize
   end
 
   def user
-    password = "taxasman"
-    @user ||= User.new(email: email, password: password, password_confirmation: password)
+    if @user
+      return @user
+    else
+      @password = generate_password
+      @user ||= User.new(email: email, password: @password, password_confirmation: @password)
+    end
   end
 
   def save
     return false unless valid?
+    send_user_email = true if @user.new_record?
     if create_objects
-      # UserMailer.welcome_expert_email(user).deliver
-      # AdminMailer.new_expert_email(user).deliver # TODO ADD DELAYED JOB
+      UserMailer.welcome_user_email(user, @password).deliver if send_user_email # TODO ADD DELAYED JOB
+      AdminMailer.new_user_email(user).deliver # TODO ADD DELAYED JOB
       true
     else
       false
@@ -58,5 +62,11 @@ class ItineraryFinalize
     end
   rescue
     false
+  end
+
+  private
+  def generate_password
+    o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    (0...8).map{ o[rand(o.length)] }.join
   end
 end
