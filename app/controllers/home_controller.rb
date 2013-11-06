@@ -4,10 +4,4 @@ class HomeController < ApplicationController
   def index
     @itinerary = Itinerary.new
   end
-
-  private
-
-  def set_homepage_type
-    @homepage_type = "default"
-  end
 end
