@@ -1,10 +1,28 @@
 <div id="destinations">
+  <%= image_tag "loading.gif", id: "loading" %>
+  <%= link_to "", "#", id: "left", class: "navigator"  %>
+  <%= link_to "", "#", id: "right", class: "navigator"   %>
+  <h1 id="header"><%= homepage("header") %></h1>
+
+  <div id="expert-loader">
+    <% homepage_pics.each do |p| %>
+    <div class="row expert <%= p[0] %>">
+      <div class="large-9 columns">
+        <h5><%= p[1]["title"] %></h5>
+        <p><em>"<%= p[1]["text"] %>"</em> - <strong><%= p[1]["expert"] %></strong></p>
+      </div>
+      <div class="large-3 columns">
+        <%= image_tag p[1]["avatar"] %>
+      </div>
+    </div>
+    <% end %>
+  </div>
 </div>
 
 <div id="start-contest">
   <div class="row">
     <div class="large-12 columns text-center">
-      <h4>Let our travel experts compete to design a honeymoon tailored to your personality</h4>
+      <h4><%= homepage("subheader") %></h4>
     </div>
   </div>
 
@@ -13,12 +31,12 @@
       <div class="row collapse">
         <%= form_for @itinerary do |f| %>
         <div class="large-8 columns">
-          <%= f.text_field :destination %>
+          <%= f.text_field :destination, placeholder: homepage("placeholder") %>
           <%= errors_for(@itinerary, :destination) %>
 
         </div>
         <div class="large-4 columns">
-          <%= f.submit "Blah", class: "button radius expand" %>
+          <%= f.submit homepage("submit"), class: "button radius expand" %>
         </div>
         <% end %>
       </div>
@@ -28,20 +46,39 @@
 
 <div id="steps">
   <div class="row">
+    <div class="large-12 columns">
+      <h3><%= homepage(["process", "header"]) %>
+    </div>
+  </div>
+  <div class="row">
     <div class="large-4 columns">
       <%= image_tag 'marker.png' %>
+      <h6><%= homepage(["process", "step1", "title"]) %></h6>
+      <p><%= homepage(["process", "step1", "text"]) %></p>
     </div>
     <div class="large-4 columns">
       <%= image_tag 'idea.png' %>
-
+      <h6><%= homepage(["process", "step2", "title"]) %></h6>
+      <p><%= homepage(["process", "step2", "text"]) %></p>
     </div>
     <div class="large-4 columns">
       <%= image_tag 'calendar.png' %>
+      <h6><%= homepage(["process", "step3", "title"]) %></h6>
+      <p><%= homepage(["process", "step3", "text"]) %></p>
     </div>
   </div>
 </div>
 
+<div id="image-loader">
+  <% homepage_pics.each do |p| %>
+    <%= image_tag p[1]["src"], class: p[0] %>
+  <% end %>
+</div>
 
 <%= content_for :head do %>
 <%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
+<%= content_for :body do %>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <% end %>

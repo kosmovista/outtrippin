@@ -1,8 +1,14 @@
 div#destinations {
+  position: relative;
+  text-align: center;
   margin-top: -30px;
   height: 500px;
-  background: url('http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg') no-repeat center center fixed; background-size: cover;
+  background-size: cover;
+  h1 { color: white; font-size: 4.5em; font-weight: normal; padding-top: 80px; }
 }
+
+#header { display: none; }
+ #loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
 
 div#start-contest {
   padding: 30px 0;
@@ -17,4 +23,24 @@ div#steps {
 form#new_itinerary input[type="submit"] {
   margin-left: -20px;
   height: 52px;
+}
+
+
+// BACKGROUND
+#image-loader { display: none; }
+.navigator { width: 42px; height: 64px; margin-top: -32px;   position: absolute; top: 50%; }
+#left { background-image: image-url("left.png"); left: 10px; }
+#right { background-image: image-url("right.png"); right: 10px; }
+
+// BACKGROUND EXPERTS
+.expert {
+  text-align: right;
+  display: none;
+  width: 40%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 -2px 2px rgba(0,0,0,0.4); }
+  p { line-height: 18px; font-size: 16px; }
+  img { width: 90px; height: 90px; border-radius: 45px; border: 4px solid white; }
 }
