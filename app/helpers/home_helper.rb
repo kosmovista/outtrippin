@@ -13,5 +13,4 @@ module HomeHelper
   def homepage_pics
     $homepage_copy[@homepage_type]["pics"]
   end
-
 end

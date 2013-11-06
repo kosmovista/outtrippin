@@ -10,6 +10,7 @@ Outtrippin::Application.routes.draw do
       put 'publish'
       get 'checkout'
       put 'purchase'
+      get 'thankyou'
     end
   end
 

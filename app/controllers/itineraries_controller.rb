@@ -56,9 +56,7 @@ class ItinerariesController < ApplicationController
     token = params[:stripeToken]
 
     if @itinerary.process_payment(token)
-      AdminMailer.new_checkout_email(@itinerary.user, @itinerary).deliver
       flash[:fresh_purchase] = true
-      @itinerary.set_winner(params[:winner]) if params[:winner]
       redirect_to thankyou_itinerary_path(@itinerary)
     else
       redirect_to checkout_itinerary_path(@itinerary), alert: "Something went wrong!"

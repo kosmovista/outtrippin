@@ -2,6 +2,11 @@
   <%= render 'itinerary_left_col' %>
 <% end %>
 
+<div class="hold">
+  <%= image_tag "loading_black.gif", id: "loading" %><br/><br/>
+  <p class="ot-color sans">Please hold a few seconds while we process your payment.</p>
+</div>
+
 <h2>Trip Checkout</h2>
 <div class="itinerary">
   <% unless @itinerary.extra_info[:name].blank? %>
@@ -88,6 +93,7 @@
 <script>
   $('#checkout-btn').click(function() {
     var token = function(res){
+      $('div.hold').show();
       var $input = $('<input type=hidden name=stripeToken />').val(res.id);
       $('form').append($input).submit();
     };

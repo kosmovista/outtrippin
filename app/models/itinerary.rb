@@ -20,7 +20,6 @@ class Itinerary < ActiveRecord::Base
     if self.valid?
       self.charge(token)
       self.paid = true
-      self.guarantee!
       self.save
     end
   rescue Stripe::CardError => e
@@ -28,6 +27,4 @@ class Itinerary < ActiveRecord::Base
     errors.add :base, "There was a problem while processing the payment"
     false
   end
-
-
 end
