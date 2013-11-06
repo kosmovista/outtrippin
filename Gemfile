@@ -5,6 +5,8 @@ gem 'rails', '4.0.0'
 
 gem 'delayed_job_active_record'
 
+gem 'stripe'
+
 # file uploading
 gem 'carrierwave'
 gem 'mini_magick'
