@@ -2,7 +2,7 @@ class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles, only: [:details, :update]
-  before_action :authorize_user, only: [:index, :show]
+  before_action :authorize_user, only: [:index, :show] # TODO some more actions should be here
 
   def index
     @itineraries = current_user.itineraries
@@ -37,15 +37,40 @@ class ItinerariesController < ApplicationController
   def publish
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
     if @itinerary_finalize.save
-      redirect_to itineraries_path
+      redirect_to itinerary_path(@itinerary)
     else
       render 'finalize'
     end
   end
 
   def show
-    # SET SOME PERMISSION HERE
+    # TODO SET SOME PERMISSION HERE
     # authorize_user is not enough
+  end
+
+  def checkout
+
+  end
+
+  def purchase
+    token = params[:stripeToken]
+
+    if @itinerary.process_payment(token)
+      AdminMailer.new_checkout_email(@itinerary.user, @itinerary).deliver
+      flash[:fresh_purchase] = true
+      @itinerary.set_winner(params[:winner]) if params[:winner]
+      redirect_to thankyou_itinerary_path(@itinerary)
+    else
+      redirect_to checkout_itinerary_path(@itinerary), alert: "Something went wrong!"
+    end
+  end
+
+  def thankyou
+    if flash[:fresh_purchase]
+    elsif false # TODO: if itinerary is not paid, take it to the checkout page
+    else
+      redirect_to root_url
+    end
   end
 
   private

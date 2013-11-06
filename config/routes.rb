@@ -8,6 +8,8 @@ Outtrippin::Application.routes.draw do
       get 'details'
       get 'finalize'
       put 'publish'
+      get 'checkout'
+      put 'purchase'
     end
   end
 
@@ -21,6 +23,6 @@ Outtrippin::Application.routes.draw do
     resources 'itineraries'
   end
 
-#  root 'home#index'
-  root 'experts#new'
+  root 'home#index'
+  # root 'experts#new'
 end

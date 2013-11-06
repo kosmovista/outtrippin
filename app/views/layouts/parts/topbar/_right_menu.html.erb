@@ -3,6 +3,7 @@
   <li class="has-dropdown"><a href="#">ME</a>
     <ul class="dropdown">
       <%= content_tag(:li, link_to("Dashboard", admin_path)) if current_user.is?("admin") %>
+      <%= content_tag(:li, link_to("My Trips", itineraries_path)) if current_user.has_itineraries? %>
       <%= content_tag(:li, link_to("Profile", "#")) %>
       <%= content_tag(:li, link_to("Logout", logout_path, method: :delete)) %>
     </ul>

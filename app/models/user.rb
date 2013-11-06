@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     self.is?("expert")
   end
 
+  def has_itineraries?
+    self.itineraries.count > 0
+  end
+
   def name
     self.personal_info[:name]
   end
