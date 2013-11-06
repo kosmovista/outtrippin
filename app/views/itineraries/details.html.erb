@@ -1,6 +1,6 @@
 <%= content_for :left_col do %>
-<h5>Your Trip, So Far:</h5>
-Destination: <%= @itinerary.destination %>
+  <h5>Your Trip, So Far:</h5>
+  <%= render 'itinerary_left_col' %>
 <% end %>
 
 <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>

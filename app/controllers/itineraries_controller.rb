@@ -2,7 +2,7 @@ class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles, only: [:details, :update]
-  before_action :authorize_user, only: [:index]
+  before_action :authorize_user, only: [:index, :show]
 
   def index
     @itineraries = current_user.itineraries
@@ -41,6 +41,11 @@ class ItinerariesController < ApplicationController
     else
       render 'finalize'
     end
+  end
+
+  def show
+    # SET SOME PERMISSION HERE
+    # authorize_user is not enough
   end
 
   private
