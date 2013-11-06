@@ -14,11 +14,13 @@ Outtrippin::Application.routes.draw do
   get     'login'     => 'user_sessions#new'
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
+  get     'home'      => 'home#index'
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
     resources 'itineraries'
   end
 
-  root 'home#index'
+#  root 'home#index'
+  root 'experts#new'
 end
