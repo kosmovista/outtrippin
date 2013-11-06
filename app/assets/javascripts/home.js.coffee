@@ -32,8 +32,7 @@ window.setBg = ->
 # AFTER WINDOW LOADS #
 ######################
 $(window).load ->
-
-  console.log window.experts
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
 
   $("#loading").hide()
   setBg()
