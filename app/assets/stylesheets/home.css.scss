@@ -1,36 +1,21 @@
+// BACKGROUND & HEADER
+#image-loader { display: none; }
+.navigator { width: 42px; height: 64px; margin-top: -32px;   position: absolute; top: 50%; }
+#left { background-image: image-url("left.png"); left: 10px; }
+#right { background-image: image-url("right.png"); right: 10px; }
+#header { display: none; }
+#loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
+
+
 div#destinations {
   position: relative;
   text-align: center;
   margin-top: -30px;
   height: 500px;
   background-size: cover !important;
-  h1 { color: white; font-size: 4.5em; font-weight: normal; padding-top: 80px; }
+  h1 { color: white; font-size: 3.5em; font-weight: normal; padding-top: 50px; }
 }
 
-#header { display: none; }
- #loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
-
-div#start-contest {
-  padding: 30px 0;
-  background-color: whitesmoke;
-}
-
-div#steps {
-  padding: 30px 0;
-  text-align: center;
-}
-
-form#new_itinerary input[type="submit"] {
-  margin-left: -20px;
-  height: 52px;
-}
-
-
-// BACKGROUND
-#image-loader { display: none; }
-.navigator { width: 42px; height: 64px; margin-top: -32px;   position: absolute; top: 50%; }
-#left { background-image: image-url("left.png"); left: 10px; }
-#right { background-image: image-url("right.png"); right: 10px; }
 
 // BACKGROUND EXPERTS
 .expert {
@@ -41,6 +26,53 @@ form#new_itinerary input[type="submit"] {
   bottom: 0;
   right: 0;
   h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 -2px 2px rgba(0,0,0,0.4); }
+  h5 {margin-bottom:0;}
   p { line-height: 18px; font-size: 16px; }
   img { width: 90px; height: 90px; border-radius: 45px; border: 4px solid white; }
+}
+
+// FORM 
+form#new_itinerary input[type="submit"] {
+  height:50px;
+}
+
+form#new_itinerary input[type="text"] {
+  height:50px;
+  font-style:italic;
+  margin:0;
+  border-color: #00cccc;
+  background: #fff image-url('marker.png') no-repeat left;
+  background-size: 40px;
+  padding-left: 40px;
+}
+
+form#new_itinerary input[type="text"]:hover {
+  border-color: #009999;
+}
+
+div#dest {
+  padding:0 20px 0 0;
+}
+
+div#start-contest {
+  padding: 30px 0;
+  background-color: whitesmoke;
+}
+
+// STEPS
+div#steps {
+  padding: 30px 0;
+  text-align: center;
+}
+
+div#steps img {
+  margin-bottom:10px;
+}
+
+div#steps p{
+  font-size:1.1em;
+}
+
+div#steps h3 {
+  color:#979797;
 }
