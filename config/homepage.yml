@@ -1,8 +1,54 @@
 default:
-  header: "<strong>ZAP YOUR</strong><br/>HONEYMOON PLANNING<strong><br/>STRESS</strong>"
-  subheader: "Let our travel experts compete to design a honeymoon tailored to your personality"
+  header: "<strong>PICK AN EXPERT<br>NOT A GUIDEBOOK!</strong>"
+  subheader: "Let our travel experts compete to design a trip that's tailored to your personality"
   placeholder: "Where would you like to go?"
   submit: "Launch a trip. It's free!"
+  process:
+    header: "Tailored vacation planning from a real travel expert!"
+    step1:
+      title: "Describe"
+      text: "Tell us where and when you want to go and describe your travel style and personality."
+    step2:
+      title: "Pick"
+      text: "Our travel writers & bloggers send you their best vacation ideas and you pick a favorite."
+    step3:
+      title: "Book"
+      text: "Your chosen expert plans a tailored day-by-day trip plan that is all easily bookable."
+  pics:
+    rio:
+      title: "Rio Sunset"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg"
+      text: "I have champagne and caviar tastes but I can also help you find the nitty gritty heart of Rio de Janeiro. Let me show you the best of both worlds!"
+      expert: "Alexandra P."
+      avatar: http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_alexandra.jpeg
+    maldives:
+      title: "House on stilts in water — Maldives"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_maldives.jpg"
+      text: "I am the travel editor for a magazine and can recommend luxury vacations in the Maldives that promote responsible tourism."
+      expert: "Aline D."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_aline.png"
+    cartagena:
+      title: "Water umbrellas — Cartagena"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_colombia.jpg"
+      text: "I have uncovered local culinary delights and an enormous network of local connections to help you discover best bits of Cartagena de Indias and surrounds."
+      expert: "Kristy E."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
+    Venice:
+      title: "Venice"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
+      text: "To me, Venice means meandering through plazas and hidden alleyways, romantic gondola rides and restaurants well off the tourist track."
+      expert: "Alena H."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
+
+      title: "Santorini"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
+      text: "I’m an ex-tour guide, turned travel writer and adore sharing unforgettable Greek adventures with visitors to my adopted country."
+      expert: "Heidi F."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_heidi.jpeg"
+
+honeymoon:
+  header: "<strong>ZAP YOUR</strong><br/>HONEYMOON PLANNING<strong><br/>STRESS</strong>"
+  subheader: "Let our travel experts compete to design a honeymoon tailored to your personality"
   process:
     header: "Tailored honeymoon planning from a real travel expert!"
     step1:
@@ -33,17 +79,15 @@ default:
       text: "I have uncovered local culinary delights and an enormous network of local connections to help you discover best bits of Cartagena de Indias and surrounds."
       expert: "Kristy E."
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
-honeymoon:
-  header: "ZAP YOUR HONEYMOON PLANNING STRESS"
-  subheader: "Let our travel experts compete to design a honeymoon tailored to your personality"
-  process:
-    header: "Tailored honeymoon planning from a real travel expert!"
-    step1:
-      title: "Describe"
-      text: "Tell us where and when you want to go and describe your travel style and personality."
-    step2:
-      title: "Pick"
-      text: "Our travel writers & bloggers send you their best honeymoon ideas and you pick a favorite."
-    step3:
-      title: "Book"
-      text: "Your chosen expert plans a tailored day-by-day trip plan that is all easily bookable."
+    Venice:
+      title: "Venice"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
+      text: "To me, Venice means meandering through plazas and hidden alleyways, romantic gondola rides and restaurants well off the tourist track."
+      expert: "Alena H."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
+
+      title: "Santorini"
+      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
+      text: "I’m an ex-tour guide, turned travel writer and adore sharing unforgettable Greek adventures with visitors to my adopted country."
+      expert: "Heidi F."
+      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_heidi.jpeg"
