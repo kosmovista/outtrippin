@@ -1,4 +1,11 @@
 <ul class="right">
+  <li class="has-dropdown"><a href="#">Example Trips</a>
+    <ul class="dropdown">
+      <% $example_itineraries.each do |i| %>
+        <%= content_tag(:li, link_to(i[1]["name"], i[1]["url"], target: "_blank")) %>
+        <% end %>
+    </ul>
+  </li>
   <% if current_user %>
   <li class="has-dropdown"><a href="#">ME</a>
     <ul class="dropdown">
