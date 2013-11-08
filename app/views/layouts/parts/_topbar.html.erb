@@ -2,7 +2,7 @@
   <ul class="title-area">
     <li class="name">
       <%= link_to root_url do %>
-        <%= image_tag 'topbar_logo.png' %>
+        <%= image_tag (defined?(@white_topbar).nil? ? 'topbar_logo_white.png' : 'topbar_logo.png') %>
       <% end %>
     </li>
     <li class="toggle-topbar menu-icon"><a href=""><span></span></a></li>
