@@ -1,12 +1,15 @@
-// BACKGROUND & HEADER
+// LOADING GIF
 #image-loader { display: none; }
-.navigator { width: 42px; height: 64px; position: absolute; top: 50%; }
+#loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
+
+// LEFT AND RIGHT ARROWS
+.navigator { width: 42px; height: 64px; position: absolute; top: 50%; margin-top: -32px; }
 #left { background-image: image-url("left.png"); left: 10px; }
 #right { background-image: image-url("right.png"); right: 10px; }
 #header { display: none; }
-#loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
 
 
+// BACKFROUND PICTURES
 div#destinations {
   position: relative;
   text-align: center;
@@ -26,12 +29,12 @@ div#destinations {
   bottom: 0;
   right: 0;
   h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 -2px 2px rgba(0,0,0,0.4); }
-  h5 {margin-bottom:0;}
+  h5 { margin-bottom: 0; }
   p { line-height: 18px; font-size: 16px; }
-  img { margin-bottom:1em; }
+  img { margin-bottom: 1em; }
 }
 
-// FORM 
+// FORM
 form#new_itinerary input[type="submit"] {
   height:50px;
 }
@@ -55,25 +58,10 @@ form#new_itinerary input[type="text"]:hover {
 }
 
 
-div#start-contest {
-  padding: 1.2em 0;
-  background-color: whitesmoke;
-}
+div#start-contest { padding: 1.2em 0; background-color: whitesmoke; }
 
 // STEPS
-div#steps {
-  padding: 30px 0;
-  text-align: center;
-}
-
-div#steps img {
-  margin-bottom:10px;
-}
-
-div#steps p{
-  font-size:1.1em;
-}
-
-div#steps h3 {
-  color:#979797;
-}
+div#steps { padding: 30px 0; text-align: center; }
+div#steps img { margin-bottom:10px; }
+div#steps p { font-size:1.1em; }
+div#steps h3 { color:#979797; }

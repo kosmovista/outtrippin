@@ -1270,6 +1270,8 @@ $topbar-bg-color: $primary-color;
 $topbar-height: 70px;
 // $topbar-margin-bottom: 0;
 
+$topbar-font-family: $sans-font-family;
+
 // Control Input height for top bar
 
 // $topbar-input-height: 2.45em;
@@ -1294,7 +1296,7 @@ $topbar-dropdown-link-bg: $topbar-bg-color;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 // $topbar-link-weight: bold;
-// $topbar-link-font-size: em-calc(13);
+$topbar-link-font-size: em-calc(15);
 $topbar-link-hover-lightness: 3%; // Darken by 30%
 // $topbar-link-bg-hover: darken($topbar-bg-color, 3%);
 // $topbar-link-bg-active: darken($topbar-bg-color, 3%);
@@ -1340,7 +1342,7 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 @import "foundation/components/thumbs";
 @import "forms";
 @import "custom-forms";
-@import "foundation/components/top-bar";
+@import "top-bar";
 @import "panels";
 
 // ADMIN

@@ -3,23 +3,7 @@
  */
 
 @import "foundation/foundation_and_overrides";
-@import "footer";
 @import "helpers";
+@import "footer";
 
-.top-bar { font-family: $sans-font-family; font-size: 20px !important; z-index: 999;}  // this should go into foundation
-.top-bar .name img { 
-	margin: 22px 0 0 20px;
-	width: 140px; 
-}
-
-body {background: #fdfdfd;}
-
-.no-margin { margin: 0 !important; }
-.no-padding { padding: 0 !important; }
-
-.sans {font-family: $sans-font-family;}
-.serif {font-family: $serif-font-family;}
-
-.primary {color:$primary-color;}
-
-.rounded {border-radius:1000px;}
+body { background: #fdfdfd; }

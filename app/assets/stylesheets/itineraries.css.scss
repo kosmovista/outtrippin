@@ -2,11 +2,9 @@
  *= require_self
  */
 
-$row-width: 100%;
-
 @import "application";
 
-div.container { margin-top:30px;}
+div.container { margin-top:30px; }
 
 .hold {
   display: none;
