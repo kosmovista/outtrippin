@@ -20,3 +20,24 @@ div.container { margin-top:30px; }
   right: 0;
   box-shadow: inset 0px 0px 500px rgba(0,0,0,0.9);
 }
+
+// STEPS
+#itinerary-steps li { color: #4a4a4a; padding:0em !important; }
+
+.step hr { border: 2px solid #e6e6e3; }
+.step p { font-size:.9em; }
+.step p.disable { color:#e6e6e3; }
+.step-circle {
+  padding-top: 4px;
+  margin: 0 auto;
+  background-color: #fff;
+  color:#4a4a4a;
+  border-radius: 20px;
+  border: solid 4px #e6e6e3;
+  width: 40px;
+  height: 40px;
+  font-size:.9em;
+}
+
+.step-circle.active { background-color: $primary-color; color:#fff; border: solid 4px $primary-color; }
+.step-circle.disable { color:#e6e6e3; }

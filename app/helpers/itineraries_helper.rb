@@ -15,4 +15,20 @@ module ItinerariesHelper
   def budget_options
     ['$50-100', '$100-200', '$200-500','$500+']
   end
+
+  # helpers for step bar  ##########################
+  def steps
+    %w(describe launch pick book)
+  end
+
+  def left_bar_or_space(index, steps)
+    return "&nbsp;" if (index == 1)
+    "<hr />"
+  end
+
+  def right_bar_or_space(index, steps)
+    return "&nbsp;" if (index == steps.length)
+    "<hr />"
+  end
+  ##################################################
 end

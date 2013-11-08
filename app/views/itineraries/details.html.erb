@@ -3,6 +3,13 @@
   <%= render 'itinerary_left_col' %>
 <% end %>
 
+<div class="row">
+  <div class="large-12 columns">
+    <%= render 'steps', step: 'describe', disable: %w() %>
+  </div>
+</div>
+
+
 <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
 <div class="row">
   <div class="large-6 small-12 columns">

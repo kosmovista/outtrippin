@@ -1,0 +1,22 @@
+<div id="itinerary-steps" class="row">
+  <div class="large-10 large-centered columns">
+    <ul class="small-block-grid-<%= steps.size %>">
+      <% steps.each do |s| %>
+      <li class="text-center step">
+        <div class="row">
+          <div class="small-4 columns text-center no-margin no-padding"><%= left_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
+          <div class="small-4 columns text-center no-margin no-padding">
+            <div class="step-circle <%= s == step ? "active" : "" %>"><%= steps.index(s) + 1 %></div>
+          </div>
+          <div class="small-4 columns text-center no-margin no-padding"><%= right_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <p><%= s.capitalize %></p>
+          </div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
