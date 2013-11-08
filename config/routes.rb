@@ -24,6 +24,6 @@ Outtrippin::Application.routes.draw do
     resources 'itineraries'
   end
 
-  root 'home#index'
-  # root 'experts#new'
+  # root 'home#index'
+  root 'experts#new'
 end
