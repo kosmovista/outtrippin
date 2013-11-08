@@ -1,6 +1,9 @@
 <footer>
   <div class="row">
-    <div class="large-4 columns">
+    <div class="large-3 small-12 text-center columns">
+      <%= image_tag 'logo-footer.png' %>
+    </div>
+    <div class="large-3 small-12 columns">
       <h6>Follow Us</h6>
       <%= link_to "http://facebook.com/outtrippin", target: "blank_" do %>
         <%= image_tag "facebook_40.png" %>
@@ -13,19 +16,19 @@
       <% end %>
 
     </div>
-    <div class="large-4 columns">
+    <div class="large-3 small-12 columns">
       <h6>Company</h6>
-      <%= link_to "Blog", "#", class: "text" %>
+      <p><%= link_to "Blog", "#", class: "text" %>
       <%= link_to "Privacy Policy", "#", class: "text" %>
       <%= link_to "Terms and Conditions", "#", class: "text" %>
-      <%= link_to "Contact Us", "#", class: "text" %>
+      <%= link_to "Contact Us", "#", class: "text" %><p>
     </div>
-    <div class="large-4 columns">
+    <div class="large-3 small-12 columns">
       <h6>Brand</h6>
-      <%= link_to "OutTrippin Honeymoons", "#", class: "text" %>
+      <p><%= link_to "OutTrippin Honeymoons", "#", class: "text" %>
       <%= link_to "OutTrippin World Cup 2014", "#", class: "text" %>
       <%= link_to "OutTrippin Family Travel", "#", class: "text" %>
-      <%= link_to "OutTrippin Experiences", "#", class: "text" %>
+      <%= link_to "OutTrippin Experiences", "#", class: "text" %></p>
     </div>
   </div>
 </footer>
