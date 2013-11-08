@@ -24,7 +24,7 @@ window.setBg = ->
   image = window.images[window.active_bg].src
   expert = window.experts[window.active_bg]
   jQuery(window.experts).hide()
-  $("#destinations").css("background", "url('" + image + "') no-repeat center center fixed")
+  $("#destinations").css("background", "url('" + image + "') no-repeat center center")
   jQuery(expert).show("fade")
 
 
