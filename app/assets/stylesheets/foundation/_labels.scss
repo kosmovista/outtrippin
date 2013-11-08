@@ -10,7 +10,7 @@ $label-radius: $global-radius !default;
 // We use these to style the label text
 $label-font-family: inherit !default;
 $label-font-sizing: em-calc(14) !default;
-$label-font-weight: bold !default;
+$label-font-weight: regular !default;
 $label-font-color: #333 !default;
 $label-font-color-alt: #fff !default;
 
@@ -75,6 +75,7 @@ $label-font-color-alt: #fff !default;
     @include label-base;
     @include label-size;
     @include label-style;
+    padding: $form-spacing / 2;
 
 
     &.radius { @include label-style(false, true); }

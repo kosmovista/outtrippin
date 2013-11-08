@@ -5,19 +5,19 @@
 
 <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
 <div class="row">
-  <div class="large-5 small-12 columns">
+  <div class="large-6 small-12 columns">
     <%= f.label :departure, "When are you thinking about going?" %>
   </div>
-  <div class="large-7 small-12 columns">
+  <div class="large-6 small-12 columns">
     <%= f.select :departure, options_for_select(get_date_options(12)) %>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-5 small-12 columns">
+  <div class="large-6 small-12 columns">
     <%= f.label :duration, "How many days were you thinking?" %>
   </div>
-  <div class="large-7 small-12 columns">
+  <div class="large-6 small-12 columns">
     <%= f.select :duration, options_for_select(("3".."20").to_a) %>
   </div>
 </div>
@@ -32,7 +32,7 @@
     <%= f.fields_for :style do |styles| %>
     <ul class="small-block-grid-1 large-block-grid-3">
       <% @styles.each do |k,v| %>
-      <li><%= styles.check_box k, checked: (@itinerary_details.style.blank? ? false : (@itinerary_details.style.include?(k) ? true : false)) %><%= k %></li>
+      <li><%= styles.check_box k, checked: (@itinerary_details.style.blank? ? false : (@itinerary_details.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox" %></li>
       <% end %>
     </ul>
     <% end %>
