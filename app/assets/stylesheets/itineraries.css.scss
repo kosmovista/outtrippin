@@ -4,16 +4,9 @@
 
 $row-width: 100%;
 
-@import "foundation/foundation_and_overrides";
-@import "footer";
-@import "helpers";
+@import "application";
 
-.top-bar { font-family: $sans-font-family; font-size: 20px !important; } // this should go into foundation
-
-.container { background-color: whitesmoke; }
-#right-col { background-color: white; padding-top: 30px; }
-#left-col { padding-top: 30px; }
-
+div.container { margin-top:30px;}
 
 .hold {
   display: none;

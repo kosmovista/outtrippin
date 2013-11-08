@@ -1,6 +1,6 @@
 // BACKGROUND & HEADER
 #image-loader { display: none; }
-.navigator { width: 42px; height: 64px; margin-top: -32px;   position: absolute; top: 50%; }
+.navigator { width: 42px; height: 64px; position: absolute; top: 50%; }
 #left { background-image: image-url("left.png"); left: 10px; }
 #right { background-image: image-url("right.png"); right: 10px; }
 #header { display: none; }
@@ -10,7 +10,7 @@
 div#destinations {
   position: relative;
   text-align: center;
-  margin-top: -40px;
+  margin-top: -20px;
   height: 500px;
   background-size: cover !important;
   h1 { color: white; font-size:2.2em; font-weight: normal; padding-top: 80px; }

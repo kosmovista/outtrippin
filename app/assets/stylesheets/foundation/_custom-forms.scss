@@ -28,14 +28,15 @@ $custom-select-disabled-color: #888 !default;
 // We use these to control the style of the custom select dropdown element.
 $custom-dropdown-height: 200px !default;
 $custom-dropdown-bg: #fff !default;
-$custom-dropdown-border-color: darken(#fff, 20%) !default;
-$custom-dropdown-border-width: 1px !default;
+$custom-dropdown-border-color: #ccc !default;
+$custom-select-fade-to-color: #fff;
+$custom-dropdown-border-width: 2px !default;
 $custom-dropdown-border-style: solid !default;
 $custom-dropdown-font-color: #555 !default;
 $custom-dropdown-font-size: em-calc(14) !default;
 $custom-dropdown-color-selected: #eeeeee !default;
 $custom-dropdown-font-color-selected: #000 !default;
-$custom-dropdown-shadow: 0 2px 2px 0 rgba(0,0,0,0.1) !default;
+$custom-dropdown-shadow: none;
 $custom-dropdown-offset-top: auto !default;
 $custom-dropdown-list-padding: em-calc(4) !default;
 $custom-dropdown-default-float-padding: em-calc(6) !default;
@@ -96,6 +97,9 @@ $custom-dropdown-width-large: 434px !default;
           font-size: $custom-form-check-size;
           color: $custom-form-bg;
         }
+        &:hover {
+        border-color: $primary-color;
+        }
       }
 
       &.radio.checked {
@@ -114,8 +118,9 @@ $custom-dropdown-width-large: 434px !default;
         &:before {
           content: "\00d7";
           color: $custom-form-check-color;
+          font-weight:700;
           position: absolute;
-          top: -15px;
+          top: -17px;
           left: 8px;
           margin-top: 4px;
           margin-left: -5px;
@@ -135,6 +140,8 @@ $custom-dropdown-width-large: 434px !default;
       margin-top: 0;
       padding: 0;
       width: 100%;
+      border: solid $custom-form-border-size $custom-form-border-color;
+      border-radius: $input-border-radius;
       background: $custom-dropdown-bg;
       @if $experimental {
         background: -moz-linear-gradient(top, $custom-dropdown-bg 0%, $custom-select-fade-to-color 100%);
@@ -145,6 +152,10 @@ $custom-dropdown-width-large: 434px !default;
       box-shadow: none;
       font-size: $custom-dropdown-font-size;
       vertical-align: top;
+
+      &:hover {
+        border-color: $primary-color;
+        }
 
       ul {
         overflow-y: auto;
@@ -184,7 +195,7 @@ $custom-dropdown-width-large: 434px !default;
 
       &:hover, &.open {
         a.selector {
-          &:after { @include css-triangle(5px, $custom-select-triangle-color-open, top); }
+          &:after { @include css-triangle(5px, $custom-select-triangle-color-open, top);  }
         }
       }
 
