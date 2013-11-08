@@ -4,11 +4,11 @@
       <% steps.each do |s| %>
       <li class="text-center step">
         <div class="row">
-          <div class="small-4 columns text-center no-margin no-padding"><%= left_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
-          <div class="small-4 columns text-center no-margin no-padding">
+          <div class="large-4 small-3 columns text-center no-margin no-padding"><%= left_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
+          <div class="large-4 small-6 columns text-center steps no-margin no-padding">
             <div class="step-circle <%= s == step ? "active" : "" %> <%= disable.include?(s) ? "disable" : "" %>"><%= steps.index(s) + 1 %></div>
           </div>
-          <div class="small-4 columns text-center no-margin no-padding"><%= right_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
+          <div class="large-4 small-3 columns text-center no-margin no-padding"><%= right_bar_or_space(steps.index(s) + 1, steps).html_safe %></div>
         </div>
         <div class="row">
           <div class="large-12 columns">

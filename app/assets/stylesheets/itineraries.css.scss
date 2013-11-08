@@ -28,9 +28,9 @@ div.container { margin-top:30px; }
 .step p { font-size:.9em; }
 .step p.disable { color:#e6e6e3; }
 .step-circle {
-  padding-top: 4px;
+  padding-top: 3px;
   margin: 0 auto;
-  background-color: #fff;
+  background-color: #fdfdfd;
   color:#4a4a4a;
   border-radius: 20px;
   border: solid 4px #e6e6e3;
@@ -39,5 +39,9 @@ div.container { margin-top:30px; }
   font-size:.9em;
 }
 
-.step-circle.active { background-color: $primary-color; color:#fff; border: solid 4px $primary-color; }
+.steps {
+  z-index:89;
+}
+
+.step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
