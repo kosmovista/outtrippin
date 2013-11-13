@@ -59,7 +59,7 @@ class ItinerariesController < ApplicationController
       flash[:fresh_purchase] = true
       redirect_to thankyou_itinerary_path(@itinerary)
     else
-      redirect_to checkout_itinerary_path(@itinerary), alert: "Something went wrong!"
+      render 'checkout'
     end
   end
 
