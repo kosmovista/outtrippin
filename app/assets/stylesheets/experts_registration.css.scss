@@ -10,25 +10,30 @@ body { margin:0; padding:0; }
 
 .expert_registration_cities li, .expert_registration_countries li {
   position: relative;
-  padding-left: 40px;
-  width: 100%;
+  padding-left: 30px;
+  padding-right: 40px;
+  overflow:hidden;
   height: 40px;
-  line-height: 40px;
-  background-color: whitesmoke;
-  background-image: image-url('map_marker.png');
-  background-repeat: no-repeat;
+  max-width:100%;
+  line-height: 38px;
+  font-size:.875em;
+  border: 2px #c8c8c8 solid;
+  background: #fdfdfd url('location.png') no-repeat 8px 9px;
+  background-size:20px;
   margin-bottom: 5px;
+  border-radius: 1000px;
   white-space: nowrap;
 }
 
 a.delete {
   width: 40px;
-  background-image: image-url('delete.png');
-  background-color: whitesmoke;
-  height: 40px;
+  background: #fdfdfd url('delete.png') no-repeat 5px 0;
+  background-size: 37px;
+  height: 36px;
   position: absolute;
   top: 0;
   right: 0;
+  border-radius: 1000px;
 }
 
 
