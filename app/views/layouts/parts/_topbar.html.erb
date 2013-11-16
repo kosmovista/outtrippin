@@ -2,8 +2,9 @@
   <ul class="title-area">
     <li class="name">
       <%= link_to root_url do %>
-        <%= image_tag (defined?(@white_topbar).nil? ? 'topbar_logo_white.png' : 'topbar_logo.png') %>
+        <%= image_tag (defined?(@white_topbar).nil? ? 'logo-white.png' : 'OutTrippin-logo.png'), style: "margin-top:21px; height:35px;" %>
       <% end %>
+      <small class="<%= (defined?(@white_topbar).nil? ? 'white' : 'primary') %>"><em>BETA</em></small>
     </li>
     <li class="toggle-topbar menu-icon"><a href=""><span></span></a></li>
   </ul>
