@@ -1,8 +1,3 @@
-<%= content_for :left_col do %>
-  <h5>Your Trip, So Far:</h5>
-  <%= render 'itinerary_left_col' %>
-<% end %>
-
 <div class="row">
   <div class="large-12 columns">
     <%= render 'steps', step: 'describe', disable: %w() %>
@@ -12,10 +7,6 @@
     </div>
   </div>
 </div>
-
-
-
-
 
 <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
 <div class="row">

@@ -27,17 +27,23 @@
 
 <body>
   <%= render 'layouts/parts/topbar' %>
+  <%= render 'itineraries/itinerary_left_col' %>
+
   <div class="container">
+
+    <a href="#" id="toggle-sidebar" data-tooltip class="has-tip" title="Lorem">
+      <%= image_tag 'compass.png' %>
+    </a>
+
     <div class="row">
-   <!--   <div id="left-col" class="large-3 columns hide">
-        <%= yield :left_col %>
-      </div> -->
-      <div id="right-col" class="large-10 large-centered columns">
+      <div class="large-10 large-centered columns">
         <%= yield %>
       </div>
     </div>
   </div>
   <%= render 'layouts/parts/footer' %>
+
+
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= yield :body %>
 </body>
