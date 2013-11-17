@@ -23,6 +23,8 @@
       <p>Once applications are closed, you'll have three days to pick your favorite expert.</p>
     </div>
   </div>
+
+  <% unless @itinerary.paid %>
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>And then?</h5>
@@ -36,4 +38,5 @@
 			<%= link_to "Hire Expert", checkout_itinerary_path, class: "radius button" %>
 		</div>
 	</div>
+  <% end %>
 </div>

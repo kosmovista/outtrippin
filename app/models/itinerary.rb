@@ -21,10 +21,13 @@ class Itinerary < ActiveRecord::Base
       self.charge(token)
       self.paid = true
       self.save
+      return true
+    else
+      return false
     end
   rescue Stripe::CardError => e
     logger.error "Stripe Error"
-    errors.add :base, "There was a problem while processing the payment"
+    errors.add :base, "There was a problem while processing the payment."
     false
   end
 end

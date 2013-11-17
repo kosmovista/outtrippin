@@ -1,3 +1,5 @@
+<%= render 'utils/errors', object: @itinerary %>
+
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
@@ -98,7 +100,7 @@
     };
 
     StripeCheckout.open({
-      key:         'pk_test_WtbFUwPSfMRt1BlwjGXpjtYl',
+      key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
       amount:      '<%= @itinerary.price_in_cents %>',
       image:       '<%= asset_path('logo128.png') %>',
       currency:    'usd',

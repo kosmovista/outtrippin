@@ -33,13 +33,13 @@ default:
       text: "I have uncovered local culinary delights and an enormous network of local connections to help you discover best bits of Cartagena de Indias and surrounds."
       expert: "Kristy E."
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
-    Venice:
+    venice:
       title: "Venice"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
       text: "To me, Venice means meandering through plazas and hidden alleyways, romantic gondola rides and restaurants well off the tourist track."
       expert: "Alena H."
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
-
+    santorini:
       title: "Santorini"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
       text: "I’m an ex-tour guide, turned travel writer and adore sharing unforgettable Greek adventures with visitors to my adopted country."
@@ -49,6 +49,8 @@ default:
 honeymoon:
   header: "<strong>ZAP YOUR</strong><br/>HONEYMOON PLANNING<strong><br/>STRESS</strong>"
   subheader: "Let our travel experts compete to design a honeymoon tailored to your personality"
+  placeholder: "Where would you like to go?"
+  submit: "Launch a trip. It's free!"
   process:
     header: "Tailored honeymoon planning from a real travel expert!"
     step1:
@@ -79,13 +81,13 @@ honeymoon:
       text: "I have uncovered local culinary delights and an enormous network of local connections to help you discover best bits of Cartagena de Indias and surrounds."
       expert: "Kristy E."
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
-    Venice:
+    venice:
       title: "Venice"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
       text: "To me, Venice means meandering through plazas and hidden alleyways, romantic gondola rides and restaurants well off the tourist track."
       expert: "Alena H."
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
-
+    santorini:
       title: "Santorini"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
       text: "I’m an ex-tour guide, turned travel writer and adore sharing unforgettable Greek adventures with visitors to my adopted country."
