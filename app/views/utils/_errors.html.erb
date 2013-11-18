@@ -1,8 +1,16 @@
-<% if object.errors.any? %>
+<% unless object.nil? %>
+  <% if object.errors.any? %>
+    <div data-alert class="ot-alert large-6 large-centered columns">
+      <% object.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+      <a href="#" class="close">&times;</a>
+    </div>
+  <% end %>
+<% end %>
+<% unless flash[:notice].blank? %>
   <div data-alert class="ot-alert large-6 large-centered columns">
-    <% object.errors.full_messages.each do |msg| %>
-      <p><%= msg %></p>
-    <% end %>
+    <p><%= flash[:notice] %></p>
     <a href="#" class="close">&times;</a>
   </div>
 <% end %>

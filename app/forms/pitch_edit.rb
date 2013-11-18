@@ -30,7 +30,7 @@ class PitchEdit
       send("title=", @pitch.title)
       send("summary=", @pitch.summary)
       send("why_me=", @pitch.why_me)
-      send("pictures=", nil)
+      send("pictures=", [])
     end
   end
 
@@ -38,7 +38,7 @@ class PitchEdit
     errors[:title] = "Can't be blank" if title.blank?
     errors[:summary] = "Can't be blank" if summary.blank?
     errors[:why_me] = "Can't be blank" if why_me.empty?
-    errors[:pictures] = "Can't be blank" if pictures.empty?
+    errors[:pictures] = "Can't be blank" if pictures.blank?
   end
   #
 

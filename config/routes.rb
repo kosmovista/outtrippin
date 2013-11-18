@@ -3,6 +3,8 @@ Outtrippin::Application.routes.draw do
 
   resources 'users', only: [:show, :destroy]
   resources 'user_sessions', only: [:new, :create, :destroy]
+  resources 'password_resets', only: [:new, :create, :edit, :update]
+
   resources 'itineraries', only: [:index, :show, :create, :update] do
     member do
       get 'details'

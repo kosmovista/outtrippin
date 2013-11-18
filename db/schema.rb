@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118153013) do
+ActiveRecord::Schema.define(version: 20131118161433) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -66,16 +66,19 @@ ActiveRecord::Schema.define(version: 20131118153013) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",             null: false
+    t.string   "email",                          null: false
     t.text     "personal_info"
     t.text     "expert_info"
     t.string   "avatar"
     t.integer  "roles_mask"
-    t.string   "crypted_password",  null: false
-    t.string   "password_salt",     null: false
-    t.string   "persistence_token", null: false
+    t.string   "crypted_password",               null: false
+    t.string   "password_salt",                  null: false
+    t.string   "persistence_token",              null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "perishable_token",  default: ""
   end
+
+  add_index "users", ["perishable_token"], name: "index_users_on_perishable_token"
 
 end
