@@ -6,6 +6,7 @@
         <h4 class="subheader">Why Me?</h4>
         <p class="small"><%= pitch.why_me %></p>
         <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "button radius" if current_user.is?("expert") %>
+        <%= button_to "Pick Expert!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
       </div>
 
       <div class="large-8 columns">

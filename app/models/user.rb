@@ -71,5 +71,8 @@ class User < ActiveRecord::Base
     self.expert_info[:location]
   end
 
-
+  # TODO generalize
+  def owns?(itinerary)
+    self.itineraries.include?(itinerary)
+  end
 end

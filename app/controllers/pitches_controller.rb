@@ -3,7 +3,7 @@ class PitchesController < ApplicationController
 
   # should guarantee an EXPERT!
   before_action :set_itinerary
-  before_action :set_pitch, only: [:edit, :update]
+  before_action :set_pitch, only: [:edit, :update, :winner]
 
   def new
     @pitch_new = PitchNew.new(itinerary: @itinerary, user: current_user)
@@ -29,6 +29,13 @@ class PitchesController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def winner
+    @pitch.winner = true
+    @pitch.save
+
+    redirect_to itinerary_path(@itinerary)
   end
 
   def set_itinerary

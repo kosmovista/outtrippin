@@ -1,4 +1,7 @@
-<% unless @pitches.blank? %>
+<% if @itinerary.has_winner_pitch? %>
+<h3>You have picked your winning expert! He will start to work on your itinerary soon! Stay tuned!</h3>
+  <%= render @itinerary.winner_pitch %>
+<% elsif !@pitches.blank? %>
   <%= render @pitches %>
 <% else %>
 

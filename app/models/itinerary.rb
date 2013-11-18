@@ -31,4 +31,12 @@ class Itinerary < ActiveRecord::Base
     errors.add :base, "There was a problem while processing the payment."
     false
   end
+
+  def has_winner_pitch?
+    !self.pitches.where(winner: true).nil?
+  end
+
+  def winner_pitch
+    self.pitches.where(winner: true).first
+  end
 end

@@ -14,7 +14,11 @@ Outtrippin::Application.routes.draw do
       put 'purchase'
       get 'thankyou'
     end
-    resources 'pitches'
+    resources 'pitches' do
+      member do
+        put 'winner'
+      end
+    end
   end
 
   get     'login'     => 'user_sessions#new'
