@@ -12,8 +12,10 @@ module ApplicationHelper
   private
 
   def parse_error_message(messages)
-    messages_string = ""
-    messages.each { |m| messages_string << m.capitalize + "<br/>" }
-    messages_string
+    unless messages.blank?
+      messages_string = ""
+      messages.each { |m| messages_string << m.capitalize + "<br/>" }
+      messages_string
+    end
   end
 end
