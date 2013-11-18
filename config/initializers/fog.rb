@@ -8,6 +8,5 @@ CarrierWave.configure do |config|
       :rackspace_username => 'jvalente',
       :rackspace_api_key  => '5a16bcc941014b9acd6c7b612fc042b6'
     }
-    config.asset_host = "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com"
   end
 end

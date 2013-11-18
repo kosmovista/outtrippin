@@ -7,6 +7,10 @@ class PictureUploader < CarrierWave::Uploader::Base
     "pictures"
   end
 
+  def asset_host
+    "http://fc3d750e1b22019028ae-eb9d0534c31fede444754f378d638c42.r70.cf1.rackcdn.com"
+  end
+
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
