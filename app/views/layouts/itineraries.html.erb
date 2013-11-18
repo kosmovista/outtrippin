@@ -27,13 +27,15 @@
 
 <body>
   <%= render 'layouts/parts/topbar' %>
-  <%= render 'itineraries/itinerary_left_col' %>
+  <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
 
   <div class="container">
 
-    <a href="#" id="toggle-sidebar" data-tooltip class="has-tip" title="Lorem">
-      <%= image_tag 'compass.png' %>
-    </a>
+    <% unless @itinerary.nil? %>
+      <a href="#" id="toggle-sidebar" data-tooltip class="has-tip" title="Lorem">
+        <%= image_tag 'compass.png' %>
+      </a>
+    <% end %>
 
     <div class="row">
       <div class="large-10 large-centered columns">
