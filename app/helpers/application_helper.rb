@@ -3,6 +3,12 @@ module ApplicationHelper
     "<small class='error hide'>#{parse_error_message object.errors.messages[field]}</small>".html_safe
   end
 
+  def set_page_title(title)
+    content_for :title do
+      title
+    end
+  end
+
   private
 
   def parse_error_message(messages)

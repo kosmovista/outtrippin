@@ -14,6 +14,9 @@ class ApplicationController < ActionController::Base
     @current_user = current_user_session && current_user_session.record
   end
 
+  ##
+  # detects if default or honeymoon should be presented
+  ##
   def set_homepage_type
     begin
       s = request.original_url.to_s.sub(/^https?\:\/\//, '').sub(/^www./,'').sub(/\/$/, '').split(".")
