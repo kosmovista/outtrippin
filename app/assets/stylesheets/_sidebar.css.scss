@@ -34,14 +34,13 @@
 
 .close {
   top:0;
-  padding-top: 80px;
   padding-left:5px;
   position: absolute;
   right:0;
   height:100%;
   width: 30px;
   background-color: whitesmoke;
-  h5 {color:#d3d3d3;}
+  h5 {color:#d3d3d3; bottom:0; position:absolute;}
 }
 
 .close:hover {
