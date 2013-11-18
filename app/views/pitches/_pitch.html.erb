@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="large-12 columns pitch">
+    <div class="row">
+      <div class="large-3 columns">
+        <%= image_tag current_user.avatar.url(:thumb), class: "avatar" %>
+        <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "button radius expand" %>
+
+      </div>
+      <div class="large-9 columns">
+        <h3><%= pitch.title %></h3>
+        <p><%= pitch.why_me %></p>
+        <p><%= pitch.summary %></p>
+      </div>
+    </div>
+  </div>
+</div>

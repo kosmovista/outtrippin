@@ -44,6 +44,8 @@ class ItinerariesController < ApplicationController
   end
 
   def show
+    @pitches = @itinerary.pitches
+    @pitch = @pitches.where(user: current_user).first if current_user.is?("expert")
     # TODO SET SOME PERMISSION HERE
     # authorize_user is not enough
   end

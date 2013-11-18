@@ -21,11 +21,13 @@
   </div>
 
   <div class="large-8 columns">
+    <% unless @user.expert_info[:style].blank? %>
     <ul class="inline-list skill-list">
       <% @user.expert_info[:style].each do |s| %>
         <li><span class="label light round"><%= s %></span></li>
       <% end %>
     </ul>
+    <% end %>
 
     <h2 class="subheader">My Story</h2>
     <p><%= @user.expert_info[:story] %></p>
@@ -35,11 +37,16 @@
 
     <h2 class="subheader">My Places</h2>
     <ul class="inline-list skill-list">
-      <% @user.expert_info[:countries].each do |c| %>
-        <li><span class="label light round"><%= c %></span></li>
+      <% unless @user.expert_info[:countries].blank? %>
+        <% @user.expert_info[:countries].each do |c| %>
+          <li><span class="label light round"><%= c %></span></li>
+          <% end %>
       <% end %>
-      <% @user.expert_info[:cities].each do |c| %>
-        <li><span class="label light round"><%= c %></span></li>
+
+      <% unless @user.expert_info[:cities].blank? %>
+        <% @user.expert_info[:cities].each do |c| %>
+          <li><span class="label light round"><%= c %></span></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

@@ -21,3 +21,4 @@ window.toogleSidebar = ->
 $ ->
   $("#toggle-sidebar").on "click", ->
     toogleSidebar()
+    return false

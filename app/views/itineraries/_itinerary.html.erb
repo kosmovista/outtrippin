@@ -1,4 +1,4 @@
-<div class="row ">
+<div class="row">
   <div class="large-10 large-centered columns itinerary">
     <div class="row">
       <div class="large-9 columns">
@@ -17,7 +17,7 @@
         <p><strong>Budget:</strong> <%= itinerary.extra_info[:budget] %></p>
       </div>
       <div class="large-6 columns">
-        <p><strong>Style:</strong> <%= itinerary.extra_info[:style] %></p>
+        <p><strong>Style:</strong> <%= itinerary.extra_info[:style].join(', ') %></p>
         <p><strong>Additional details:</strong> <%= itinerary.extra_info[:details] %></p>
       </div>
     </div>

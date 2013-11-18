@@ -1,12 +1,11 @@
-<div class="" style="min-height: 400px">
-
-  <!-- placeholder -->
-
-</div>
-<%#= render @itinerary %>
-<%= content_for :body do %>
-<script>
-window.showSidebar();
-</script>
-
+<% if @pitch.blank? %>
+  <div class="large-4 large-centered columns">
+    <br/>    <br/>    <br/>
+    <%= link_to "Submit Pitch", new_itinerary_pitch_path(@itinerary), class: "button radius expand" %>
+  </div>
+<% else %>
+  <%= render @pitch %>
 <% end %>
+
+
+<% expanded_sidebar %>

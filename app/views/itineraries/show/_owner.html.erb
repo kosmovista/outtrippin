@@ -1,6 +1,10 @@
+<% unless @pitches.blank? %>
+  <%= render @pitches %>
+<% else %>
+
 <div class="row">
   <div class="small-12 small-centered columns">
-  	<h3 class="text-center primary">Woo hoo! Your dream trip is one step closer.</h3>
+    <h3 class="text-center primary">Woo hoo! Your dream trip is one step closer.</h3>
     <div class="large-4 large-centered small-12 columns">
       <hr>
     </div>
@@ -29,14 +33,15 @@
     <div data-alert class="alert-box secondary radius text-center">
       <h5>And then?</h5>
       <p>Once you've chosen your favorite expert, you can proceed to checkout and pay the trip planning fee ($10 per vacation day) for the expert. Once you've done so, you can freely work with them to design your dream honeymoon, tailored to your persnality. :)
+      </div>
     </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-	  <div data-alert class="alert-box secondary radius text-center">
-			<h5>Get the best experts!</h4>
-			<p>A guaranteed fee attracts more experts to your trip. And remember, OutTrippin offers a 100% money back guarantee if you're not happy with the advice you've received.</p>
-			<%= link_to "Guarantee Fee", checkout_itinerary_path, class: "radius button" %>
-		</div>
-	</div>
-  <% end %>
-</div>
+    <div class="large-8 large-centered small-12 columns">
+      <div data-alert class="alert-box secondary radius text-center">
+        <h5>Get the best experts!</h4>
+          <p>A guaranteed fee attracts more experts to your trip. And remember, OutTrippin offers a 100% money back guarantee if you're not happy with the advice you've received.</p>
+          <%= link_to "Guarantee Fee", checkout_itinerary_path, class: "radius button" %>
+        </div>
+      </div>
+    <% end %>
+    </div>
+<% end %>

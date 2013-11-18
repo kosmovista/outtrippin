@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authorize_admin
+  before_action :authorize_admin, only: [:destroy]
   before_action :set_user
 
   def show

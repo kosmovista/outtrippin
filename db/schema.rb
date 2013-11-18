@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101152448) do
+ActiveRecord::Schema.define(version: 20131118104340) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -37,6 +37,24 @@ ActiveRecord::Schema.define(version: 20131101152448) do
     t.integer  "description"
     t.boolean  "paid"
     t.text     "extra_info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pictures", force: true do |t|
+    t.string   "source"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "pitches", force: true do |t|
+    t.string   "title"
+    t.text     "summary"
+    t.text     "why_me"
+    t.integer  "user_id"
+    t.integer  "itinerary_id"
+    t.boolean  "published"
+    t.boolean  "winner"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

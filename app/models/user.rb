@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
 
   has_many :itineraries, dependent: :destroy, inverse_of: :user
+  has_many :pitches, dependent: :destroy, inverse_of: :user
+
 
   # ROLE MANAGER LOGIC
   def roles=(roles)
