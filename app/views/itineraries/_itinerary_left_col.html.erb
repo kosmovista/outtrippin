@@ -1,5 +1,5 @@
 <div id="sidebar" style="display:none">
-  <h5>Your Trip, So Far:</h5>
+  <h5>Trip Overview</h5>
   <%= content_tag(:h3, @itinerary.extra_info[:name]) unless @itinerary.extra_info[:name].blank? %>
   <%= content_tag(:p, ("<strong>Destination:</strong> " + @itinerary.destination).html_safe) unless @itinerary.destination.blank? %>
   <%= content_tag(:p, ("<strong>Travelers:</strong> " + @itinerary.extra_info[:travelers]).html_safe) unless @itinerary.extra_info[:travelers].blank? %>
