@@ -11,7 +11,7 @@
 </div>
 
 <% if current_user.is?("expert") %>
-  <%= render 'itineraries/show/expert'  %>
+  <%= render 'itineraries/show/expert' %>
 <% else %>
   <%= render 'itineraries/show/owner' %>
 <% end %>

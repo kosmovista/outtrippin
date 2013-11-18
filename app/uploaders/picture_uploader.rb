@@ -3,12 +3,14 @@
 class PictureUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
+  unless Rails.env.development?
   def fog_directory
     "pictures"
   end
 
   def asset_host
     "http://fc3d750e1b22019028ae-eb9d0534c31fede444754f378d638c42.r70.cf1.rackcdn.com"
+  end
   end
 
   def store_dir
