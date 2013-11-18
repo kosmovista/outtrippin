@@ -6,4 +6,7 @@
 @import "helpers";
 @import "footer";
 
-body { background: #fdfdfd; }
+// Used in success registration and login pages
+#map { position: fixed; height:100%; width:100%; z-index: -10 !important; }
+#overlay { position: fixed; height:100%; width:100%; z-index: -9 !important; background-color: rgba(255,255,255,.85); }
+.login {margin:10% 0;}

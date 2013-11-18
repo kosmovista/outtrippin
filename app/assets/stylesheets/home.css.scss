@@ -28,7 +28,7 @@ div#destinations {
   position: absolute;
   bottom: 0;
   right: 0;
-  h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 -2px 2px rgba(0,0,0,0.4); }
+  h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 2px 2px rgba(0,0,0,0.4); }
   h5 { margin-bottom: 0; }
   p { line-height: 18px; font-size: 16px; }
   img { margin-bottom: 1em; }
@@ -39,7 +39,10 @@ form#new_itinerary input[type="submit"] {
   height:50px;
 }
 
-@media only screen and (min-width: 768px) { #contestbtn {padding:0;} }
+@media only screen and (min-width: 768px) { 
+  #contestbtn {padding:0; font-size:1.2em;} 
+  form#new_itinerary input[type="submit"] { padding-top:.55em; }
+}
 
 form#new_itinerary input[type="text"] {
   height:50px;

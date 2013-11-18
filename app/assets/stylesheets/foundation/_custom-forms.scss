@@ -81,6 +81,7 @@ $custom-dropdown-width-large: 434px !default;
       vertical-align: middle;
       border: solid $custom-form-border-size $custom-form-border-color;
       background: $custom-form-bg;
+      cursor: $form-label-pointer;
 
       &.checkbox {
         @include custom-form-input($radius:$custom-form-checkbox-radius, $mark-size:$custom-form-check-size);
@@ -99,6 +100,7 @@ $custom-dropdown-width-large: 434px !default;
         }
         &:hover {
         border-color: $primary-color;
+        cursor: $form-label-pointer;
         }
       }
 

@@ -65,7 +65,7 @@ $em-base: 16px !default;
 
 $default-float: left;
 
-// $body-bg: #fff;
+$body-bg: #fdfdfd;
 $body-font-color: #4a4a4a;
 $body-font-family: $serif-font-family;
 // $body-font-weight: normal;
@@ -300,7 +300,7 @@ $form-label-font-family: $sans-font-family;
 $form-label-font-size: em-calc(19);
 $form-label-font-weight: bold;
 // $form-label-font-color: lighten(#000, 30%);
-$form-label-bottom-margin: em-calc(10);
+$form-label-bottom-margin: em-calc(0);
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
 $input-font-size: em-calc(16);
@@ -341,8 +341,8 @@ $input-box-shadow: none;
 
 // We use these to style the error states for inputs and labels
 
-$input-error-message-padding: em-calc(10 4);
-// $input-error-message-top: 0;
+$input-error-message-padding: em-calc(10 10);
+$input-error-message-top: 0;
 $input-error-message-font-family: $sans-font-family;
 $input-error-message-font-size: em-calc(14);
 $input-error-message-font-weight: normal;

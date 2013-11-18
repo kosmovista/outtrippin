@@ -1,13 +1,13 @@
-<div class="row">
-  <div class="large-10 large-centered columns">
-    <h1>Become an OutTrippin expert</h1>
+<div class="row top">
+  <div class="large-10 small-12 large-centered columns">
+    <h2 class="primary">Become an OutTrippin expert</h2>
   </div>
 </div>
 
 <div class="row">
-  <div class="large-10 large-centered columns">
+  <div class="large-10 small-12 large-centered columns">
     <div class="row">
-      <div class="large-9 columns">
+      <div class="large-9 small-12 columns">
 
         <% if @expert_registration.errors.any? %>
           <p style="margin-bottom:0px"><strong>Whoopsies! <u>We were unable to process your registration</u>. Please make sure you've filled in all the required fields below.</strong></p>
@@ -17,7 +17,7 @@
           <p style="float:right;text-align:right"><small><strong>Indi Tansey</strong><br/>Community Manager</small></p>
         <% end %>
       </div>
-      <div class="large-3 columns avatar">
+      <div class="large-3 hide-for-small columns avatar">
         <%= image_tag 'indi.jpeg' %>
       </div>
     </div>
