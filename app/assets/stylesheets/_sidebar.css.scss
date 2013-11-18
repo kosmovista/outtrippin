@@ -1,18 +1,53 @@
 #sidebar {
-  padding: 10px;
-  height: 90%;
+  padding: 85px 30px 30px 30px;
+  height: 100%;
+  top:0;
   width: 25%;
+  min-width:300px;
+  z-index:997;
   background-color: whitesmoke;
-  position: absolute;
+  position: fixed;
+  p {font-size:.8em; margin-bottom:.5em;}
 }
 
-
-#toggle-sidebar {
-  padding: 8px;
-  position: absolute;
-//  top: 200px;
-  width: 48px;
-  height: 48px;
-  background-color: #aaa;
-  border-radius: 0 10px 10px 0;
+.toggle-sidebar {
 }
+
+.open { 
+  top:0;
+  padding-top: 80px;
+  padding-left:15px;
+  position: fixed;
+  height:100%;
+  width: 40px;
+  background-color: #f0f0f0;
+  h5 {color:#d3d3d3;}
+}
+.open:hover {
+  width:45px;
+  padding-left:20px;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  h5{color:#bfbfbf;}
+}
+
+.close {
+  top:0;
+  padding-top: 80px;
+  padding-left:5px;
+  position: absolute;
+  right:0;
+  height:100%;
+  width: 30px;
+  background-color: whitesmoke;
+  h5 {color:#d3d3d3;}
+}
+
+.close:hover {
+  padding-left:0px;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  h5{color:#bfbfbf;}
+  }
