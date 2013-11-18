@@ -16,4 +16,4 @@
 <%= errors_for(pitch, :pictures) %>
 
 <%= f.submit submit_text, class: "button radius" %>
-<%= link_to "Cancel", itinerary_path, class: "small secondary button radius", style: "margin-left:20px" %>
+<%= link_to "Cancel", itinerary_path(@itinerary), class: "small secondary button radius", style: "margin-left:20px" %>
