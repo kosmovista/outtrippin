@@ -33,7 +33,7 @@ class Itinerary < ActiveRecord::Base
   end
 
   def has_winner_pitch?
-    !self.pitches.where(winner: true).nil?
+    !self.pitches.where(winner: true).first.nil?
   end
 
   def winner_pitch
