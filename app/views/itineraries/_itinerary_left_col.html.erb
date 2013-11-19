@@ -8,5 +8,5 @@
   <%= content_tag(:p, ("<strong>Budget:</strong> " + @itinerary.extra_info[:budget]).html_safe) unless @itinerary.extra_info[:budget].blank? %>
   <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
   <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>
- <a href="#" class="toggle-sidebar close hide-for-small" title="Hide Trip Overview"><h5>&#9666;</h5></a>
+ <a href="#" class="toggle-sidebar close" title="Hide Trip Overview"><h5>&#9666;</h5></a>
 </div>

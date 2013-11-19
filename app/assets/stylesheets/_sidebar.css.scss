@@ -12,11 +12,13 @@
   z-index:997;
   background-color: whitesmoke;
   position: fixed;
+  display:none;
   transition: margin-left 0.10s linear;
   p { font-size:.8em; margin-bottom:.5em; }
 }
 
 #sidebar.show {
+  display:block;
   margin-left: 0;
   transition: margin-left 0.10s linear;
 }
@@ -73,4 +75,12 @@
 .container.shrink {
   margin-left: 25%;
   transition: all 0.10s linear;
+}
+
+.sidebar-icon {
+  left: 15px;
+  top: 50%;
+  margin-top: -16px;
+  padding-right: 40px;
+  position:absolute;
 }
