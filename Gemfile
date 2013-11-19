@@ -1,8 +1,11 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# Static Pages
+gem 'high_voltage'
+
+# Tracking exceptions
 gem 'exceptional'
 
 gem 'delayed_job_active_record'
@@ -25,9 +28,6 @@ gem 'compass-rails'
 gem 'zurb-foundation'
 gem 'jquery-rails'
 gem 'turbolinks'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 gem 'capistrano', '= 2.15.5', group: :development
 
