@@ -1,19 +1,13 @@
 window.showSidebar = ->
-  $('#sidebar').addClass("active")
-  $('.container').css("top", "0")
-  $('.container').css("left", "25%")
-  $('.container').css("width", "75%")
-  $('#sidebar').show()
+  $('.container').addClass("shrink")
+  $('#sidebar').addClass("show")
 
 window.hideSidebar = ->
-  $('#sidebar').removeClass("active")
-  $('.container').css("top", "0")
-  $('.container').css("left", "0")
-  $('.container').css("width", "100%")
-  $('#sidebar').hide()
+  $('.container').removeClass("shrink")
+  $('#sidebar').removeClass("show")
 
 window.toogleSidebar = ->
-  if $('#sidebar').hasClass("active")
+  if $('#sidebar').hasClass("show")
     hideSidebar()
   else
     showSidebar()

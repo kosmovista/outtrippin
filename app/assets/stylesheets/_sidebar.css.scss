@@ -1,19 +1,29 @@
+// TODO: add variables to this; proportions should relate to each other
+//
+
+// sidebar column
 #sidebar {
   padding: 20px 30px 30px 30px;
   height: 100%;
   top:0;
   width: 25%;
+  margin-left: -25%;
   min-width:300px;
   z-index:997;
   background-color: whitesmoke;
   position: fixed;
-  p {font-size:.8em; margin-bottom:.5em;}
+  transition: margin-left 0.10s linear;
+  p { font-size:.8em; margin-bottom:.5em; }
 }
 
-.toggle-sidebar {
+#sidebar.show {
+  margin-left: 0;
+  transition: margin-left 0.10s linear;
 }
 
-.open { 
+//
+// open and close buttons; should be refactored
+.open {
   top:0;
   padding-top: 80px;
   padding-left:15px;
@@ -23,6 +33,7 @@
   background-color: #f0f0f0;
   h5 {color:#d3d3d3;}
 }
+
 .open:hover {
   width:45px;
   padding-left:20px;
@@ -49,4 +60,16 @@
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
   h5{color:#bfbfbf;}
-  }
+}
+
+//
+// shrink container acoordingly
+.container {
+  margin-left: 0;
+  transition: all 0.10s linear;
+}
+
+.container.shrink {
+  margin-left: 25%;
+  transition: all 0.10s linear;
+}
