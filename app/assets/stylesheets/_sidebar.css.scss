@@ -1,35 +1,49 @@
+// TODO: add variables to this; proportions should relate to each other
+//
+
+// sidebar column
 #sidebar {
   padding: 20px 30px 30px 30px;
   height: 100%;
   top:0;
   width: 25%;
+  margin-left: -25%;
   min-width:300px;
   z-index:997;
   background-color: whitesmoke;
   position: fixed;
-  p {font-size:.8em; margin-bottom:.5em;}
+  display:none;
+  transition: margin-left 0.10s linear;
+  p { font-size:.8em; margin-bottom:.5em; }
 }
 
-.toggle-sidebar {
+#sidebar.show {
+  display:block;
+  margin-left: 0;
+  transition: margin-left 0.10s linear;
 }
 
-.open { 
+//
+// open and close buttons; should be refactored
+.open {
   top:0;
+  left:0;
   padding-top: 80px;
   padding-left:15px;
   position: fixed;
   height:100%;
   width: 40px;
   background-color: #f0f0f0;
-  h5 {color:#d3d3d3;}
+  h5 {color:#b5b5b5; bottom:0; position:absolute;}
 }
+
 .open:hover {
   width:45px;
   padding-left:20px;
   -webkit-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  h5{color:#bfbfbf;}
+  h5{color:#a2a2a2;}
 }
 
 .close {
@@ -40,7 +54,7 @@
   height:100%;
   width: 30px;
   background-color: whitesmoke;
-  h5 {color:#d3d3d3; bottom:0; position:absolute;}
+  h5 {color:#b5b5b5; bottom:0; position:absolute;}
 }
 
 .close:hover {
@@ -48,5 +62,25 @@
   -webkit-transition: all 0.15s ease-in-out;
   -moz-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
-  h5{color:#bfbfbf;}
-  }
+  h5{ color:#a2a2a2; }
+}
+
+//
+// shrink container acoordingly
+.container {
+  margin-left: 0;
+  transition: all 0.10s linear;
+}
+
+.container.shrink {
+  margin-left: 25%;
+  transition: all 0.10s linear;
+}
+
+.sidebar-icon {
+  left: 15px;
+  top: 50%;
+  margin-top: -16px;
+  padding-right: 40px;
+  position:absolute;
+}

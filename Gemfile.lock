@@ -79,6 +79,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     fssm (0.2.10)
+    high_voltage (2.0.0)
     highline (1.6.20)
     hike (1.2.3)
     i18n (0.6.5)
@@ -193,6 +194,7 @@ DEPENDENCIES
   delayed_job_active_record
   exceptional
   fog
+  high_voltage
   jquery-rails
   mini_magick
   pg
