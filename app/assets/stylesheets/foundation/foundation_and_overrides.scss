@@ -1333,6 +1333,8 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 // $topbar-sticky-class: ".sticky";
 // $topbar-arrows: true; //Set false to remove the triangle icon from the menu item
 
+@import "inline_inputs";
+
 @import "foundation/components/global";
 @import "foundation/components/grid";
 @import "foundation/components/block-grid";
@@ -1355,3 +1357,4 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 // EXPERT PROFILE
 @import "inline-lists";     // THIS CAN BE REMOVED
 @import "labels";           // THIS CAN BE REMOVED
+

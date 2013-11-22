@@ -1,14 +1,23 @@
 <div class="expert-cover">
    <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
-   <h1 class="white" style="margin-bottom:10px"><%= @user.name %></h1>
+  <div class="row">
+    <div class="large-12 columns">
+      <h1 class="white edit-name-inline">
+        <span>
+          <%= @user.name %>
+          <%= link_to '', '#' %>
+        </span>
+      </h1>
+    </div>
+  </div>
    <hr style="border:2px solid #fff;width:60px;margin:0 auto 10px auto" />
-   <p class="white"><%= @user.expert_info[:bio] %></p>
+   <p class="white edit-bio-inline"><span><%= @user.expert_info[:bio].blank? ? "(click to add bio)" : @user.expert_info[:bio] %><%= link_to '', '#' %></span></p>
 </div>
 
 <div class="row top">
   <div class="large-4 columns">
-    <%= content_tag :p, @user.expert_info[:hometown], class: "geo hometown" unless @user.hometown.blank? %>
-    <%= content_tag :p, @user.expert_info[:location], class: "geo location" unless @user.location.blank? %>
+    <p class="geo hometown edit-hometown-inline"><span><%= @user.expert_info[:hometown].blank? ? "(click to set your hometown)" : @user.expert_info[:hometown] %><%= link_to '', '#' %></span></p>
+    <p class="geo location edit-location-inline"><span><%= @user.expert_info[:location].blank? ? "(click to set your location)" : @user.expert_info[:location] %><%= link_to '', '#' %></span></p>
     <br />
     <br />
     <%= link_to @user.website, "http://joaovalente.com", class: "www social", target: "_blank" unless @user.website.blank? %>
@@ -17,7 +26,6 @@
     <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
     <br />
     <br />
-    <%#= link_to "Edit Profile", "#", class: "small button" %>
   </div>
 
   <div class="large-8 columns">
@@ -30,10 +38,10 @@
     <% end %>
 
     <h2 class="subheader">My Story</h2>
-    <p><%= @user.expert_info[:story] %></p>
+    <p class="edit-story-inline"><span><%= @user.expert_info[:story].blank? ? "(click to add a story)" : @user.expert_info[:story] %><%= link_to '', '#' %></span></p>
 
     <h2 class="subheader">My Best Travel Hack</h2>
-    <p><%= @user.expert_info[:travel_hack] %></p>
+    <p class="edit-travel_hack-inline"><span><%= @user.expert_info[:travel_hack].blank? ? "(click to add travel hacks)" : @user.expert_info[:travel_hack] %><%= link_to '', '#' %></span></p>
 
     <h2 class="subheader">My Places</h2>
     <ul class="inline-list skill-list">
@@ -49,9 +57,13 @@
         <% end %>
       <% end %>
     </ul>
+
+    <%= text_field_tag :lorem, nil, class: 'location-autocomplete' %>
+
   </div>
 </div>
 
 <%= content_for :head do %>
   <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
 <% end %>
