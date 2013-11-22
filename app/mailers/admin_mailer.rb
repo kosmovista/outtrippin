@@ -7,8 +7,13 @@ class AdminMailer < ActionMailer::Base
     mail to: ADMINS, subject: "[outtrippin.com] new expert registered"
   end
 
-  def new_user_email(user)
-    @user = user
-    mail to: ADMINS, subject: "[outtrippin.com] new user registered"
+  def new_itinerary_email(itinerary)
+    @itinerary = itinerary
+    mail to: ADMINS, subject: "[outtrippin.com] new itinerary submitted"
+  end
+
+  def payment_received_email(itinerary)
+    @itinerary = itinerary
+    mail to: ADMINS, subject: "[outtrippin.com] a payment was made"
   end
 end
