@@ -71,22 +71,6 @@ class User < ActiveRecord::Base
     self.expert_info[:location]
   end
 
-  def update_personal_info(attributes)
-    attributes.each do |k, v|
-      self.personal_info[k.to_sym] = v
-    end
-    self.save
-    return self.personal_info
-  end
-
-  def update_expert_info(attributes)
-    attributes.each do |k, v|
-      self.expert_info[k.to_sym] = v
-    end
-    self.save
-    return self.expert_info
-  end
-
   # TODO generalize
   def owns?(itinerary)
     self.itineraries.include?(itinerary)
