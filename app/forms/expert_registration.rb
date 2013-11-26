@@ -66,9 +66,9 @@ class ExpertRegistration
   def save
     return false unless valid?
     if create_objects
-      UserMailer.welcome_expert_email(user).deliver
-      AdminMailer.new_expert_email(user).deliver # TODO ADD DELAYED JOB
-      add_expert(user)
+      UserMailer.delay.welcome_expert_email(user)
+      AdminMailer.delay.new_expert_email(user) # TODO ADD DELAYED JOB
+      self.delay.add_expert(user)
       true
     else
       false
