@@ -18,6 +18,9 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+after "deploy:stop",    "delayed_job:stop"
+after "deploy:start",   "delayed_job:start"
+after "deploy:restart", "delayed_job:restart"
 
 namespace :deploy do
   %w[start stop restart].each do |command|
@@ -52,14 +55,5 @@ namespace :deploy do
     end
   end
 
-  # after "deploy:update", "newrelic:notice_deployment"
-  # after "deploy:update", "delayed_job:restart"
   before "deploy", "deploy:check_revision"
 end
-
-# namespace :delayed_job do
-#   desc "Restart the delayed_job process"
-#   task :restart, :roles => :app do
-#     run "cd #{current_path}; RAILS_ENV=#{rails_env} script/delayed_job restart"
-#   end
-# end
