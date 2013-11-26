@@ -4,13 +4,14 @@ module OtIntercom
   GLOMAD_TAG = "GLOMAD"
 
   def authenticate
-    Intercom.app_id = IntercomRails.config.app_id
-    Intercom.api_key = IntercomRails.config.api_key
+    Intercom.app_id = "mjcr4qbv"
+    Intercom.api_key = "1467594e3a1e5ca57e1481e295dc90d668282680"
   end
 
   def add_expert(user)
     authenticate
     intercom_user = Intercom::User.create(email: user.email, name: user.name)
+
     intercom_user.custom_data["website"] = user.website unless user.website.blank?
 
     intercom_user.save
