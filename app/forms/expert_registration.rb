@@ -1,5 +1,6 @@
 class ExpertRegistration
   include ActiveModel::Model
+  include OtIntercom
 
   def persisted?
     false
@@ -67,6 +68,7 @@ class ExpertRegistration
     if create_objects
       UserMailer.welcome_expert_email(user).deliver
       AdminMailer.new_expert_email(user).deliver # TODO ADD DELAYED JOB
+      add_expert(user)
       true
     else
       false
