@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+require "delayed/recipes"
 
 server "166.78.23.121", :web, :app, :db, primary: true
 
@@ -7,6 +8,7 @@ set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
 set :use_sudo, false
+set :rails_env, "production" #added for delayed job
 
 set :scm, "git"
 set :repository, "git@github.com:kosmovista/outtrippin.git"
