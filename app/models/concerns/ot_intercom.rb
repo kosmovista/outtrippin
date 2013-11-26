@@ -11,6 +11,8 @@ module OtIntercom
   def add_expert(user)
     authenticate
     intercom_user = Intercom::User.create(email: user.email, name: user.name)
+    intercom_user.custom_data["website"] = user.website unless user.website.blank?
+
     intercom_user.save
     tag(user.email, GLOMAD_TAG)
     user.geo_expertise.each do |g|
