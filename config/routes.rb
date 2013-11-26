@@ -31,5 +31,7 @@ Outtrippin::Application.routes.draw do
     resources 'itineraries'
   end
 
+  get "/delayed_job" => DelayedJobWeb, anchor: false
+
   root 'home#index'
 end
