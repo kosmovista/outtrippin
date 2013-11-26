@@ -1,5 +1,4 @@
 require "bundler/capistrano"
-require "delayed/recipes"
 
 server "166.78.23.121", :web, :app, :db, primary: true
 
@@ -18,6 +17,11 @@ default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
 
 after "deploy", "deploy:cleanup" # keep only the last 5 releases
+
+# DELAYED JOB
+# http://stackoverflow.com/questions/18768098/configuring-delayed-jobs-with-capistrano-and-rails-4
+require "delayed/recipes"
+set :delayed_job_command, "bin/delayed_job"
 after "deploy:stop",    "delayed_job:stop"
 after "deploy:start",   "delayed_job:start"
 after "deploy:restart", "delayed_job:restart"
