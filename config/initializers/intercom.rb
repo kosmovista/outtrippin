@@ -1,9 +1,9 @@
 IntercomRails.config do |config|
   # == Intercom app_id
   #
-  config.app_id = ENV["INTERCOM_APP_ID"] || "cea2b3827fd6c6913ccd344097a15e42b7396483"
-  config.api_key = "e216746ad39a5ab6be0ec7d4cdb248b5f3908404"
-  config.enabled_environments = ["development", "production"]
+  config.app_id = ENV["INTERCOM_APP_ID"] || "mjcr4qbv"
+  config.api_key = "1467594e3a1e5ca57e1481e295dc90d668282680"
+  config.enabled_environments = ["production"]
 
   # == Intercom secret key
   # This is required to enable secure mode, you can find it on your Intercom
