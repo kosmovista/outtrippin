@@ -17,6 +17,7 @@ module OtIntercom
       tag(user.email, g)
     end
   end
+  handle_asynchronously :add_expert
 
   def tag(email, tag_name)
     tag = Intercom::Tag.create(name: tag_name, emails: [email], tag_or_untag: "tag")
