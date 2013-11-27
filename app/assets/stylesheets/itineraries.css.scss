@@ -50,3 +50,53 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 .step-circle.disable { color:#e6e6e3; }
 
 .top-bar {z-index:999!important;}
+
+#pitch {
+  margin-top: 20px;
+}
+
+@media only screen and (min-width: 768px) { 
+  #personal h4 {
+    text-align: right;
+  }
+
+  #personal p {
+    text-align: right;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  #personal .button {
+    width:100%;
+  }
+}
+
+
+@media only screen and (min-width: 1280px) { 
+  .pitch-imgs {
+    float: right;
+    margin-right: -26%;
+    margin-left: 20px;
+    width: 80%;
+  }  
+}
+
+.pitch-imgs { 
+  margin-bottom:10px;
+}
+
+.pitch-imgs .orbit-bullets {
+  margin: 0 10px;
+  top: -20px;
+  z-index: 99;
+  cursor:pointer;
+}
+
+.pitch-imgs .orbit-container {
+  border-radius: 4px;
+}
+
+.pitch-imgs .orbit-container .orbit-slides-container img {
+  border-radius: 4px;
+  height:300px;
+}

@@ -2,6 +2,20 @@
   <h3>You have picked your winning expert! He will start to work on your itinerary soon! Stay tuned!</h3>
   <%= render @itinerary.winner_pitch %>
 <% elsif !@pitches.blank? %>
+  <div class="row">
+    <div class="large-12 text-center small-12 columns">
+      <h4 class="primary text-center">//X// experts are vying for your trip to //destination//</h3> 
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-8 large-centered text-center small-12 columns">
+      <ul class="inline-list text-center no-margin sans">
+        <li><small>AT A GLANCE</small></li>
+        <li><small>EXPAND ALL</small></li>
+      </ul>
+      <hr style="margin-top:0;">
+    </div>
+  </div>
   <%= render @pitches %>
 <% else %>
 

@@ -820,7 +820,7 @@ $label-font-color-alt: $body-font-color;
 
 // We use these to control the caption styles
 
-// $orbit-container-bg: #f5f5f5;
+$orbit-container-bg: #fdfdfd;
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
 // $orbit-caption-font-size: emCalc(14);
@@ -838,7 +838,7 @@ $label-font-color-alt: $body-font-color;
 // We use these to control the timer styles
 
 // $orbit-timer-bg: rgba(0,0,0,0.6);
-// $orbit-timer-show-progress-bar: true;
+$orbit-timer-show-progress-bar: false;
 
 // We use these to control the bullet nav styles
 

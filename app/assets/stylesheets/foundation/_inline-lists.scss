@@ -53,7 +53,7 @@ $inline-list-children-display: block !default;
   /* Skill List */
   .skill-list {
     @include inline-list();
-    font-size: .8em;
+    font-size: .7em;
     font-weight: bold;
     & > li {
       border: 2px #c8c8c8 solid;
