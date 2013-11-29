@@ -51,11 +51,7 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 
 .top-bar {z-index:999!important;}
 
-#pitch {
-  margin-top: 20px;
-}
-
-@media only screen and (min-width: 768px) { 
+@media only screen and (min-width: 768px) {
   #personal h4 {
     text-align: right;
   }
@@ -72,16 +68,16 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 }
 
 
-@media only screen and (min-width: 1280px) { 
+@media only screen and (min-width: 1280px) {
   .pitch-imgs {
     float: right;
     margin-right: -26%;
     margin-left: 20px;
     width: 80%;
-  }  
+  }
 }
 
-.pitch-imgs { 
+.pitch-imgs {
   margin-bottom:10px;
 }
 

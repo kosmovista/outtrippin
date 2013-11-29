@@ -1,4 +1,4 @@
-<div id="pitch" class="row">
+<div class="row" style="margin-top:20px">
   <div id="personal" class="large-2 small-12 columns">
     <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:100px;" %>
     <h4 class="no-margin no-padding"><%= pitch.user.personal_info[:name] %></h5>
@@ -18,7 +18,7 @@
     <%= image_tag "facebook.png", style: "width:30px" %>
     <%= image_tag "pinterest_40.png", style: "width:23px" %>
     <%= image_tag "twitter.png", style: "width:30px" %>
-    <%= image_tag "instagram.png", style: "width:30px" %></h5>  
+    <%= image_tag "instagram.png", style: "width:30px" %></h5>
   </div>
 
   <div class="large-8 small-12 left columns">
@@ -30,9 +30,9 @@
     </ul>
     <% end %>
 
-    <h5 class="subheader serif"><em>Why I'm perfect for your trip to //destination//:</em></h6>
+    <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h6>
     <p><%= pitch.why_me %></p>
-    
+
 
     <h3 class="primary"><%= pitch.title %></h3>
       <% unless pitch.pictures.empty? %>
