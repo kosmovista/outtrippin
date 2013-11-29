@@ -63,12 +63,24 @@ class User < ActiveRecord::Base
     self.expert_info[:twitter]
   end
 
+  def cities
+    self.expert_info[:cities]
+  end
+
+  def countries
+    self.expert_info[:countries]
+  end
+
   def hometown
     self.expert_info[:hometown]
   end
 
   def location
     self.expert_info[:location]
+  end
+
+  def geo_expertise
+   [self.hometown, self.location] + self.countries + self.cities
   end
 
   # TODO generalize

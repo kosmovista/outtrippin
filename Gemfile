@@ -8,8 +8,16 @@ gem 'high_voltage'
 # Tracking exceptions
 gem 'exceptional'
 
-gem 'delayed_job_active_record'
+# Intercom
+gem 'intercom'
+gem 'intercom-rails'
 
+# Delayed jobs
+gem 'daemons'
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+
+# Payment
 gem 'stripe'
 
 # file uploading

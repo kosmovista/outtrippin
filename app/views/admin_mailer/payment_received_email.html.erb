@@ -1,5 +1,9 @@
-<div id="sidebar">
-	<%= image_tag "o-color.png", style: "height: 40px; margin-bottom: 20px;" %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
   <%= content_tag(:h5, (@itinerary.extra_info[:name].blank? ? "Trip Overview" : @itinerary.extra_info[:name])) %>
   <%= content_tag(:p, ("<strong>Destination:</strong> " + @itinerary.destination).html_safe) unless @itinerary.destination.blank? %>
   <%= content_tag(:p, ("<strong>Travelers:</strong> " + @itinerary.extra_info[:travelers]).html_safe) unless @itinerary.extra_info[:travelers].blank? %>
@@ -8,5 +12,5 @@
   <%= content_tag(:p, ("<strong>Budget:</strong> " + @itinerary.extra_info[:budget]).html_safe) unless @itinerary.extra_info[:budget].blank? %>
   <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
   <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>
- <a href="#" class="toggle-sidebar close" title="Hide Trip Overview"><h5>&#9666;</h5></a>
-</div>
+</body>
+</html>

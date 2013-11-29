@@ -43,8 +43,8 @@ class ItineraryFinalize
     return false unless valid?
     send_user_email = true if @user.new_record?
     if create_objects
-      UserMailer.welcome_user_email(user, @password).deliver if send_user_email # TODO ADD DELAYED JOB
-      AdminMailer.new_user_email(user).deliver # TODO ADD DELAYED JOB
+      UserMailer.delay.welcome_user_email(user, @password) if send_user_email # TODO ADD DELAYED JOB
+      AdminMailer.delay.new_itinerary_email(@itinerary) # TODO ADD DELAYED JOB
       true
     else
       false
