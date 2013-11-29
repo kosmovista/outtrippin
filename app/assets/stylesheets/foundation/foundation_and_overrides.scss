@@ -172,7 +172,6 @@ $alert-color: #C46752;
 //
 
 // Control header font styles
-
 $header-font-family: $sans-font-family;
 // $header-font-weight: bold;
 // $header-font-style: normal;
@@ -194,7 +193,7 @@ $header-font-color: #4a4a4a;
 // Control how subheaders are styled.
 
 // $subheader-line-height: 1.4;
-$subheader-font-color: lighten($body-font-color, 10%);
+$subheader-font-color: lighten($body-font-color, 20%);
 // $subheader-font-weight: 300;
 // $subheader-top-margin: .2em;
 // $subheader-bottom-margin: .5em;
@@ -230,7 +229,7 @@ $small-font-size: 70%;
 
 // Style the <hr> element
 
-$hr-border-width: 2px;
+$hr-border-width: 1px;
 // $hr-border-style: solid;
 $hr-border-color: #c8c8c8;
 // $hr-margin: em-calc(20);
@@ -821,7 +820,7 @@ $label-font-color-alt: $body-font-color;
 
 // We use these to control the caption styles
 
-// $orbit-container-bg: #f5f5f5;
+$orbit-container-bg: #fdfdfd;
 // $orbit-caption-bg: rgba(0,0,0,0.6);
 // $orbit-caption-font-color: #fff;
 // $orbit-caption-font-size: emCalc(14);
@@ -839,13 +838,13 @@ $label-font-color-alt: $body-font-color;
 // We use these to control the timer styles
 
 // $orbit-timer-bg: rgba(0,0,0,0.6);
-// $orbit-timer-show-progress-bar: true;
+$orbit-timer-show-progress-bar: false;
 
 // We use these to control the bullet nav styles
 
-// $orbit-bullet-nav-color: #999;
-// $orbit-bullet-nav-color-active: #555;
-// $orbit-bullet-radius: emCalc(18);
+$orbit-bullet-nav-color: #fff;
+$orbit-bullet-nav-color-active: #c8c8c8;
+$orbit-bullet-radius: emCalc(10px);
 
 // We use these to controls the style of slide numbers
 

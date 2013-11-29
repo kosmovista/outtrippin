@@ -50,4 +50,18 @@ $inline-list-children-display: block !default;
     @include inline-list();
   }
 
+  /* Skill List */
+  .skill-list {
+    @include inline-list();
+    font-size: .7em;
+    font-weight: bold;
+    & > li {
+      border: 2px #c8c8c8 solid;
+      border-radius: 1000px;
+      padding: 1px 7px;
+      margin-bottom:5px;
+      margin-right:5px;
+    }
+  }
 }
+

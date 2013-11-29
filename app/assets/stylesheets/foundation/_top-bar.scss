@@ -572,3 +572,10 @@ $topbar-arrows: true !default; //Set false to remove the triangle icon from the 
   }
 
 }
+.sidebar-icon {
+  left: 15px;
+  top: 50%;
+  margin-top: -16px;
+  padding-right: 40px;
+  position:absolute;
+}

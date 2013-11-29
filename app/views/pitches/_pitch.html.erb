@@ -1,40 +1,55 @@
-<div class="row">
-  <div class="large-12 columns pitch">
-    <div class="row">
-      <div class="large-4 columns">
-        <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar" %>
-
-        <h6 class="subheader"><%= pitch.user.personal_info[:name] %></h6>
-
-        <% unless pitch.user.expert_info[:style].blank? %>
-        <ul class="inline-list skill-list">
-          <% pitch.user.expert_info[:style].each do |s| %>
-            <li><span class="label light round"><%= s %></span></li>
-          <% end %>
-        </ul>
-        <% end %>
-
-        <h4 class="subheader">Why Me?</h4>
-        <p class="small"><%= pitch.why_me %></p>
-        <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "button radius" if current_user.is?("expert") %>
-        <%= button_to "Pick Expert!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
-      </div>
-
-      <div class="large-8 columns">
-        <% unless pitch.pictures.empty? %>
-        <ul data-orbit data-options="bullets:false;">
-          <% pitch.pictures.each do |pic| %>
-          <li>
-            <%= image_tag pic.source %>
-          </li>
-          <% end %>
-        </ul>
-        <% end %>
-
-        <h3><%= pitch.title %></h3>
-        <h4 class="subheader">Trip Summary</h4>
-        <p><%= pitch.summary %></p>
-      </div>
+<div id="pitch" class="row">
+  <div id="personal" class="large-2 small-12 columns">
+    <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:100px;" %>
+    <h4 class="no-margin no-padding"><%= pitch.user.personal_info[:name] %></h5>
+    <p class="no-margin no-padding" style="line-height:70%"><small><em><a href="#"><%= pitch.user.expert_info[:website] %></a></em></small></p>
+    <div class="large-5 small-12 text-right no-padding no-margin right columns">
+      <hr>
     </div>
+    <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "small right button radius" if current_user.is?("expert") %>
+    <%= button_to "Pick Expert!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "small right button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
   </div>
+
+  <div class="large-5 small-12 columns">
+    <h5 class="subheader serif"><em>My travel interests:</em></h6>
+  </div>
+
+  <div class="large-3 text-right hide-for-small columns">
+    <%= image_tag "facebook.png", style: "width:30px" %>
+    <%= image_tag "pinterest_40.png", style: "width:23px" %>
+    <%= image_tag "twitter.png", style: "width:30px" %>
+    <%= image_tag "instagram.png", style: "width:30px" %></h5>  
+  </div>
+
+  <div class="large-8 small-12 left columns">
+    <% unless pitch.user.expert_info[:style].blank? %>
+    <ul class="sans skill-list">
+      <% pitch.user.expert_info[:style].each do |s| %>
+        <li><%= s %></li>
+      <% end %>
+    </ul>
+    <% end %>
+
+    <h5 class="subheader serif"><em>Why I'm perfect for your trip to //destination//:</em></h6>
+    <p><%= pitch.why_me %></p>
+    
+
+    <h3 class="primary"><%= pitch.title %></h3>
+      <% unless pitch.pictures.empty? %>
+      <div class="pitch-imgs">
+      <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
+        <% pitch.pictures.each do |pic| %>
+        <li>
+          <%= image_tag pic.source %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+    <p><%= pitch.summary %></p>
+
+  </div>
+  <hr>
 </div>
+
+
