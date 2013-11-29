@@ -4,7 +4,7 @@
 <% elsif !@pitches.blank? %>
   <div class="row">
     <div class="large-12 text-center small-12 columns">
-      <h4 class="primary text-center">//X// experts are vying for your trip to //destination//</h3> 
+      <h4 class="primary text-center"><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts are" : "expert is" %> vying for your trip to<br /> <%= @itinerary.destination %></h3>
     </div>
   </div>
   <div class="row">
@@ -49,7 +49,7 @@
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>And then?</h5>
-      <p>Once you've chosen your favorite expert, you can proceed to checkout and pay the trip planning fee ($10 per vacation day) for the expert. Once you've done so, you can freely work with them to design your dream honeymoon, tailored to your persnality. :)
+      <p>Once you've chosen your favorite expert, you can proceed to checkout and pay the trip planning fee ($10 per vacation day) for the expert. Once you've done so, you can freely work with them to design your dream honeymoon, tailored to your personality. :)
       </div>
     </div>
     <div class="large-8 large-centered small-12 columns">
