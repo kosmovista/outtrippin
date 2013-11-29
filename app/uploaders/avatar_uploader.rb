@@ -8,7 +8,11 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def asset_host
-    "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com"
+    if Rails.env.production?
+      "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com"
+    else
+      "http://localhost:3000"
+    end
   end
 
   def store_dir
@@ -16,7 +20,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path([version_name, "avatar.png"].compact.join('_'))
+    "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/avatar.png"
   end
 
   version :thumb do

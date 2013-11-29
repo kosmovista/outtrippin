@@ -1,22 +1,60 @@
 .expert-cover {
-  margin-top: -30px;
+  padding-top: 30px;
   width: 100%;
   height: 400px;
   background-image: image-url('glomads.jpg');
   background-size: cover;
   text-align: center;
+
+  .avatar-container {
+    position: relative;
+    margin: 0 auto;
+    width: 180px;
+    height: 180px;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      padding: 0;
+      width: inherit;
+      height: inherit;
+      border-radius: 90px;
+      border: 4px solid #fff;
+    }
+
+    form {
+      cursor: hand;
+      position: absolute;
+      top: 70%;
+      left: 45px;
+      margin: 0;
+      padding: 0;
+      width: 90px;
+      height: 30px;
+      z-index: 2;
+
+      label {
+        height: inherit;
+
+        p, input[type="file"] {
+          position: absolute;
+          margin: 0;
+          padding: 0;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+        }
+      }
+    }
+  }
 }
 
 .expert-cover p {
   margin: 0 auto;
   width: 50%;
-}
-
-.avatar {
-  width: 180px;
-  height: 180px;
-  border-radius: 90px;
-  border: 4px solid #fff;
 }
 
 a.social {

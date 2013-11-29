@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def edit
     @expert_edit = ExpertEdit.new(user: @user)
-    ap @expert_edit.inspect
   end
 
   def update
@@ -21,6 +20,13 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_avatar
+    @user.avatar = params[:avatar]
+    @user.save!
+
+    redirect_to user_path(@user)
+  end
+
   def destroy
     # TODO Add some notices.
     @user.delete
@@ -30,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:id] || params[:user_id])
   end
 
   # TODO REFACTOR THIS

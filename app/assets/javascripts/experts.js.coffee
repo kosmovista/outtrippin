@@ -62,3 +62,7 @@ $ ->
   $('.delete').on "click", ->
     $(this).parent().remove()
     return false
+
+  # AVATAR UPLOAD
+  $(".avatar-container input[type='file']").change ->
+    $('#update-avatar').submit()

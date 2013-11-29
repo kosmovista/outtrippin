@@ -91,7 +91,8 @@ class ExpertEdit
       EXPERT_ATTRIBUTES.each do |attr|
         @user.expert_info[attr.to_sym] = self.send(attr)
       end
-    @user.save
+      @user.save
+    end
   rescue
     false
   end
