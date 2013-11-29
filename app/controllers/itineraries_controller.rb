@@ -58,6 +58,8 @@ class ItinerariesController < ApplicationController
     token = params[:stripeToken]
 
     if @itinerary.process_payment(token)
+      UserMailer.delay.payment_received_email(@itinerary.user, @itinerary)
+      AdminMailer.delay.payment_received_email(@itinerary)
       flash[:fresh_purchase] = true
       redirect_to thankyou_itinerary_path(@itinerary)
     else

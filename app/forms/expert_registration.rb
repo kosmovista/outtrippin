@@ -67,7 +67,7 @@ class ExpertRegistration
     return false unless valid?
     if create_objects
       UserMailer.delay.welcome_expert_email(user)
-      AdminMailer.delay.new_expert_email(user) # TODO ADD DELAYED JOB
+      AdminMailer.delay.new_expert_email(user)
       delay.add_expert(user)
       true
     else
