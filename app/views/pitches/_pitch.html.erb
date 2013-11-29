@@ -1,8 +1,8 @@
 <div class="row" style="margin-top:20px">
   <div id="personal" class="large-2 small-12 columns">
     <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:100px;" %>
-    <h4 class="no-margin no-padding"><%= pitch.user.personal_info[:name] %></h5>
-    <p class="no-margin no-padding" style="line-height:70%"><small><em><a href="#"><%= pitch.user.expert_info[:website] %></a></em></small></p>
+    <h4 class="no-margin no-padding"><%= pitch.user.personal_info[:name] %></h4>
+    <p class="no-margin no-padding" style="line-height:70%"><small><em><%= link_to pitch.user.expert_info[:website], expert_info_website_url(pitch.user.website), target: '_blank' %></em></small></p>
     <div class="large-5 small-12 text-right no-padding no-margin right columns">
       <hr>
     </div>
@@ -11,32 +11,31 @@
   </div>
 
   <div class="large-5 small-12 columns">
-    <h5 class="subheader serif"><em>My travel interests:</em></h6>
+    <h5 class="subheader serif"><em>My travel interests:</em></h5>
   </div>
 
   <div class="large-3 text-right hide-for-small columns">
-    <%= image_tag "facebook.png", style: "width:30px" %>
-    <%= image_tag "pinterest_40.png", style: "width:23px" %>
-    <%= image_tag "twitter.png", style: "width:30px" %>
-    <%= image_tag "instagram.png", style: "width:30px" %></h5>
+    <%= link_to (image_tag "facebook.png", style: "width:30px"), expert_info_website_url(pitch.user.facebook), target: '_blank' unless pitch.user.facebook.blank? %>
+    <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(pitch.user.pinterest), target: '_blank' unless pitch.user.pinterest.blank? %>
+    <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(pitch.user.twitter), target: '_blank' unless pitch.user.twitter.blank? %>
+    <%= link_to (image_tag "instagram.png", style: "width:30px"), expert_info_instagram_url(pitch.user.instagram), target: '_blank' unless pitch.user.instagram.blank? %>
   </div>
 
   <div class="large-8 small-12 left columns">
     <% unless pitch.user.expert_info[:style].blank? %>
     <ul class="sans skill-list">
       <% pitch.user.expert_info[:style].each do |s| %>
-        <li><%= s %></li>
+      <li><%= s %></li>
       <% end %>
     </ul>
     <% end %>
 
-    <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h6>
+    <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
     <p><%= pitch.why_me %></p>
 
-
     <h3 class="primary"><%= pitch.title %></h3>
-      <% unless pitch.pictures.empty? %>
-      <div class="pitch-imgs">
+    <% unless pitch.pictures.empty? %>
+    <div class="pitch-imgs">
       <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
         <% pitch.pictures.each do |pic| %>
         <li>
@@ -51,5 +50,3 @@
   </div>
   <hr>
 </div>
-
-

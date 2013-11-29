@@ -59,6 +59,12 @@ class User < ActiveRecord::Base
     self.expert_info[:instagram]
   end
 
+  def pinterest
+    # TODO pinterest doesn't exist yet
+    nil
+  end
+
+
   def twitter
     self.expert_info[:twitter]
   end

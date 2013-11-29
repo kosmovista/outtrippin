@@ -37,4 +37,18 @@ module ItinerariesHelper
     "<hr />"
   end
   ##################################################
+
+  def expert_info_website_url(website)
+    "http://" + website
+  end
+
+  def expert_info_twitter_url(handle)
+    "http://twitter.com/" + handle
+  end
+
+  def expert_info_instagram_url(handle)
+    "http://instagram.com/" + handle
+  end
+
+
 end
