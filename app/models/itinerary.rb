@@ -21,7 +21,6 @@ class Itinerary < ActiveRecord::Base
     if self.valid?
       self.charge(token)
       self.paid = true
-      AdminMailer.delay.payment_received_email(self) # TODO ADD DELAYED JOB
       self.save
       return true
     else

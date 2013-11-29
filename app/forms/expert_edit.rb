@@ -1,23 +1,36 @@
-class ExpertRegistration
+class ExpertEdit
   include ActiveModel::Model
-  include OtIntercom
 
   def persisted?
     false
   end
 
   ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :instagram, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack ]
+  EXPERT_ATTRIBUTES = %w(countries cities style bio website instagram hometown current_location facebook twitter story travel_hack)
 
   attr_accessor *ATTRIBUTES
 
-  def initialize(attributes = {})
-    ATTRIBUTES.each do |attribute|
-      send("#{attribute}=", attributes[attribute])
-    end
+  def initialize(options = {})
+    attributes = options[:attributes]
+    @user = options[:user]
+    raise ArgumentError, "You need to be an expert" if !@user.is?("expert")
 
-    send("countries=", parsed_countries)
-    send("cities=", parsed_cities)
-    send("style=", parsed_styles)
+    unless attributes.nil?
+      ATTRIBUTES.each do |attribute|
+        send("#{attribute}=", attributes[attribute])
+      end
+      send("countries=", parsed_countries)
+      send("cities=", parsed_cities)
+      send("style=", parsed_styles)
+    else
+      send("name=", @user.name)
+      send("email=", @user.email)
+      # TODO avatar
+      # TODO password
+      EXPERT_ATTRIBUTES.each do |attr|
+        send("#{attr}=", @user.expert_info[attr.to_sym])
+      end
+    end
   end
 
   # VALIDATIONS
@@ -29,46 +42,19 @@ class ExpertRegistration
     errors[:style] = "Select at least one style" if style.empty?
   end
 
-
   # USER
   validate do
-    unless user.valid?
-      user.errors.each do |key, values|
+    unless @user.valid?
+      @user.errors.each do |key, values|
         errors[key] = values
       end
     end
   end
 
   ##
-  def user
-    @user ||= User.new(email: email, avatar: avatar, password: password, password_confirmation: password_confirmation,
-    personal_info: {
-      name: name
-    },
-    expert_info: {
-      website:      website,
-      countries:    countries,
-      cities:       cities,
-      style:        style,
-      bio:          bio,
-      travel_hack:  travel_hack,
-      facebook:     facebook,
-      twitter:      twitter,
-      instagram:    instagram,
-      hometown:     hometown,
-      current_location: current_location,
-      story:        story
-    })
-    return @user
-  end
-
-  ##
   def save
     return false unless valid?
-    if create_objects
-      UserMailer.delay.welcome_expert_email(user)
-      AdminMailer.delay.new_expert_email(user)
-      delay.add_expert(user)
+    if update_objects
       true
     else
       false
@@ -98,11 +84,14 @@ class ExpertRegistration
     _style
   end
 
-
-  def create_objects
+  def update_objects
     ActiveRecord::Base.transaction do
-      user.roles = ["expert"]
-      user.save_without_session_maintenance
+      @user.personal_info[:name] = name unless name.nil?
+      @user.email = email unless email.nil?
+      EXPERT_ATTRIBUTES.each do |attr|
+        @user.expert_info[attr.to_sym] = self.send(attr)
+      end
+      @user.save
     end
   rescue
     false

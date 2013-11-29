@@ -39,6 +39,21 @@ $ ->
     $('#expert_registration_countries').val(countries)
     $('#expert_registration_cities').val(cities)
 
+  $('#new_expert_edit').submit (e) ->
+    cities = []
+    countries = []
+    $('.expert_edit_countries li').each (i, elem) ->
+      countries.push $(elem).text()
+      countries.push '+'
+
+    $('.expert_edit_cities li').each (i, elem) ->
+      cities.push $(elem).text()
+      cities.push '+'
+
+    $('#expert_edit_countries').val(countries)
+    $('#expert_edit_cities').val(cities)
+
+
   # handle errors
   $('.field_with_errors').children().addClass("error")
   $('.field_with_errors').next().removeClass("hide")
@@ -47,3 +62,7 @@ $ ->
   $('.delete').on "click", ->
     $(this).parent().remove()
     return false
+
+  # AVATAR UPLOAD
+  $(".avatar-container input[type='file']").change ->
+    $('#update-avatar').submit()

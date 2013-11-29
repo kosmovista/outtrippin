@@ -12,6 +12,12 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "Welcome to OutTrippin!"
   end
 
+  def payment_received_email(user, itinerary)
+    @user = user
+    @itinerary = itinerary
+    mail to: @user.email, subject: "Thanks for submitting your OutTrippin trip and payment."
+  end
+
   def password_reset_instructions_email(user)
     @user = user
     @reset_url = "http://outtrippin.com/password_resets/#{@user.perishable_token}/edit"

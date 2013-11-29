@@ -2,13 +2,13 @@ html, body { height: 100%; }
 
 body { margin:0; padding:0; }
 
-.expert_registration_cities, .expert_registration_countries {
+.expert_registration_cities, .expert_registration_countries, .expert_edit_cities, .expert_edit_countries {
   position: relative;
   list-style-type: none;
   overflow: hidden;
 }
 
-.expert_registration_cities li, .expert_registration_countries li {
+.expert_registration_cities li, .expert_registration_countries li, .expert_edit_cities li, .expert_edit_countries li {
   position: relative;
   padding-left: 30px;
   padding-right: 40px;
@@ -18,7 +18,7 @@ body { margin:0; padding:0; }
   line-height: 38px;
   font-size:.875em;
   border: 2px #c8c8c8 solid;
-  background: #fdfdfd url('location.png') no-repeat 8px 9px;
+  background: #fdfdfd image-url('location.png') no-repeat 8px 9px;
   background-size:20px;
   margin-bottom: 5px;
   border-radius: 1000px;
@@ -27,7 +27,7 @@ body { margin:0; padding:0; }
 
 a.delete {
   width: 40px;
-  background: #fdfdfd url('delete.png') no-repeat 5px 0;
+  background: #fdfdfd image-url('delete.png') no-repeat 5px 0;
   background-size: 37px;
   height: 36px;
   position: absolute;

@@ -1,0 +1,5 @@
+<%= render 'experts/form', object: @expert_edit, url: user_path, method: :put, edit: true %>
+
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "experts_registration", media: "all", "data-turbolinks-track" => true %>
+<% end %>

@@ -54,7 +54,7 @@ class PitchEdit
   private
 
   def update_objects
-    # ActiveRecord::Base.transaction do
+    ActiveRecord::Base.transaction do
       pictures.each do |k, v|
         if v.class == ActionDispatch::Http::UploadedFile
           p = @user.pictures.create(source: v)
@@ -64,8 +64,8 @@ class PitchEdit
       end
 
       @pitch.update_attributes(title: title, summary: summary, why_me: why_me)
-  #   end
-  # rescue
-  #   false
+    end
+  rescue
+    false
   end
 end

@@ -1,8 +1,16 @@
 <div class="expert-cover">
-   <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
-   <h1 class="white" style="margin-bottom:10px"><%= @user.name %></h1>
-   <hr style="border:2px solid #fff;width:60px;margin:0 auto 10px auto" />
-   <p class="white"><%= @user.expert_info[:bio] %></p>
+  <div class="avatar-container">
+    <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
+    <%= form_tag user_update_avatar_path(@user), method: :put, id: "update-avatar", multipart: true do %>
+      <%= label_tag "", class: "input-file" do %>
+        <p>Change</p>
+        <%= file_field_tag :avatar %>
+      <% end %>
+    <% end %>
+  </div>
+  <h1 class="white" style="margin-bottom:10px"><%= @user.name %></h1>
+  <hr style="border:2px solid #fff;width:60px;margin:0 auto 10px auto" />
+  <p class="white"><%= @user.expert_info[:bio] %></p>
 </div>
 
 <div class="row top">
@@ -17,7 +25,7 @@
     <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
     <br />
     <br />
-    <%#= link_to "Edit Profile", "#", class: "small button" %>
+    <%= link_to "Edit Profile", edit_user_path, class: "small button" %>
   </div>
 
   <div class="large-8 columns">
