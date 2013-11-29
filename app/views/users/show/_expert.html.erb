@@ -17,7 +17,7 @@
     <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
     <br />
     <br />
-    <%#= link_to "Edit Profile", "#", class: "small button" %>
+    <%= link_to "Edit Profile", edit_user_path, class: "small button" %>
   </div>
 
   <div class="large-8 columns">

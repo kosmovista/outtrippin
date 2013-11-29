@@ -1,7 +1,7 @@
 Outtrippin::Application.routes.draw do
   resource 'expert', only: [:create, :show]
 
-  resources 'users', only: [:show, :destroy]
+  resources 'users', only: [:show, :destroy, :edit, :update]
   resources 'user_sessions', only: [:new, :create, :destroy]
   resources 'password_resets', only: [:new, :create, :edit, :update]
 

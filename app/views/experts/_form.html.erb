@@ -1,18 +1,18 @@
 <div class="row">
   <div class="large-10 large-centered columns">
-    <%= form_for @expert_registration, url: expert_path, html: { class: 'custom' } do |f| %>
+    <%= form_for object, url: url, method: method, html: { class: 'custom' } do |f| %>
 
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :name, "Your Name *" %>
         <%= f.text_field :name, placeholder: "Indiana June" %>
-        <%= errors_for(@expert_registration, :name) %>
+        <%= errors_for(object, :name) %>
 
       </div>
       <div class="large-6 columns">
         <%= f.label :email, "Email *" %>
-        <%= f.text_field :email, placeholder: "indi@outtrippin.com" %>
-        <%= errors_for(@expert_registration, :email) %>
+        <%= f.text_field :email, placeholder: "indi@outtrippin.com", value: object.email %>
+        <%= errors_for(object, :email) %>
       </div>
     </div>
     <div class="row">
@@ -35,15 +35,15 @@
 
     <div class="row">
       <div class="large-12 columns">
-        <% if @expert_registration.errors[:style].empty? %>
+        <% if object.errors[:style].empty? %>
         <%= f.label :style, "What is your style of travel? *" %>
         <% else %>
-        <%= f.label :style, "What is your style of travel? (#{@expert_registration.errors[:style][0]})" %>
+        <%= f.label :style, "What is your style of travel? (#{object.errors[:style][0]})" %>
         <% end %>
         <%= f.fields_for :style do |styles| %>
           <ul class="small-block-grid-1 large-block-grid-3">
             <% @styles.each do |k,v| %>
-              <li><%= styles.check_box k, checked: (@expert_registration.style.blank? ? false : (@expert_registration.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox"%></li>
+              <li><%= styles.check_box k, checked: (object.style.blank? ? false : (object.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox"%></li>
             <% end %>
           </ul>
         <% end %>
@@ -54,7 +54,7 @@
       <div class="large-6 columns">
         <%= f.label :website, "Your Website *" %>
         <%= f.text_field :website, placeholder: "indianajune.com" %>
-        <%= errors_for(@expert_registration, :website) %>
+        <%= errors_for(object, :website) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>
@@ -78,10 +78,10 @@
       <div class="large-6 columns">
         <%= f.label :countries, "List your specialty countries *" %>
         <%= f.text_field :countries, value: "", class: "location-autocomplete add-to-list" %>
-        <%= errors_for(@expert_registration, :countries) %>
-        <ul class="inline-list sans expert_registration_countries">
-          <% unless @expert_registration.countries.blank? %>
-            <% @expert_registration.countries.each do |c| %>
+        <%= errors_for(object, :countries) %>
+        <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_countries">
+          <% unless object.countries.blank? %>
+            <% object.countries.each do |c| %>
             <li><%= c %><a class="delete" href="#"></a></li>
             <% end %>
           <% end %>
@@ -90,10 +90,10 @@
       <div class="large-6 columns">
         <%= f.label :cities, "List your speciality cities *" %>
         <%= f.text_field :cities, value: "", class: "location-autocomplete add-to-list" %>
-        <%= errors_for(@expert_registration, :cities) %>
-        <ul class="inline-list sans expert_registration_cities">
-          <% unless @expert_registration.cities.blank? %>
-            <% @expert_registration.cities.each do |c| %>
+        <%= errors_for(object, :cities) %>
+        <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_cities">
+          <% unless object.cities.blank? %>
+            <% object.cities.each do |c| %>
             <li><%= c %><a class="delete" href="#"><%= image_tag 'delete.png'%></a></li>
             <% end %>
           <% end %>
@@ -115,33 +115,38 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="large-6 columns">
-        <%= f.label :password, "Create Password *" %>
-        <%= f.password_field :password, placeholder: "Your password" %>
-        <%= errors_for(@expert_registration, :password) %>
+    <% unless edit %>
+      <div class="row">
+        <div class="large-6 columns">
+          <%= f.label :password, "Create Password *" %>
+          <%= f.password_field :password, placeholder: "Your password" %>
+          <%= errors_for(object, :password) %>
+        </div>
+        <div class="large-6 columns">
+          <%= f.label :password_confirmation, "Confirm Password *" %>
+          <%= f.password_field :password_confirmation, placeholder: "Your password again" %>
+          <%= errors_for(object, :password_confirmation) %>
+        </div>
       </div>
-      <div class="large-6 columns">
-        <%= f.label :password_confirmation, "Confirm Password *" %>
-        <%= f.password_field :password_confirmation, placeholder: "Your password again" %>
-        <%= errors_for(@expert_registration, :password_confirmation) %>
-      </div>
-    </div>
 
-    <div class="row">
-      <div class="large-12 columns">
-        <%= f.label :avatar, "Add a profile picture" %>
-        <%= f.file_field :avatar, class: "inline" %>
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :avatar, "Add a profile picture" %>
+          <%= f.file_field :avatar, class: "inline" %>
+        </div>
       </div>
-    </div>
-
+    <% end %>
     <br />
     <br />
 
     <div class="row">
       <div class="large-3 small-12 columns">
-        <%= f.submit "Sign up", class: "button expand radius " %>
+        <%= f.submit (edit ? "Update Profile" : "Sign up"), class: "button expand radius " %>
       </div>
+      <div class="large-3 small-12 columns">
+        <%= link_to "Cancel", user_path, class: "secondary button expand radius " %>
+      </div>
+      <div class="large-6 small-12 columns"></div>
     </div>
 
     <% end %>
