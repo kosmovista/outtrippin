@@ -30,7 +30,7 @@
 
   <div class="large-8 columns">
     <% unless @user.expert_info[:style].blank? %>
-    <ul class="inline-list skill-list">
+    <ul class="inline-list">
       <% @user.expert_info[:style].each do |s| %>
         <li><span class="label light round"><%= s %></span></li>
       <% end %>
@@ -44,7 +44,7 @@
     <p><%= @user.expert_info[:travel_hack] %></p>
 
     <h2 class="subheader">My Places</h2>
-    <ul class="inline-list skill-list">
+    <ul class="inline-list">
       <% unless @user.expert_info[:countries].blank? %>
         <% @user.expert_info[:countries].each do |c| %>
           <li><span class="label light round"><%= c %></span></li>
