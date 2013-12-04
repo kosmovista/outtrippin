@@ -140,16 +140,12 @@
     <br />
 
     <div class="row">
-      <div class="large-3 small-12 columns">
-        <%= f.submit (edit ? "Update Profile" : "Sign up"), class: "button expand radius " %>
+      <div class="large-12 small-12 columns">
+        <%= f.submit (edit ? "Update Profile" : "Sign up"), class: "button radius " %>
+        <%= link_to "Cancel", user_path, class: "secondary small button radius " if edit %>
       </div>
-      <div class="large-3 small-12 columns">
-        <%= link_to "Cancel", user_path, class: "secondary button expand radius " if edit %>
-      </div>
-      <div class="large-6 small-12 columns"></div>
-    </div>
-
     <% end %>
+    </div>
   </div>
 </div>
 

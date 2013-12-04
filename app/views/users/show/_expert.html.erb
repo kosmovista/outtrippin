@@ -1,59 +1,61 @@
 <div class="expert-cover">
+  <div class="overlay"></div>
   <div class="avatar-container">
     <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
     <%= form_tag user_update_avatar_path(@user), method: :put, id: "update-avatar", multipart: true do %>
-      <%= label_tag "", class: "input-file" do %>
-        <p>Change</p>
+      <%= label_tag "", class: "input-file", title: "Change Profile Picture" do %>
         <%= file_field_tag :avatar %>
       <% end %>
     <% end %>
   </div>
-  <h1 class="white" style="margin-bottom:10px"><%= @user.name %></h1>
-  <hr style="border:2px solid #fff;width:60px;margin:0 auto 10px auto" />
-  <p class="white"><%= @user.expert_info[:bio] %></p>
+  <div class="large-6 small-12 large-centered columns">
+    <h1 class="white" style="margin-bottom:10px; margin-top:20px"><%= @user.name %></h1>
+    <hr style="border:2px solid #fff;width:60px;margin:0 auto 20px auto" />
+    <h5 class="white subheader serif text-center" style="margin-bottom:20px"><em><%= @user.expert_info[:bio] %></em></h5>
+    <%= link_to "Edit Profile", edit_user_path, class: "small radius button secondary" %>
+  </div>
 </div>
 
 <div class="row top">
-  <div class="large-4 columns">
-    <%= content_tag :p, @user.expert_info[:hometown], class: "geo hometown" unless @user.hometown.blank? %>
-    <%= content_tag :p, @user.expert_info[:location], class: "geo location" unless @user.location.blank? %>
-    <br />
-    <br />
+  <div class="large-4 small-12 columns">
+    <%= content_tag :p, @user.expert_info[:hometown], class: "sans geo hometown" unless @user.hometown.blank? %>
+    <%= content_tag :p, @user.expert_info[:location], class: "sans geo location" unless @user.location.blank? %>
     <%= link_to @user.website, "http://joaovalente.com", class: "www social", target: "_blank" unless @user.website.blank? %>
     <%= link_to @user.facebook, "http://#{@user.facebook}", class: "facebook social", target: "_blank" unless @user.facebook.blank? %>
     <%= link_to @user.twitter, "http://twitter.com/#{@user.twitter}", class: "twitter social", target: "_blank" unless @user.twitter.blank? %>
     <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
-    <br />
-    <br />
-    <%= link_to "Edit Profile", edit_user_path, class: "small button" %>
+    
   </div>
 
-  <div class="large-8 columns">
+  <div class="large-8 small-12 columns">
+    
+    
     <% unless @user.expert_info[:style].blank? %>
-    <ul class="inline-list">
+    <h5 class="subheader serif"><em>My Travel Interests</em></h2>
+    <ul class="sans skill-list">
       <% @user.expert_info[:style].each do |s| %>
-        <li><span class="label light round"><%= s %></span></li>
+        <li><%= s %></li>
       <% end %>
     </ul>
     <% end %>
 
-    <h2 class="subheader">My Story</h2>
+    <h5 class="subheader serif"><em>My Favorite Travel Story</em></h2>
     <p><%= @user.expert_info[:story] %></p>
 
-    <h2 class="subheader">My Best Travel Hack</h2>
+    <h5 class="subheader serif"><em>My Best Travel Hack</em></h2>
     <p><%= @user.expert_info[:travel_hack] %></p>
 
-    <h2 class="subheader">My Places</h2>
-    <ul class="inline-list">
+    <h5 class="subheader serif"><em>Where I've Been</em></h2>
+    <ul class="skill-list sans">
       <% unless @user.expert_info[:countries].blank? %>
         <% @user.expert_info[:countries].each do |c| %>
-          <li><span class="label light round"><%= c %></span></li>
+          <li><%= c %></li>
           <% end %>
       <% end %>
 
       <% unless @user.expert_info[:cities].blank? %>
         <% @user.expert_info[:cities].each do |c| %>
-          <li><span class="label light round"><%= c %></span></li>
+          <li><%= c %></li>
         <% end %>
       <% end %>
     </ul>

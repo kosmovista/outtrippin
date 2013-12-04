@@ -1,16 +1,27 @@
 .expert-cover {
-  padding-top: 30px;
+  padding-top:50px;
   width: 100%;
-  height: 400px;
+  height: 500px;
   background-image: image-url('glomads.jpg');
   background-size: cover;
   text-align: center;
 
+  .overlay {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    height: 500px;
+  }
+
   .avatar-container {
     position: relative;
     margin: 0 auto;
-    width: 180px;
-    height: 180px;
+    width: 130px;
+    height: 130px;
 
     img {
       position: absolute;
@@ -27,58 +38,54 @@
     form {
       cursor: hand;
       position: absolute;
-      top: 70%;
-      left: 45px;
       margin: 0;
+      width:100%;
+      height:100%;
       padding: 0;
-      width: 90px;
-      height: 30px;
       z-index: 2;
 
       label {
         height: inherit;
-
-        p, input[type="file"] {
-          position: absolute;
-          margin: 0;
-          padding: 0;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-        }
+        border-radius:90px;
+        box-shadow:none;
+        background-color: rgba(255,255,255,.85 );
       }
+
+      .input-file {
+          background-position: 50% 50%;
+        }
     }
   }
+  h5 {text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);}
+  h1 {text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);}
+  @media only screen and (max-width: 768px) { h5 {font-size:1em;} }
 }
 
-.expert-cover p {
-  margin: 0 auto;
-  width: 50%;
-}
+
 
 a.social {
-  line-height: 40px;
+  line-height: 35px;
   font-family: "calluna-sans", helvetica, sans-serif;
+  font-size:.8em;
   display: block;
   overflow: hidden;
-  height: 40px;
-  padding-left: 45px;
+  height: 35px;
+  padding-left: 35px;
   color: #4a4a4a;
 }
 
-.www { background: image-url('website.png') no-repeat; }
-.facebook { background: image-url('facebook.png') no-repeat; }
-.twitter { background: image-url('twitter.png') no-repeat; }
-.instagram { background: image-url('instagram.png') no-repeat; }
+.www { background: image-url('website.png') no-repeat 0 2px; background-size: 30px; }
+.facebook { background: image-url('facebook.png') no-repeat 0 2px; background-size:30px; }
+.twitter { background: image-url('twitter.png') no-repeat 0 2px; background-size:30px; }
+.instagram { background: image-url('instagram.png') no-repeat 0 2px; background-size:30px; }
 
 p.geo {
-  font-weight: bold;
   margin: 0;
-  height: 40px;
-  line-height: 40px;
-  padding-left: 45px;
+  line-height: 35px;
+  padding-left: 35px;
 }
 
-.hometown { background: image-url('home.png') no-repeat; }
-.location { background: image-url('location.png') no-repeat; }
+.hometown { background: image-url('home.png') no-repeat 0 2px; background-size: 30px; }
+.location { background: image-url('location.png') no-repeat 0 2px; background-size: 30px; }
+
+.container {margin-bottom:30px;}
