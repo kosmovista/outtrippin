@@ -94,7 +94,7 @@
         <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_cities">
           <% unless object.cities.blank? %>
             <% object.cities.each do |c| %>
-            <li><%= c %><a class="delete" href="#"><%= image_tag 'delete.png'%></a></li>
+            <li><%= c %><a class="delete" href="#"></a></li>
             <% end %>
           <% end %>
         </ul>
@@ -142,7 +142,7 @@
     <div class="row">
       <div class="large-12 small-12 columns">
         <%= f.submit (edit ? "Update Profile" : "Sign up"), class: "button radius " %>
-        <%= link_to "Cancel", user_path, class: "secondary small button radius " if edit %>
+        <%= link_to "or cancel", user_path, class: "secondary small button radius " if edit %>
       </div>
     <% end %>
     </div>
