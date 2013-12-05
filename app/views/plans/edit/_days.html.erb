@@ -1,0 +1,19 @@
+<h3>Day by day</h3>
+<div class="row">
+  <div class="large-12 columns">
+    <% @plan.days.each do |d| %>
+      <div class="day">
+        <h5><%= d["title"] %></h5>
+        <p><%= d["body"] %></p>
+      </div>
+    <% end %>
+
+    <%= form_tag add_day_itinerary_plan_path(@itinerary, @plan), method: :put do %>
+      <%= text_field_tag :title, nil, placeholder: "Title" %>
+      <%= text_area_tag :body, nil, placeholder: "Body", class: "medium-textarea" %>
+      <%= submit_tag :save, class: "small radius button" %>
+    <% end %>
+
+    <%= link_to "Add another day…", "#", id: 'add-day' %>
+  </div>
+</div>

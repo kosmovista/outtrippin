@@ -1,0 +1,30 @@
+<%= content_for :left_col do %>
+  <%= render 'itineraries/itinerary_left_col' %>
+<% end %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <p><strong>Welcome to the trip plan builder. A Trip plan is composed by there parts, as you can see bellow.</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <%= render 'plans/edit/pictures' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-4 columns">
+    <%= render 'plans/edit/tips_tricks' %>
+  </div>
+  <div class="large-8 columns">
+    <%= render 'plans/edit/days' %>
+  </div>
+</div>
+
+<% expanded_sidebar %>
+
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "itinerary_builder", media: "all", "data-turbolinks-track" => true %>
+<% end %>
