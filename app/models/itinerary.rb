@@ -44,6 +44,6 @@ class Itinerary < ActiveRecord::Base
 
   # PLANS
   def get_plan_from(user)
-    self.plans.where(user: user)
+    self.plans.where(user: user).first
   end
 end

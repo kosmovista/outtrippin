@@ -21,7 +21,11 @@ Outtrippin::Application.routes.draw do
         put 'winner'
       end
     end
-    resources 'plans'
+    resources 'plans' do
+      member do
+        put 'add_day'
+      end
+    end
   end
 
   get     'login'     => 'user_sessions#new'

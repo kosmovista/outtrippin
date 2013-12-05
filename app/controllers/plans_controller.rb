@@ -10,6 +10,10 @@ class PlansController < ApplicationController
     render 'edit'
   end
 
+  def add_day
+    ap params
+  end
+
   private
     def set_itinerary
       @itinerary = Itinerary.find(params[:itinerary_id])
