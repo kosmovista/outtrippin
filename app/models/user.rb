@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
 
   has_many :itineraries, dependent: :destroy, inverse_of: :user
   has_many :pictures
-  has_many :pitches, dependent: :destroy, inverse_of: :user
-
+  has_many :pitches, inverse_of: :user
+  has_many :plans, inverse_of: :user
 
   # ROLE MANAGER LOGIC
   def roles=(roles)

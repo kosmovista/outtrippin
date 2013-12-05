@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118161433) do
+ActiveRecord::Schema.define(version: 20131205121532) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -53,6 +53,11 @@ ActiveRecord::Schema.define(version: 20131118161433) do
     t.integer "pitch_id"
   end
 
+  create_table "pictures_plans", force: true do |t|
+    t.integer "picture_id"
+    t.integer "plan_id"
+  end
+
   create_table "pitches", force: true do |t|
     t.string   "title"
     t.text     "summary"
@@ -61,6 +66,17 @@ ActiveRecord::Schema.define(version: 20131118161433) do
     t.integer  "itinerary_id"
     t.boolean  "published"
     t.boolean  "winner"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plans", force: true do |t|
+    t.string   "title"
+    t.text     "days"
+    t.text     "tips_tricks"
+    t.boolean  "published"
+    t.integer  "user_id"
+    t.integer  "itinerary_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
