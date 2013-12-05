@@ -1,51 +1,55 @@
-<div class="expert-cover">
-  <div class="overlay"></div>
-  <div class="avatar-container">
-    <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
-    <%= form_tag user_update_avatar_path(@user), method: :put, id: "update-avatar", multipart: true do %>
-      <%= label_tag "", class: "input-file", title: "Change Profile Picture" do %>
-        <%= file_field_tag :avatar %>
-      <% end %>
+<div class="expert-cover"></div>
+<div class="avatar-container">
+  <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
+  <%= form_tag user_update_avatar_path(@user), method: :put, id: "update-avatar", multipart: true do %>
+    <%= label_tag "", class: "input-file", title: "Change Profile Picture" do %>
+      <%= file_field_tag :avatar %>
     <% end %>
+  <% end %>
+</div>
+<div class="large-6 small-12 small-centered text-center large-centered columns">
+  <h1 style="margin-bottom:0; margin-top:20px"><%= @user.name %></h1>
+  <em><%= link_to @user.website, target: "_blank" unless @user.website.blank? %></em>
+  <hr style="border:2px solid #4a4a4a; width:60px; margin:25px auto 20px auto" />
+  <h5 class="subheader serif text-center" style="margin-bottom:20px"><em><%= @user.expert_info[:bio] %></em></h5>
+  <%= link_to (image_tag "facebook.png", style: "width:40px"), @user.facebook, title: "Facebook",  target: '_blank' unless @user.facebook.blank? %>
+  <%= link_to (image_tag "twitter.png", style: "width:40px"), @user.twitter, title: "Twitter", target: '_blank' unless @user.twitter.blank? %>
+  <%= link_to (image_tag "instagram.png", style: "width:40px"), @user.instagram, title: "Instagram", target: '_blank' unless @user.instagram.blank? %>
+  <%= link_to (image_tag "edit_30.png"), edit_user_path, title: "Edit Profile" %>
+  <hr class="divider">
+</div>
+<div class="large-6 small-12 large-centered small-centered columns">
+  <div class="large-6 small-12 columns">
+    <%= content_tag :p, @user.expert_info[:hometown], class: "sans geo hometown" unless @user.hometown.blank? %>
   </div>
-  <div class="large-6 small-12 large-centered columns">
-    <h1 class="white" style="margin-bottom:10px; margin-top:20px"><%= @user.name %></h1>
-    <hr style="border:2px solid #fff;width:60px;margin:0 auto 20px auto" />
-    <h5 class="white subheader serif text-center" style="margin-bottom:20px"><em><%= @user.expert_info[:bio] %></em></h5>
-    <%= link_to "Edit Profile", edit_user_path, class: "small radius button secondary" %>
+  <div class="large-6 small-12 columns">
+    <%= content_tag :p, @user.expert_info[:hometown], class: "sans geo location" unless @user.hometown.blank? %>
   </div>
+  <hr class="divider">
 </div>
 
-<div class="row top">
-  <div class="large-4 small-12 columns">
-    <%= content_tag :p, @user.expert_info[:hometown], class: "sans geo hometown" unless @user.hometown.blank? %>
-    <%= content_tag :p, @user.expert_info[:location], class: "sans geo location" unless @user.location.blank? %>
-    <%= link_to @user.website, "http://joaovalente.com", class: "www social", target: "_blank" unless @user.website.blank? %>
-    <%= link_to @user.facebook, "http://#{@user.facebook}", class: "facebook social", target: "_blank" unless @user.facebook.blank? %>
-    <%= link_to @user.twitter, "http://twitter.com/#{@user.twitter}", class: "twitter social", target: "_blank" unless @user.twitter.blank? %>
-    <%= link_to @user.instagram, "http://instagram.com/#{@user.instagram}", class: "instagram social", target: "_blank" unless @user.instagram.blank?%>
-    
-  </div>
 
-  <div class="large-8 small-12 columns">
-    
-    
+<div class="large-6 large-centered small-centered small-12 columns">
+  <div class="break">
     <% unless @user.expert_info[:style].blank? %>
-    <h5 class="subheader serif"><em>My Travel Interests</em></h2>
+    <h4>When I travel, I'm really into</h4>
     <ul class="sans skill-list">
       <% @user.expert_info[:style].each do |s| %>
         <li><%= s %></li>
       <% end %>
     </ul>
     <% end %>
-
-    <h5 class="subheader serif"><em>My Favorite Travel Story</em></h2>
+  </div>
+  <div class="break">
+    <h4 >The one story about my travels that I love to tell</h4>
     <p><%= @user.expert_info[:story] %></p>
-
-    <h5 class="subheader serif"><em>My Best Travel Hack</em></h2>
+  </div>
+  <div class="break">
+    <h4>The best travel hack I've found after years of travel</h4>
     <p><%= @user.expert_info[:travel_hack] %></p>
-
-    <h5 class="subheader serif"><em>Where I've Been</em></h2>
+  </div>
+  <div class="break">
+    <h4>Where I've been traveling to</h4>
     <ul class="skill-list sans">
       <% unless @user.expert_info[:countries].blank? %>
         <% @user.expert_info[:countries].each do |c| %>
