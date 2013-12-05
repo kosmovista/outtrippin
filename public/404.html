@@ -2,57 +2,41 @@
 <html>
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
+  <link data-turbolinks-track="true" href="/assets/application.css" media="all" rel="stylesheet">
+  <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <style>
   body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
+    background: url('/assets/404.jpg') no-repeat center center fixed; ;
+    background-size: cover;
+    background-repeat: no-repeat no-repeat;
   }
+  .logo {
+    background: url('/assets/o-color.png');
+    background-size: 40px;
+    position:absolute;
+    top:30px;
+    left:30px;
+  }
+  #overlay {background-color: rgba(0,0,0,.35)}
 
-  div.dialog {
-    width: 25em;
-    margin: 4em auto 0 auto;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 4em 0 4em;
-  }
-
-  h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  body > p {
-    width: 33em;
-    margin: 0 auto 1em;
-    padding: 1em 0;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow:0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+  
   </style>
 </head>
 
 <body>
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <h1>The page you were looking for doesn't exist.</h1>
-    <p>You may have mistyped the address or the page may have moved.</p>
+  <div id="overlay"></div>
+  <div class="logo"></div>
+  <div class="row">
+    <div class="large-9 small-12 columns" style="margin-top:100px;">
+    <h1 class="white no-margin no-padding">Not all those who wander are lost...</h1>
+    <h4 class="white no-margin no-padding subheader">...but in this case, you just might be. So sorry, but nothing exists here.</h4>
+    <p class="white" style="margin-top:50px; margin-bottom:50px">It might be a mistyped address.<br>
+    It might be a missing page.<br>
+    ...Or, it might be the universe's way of asking you to slow down and enjoy journey of life, wrong turns and all.</p>
+    <h5 class="white serif subheader"><em>Why don't we head back to our <a href="/" class="white" style="text-decoration:underline;">homepage</a> to explore some of the amazing trips that travelers have created on OutTrippin.<em></h5>
   </div>
-  <p>If you are the application owner check the logs for more information.</p>
+</div>
 </body>
 </html>
