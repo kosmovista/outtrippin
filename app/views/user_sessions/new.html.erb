@@ -14,6 +14,7 @@
           <%= f.password_field :password, placeholder: "Password" %>
           <%= errors_for(@user_session, :password) %>
 
+          <%= f.hidden_field @redir_key, value: @redir_value, name: "#{@redir_key}" %>
 
           <%= f.submit "Go", class: "button radius expand" %>
           <% end %>
