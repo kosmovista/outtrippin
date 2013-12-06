@@ -43,7 +43,7 @@
         <%= f.fields_for :style do |styles| %>
           <ul class="small-block-grid-1 large-block-grid-3">
             <% @styles.each do |k,v| %>
-              <li><%= styles.check_box k, checked: (object.style.blank? ? false : (object.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox"%></li>
+              <li><%= styles.check_box k, checked: (object.style.blank? ? false : (object.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox" %></li>
             <% end %>
           </ul>
         <% end %>
@@ -133,6 +133,13 @@
         <div class="large-12 columns">
           <%= f.label :avatar, "Add a profile picture" %>
           <%= f.file_field :avatar, class: "inline" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :terms_of_use, "Terms of use *" %>
+          <%= f.check_box :terms_of_use %><span>You can find the terms of use <%= link_to "here.", page_path('terms_of_use'), target: "_blank" %></span>
         </div>
       </div>
     <% end %>

@@ -2,7 +2,7 @@ class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles, only: [:details, :update]
-  before_action :authorize_user, only: [:index, :show] # TODO some more actions should be here
+  before_action :authorize_user, only: [:index] # TODO some more actions should be here
 
   def index
     @itineraries = current_user.itineraries
@@ -37,7 +37,12 @@ class ItinerariesController < ApplicationController
   def publish
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
     if @itinerary_finalize.save
-      redirect_to itinerary_path(@itinerary)
+      if !current_user
+        flash[:notice] = "you have to login"
+        redirect_to login_path(itinerary: @itinerary)
+      else
+        redirect_to itinerary_path(@itinerary)
+      end
     else
       render 'finalize'
     end
