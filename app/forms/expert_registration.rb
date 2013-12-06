@@ -6,7 +6,7 @@ class ExpertRegistration
     false
   end
 
-  ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :instagram, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack ]
+  ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :instagram, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack, :terms_of_use]
 
   attr_accessor *ATTRIBUTES
 
@@ -27,6 +27,7 @@ class ExpertRegistration
     errors[:cities] = "Enter at least one city" if cities.empty?
     errors[:countries] = "Enter at least one country" if countries.empty?
     errors[:style] = "Select at least one style" if style.empty?
+    errors[:terms_of_use] = "You must accept the terms of use" if terms_of_use == "0"
   end
 
 
@@ -57,7 +58,8 @@ class ExpertRegistration
       instagram:    instagram,
       hometown:     hometown,
       current_location: current_location,
-      story:        story
+      story:        story,
+      terms_of_use: terms_of_use
     })
     return @user
   end
