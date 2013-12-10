@@ -1,5 +1,4 @@
 <div id="sidebar">
-	<%= image_tag "o-color.png", style: "height: 40px; margin-bottom: 20px;" %>
   <%= content_tag(:h5, (@itinerary.extra_info[:name].blank? ? "Trip Overview" : @itinerary.extra_info[:name])) %>
   <%= content_tag(:p, ("<strong>Destination:</strong> " + @itinerary.destination).html_safe) unless @itinerary.destination.blank? %>
   <%= content_tag(:p, ("<strong>Travelers:</strong> " + @itinerary.extra_info[:travelers]).html_safe) unless @itinerary.extra_info[:travelers].blank? %>

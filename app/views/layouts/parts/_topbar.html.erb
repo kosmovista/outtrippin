@@ -1,13 +1,6 @@
 <nav class="top-bar">
   <ul class="title-area">
-    <li class="sidebar-icon hide-for-medium-up"> <a href="#" class="toggle-sidebar" title="Show Trip Overview"><%= image_tag "compass.png" %></a>
-    </li>
-    <li class="name text-center">
-      <%= link_to root_url do %>
-        <%= image_tag (defined?(@white_topbar).nil? ? 'logo-white.png' : 'OutTrippin-logo.png'), style: "margin-top:21px; height:35px;" %>
-      <% end %>
-      <small class="<%= (defined?(@white_topbar).nil? ? 'white' : 'primary') %>"><em class="hide-for-small">BETA</em></small>
-    </li>
+    <li class="name"></li>
     <li class="toggle-topbar menu-icon"><a href=""><span></span></a></li>
   </ul>
 
@@ -15,3 +8,13 @@
     <%= render 'layouts/parts/topbar/right_menu' %>
   </section>
 </nav>
+
+<div class="top-logo">
+   <% if @itinerary.nil? %>
+    <a href="/" title="OutTrippin Home">
+    <% else %>
+    <a href="#" class="toggle-sidebar" title="Show Trip Overview">
+    <% end %>
+    <%= image_tag (defined?(@white_topbar).nil? ? 'o-white.png' : 'o-color.png'), style: "height:35px;" %></a>
+
+</div>

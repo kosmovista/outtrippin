@@ -7,7 +7,7 @@
 @import "footer";
 @import "sidebar";
 
-div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
+div.container { padding-top: 100px; margin-bottom: 30px; position: relative; }
 
 .hold {
   display: none;
@@ -49,7 +49,6 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 .step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
 
-.top-bar {z-index:999!important;}
 
 @media only screen and (min-width: 768px) {
   #personal h4 {
