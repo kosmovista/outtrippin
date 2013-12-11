@@ -82,7 +82,7 @@ class User < ActiveRecord::Base
   end
 
   def location
-    self.expert_info[:location]
+    self.expert_info[:current_location]
   end
 
   def geo_expertise
