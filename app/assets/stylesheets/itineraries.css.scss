@@ -87,13 +87,14 @@ div.container { padding-top: 100px; margin-bottom: 30px; position: relative; }
 
 .pitch-imgs .orbit-bullets {
   margin: 0 10px;
-  top: -20px;
+  top: 330px;
   z-index: 99;
   cursor:pointer;
 }
 
 .pitch-imgs .orbit-container {
   border-radius: 4px;
+  height:350px;
 }
 
 .pitch-imgs .orbit-container .orbit-slides-container img {

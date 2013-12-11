@@ -29,10 +29,10 @@
       <% end %>
     </ul>
     <% end %>
-
+    
     <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
     <p><%= pitch.why_me %></p>
-
+    <div class="pitches">
     <h3 class="primary"><%= pitch.title %></h3>
     <% unless pitch.pictures.empty? %>
     <div class="pitch-imgs">
@@ -46,7 +46,7 @@
     </div>
     <% end %>
     <p><%= pitch.summary %></p>
-
+  </div>
   </div>
   <hr>
 </div>

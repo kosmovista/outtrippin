@@ -77,3 +77,10 @@
   transition: all 0.10s linear;
 }
 
+.pitches {
+  display:none;
+}
+
+.pitches.showall {
+  display:block;
+}
