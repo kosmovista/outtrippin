@@ -1,6 +1,6 @@
-<div class="row" style="margin-top:20px">
+<div class="row" style="margin-top:40px">
   <div id="personal" class="large-2 small-12 columns">
-    <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:100px;" %>
+    <%= image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:90px;" %>
     <h4 class="no-margin no-padding"><%= pitch.user.personal_info[:name] %></h4>
     <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.facebook.blank? %></em></small></p>
     <div class="large-5 hide-for-small no-padding no-margin right columns">
@@ -9,7 +9,9 @@
     <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "small button radius" if current_user.is?("expert") %>
     <%= button_to "Pick Expert!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "small button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
   </div>
-
+  <div class="large-8 small-12 columns">
+    <h3><%= pitch.title %></h3>
+  </div>
   <div class="large-5 small-12 columns">
     <h5 class="subheader serif"><em>My travel interests:</em></h5>
   </div>
@@ -21,7 +23,7 @@
     <%= link_to (image_tag "instagram.png", style: "width:30px"), expert_info_instagram_url(pitch.user.instagram), target: '_blank' unless pitch.user.instagram.blank? %>
   </div>
 
-  <div class="large-8 small-12 left columns">
+  <div class="large-8 small-12 left columns details">
     <% unless pitch.user.expert_info[:style].blank? %>
     <ul class="sans skill-list">
       <% pitch.user.expert_info[:style].each do |s| %>
@@ -33,7 +35,7 @@
     <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
     <p><%= pitch.why_me %></p>
     <div class="pitches">
-    <h3 class="primary"><%= pitch.title %></h3>
+    <h5 class="subheader serif"><em>And I think you're going to love the trip I had in mind</em></h5>
     <% unless pitch.pictures.empty? %>
     <div class="pitch-imgs">
       <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
@@ -48,5 +50,7 @@
     <p><%= pitch.summary %></p>
   </div>
   </div>
-  <hr>
+  <div class="large-8 small-12 large-centered columns">
+      <hr>
+    </div>
 </div>

@@ -1,11 +1,37 @@
+<% expanded_sidebar %>
 <% if @pitch.blank? %>
+<div class="row">
+  <div class="small-12 small-centered columns">
+    <h2 class="white text-center">Trip to <%= @itinerary.destination %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+        <hr class="white">
+      </div>
+    <h5 class="white serif subheader text-center"><em>Wanna help <%= @itinerary.extra_info[:travelers] %> plan their trip? Game on, we've taken the liberty of adding a few details from your profile so you can simply edit and send!</em></h5>
+  </div>
+</div>
+</div class="header">
+<div class="tabs"></div>
+</div class="cover">
   <div class="large-4 large-centered columns">
     <br/>    <br/>    <br/>
     <%= link_to "Submit Pitch", new_itinerary_pitch_path(@itinerary), class: "button radius expand" %>
   </div>
 <% else %>
-  <%= render @pitch %>
+<div class="row">
+  <div class="small-12 small-centered columns">
+    <h2 class="white text-center">Trip to <%= @itinerary.destination %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+        <hr class="white">
+      </div>
+    <h5 class="white serif subheader text-center"><em>Thanks for offering <%= @itinerary.extra_info[:travelers] %> to help plan their trip! They're checking it out and we'll keep you updated on how it goes. In the meantime, you can still edit your offer if you'd like to.</em></h5>
+  </div>
+</div>
+</div class="header">
+<div class="tabs"></div>
+</div class="cover">
+<div class="row">
+  <div class="large-11 large-centered small-12 columns">
+  	<%= render @pitch %>
+  </div>
+</div>
 <% end %>
-
-
-<% expanded_sidebar %>
