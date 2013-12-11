@@ -3,7 +3,7 @@
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
-
+<div class="large-11 large-centered columns">
 <div class="hold">
   <%= image_tag "loading_black.gif", id: "loading" %><br/><br/>
   <p class="primary sans">Please hold a few seconds while we process your payment.</p>
@@ -84,6 +84,7 @@
   <div class="large-7 columns">
     <h6 class="subheader"><%= button_to "Hire Expert", purchase_itinerary_path, method: :put, class: "button radius", id: "checkout-btn" %> <small>Final Checkout Price: <%= number_to_currency(@itinerary.price) %></small></h6>
   </div>
+</div>
 </div>
 
 <script src="https://checkout.stripe.com/v2/checkout.js"></script>
