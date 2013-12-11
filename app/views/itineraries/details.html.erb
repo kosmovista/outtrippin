@@ -1,55 +1,57 @@
 <% set_page_title("Trip to " + @itinerary.destination + " - OutTrippin") %>
-<div class="large-11 large-centered columns">
 <div class="row">
-  <div class="large-12 columns">
-    <%= render 'steps', step: 'describe', disable: %w() %>
-    <h3 class="text-center primary">Hi gorgeous, let's talk about the fun stuff first!</h3>
-    <div class="large-4 large-centered small-12 columns">
-      <hr>
+  <div class="large-11 large-centered columns">
+    <div class="row">
+      <div class="large-12 columns">
+        <%= render 'steps', step: 'describe', disable: %w() %>
+        <h3 class="text-center primary">Hi gorgeous, let's talk about the fun stuff first!</h3>
+        <div class="large-4 large-centered small-12 columns">
+          <hr>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
-<div class="row">
-  <div class="large-6 small-12 columns">
-    <%= f.label :departure, "When are you thinking about going?" %>
-  </div>
-  <div class="large-6 small-12 columns">
-    <%= f.select :departure, options_for_select(get_date_options(12)) %>
-  </div>
-</div>
+    <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
+    <div class="row">
+      <div class="large-6 small-12 columns">
+        <%= f.label :departure, "When are you thinking about going?" %>
+      </div>
+      <div class="large-6 small-12 columns">
+        <%= f.select :departure, options_for_select(get_date_options(12)) %>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="large-6 small-12 columns">
-    <%= f.label :duration, "How many days were you thinking?" %>
-  </div>
-  <div class="large-6 small-12 columns">
-    <%= f.select :duration, options_for_select(("3".."20").to_a) %>
-  </div>
-</div>
+    <div class="row">
+      <div class="large-6 small-12 columns">
+        <%= f.label :duration, "How many days were you thinking?" %>
+      </div>
+      <div class="large-6 small-12 columns">
+        <%= f.select :duration, options_for_select(("3".."20").to_a) %>
+      </div>
+    </div>
 
-<div class="row">
-  <div class="large-12 small-12 columns">
-    <% if @itinerary_details.errors[:style].empty? %>
-    <%= f.label :style, "What is your style of travel? *" %>
-    <% else %>
-    <%= f.label :style, "What is your style of travel? (#{@itinerary_details.errors[:style][0]})" %>
+    <div class="row">
+      <div class="large-12 small-12 columns">
+        <% if @itinerary_details.errors[:style].empty? %>
+        <%= f.label :style, "What is your style of travel? *" %>
+        <% else %>
+        <%= f.label :style, "What is your style of travel? (#{@itinerary_details.errors[:style][0]})" %>
+        <% end %>
+        <%= f.fields_for :style do |styles| %>
+        <ul class="small-block-grid-1 large-block-grid-3">
+          <% @styles.each do |k,v| %>
+          <li><%= styles.check_box k, checked: (@itinerary_details.style.blank? ? false : (@itinerary_details.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox" %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-2 small-12 large-offset-10 columns">
+        <%= f.submit "Next", class: "radius expand button right" %>
+      </div>
+    </div>
     <% end %>
-    <%= f.fields_for :style do |styles| %>
-    <ul class="small-block-grid-1 large-block-grid-3">
-      <% @styles.each do |k,v| %>
-      <li><%= styles.check_box k, checked: (@itinerary_details.style.blank? ? false : (@itinerary_details.style.include?(k) ? true : false)) %><%= styles.label k, class: "cbox" %></li>
-      <% end %>
-    </ul>
-    <% end %>
   </div>
-</div>
-
-<div class="row">
-  <div class="large-2 small-12 large-offset-10 columns">
-    <%= f.submit "Next", class: "radius expand button right" %>
-  </div>
-</div>
-<% end %>
 </div>
