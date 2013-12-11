@@ -2,7 +2,7 @@
 <% if @pitch.blank? %>
 <div class="row">
   <div class="small-12 small-centered columns">
-    <h2 class="white text-center">Trip to <%= @itinerary.destination %></h2>
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
         <hr class="white">
       </div>
@@ -19,7 +19,7 @@
 <% else %>
 <div class="row">
   <div class="small-12 small-centered columns">
-    <h2 class="white text-center">Trip to <%= @itinerary.destination %></h2>
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
         <hr class="white">
       </div>

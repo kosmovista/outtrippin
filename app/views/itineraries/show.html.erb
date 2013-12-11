@@ -1,4 +1,4 @@
-<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip Overview - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
 
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
