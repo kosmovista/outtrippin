@@ -84,3 +84,17 @@
 .pitches.showall {
   display:block;
 }
+
+.hidePitch, .showPitch {
+  color: rgba(255,255,255,0.70);
+  font-weight: bold;
+}
+
+.hidePitch:hover, .showPitch:hover {
+  color: #fff;
+}
+
+.active {
+  color:#fff;
+  border-bottom: 1px #fff solid;
+}

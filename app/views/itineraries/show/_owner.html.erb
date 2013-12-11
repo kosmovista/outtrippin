@@ -14,10 +14,10 @@
       <div class="row tabs">
         <div class="large-8 large-centered text-center small-12 columns">
           <ul class="inline-list text-center no-margin sans">
-            <li><small><a href="#" class="white hidePitch"> AT A GLANCE </a></small></li>
-            <li><small><a href="#" class="white showPitch"> EXPAND ALL </a></small></li>
+            <li><a href="#" class="hidePitch active"><small> AT A GLANCE </small></a></li>
+            <li><a href="#" class="showPitch"><small> EXPAND ALL </small></a></li>
           </ul>
-            <hr style="margin-top:0;">
+          <hr class="white" style="margin-top:0;">
         </div>
       </div>
     </div>
@@ -31,29 +31,30 @@
 </div>
 
   <% elsif !@pitches.blank? %>
-  <div class="row">
-    <div class="large-12 text-center small-12 columns">
-      <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
-      <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-      <div class="large-1 hide-for-small large-centered columns">
-        <hr class="white">
-      </div>
-      <h5 class="white subheader serif"><em><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts have" : "expert has" %> offered to help plan your trip. Who's your favorite?</em><h5>
+<div class="row">
+  <div class="large-12 text-center small-12 columns">
+    <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+      <hr class="white">
     </div>
+    <h5 class="white subheader serif"><em><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts have" : "expert has" %> offered to help plan your trip. Who's your favorite?</em><h5>
   </div>
-  </div class="header">
-  <div class="row">
-    <div class="large-11 large-centered text-center small-12 columns">
+</div>
+</div class="header">
+<div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
     <div class="row tabs">
-    <div class="large-8 large-centered text-center small-12 columns">
-      <ul class="inline-list text-center no-margin sans">
-        <li><small><a href="#" class="white hidePitch"> AT A GLANCE </a></small></li>
-        <li><small><a href="#" class="white showPitch"> EXPAND ALL </a></small></li>
-      </ul>
-      <hr style="margin-top:0;">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul class="inline-list text-center no-margin sans">
+          <li><a href="#" class="hidePitch active"><small> AT A GLANCE </small></a></li>
+          <li><a href="#" class="showPitch"><small> EXPAND ALL </small></a></li>
+        </ul>
+        <hr class="white" style="margin-top:0;">
+      </div>
     </div>
   </div>
-  </div>
+</div>
 </div class="cover">
 
 <div class="row">

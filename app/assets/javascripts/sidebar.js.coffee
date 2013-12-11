@@ -9,9 +9,13 @@ window.hideSidebar = ->
 
 window.showPitch = ->
   $('.pitches').addClass("showall")
+  $('.showPitch').addClass("active")
+  $('.hidePitch').removeClass("active")
 
 window.hidePitch = ->
   $('.pitches').removeClass("showall")
+  $('.hidePitch').addClass("active")
+  $('.showPitch').removeClass("active")
 
 
 window.toogleSidebar = ->
