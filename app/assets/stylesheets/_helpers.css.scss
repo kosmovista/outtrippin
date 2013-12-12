@@ -56,7 +56,7 @@
 }
 
 .top-logo {
-  position:fixed;
+  position:absolute;
   top:10px;
   left:10px;
   height:45px;
@@ -68,6 +68,10 @@
 }
 
 @media only screen and (min-width: 940px) {
+.top-logo {
+  position:fixed;
+}
+
 .top-bar-section ul li { 
     margin-right:10px;
   }
