@@ -8,12 +8,16 @@ window.hideSidebar = ->
   $('#sidebar').removeClass("show")
 
 window.showPitch = ->
-  $('.pitches').addClass("showall")
+  $('.pitches').animate({
+        height: ['show', 'swing']
+    }, 1000, 'easeOutBounce');
   $('.showPitch').addClass("active")
   $('.hidePitch').removeClass("active")
 
 window.hidePitch = ->
-  $('.pitches').removeClass("showall")
+  $('.pitches').animate({
+        height: ['hide', 'swing']
+    }, 800, 'easeOutBounce');
   $('.hidePitch').addClass("active")
   $('.showPitch').removeClass("active")
 
