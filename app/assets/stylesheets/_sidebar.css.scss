@@ -12,13 +12,13 @@
   z-index:997;
   background-color: #f0f0f0;
   position: fixed;
-  transition: margin .7s ease-in;
+  transition: margin .5s ease-in;
   z-index: 999;
   p { font-size:.8em; margin-bottom:.5em; }
 }
 
 #sidebar.show {
-  transition: margin .7s ease-in;
+  transition: margin .5s ease-in;
   margin-left: 0;
 }
 
@@ -26,12 +26,12 @@
 // shrink container acoordingly
 .container {
   margin-left: 0;
-  transition: margin .7s ease-in;
+  transition: margin .5s ease-in;
 }
 
 .container.shrink {
   margin-left: 25%;
-  transition: margin .7s ease-in;
+  transition: margin .5s ease-in;
 }
 
 .pitches {
