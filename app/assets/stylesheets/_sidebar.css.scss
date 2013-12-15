@@ -15,11 +15,33 @@
   transition: margin .5s ease-in;
   z-index: 999;
   p { font-size:.8em; margin-bottom:.5em; }
+  #home {color:#a2a2a2; position: absolute; left:70px; top:20px;
+  a {color:#a2a2a2;}
+  }
 }
 
 #sidebar.show {
   transition: margin .5s ease-in;
   margin-left: 0;
+}
+
+.close {
+  top:0;
+  padding-left:5px;
+  position: absolute;
+  right:0;
+  height:100%;
+  width: 30px;
+  background-color: #f0f0f0;
+  h5 {color:#b5b5b5; bottom:0; position:absolute;}
+}
+
+.close:hover {
+  padding-left:0px;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  h5{ color:#a2a2a2; }
 }
 
 //
