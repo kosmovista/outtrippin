@@ -10,71 +10,28 @@
   margin-left: -25%;
   min-width:300px;
   z-index:997;
-  background-color: whitesmoke;
+  background-color: #f0f0f0;
   position: fixed;
-  display:none;
-  transition: margin-left 0.10s linear;
+  transition: margin .7s ease-in;
+  z-index: 999;
   p { font-size:.8em; margin-bottom:.5em; }
 }
 
 #sidebar.show {
-  display:block;
+  transition: margin .7s ease-in;
   margin-left: 0;
-  transition: margin-left 0.10s linear;
-}
-
-//
-// open and close buttons; should be refactored
-.open {
-  top:0;
-  left:0;
-  padding-top: 80px;
-  padding-left:15px;
-  position: fixed;
-  height:100%;
-  width: 40px;
-  background-color: #f0f0f0;
-  h5 {color:#b5b5b5; bottom:0; position:absolute;}
-}
-
-.open:hover {
-  width:45px;
-  padding-left:20px;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  h5{color:#a2a2a2;}
-}
-
-.close {
-  top:0;
-  padding-left:5px;
-  position: absolute;
-  right:0;
-  height:100%;
-  width: 30px;
-  background-color: whitesmoke;
-  h5 {color:#b5b5b5; bottom:0; position:absolute;}
-}
-
-.close:hover {
-  padding-left:0px;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  h5{ color:#a2a2a2; }
 }
 
 //
 // shrink container acoordingly
 .container {
   margin-left: 0;
-  transition: all 0.10s linear;
+  transition: margin .7s ease-in;
 }
 
 .container.shrink {
   margin-left: 25%;
-  transition: all 0.10s linear;
+  transition: margin .7s ease-in;
 }
 
 .pitches {
@@ -97,4 +54,7 @@
 .active {
   color:#fff;
   border-bottom: 1px #fff solid;
+   -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
 }
