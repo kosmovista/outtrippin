@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html class="ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>    <html class="ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" ng-app="planApp"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Uncomment to make IE8 render like IE7 -->
+  <!-- <meta http-equiv="X-UA-Compatible" content="IE=7" /> -->
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
+
+  <title><%= content_for?(:title) ? yield(:title) : "Welcome to OutTrippin!" %></title>
+
+  <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+  <%= javascript_include_tag "angular.min.js" %>
+  <%= javascript_include_tag "angular-resource.min.js" %>
+  <%= javascript_include_tag "angular/services.js" %>
+  <%= javascript_include_tag "angular/controllers.js" %>
+  <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <%= csrf_meta_tags %>
+
+  <%= yield :head %>
+</head>
+
+<body ng-controller="PlanCtrl">
+  <%= render 'layouts/parts/topbar' %>
+  <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
+
+  <div class="container">
+
+    <% unless @itinerary.nil? %>
+      <a href="#" class="toggle-sidebar open hide-for-small" title="Show Trip Overview">
+        <h5>&#9656;</h5>
+      </a>
+    <% end %>
+
+    <div class="row">
+      <div class="large-11 large-centered columns">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+
+  <%= javascript_include_tag "itinerary_builder", "data-turbolinks-track" => true %>
+  <%= yield :body %>
+</body>
+</html>

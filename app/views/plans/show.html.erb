@@ -1,0 +1,22 @@
+<ul class="days">
+  <li ng-repeat="day in plan.days" id="{{day.id}}">
+    <p ng-show="!editing"><strong>{{day.title}}</strong></p>
+    <p ng-show="!editing">{{day.body}}</p>
+    <button ng-click="editing = true" ng-show="!editing" class="small button">edit</button>
+
+    <form ng-show="editing" ng-submit="editing = false">
+      <input type="text" ng-model="day.title" />
+      <textarea class="medium-textarea" ng-model="day.body"></textarea>
+      <br/>
+      <button class="button" ng-click="update_day(day.id, day.title, day.body)">Save</button>
+    </form>
+    <button ng-click="editing = false" ng-show="editing">Cancel</button>
+    <button ng-show="editing" ng-click="delete_day(day.id)" class="small button">delete</button>
+  </li>
+</ul>
+
+<form>
+  <input type="text" ng-model="day.title"/>
+  <textarea class="medium-textarea" ng-model="day.body"></textarea>
+  <button ng-click="save_day()">SAVE</button>
+</form>
