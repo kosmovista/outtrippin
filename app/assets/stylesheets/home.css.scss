@@ -3,9 +3,9 @@
 #loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
 
 // LEFT AND RIGHT ARROWS
-.navigator { width: 42px; height: 64px; position: absolute; top: 50%; margin-top: -32px; }
-#left { background-image: image-url("left.png"); left: 10px; }
-#right { background-image: image-url("right.png"); right: 10px; }
+.navigator { width: 42px; height: 64px; position: absolute; z-index: 99; }
+#left { background-image: image-url("left.png"); left: 10px; bottom: 0px;}
+#right { background-image: image-url("right.png"); left: 45px; bottom: -1px; }
 #header { display: none; }
 
 
@@ -13,11 +13,10 @@
 div#destinations {
   position: relative;
   text-align: center;
-  margin-top: -20px;
-  height: 500px;
+  height: 550px;
   background-size: cover !important;
-  h1 { color: white; font-size:2.2em; font-weight: normal; padding-top: 80px; }
-  @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 50px; } }
+  h1 { color: white; font-size:2.2em; font-weight: normal; margin-top:0px; padding-top: 150px; }
+  @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 120px; } }
 }
 
 
@@ -28,6 +27,7 @@ div#destinations {
   position: absolute;
   bottom: 0;
   right: 0;
+  z-index: 98;
   h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 2px 2px rgba(0,0,0,0.4); }
   h5 { margin-bottom: 0; }
   p { line-height: 18px; font-size: 16px; }

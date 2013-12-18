@@ -3,47 +3,26 @@
 
 // sidebar column
 #sidebar {
-  padding: 20px 30px 30px 30px;
+  padding: 70px 30px 30px 30px;
   height: 100%;
   top:0;
   width: 25%;
   margin-left: -25%;
   min-width:300px;
   z-index:997;
-  background-color: whitesmoke;
+  background-color: #f0f0f0;
   position: fixed;
-  display:none;
-  transition: margin-left 0.10s linear;
+  transition: margin .5s ease-in;
+  z-index: 999;
   p { font-size:.8em; margin-bottom:.5em; }
+  #home {color:#a2a2a2; position: absolute; left:70px; top:20px;
+  a {color:#a2a2a2;}
+  }
 }
 
 #sidebar.show {
-  display:block;
+  transition: margin .5s ease-in;
   margin-left: 0;
-  transition: margin-left 0.10s linear;
-}
-
-//
-// open and close buttons; should be refactored
-.open {
-  top:0;
-  left:0;
-  padding-top: 80px;
-  padding-left:15px;
-  position: fixed;
-  height:100%;
-  width: 40px;
-  background-color: #f0f0f0;
-  h5 {color:#b5b5b5; bottom:0; position:absolute;}
-}
-
-.open:hover {
-  width:45px;
-  padding-left:20px;
-  -webkit-transition: all 0.15s ease-in-out;
-  -moz-transition: all 0.15s ease-in-out;
-  transition: all 0.15s ease-in-out;
-  h5{color:#a2a2a2;}
 }
 
 .close {
@@ -53,7 +32,7 @@
   right:0;
   height:100%;
   width: 30px;
-  background-color: whitesmoke;
+  background-color: #f0f0f0;
   h5 {color:#b5b5b5; bottom:0; position:absolute;}
 }
 
@@ -69,11 +48,35 @@
 // shrink container acoordingly
 .container {
   margin-left: 0;
-  transition: all 0.10s linear;
+  transition: margin .5s ease-in;
 }
 
 .container.shrink {
   margin-left: 25%;
-  transition: all 0.10s linear;
+  transition: margin .5s ease-in;
 }
 
+.pitches {
+  display:none;
+}
+
+.pitches.showall {
+  display:block;
+}
+
+.hidePitch, .showPitch {
+  color: rgba(255,255,255,0.70);
+  font-weight: bold;
+}
+
+.hidePitch:hover, .showPitch:hover {
+  color: #fff;
+}
+
+.active {
+  color:#fff;
+  border-bottom: 1px #fff solid;
+   -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+}

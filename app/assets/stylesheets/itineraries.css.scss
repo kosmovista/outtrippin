@@ -7,7 +7,7 @@
 @import "footer";
 @import "sidebar";
 
-div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
+div.container { margin-bottom: 30px; position: relative; }
 
 .hold {
   display: none;
@@ -49,7 +49,6 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 .step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
 
-.top-bar {z-index:999!important;}
 
 @media only screen and (min-width: 768px) {
   #personal h4 {
@@ -78,6 +77,7 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
     float: right;
     margin-right: -26%;
     margin-left: 30px;
+    margin-top:10px;
     width: 80%;
   }
 }
@@ -88,16 +88,39 @@ div.container { margin-top: 30px; margin-bottom: 30px; position: relative; }
 
 .pitch-imgs .orbit-bullets {
   margin: 0 10px;
-  top: -20px;
+  top: 330px;
   z-index: 99;
   cursor:pointer;
 }
 
 .pitch-imgs .orbit-container {
   border-radius: 4px;
+  height:350px;
 }
 
 .pitch-imgs .orbit-container .orbit-slides-container img {
   border-radius: 4px;
   height:350px;
 }
+
+.details {
+  padding-bottom: 20px;
+}
+
+.cover {
+  background-color: #4a4a4a;
+  top:0;
+  padding-top: 80px;
+  width: 100%;
+  height: 400px;
+  margin-bottom: 30px;
+  background-image: image-url('passport.jpg');
+  background-size: cover !important;
+  background-position: 50% 50%;
+  .header {height:280px;}
+  .tabs {height:50px; 
+    a {line-height: 1em;}
+  }
+}
+
+@media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:250px;} } }
