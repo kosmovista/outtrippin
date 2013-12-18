@@ -21,9 +21,12 @@ Outtrippin::Application.routes.draw do
         put 'winner'
       end
     end
-    resources 'plans' do
+    resource 'plan' do
       member do
-        put 'add_day'
+        put 'day', action: 'add_day'
+        post 'day/:day_id', action: 'update_day'
+        delete 'day/:day_id', action: 'delete_day'
+        # put 'add_picture'
       end
     end
   end
