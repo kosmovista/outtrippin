@@ -2,6 +2,7 @@ class PitchesController < ApplicationController
   layout 'itineraries'
 
   # should guarantee an EXPERT!
+  before_action :authorize_expert, except: [:winner]
   before_action :set_itinerary
   before_action :set_pitch, only: [:edit, :update, :winner]
 
@@ -32,6 +33,7 @@ class PitchesController < ApplicationController
   end
 
   def winner
+    # TODO verify that current_user owns the pitch
     @pitch.winner = true
     @pitch.save
 
