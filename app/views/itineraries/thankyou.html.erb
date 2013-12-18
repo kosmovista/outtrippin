@@ -1,14 +1,19 @@
-<%= content_for :left_col do %>
-  <h5>Your Trip, So Far:</h5>
-  <%= render 'itinerary_left_col' %>
-<% end %>
+<div class="row top">
+	<div class="large-11 large-centered columns">
+		<% set_page_title("Thanks for your payment! Trip to " + @itinerary.destination + " - OutTrippin") %>
+		<%= content_for :left_col do %>
+		  <h5>Your Trip, So Far:</h5>
+		  <%= render 'itinerary_left_col' %>
+		<% end %>
 
-<div class="row">
-  <div class="large-12 columns">
-    <h4 class="green">Thanks for your payment and welcome to honeymoon planning heaven!</h3>
-    <p>Now you can put your feet up and relax as our travel experts get to work designing your dream honeymoon experience.</p>
-    <p>Next you will receive an email from the OutTrippin team confirming your trip details and outlining the next steps in the process.</p>
-    <p>Exciting times!<br /> The OutTrippin team</p>
-    <%= link_to "Back to my Itinerary", itinerary_path(@itinerary), class: "button large" %>
-  </div>
+		<div class="row">
+		  <div class="large-12 columns">
+		    <h4 class="green">Thanks for your payment and welcome to honeymoon planning heaven!</h3>
+		    <p>Now you can put your feet up and relax as our travel experts get to work designing your dream honeymoon experience.</p>
+		    <p>Next you will receive an email from the OutTrippin team confirming your trip details and outlining the next steps in the process.</p>
+		    <p>Exciting times!<br /> The OutTrippin team</p>
+		    <%= link_to "Back to my Itinerary", itinerary_path(@itinerary), class: "button large" %>
+		  </div>
+		</div>
+	</div>
 </div>

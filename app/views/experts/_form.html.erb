@@ -139,7 +139,7 @@
       <div class="row">
         <div class="large-12 columns">
           <%= f.label :terms_of_use, "Terms of use *" %>
-          <%= f.check_box :terms_of_use %><span>You can find the terms of use <%= link_to "here.", page_path('terms_of_use'), target: "_blank" %></span>
+          <%= f.check_box :terms_of_use %><span>I agree to the <%= link_to "terms of use.", page_path('terms_of_use'), target: "_blank" %></span>
         </div>
       </div>
     <% end %>

@@ -33,8 +33,6 @@ class UserSessionsController < ApplicationController
 
     def build_redirection_path
       # TODO This may have to accomodate more than itineraries
-      ap "I'm here!"
-      ap redirect_params[:itinerary]
       return itinerary_path(redirect_params[:itinerary])
     end
 
