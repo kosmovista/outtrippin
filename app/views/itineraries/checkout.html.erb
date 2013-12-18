@@ -3,86 +3,89 @@
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
+<div class="row top">
+  <div class="large-11 large-centered columns">
+    <div class="hold">
+      <%= image_tag "loading_black.gif", id: "loading" %><br/><br/>
+      <p class="primary sans">Please hold a few seconds while we process your payment.</p>
+    </div>
 
-<div class="hold">
-  <%= image_tag "loading_black.gif", id: "loading" %><br/><br/>
-  <p class="primary sans">Please hold a few seconds while we process your payment.</p>
-</div>
+    <h3 class="primary">Trip Checkout</h3>
+    <div class="itinerary">
+      <% unless @itinerary.extra_info[:name].blank? %>
+        <div class="row">
+          <div class="large-4 columns">
+             <p><strong>Trip Name:</strong></p>
+          </div>
+          <div class="large-8 columns">
+            <p><%= @itinerary.extra_info[:name] %></p>
+          </div>
+        </div>
+      <% end %>
 
-<h3 class="primary">Trip Checkout</h3>
-<div class="itinerary">
-  <% unless @itinerary.extra_info[:name].blank? %>
+      <% unless @itinerary.extra_info[:travelers].blank? %>
+        <div class="row">
+          <div class="large-4 columns">
+             <p><strong>Travelers:</strong></p>
+          </div>
+          <div class="large-8 columns">
+            <p><%= @itinerary.extra_info[:travelers] %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <% unless @itinerary.duration.blank? %>
+        <div class="row">
+          <div class="large-4 columns">
+             <p><strong>Duration:</strong></p>
+          </div>
+          <div class="large-8 columns">
+            <p><%= @itinerary.duration + " " + (@itinerary.duration == 1 ? "day" : "days") %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <% unless @itinerary.extra_info[:budget].blank? %>
+        <div class="row">
+          <div class="large-4 columns">
+             <p><strong>Budget:</strong> <br />
+             <small><%= @itinerary.extra_info[:budget] %> per day</small></p>
+          </div>
+          <div class="large-8 columns">
+            <p><%= @itinerary.extra_info[:budget] %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="row">
+        <div class="large-4 columns">
+           <p><strong>Expert Planning Fee:</strong><br />
+           <small>$10 per vacation day x <%= @itinerary.duration %> days</small></p>
+        </div>
+        <div class="large-8 columns">
+          <p><%= number_to_currency(@itinerary.price) %></p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="large-4 columns">
+           <p><strong>Terms:</strong></p>
+        </div>
+        <div class="large-8 columns">
+          <ul>
+            <li>You will only be charged for the expert planning fee</li>
+            <li>OutTrippin will provide booking options as you add/remove components to your itinerary</li>
+            <li>We offer a 100% money-back guarantee if you're not satisfied (although we've never had to issue it!)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <div class="row">
-      <div class="large-4 columns">
-         <p><strong>Trip Name:</strong></p>
-      </div>
-      <div class="large-8 columns">
-        <p><%= @itinerary.extra_info[:name] %></p>
+      <div class="large-7 columns">
+        <h6 class="subheader"><%= button_to "Hire Expert", purchase_itinerary_path, method: :put, class: "button radius", id: "checkout-btn" %> <small>Final Checkout Price: <%= number_to_currency(@itinerary.price) %></small></h6>
       </div>
     </div>
-  <% end %>
-
-  <% unless @itinerary.extra_info[:travelers].blank? %>
-    <div class="row">
-      <div class="large-4 columns">
-         <p><strong>Travelers:</strong></p>
-      </div>
-      <div class="large-8 columns">
-        <p><%= @itinerary.extra_info[:travelers] %></p>
-      </div>
-    </div>
-  <% end %>
-
-  <% unless @itinerary.duration.blank? %>
-    <div class="row">
-      <div class="large-4 columns">
-         <p><strong>Duration:</strong></p>
-      </div>
-      <div class="large-8 columns">
-        <p><%= @itinerary.duration + " " + (@itinerary.duration == 1 ? "day" : "days") %></p>
-      </div>
-    </div>
-  <% end %>
-
-  <% unless @itinerary.extra_info[:budget].blank? %>
-    <div class="row">
-      <div class="large-4 columns">
-         <p><strong>Budget:</strong> <br />
-         <small><%= @itinerary.extra_info[:budget] %> per day</small></p>
-      </div>
-      <div class="large-8 columns">
-        <p><%= @itinerary.extra_info[:budget] %></p>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="row">
-    <div class="large-4 columns">
-       <p><strong>Expert Planning Fee:</strong><br />
-       <small>$10 per vacation day x <%= @itinerary.duration %> days</small></p>
-    </div>
-    <div class="large-8 columns">
-      <p><%= number_to_currency(@itinerary.price) %></p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-4 columns">
-       <p><strong>Terms:</strong></p>
-    </div>
-    <div class="large-8 columns">
-      <ul>
-        <li>You will only be charged for the expert planning fee</li>
-        <li>OutTrippin will provide booking options as you add/remove components to your itinerary</li>
-        <li>We offer a 100% money-back guarantee if you're not satisfied (although we've never had to issue it!)</li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="row">
-  <div class="large-7 columns">
-    <h6 class="subheader"><%= button_to "Hire Expert", purchase_itinerary_path, method: :put, class: "button radius", id: "checkout-btn" %> <small>Final Checkout Price: <%= number_to_currency(@itinerary.price) %></small></h6>
   </div>
 </div>
 
