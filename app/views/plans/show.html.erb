@@ -1,36 +1,61 @@
-<ul class="pictures">
+<!-- These br's should not be here -->
+<br />
+<br />
+<br />
+<!-- These br's should not be here -->
+
+<ul class="pictures small-block-grid-3">
   <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
     <img src="{{pic.thumb}}" />
     <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
   </li>
+  <li><input type="file" ng-file-select="onFileSelect($files)"></li>
 </ul>
 
-<br />
-<br />
-<br />
-<br />
-<input type="file" ng-file-select="onFileSelect($files)">
+<hr />
 
-
-<ul class="days">
+<ul class="days small-block-grid-1">
   <li ng-repeat="day in plan.days" id="{{day.id}}">
-    <p ng-show="!editing"><strong>{{day.title}}</strong></p>
-    <p ng-show="!editing">{{day.body}}</p>
-    <button ng-click="editing = true" ng-show="!editing" class="small button">edit</button>
+    <!-- DISPLAY TITLE AND EDIT BUTTON -->
+    <div ng-show="!editing">
+      <div class="row">
+        <div class="large-11 columns">
+          <p><strong>{{day.title}}</strong></p>
+        </div>
+        <div class="large-1 columns">
+          <button ng-click="editing = true" class="small button">edit</button>
+        </div>
+      </div>
 
-    <form ng-show="editing" ng-submit="editing = false">
-      <input type="text" ng-model="day.title" />
-      <textarea class="medium-textarea" ng-model="day.body"></textarea>
-      <br/>
-      <button class="button" ng-click="update_day(day.id, day.title, day.body)">Save</button>
+      <!-- DISPLAY TITLE AND EDIT BUTTON -->
+      <div class="row">
+        <div class="large-12 columns">
+          <p ng-show="!editing" ng-bind-html="day.body"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHILE EDITING -->
+    <div class="row" ng-show="editing">
+      <div class="large-12 columns">
+        <form ng-submit="editing = false">
+          <input type="text" ng-model="day.title" />
+          <div text-angular ng-model="day.body"></div>
+          <a href="" ng-click="update_day(day.id, day.title, day.body)">Save</a>
+          <a href="" ng-click="editing = false">Cancel</a>
+          <a href="" ng-click="delete_day(day.id)">delete</a>
+        </form>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    <hr />
+    <form>
+      <input type="text" ng-model="day.title"/>
+      <div text-angular ng-model="day.body"></div>
+      <button ng-click="save_day()">SAVE</button>
     </form>
-    <button ng-click="editing = false" ng-show="editing">Cancel</button>
-    <button ng-show="editing" ng-click="delete_day(day.id)" class="small button">delete</button>
   </li>
 </ul>
 
-<form>
-  <input type="text" ng-model="day.title"/>
-  <div text-angular ng-model="day.body"></div>
-  <button ng-click="save_day()">SAVE</button>
-</form>

@@ -1,8 +1,5 @@
 @import "foundation/foundation_and_overrides";
 
-.empty-panel {
-  @include panel();
-  border: 10px dashed gray;
-
-  border-radius: 10px;
+.editor-button {
+  @include button-base;
 }

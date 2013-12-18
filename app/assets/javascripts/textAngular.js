@@ -29,7 +29,8 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 	};
 	// Here we set up the global display defaults, make sure we don't overwrite any that the user may have already set.
 	$rootScope.textAngularOpts = deepExtend({
-		toolbar: [['h1', 'h2', 'h3', 'p', 'pre', 'quote'], ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'],['html', 'insertImage', 'insertLink', 'unlink']],
+		toolbar: [['h1', 'h2', 'h3', 'p']],
+//    , 'pre', 'quote'], ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'],['html', 'insertImage', 'insertLink', 'unlink']],
 		classes: {
 			focussed: "focussed",
 			toolbar: "btn-toolbar",
@@ -48,7 +49,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 	}
 	$rootScope.textAngularTools = deepExtend({
 		html: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'>Toggle HTML</button>",
+			display: "<a class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>Toggle HTML</a>",
 			action: function() {
 				// this variable in an action function referrs to the angular scope of the tool
 				var ht, _this = this;
@@ -66,28 +67,28 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		h1: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H1</button>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H1</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<H1>");
 			},
 			activeState: function() { return queryFormatBlockState('h1'); }
 		},
 		h2: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H2</button>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H2</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<H2>");
 			},
 			activeState: function() { return queryFormatBlockState('h2'); }
 		},
 		h3: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H3</button>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H3</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<H3>");
 			},
 			activeState: function() { return queryFormatBlockState('h3'); }
 		},
 		p: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'>P</button>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>P</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<P>");
 			},
@@ -220,7 +221,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		}
 	}, ($rootScope.textAngularTools != null)? $rootScope.textAngularTools : {});
-		
+
 	return {
 		require: '?ngModel',
 		scope: {},
@@ -254,10 +255,10 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			if (!!attrs.taToolbarActiveButtonClass)	scope.classes.toolbarButtonActive = attrs.taToolbarActiveButtonClass;
 			if (!!attrs.taTextEditorClass)			scope.classes.textEditor = attrs.taTextEditorClass;
 			if (!!attrs.taHtmlEditorClass)			scope.classes.htmlEditor = attrs.taHtmlEditorClass;
-			
+
 			var originalContents = element.html();
 			element.html(''); // clear the original content
-			
+
 			// Setup the HTML elements as variable references for use later
 			scope.displayElements = {
 				toolbar: angular.element("<div></div>"),
@@ -269,12 +270,12 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			element.append(scope.displayElements.toolbar);
 			element.append(scope.displayElements.text);
 			element.append(scope.displayElements.html);
-			
+
 			if(!!attrs.name){
 				scope.displayElements.forminput.attr('name', attrs.name);
 				element.append(scope.displayElements.forminput);
 			}
-			
+
 			if(!!attrs.taDisabled){
 				scope.displayElements.text.attr('ta-readonly', 'disabled');
 				scope.displayElements.html.attr('ta-readonly', 'disabled');
@@ -288,17 +289,17 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 					}
 				});
 			}
-			
+
 			// compile the scope with the text and html elements only - if we do this with the main element it causes a compile loop
 			$compile(scope.displayElements.text)(scope);
 			$compile(scope.displayElements.html)(scope);
-			
+
 			// add the classes manually last
 			element.addClass("ta-root");
 			scope.displayElements.toolbar.addClass("ta-toolbar " + scope.classes.toolbar);
 			scope.displayElements.text.addClass("ta-text ta-editor " + scope.classes.textEditor);
 			scope.displayElements.html.addClass("ta-html ta-editor " + scope.classes.textEditor);
-			
+
 			// note that focusout > focusin is called everytime we click a button
 			element.on('focusin', function(){ // cascades to displayElements.text and displayElements.html automatically.
 				element.addClass(scope.classes.focussed);
@@ -313,7 +314,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 					}
 				}, 0);
 			});
-			
+
 			scope.tools = {}; // Keep a reference for updating the active states later
 			// create the tools in the toolbar
 			for (var _i = 0; _i < scope.toolbar.length; _i++) {
@@ -343,7 +344,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				}
 				scope.displayElements.toolbar.append(groupElement); // append the group to the toolbar
 			}
-			
+
 			// changes to the model variable from outside the html/text inputs
 			if(attrs.ngModel){ // if no ngModel, then the only input is from inside text-angular
 				ngModel.$render = function() {
@@ -361,7 +362,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				scope.text = originalContents;
 				scope.html = originalContents;
 			}
-			
+
 			scope.$watch('text', function(newValue, oldValue){
 				scope.html = newValue;
 				if(attrs.ngModel) ngModel.$setViewValue(newValue);
@@ -372,7 +373,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				if(attrs.ngModel) ngModel.$setViewValue(newValue);
 				scope.displayElements.forminput.val(newValue);
 			});
-			
+
 			// the following is for applying the active states to the tools that support it
 			scope.bUpdateSelectedStyles = false;
 			// loop through all the tools polling their activeState function if it exists
@@ -427,7 +428,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				if(scope.taBind === 'html' && isContentEditable) result = result.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, '&');
 				return result;
 			};
-			
+
 			scope.$parent['updateTaBind' + scope.taBind] = function(){//used for updating when inserting wrapped elements
 				var compHtml = compileHtml();
 				var tempParsers = ngModel.$parsers;
@@ -436,14 +437,14 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				ngModel.$setViewValue(compHtml);
 				ngModel.$parsers = tempParsers;
 			};
-			
+
 			//this code is used to update the models when data is entered/deleted
 			if(isContentEditable){
 				element.on('keyup', function(e){
 					if(!isReadonly) ngModel.$setViewValue(compileHtml());
 				});
 			}
-			
+
 			ngModel.$parsers.push(function(value){
 				// all the code here takes the information from the above keyup function or any other time that the viewValue is updated and parses it for storage in the ngModel
 				if(ngModel.$oldViewValue === undefined) ngModel.$oldViewValue = value;
@@ -455,7 +456,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				ngModel.$oldViewValue = value;
 				return value;
 			});
-			
+
 			// changes to the model variable from outside the html/text inputs
 			ngModel.$render = function() {
 				if(ngModel.$viewValue === undefined) return;
@@ -474,7 +475,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 					else element.val(val); // only for input and textarea inputs
 				}else if(!isContentEditable) element.val(val); // only for input and textarea inputs
 			};
-			
+
 			if(!!attrs.taReadonly){
 				scope.$parent.$watch(attrs.taReadonly, function(newVal, oldVal){ // taReadonly only has an effect if the taBind element is an input or textarea or has contenteditable='true' on it. Otherwise it is readonly by default
 					if(oldVal === newVal) return;
