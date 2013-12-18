@@ -4,18 +4,9 @@ class PlansController < ApplicationController
 
   def show
     @plan = @itinerary.get_plan_from(current_user)
-    respond_to do |format|
-      format.html
-      format.json { render json: @plan }
-    end
-  end
-
-  def create
-    @plan = @itinerary.get_plan_from(current_user)
     if @plan.nil?
       @plan = @itinerary.plans.create(user: current_user)
     end
-    render 'edit'
   end
 
   def add_day

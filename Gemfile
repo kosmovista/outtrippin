@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
+# JSON responses
+gem 'rabl'
+
 # Static Pages
 gem 'high_voltage'
 
