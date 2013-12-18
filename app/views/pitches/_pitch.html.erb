@@ -2,7 +2,7 @@
   <div id="personal" class="large-2 small-12 columns">
     <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:90px;"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
     <h4 class="no-margin no-padding">  <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %></h4>
-    <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(pitch.user.website), "http://" + expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></small></p>
+    <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></small></p>
     <div class="large-5 hide-for-small no-padding no-margin right columns">
       <hr>
     </div>
@@ -20,10 +20,10 @@
 
   <div class="large-3 text-right hide-for-small columns">
 
-    <%= link_to (image_tag "facebook.png", style: "width:30px"),  expert_info_website_url(pitch.user.facebook), target: '_blank' unless pitch.user.facebook.blank? %>
+    <%= link_to (image_tag "facebook.png", style: "width:30px"), expert_info_website_url(pitch.user.facebook), target: '_blank' unless pitch.user.facebook.blank? %>
     <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(pitch.user.pinterest), target: '_blank' unless pitch.user.pinterest.blank? %>
     <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(pitch.user.twitter), target: '_blank' unless pitch.user.twitter.blank? %>
-    <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(pitch.user.instagram), target: '_blank' unless pitch.user.instagram.blank? %>
+    <%= link_to (image_tag "instagram.png", style: "width:30px"), expert_info_instagram_url(pitch.user.instagram), target: '_blank' unless pitch.user.instagram.blank? %>
   </div>
 
   <div class="large-8 small-12 left columns details">
