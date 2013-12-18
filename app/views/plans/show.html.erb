@@ -1,3 +1,17 @@
+<ul class="pictures">
+  <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
+    <img src="{{pic.thumb}}" />
+    <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
+  </li>
+</ul>
+
+<br />
+<br />
+<br />
+<br />
+<input type="file" ng-file-select="onFileSelect($files)">
+
+
 <ul class="days">
   <li ng-repeat="day in plan.days" id="{{day.id}}">
     <p ng-show="!editing"><strong>{{day.title}}</strong></p>

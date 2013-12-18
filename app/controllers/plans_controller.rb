@@ -49,11 +49,22 @@ class PlansController < ApplicationController
   def add_picture
     @plan = @itinerary.get_plan_from(current_user)
     picture = Picture.create
-    picture.source = params[:picture]
+    picture.source = params[:file]
     picture.save
     @plan.pictures << picture
     @plan.save!
-    render 'edit'
+    respond_to do |format|
+      format.json { render json: picture }
+    end
+  end
+
+  def delete_picture
+    @plan = @itinerary.get_plan_from(current_user)
+    @plan.pictures.find_by_id(params[:picture_id].to_i).delete
+
+    respond_to do |format|
+      format.json { render 'show' }
+    end
   end
 
   private
