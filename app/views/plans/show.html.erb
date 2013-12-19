@@ -49,13 +49,19 @@
     </div>
   </li>
 
-  <li>
+  <li ng-show="add_day">
     <hr />
-    <form>
+    <form ng-submit="add_day = false">
       <input type="text" ng-model="day.title"/>
       <div text-angular ng-model="day.body"></div>
       <button ng-click="save_day()">SAVE</button>
     </form>
   </li>
 </ul>
+
+<div class="row">
+  <div class="large-12 columns">
+    <a href="" ng-click="add_day=true">ADD DAY</a>
+  </div>
+</div>
 
