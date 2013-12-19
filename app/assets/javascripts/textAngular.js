@@ -29,12 +29,12 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 	};
 	// Here we set up the global display defaults, make sure we don't overwrite any that the user may have already set.
 	$rootScope.textAngularOpts = deepExtend({
-		toolbar: [['h1', 'h2', 'h3', 'p']],
-//    , 'pre', 'quote'], ['bold', 'italics', 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'],['html', 'insertImage', 'insertLink', 'unlink']],
+		toolbar: [['p', 'h2', 'h3', 'bold', 'italics', 'insertLink']],
+//    , 'pre', 'quote'], [ 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'],['html', 'insertImage',  'unlink']],
 		classes: {
 			focussed: "focussed",
 			toolbar: "btn-toolbar",
-			toolbarGroup: "btn-group",
+			toolbarGroup: "btn-group text-center",
 			toolbarButton: "btn btn-default",
 			toolbarButtonActive: "active",
 			textEditor: 'form-control',
@@ -67,7 +67,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		h1: {
-			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>H1</a>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>Heading 1</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<H1>");
 			},
@@ -88,7 +88,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			activeState: function() { return queryFormatBlockState('h3'); }
 		},
 		p: {
-			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>P</a>",
+			display: "<a href='' class='editor-button' ng-click='action()' ng-class='displayActiveToolClass(active)'>Paragraph</a>",
 			action: function() {
 				return this.$parent.wrapSelection("formatBlock", "<P>");
 			},
@@ -135,7 +135,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		bold: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'><i class='fa fa-bold'></i></button>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>BOLD</a>",
 			action: function() {
 				return this.$parent.wrapSelection("bold", null);
 			},
@@ -171,7 +171,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		italics: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'><i class='fa fa-italic'></i></button>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>Italic</a>",
 			action: function() {
 				return this.$parent.wrapSelection("italic", null);
 			},
@@ -205,7 +205,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		insertLink: {
-			display: "<button type='button' ng-click='action()' ng-class='displayActiveToolClass(active)'><i class='fa fa-link'></i></button>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>LINK</a>",
 			action: function() {
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');

@@ -3,3 +3,20 @@
 .editor-button {
   @include button-base;
 }
+
+
+// BUTTON TOOLBAR
+.btn-group {
+  background-color: black;
+  a {
+    margin: 0 5px 5px 0;
+    background-color: red;
+    color: white;
+  }
+}
+
+// TEXT AREA
+.ta-editor {
+  background-color: yellow !important;
+  min-height: 200px;
+}
