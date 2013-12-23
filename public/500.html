@@ -7,19 +7,65 @@
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <style>
   body {
-    background: url('/assets/500.jpg') no-repeat center center fixed; ;
+    background: url('500.jpg') no-repeat center center fixed; ;
     background-size: cover;
     background-repeat: no-repeat no-repeat;
+    font-family:"ff-tisa-web-pro", georgia, serif;
+    font-size: 110%;
   }
-  .logo {
-    background: url('/assets/o-color.png');
-    background-size: 40px;
-    position:absolute;
-    top:30px;
-    left:30px;
-  }
-  #overlay {background-color: rgba(0,0,0,.35)}
+.row {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62.5em;
+  *zoom: 1; }
+  .large-9 {
+  position: relative;
+  width: 75%; }
+  .small-11 {
+    position: relative;
+    width: 91.66667%; }
+  .serif {font-family:"ff-tisa-web-pro", georgia, serif;}
+  .white {color:#fff !important;}
+  h1, h4, h5 {
+  font-family: "calluna-sans", helvetica, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  color: #fff;
+  text-rendering: optimizeLegibility;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.2125em; }
 
+  .no-margin {margin:0;}
+  .no-padding {padding:0;}
+
+  h1 {
+  font-size: 2.125em; }
+  h4 {
+    font-size: 1.125em; }
+  h5 {
+    font-size: 1.125em; }
+
+
+  @media only screen and (min-width: 768px) {
+    h1 {
+    font-size: 2.75em; }
+
+    h4 {
+    font-size: 1.4375em; }
+  }
+ 
+  .subheader {
+  line-height: 1.4;
+  color: #6f6f6f;
+  font-weight: 300;
+  margin-top: 0.2em;
+  margin-bottom: 0.5em; }
+ 
+  #overlay {position: fixed; height:100%; width:100%; top:0; left:0; z-index: -9 !important; background-color: rgba(0,0,0,.35)}
   
   </style>
 </head>
@@ -33,7 +79,7 @@
     <h2 class="white no-margin no-padding">Oh Noes! Something went wrong. :(</h1>
     <h4 class="white no-margin no-padding subheader">It's an error 500, which is also commonly known as "Whoopsies!", "#EpicFail", and "Uhm, I think something might have gotten lost in translation." </h4>
     <p class="white" style="margin-top:50px; margin-bottom:50px">Why not try to refresh the page and if the problem continues, take solace knowing that our best people have been notified, and are on it. Stat. </p>
-    <p class="white serif subheader"><em>Not much we can do about the top feeling numb, though...<em></p>
+    <h5 class="white serif subheader subheader"><em>Not much we can do about the top feeling numb though...<em></p>
   </div>
 </div>
 </body>
