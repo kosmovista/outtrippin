@@ -1,4 +1,6 @@
 @import "foundation/foundation_and_overrides";
+@import "helpers";
+
 
 .editor-button {
   @include button-base;
@@ -19,4 +21,9 @@
 .ta-editor {
   background-color: yellow !important;
   min-height: 200px;
+}
+
+.days li {
+	padding-bottom:40px;
+	p {margin-bottom:50px;}
 }

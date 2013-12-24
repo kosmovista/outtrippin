@@ -39,18 +39,7 @@
   <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
 
   <div class="container">
-
-    <% unless @itinerary.nil? %>
-      <a href="#" class="toggle-sidebar open hide-for-small" title="Show Trip Overview">
-        <h5>&#9656;</h5>
-      </a>
-    <% end %>
-
-    <div class="row">
-      <div class="large-11 large-centered columns">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </div>
 
   <%= javascript_include_tag "itinerary_builder", "data-turbolinks-track" => true %>

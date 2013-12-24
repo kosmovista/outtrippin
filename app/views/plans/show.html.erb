@@ -1,50 +1,51 @@
-<!-- These br's should not be here -->
-<br />
-<br />
-<br />
-<!-- These br's should not be here -->
-
-<ul class="pictures small-block-grid-3">
-  <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
-    <img src="{{pic.thumb}}" />
-    <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
-  </li>
-  <li><input type="file" ng-file-select="onFileSelect($files)"></li>
-</ul>
-
-<hr />
+<div class="cover" style="margin-bottom:60px;">
+  <div class="header">
+    <div class="row">
+      <ul class="pictures small-block-grid-3">
+        <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
+          <img src="{{pic.thumb}}" />
+          <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
+        </li>
+        <li><input type="file" ng-file-select="onFileSelect($files)"></li>
+      </ul>
+    </div>
+  </div>
+   <div class="row tabs"></div>
+</div>
 
 <ul class="days small-block-grid-1">
   <li ng-repeat="day in plan.days" id="{{day.id}}">
-    <!-- DISPLAY TITLE AND EDIT BUTTON -->
-    <div ng-show="!editing">
-      <div class="row">
-        <div class="large-11 columns">
-          <p><strong>{{day.title}}</strong></p>
+    <div class="row">
+      <div class="large-11 large-centered small-12 columns">
+        <!-- DISPLAY TITLE, PARAGRAPH AND EDIT BUTTON -->
+        <div class="large-2 small-12 columns">
+          <h4> Day X</h4>
         </div>
-        <div class="large-1 columns">
-          <button ng-click="editing = true" class="small button">edit</button>
+        <div ng-show="!editing">     
+          <div class="large-8 columns">
+            <h4 class="subheader serif" style="margin-top: 0.1em;"><em>{{day.title}}</em></h4>
+            <p ng-bind-html="day.body"></p>
+            <div class="large-2 large-centered columns">
+              <hr>
+            </div>
+          </div>
+          <div class="large-1 right columns">
+            <button ng-click="editing = true" class="small button">edit</button>
+          </div>
         </div>
-      </div>
 
-      <!-- DISPLAY TITLE AND EDIT BUTTON -->
-      <div class="row">
-        <div class="large-12 columns">
-          <p ng-show="!editing" ng-bind-html="day.body"></p>
+        <!-- WHILE EDITING -->
+        <div class="row" ng-show="editing">
+          <div class="large-8 columns">
+            <form ng-submit="editing = false">
+              <input type="text" ng-model="day.title" />
+              <div text-angular ng-model="day.body"></div>
+              <a href="" ng-click="update_day(day.id, day.title, day.body)">Save</a>
+              <a href="" ng-click="editing = false">Cancel</a>
+              <a href="" ng-click="delete_day(day.id)">delete</a>
+            </form>
+          </div>
         </div>
-      </div>
-    </div>
-
-    <!-- WHILE EDITING -->
-    <div class="row" ng-show="editing">
-      <div class="large-12 columns">
-        <form ng-submit="editing = false">
-          <input type="text" ng-model="day.title" />
-          <div text-angular ng-model="day.body"></div>
-          <a href="" ng-click="update_day(day.id, day.title, day.body)">Save</a>
-          <a href="" ng-click="editing = false">Cancel</a>
-          <a href="" ng-click="delete_day(day.id)">delete</a>
-        </form>
       </div>
     </div>
   </li>
