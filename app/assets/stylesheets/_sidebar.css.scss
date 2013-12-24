@@ -15,6 +15,9 @@
   transition: margin .5s ease-in;
   z-index: 999;
   p { font-size:.8em; margin-bottom:.5em; }
+  @media only screen and (max-width: 1200px) {
+    margin-left: -300px;
+  }
   #home {color:#a2a2a2; position: absolute; left:70px; top:20px;
   a {color:#a2a2a2;}
   }
