@@ -19,20 +19,20 @@
     <div ng-show="!editing" >
       <div class="row">
         <div class="large-11 large-centered small-12 columns">
-          <div class="large-2 small-12 columns">
+          <div class="large-2 small-7 columns">
             <h5 class="subheader serif"><em>Day X</em></h5>
+          </div>
+          <div class="large-2 small-5 right text-right columns">
+            <button ng-click="editing = true" class="small radius button">edit</button>
           </div>       
           <div class="large-8 columns">
             <h3 style="margin-top:0;">{{day.title}}</h3>
             <div class="desc">
               <p ng-bind-html="day.body"></p>
             </div>
-            <div class="large-2 large-centered columns">
-              <hr>
-            </div>
           </div>
-          <div class="large-1 right columns">
-            <button ng-click="editing = true" class="small radius button">edit</button>
+          <div class="large-1 small-12 large-centered columns">
+            <hr>
           </div>
         </div>
       </div>
@@ -42,19 +42,22 @@
       <div class="row">
         <div class="large-11 large-centered small-12 columns">
           <form ng-submit="editing = false">
-            <div class="large-2 small-12 columns">
+            <div class="large-2 small-7 columns">
               <h5 class="subheader serif"><em>Day X</em></h5>
-            </div>   
-            <div class="large-8 small-12 columns">
-              <h3><input type="text" autofocus="true" ng-model="day.title" /></h3>
-              <div text-angular ng-model="day.body"></div>
             </div>
-            <div class="large-2 small-12 columns">
+            <div class="large-2 right text-right small-5 columns">
               <a href="" class="small round no-margin button" ng-click="update_day(day.id, day.title, day.body)">S</a>
               <a href="" class="small round no-margin secondary button" ng-click="editing = false">C</a>
               <a href="" class="small round no-margin alert button" ng-click="delete_day(day.id)">X</a>
+            </div>   
+            <div class="large-8 small-12 columns">
+              <h3><input type="text" autofocus="true" ng-model="day.title" /></h3>
+              <div class="desc" text-angular ng-model="day.body"></div>
             </div>
           </form>
+          <div class="large-1 small-12 large-centered columns">
+            <hr>
+          </div>
         </div>
       </div>
     </div>
@@ -66,25 +69,29 @@
     <form ng-submit="add_day = false">
       <div class="row">
         <div class="large-11 large-centered small-12 columns">
-          <div class="large-2 small-12 columns">
+          <div class="large-2 small-7 columns">
             <h5 class="subheader serif"><em>Day X</em></h5>
+          </div>
+          <div class="large-2 right text-right small-5 columns">
+            <button class="small round no-margin" ng-click="save_day()">S</button>
           </div>
           <div class="large-8 small-12 columns">
             <h3><input type="text" autofocus="true" ng-model="day.title"/></h3>
-            <div text-angular ng-model="day.body"></div>
+            <div class="desc" text-angular ng-model="day.body"></div>
           </div>
-          <div class="large-2 small-12 columns">
-            <button class="small round no-margin" ng-click="save_day()">S</button>
+          <div class="large-1 small-12 large-centered columns">
+            <hr>
           </div>
         </div>
       </div>
     </form>
   </li>
+
+  <li>
+    <div class="row">
+      <div class="large-12 text-center columns">
+        <a href="" class="button radius" ng-click="add_day=true">&#43; Add Day</a>
+      </div>
+    </div>
+  </li>
 </ul>
-
-<div class="row">
-  <div class="large-12 text-center columns">
-    <a href="" class="button radius" ng-click="add_day=true">&#43; Add Day</a>
-  </div>
-</div>
-
