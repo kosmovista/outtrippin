@@ -9,21 +9,40 @@
 
 // BUTTON TOOLBAR
 .btn-group {
-  background-color: black;
+  background-color: whitesmoke;
   a {
     margin: 0 5px 5px 0;
-    background-color: red;
-    color: white;
+    color: #c8c8c8;
   }
 }
 
 // TEXT AREA
 .ta-editor {
-  background-color: yellow !important;
+  background-color: whitesmoke !important;
   min-height: 200px;
+  cursor: text;
 }
 
+.ta-editor:focus {
+ outline:none;
+}
+
+
 .days li {
-	padding-bottom:40px;
-	p {margin-bottom:50px;}
+	padding-top:40px;
+	.desc {margin-bottom: 80px;}
+}
+
+.edit {
+	background-color: whitesmoke;
+}
+
+.edit input[type="text"]  {
+	background-color: whitesmoke;
+	padding: 0;
+	margin: 0;
+	border: none;
+	height: inherit;
+	font-weight: inherit;
+	box-shadow: none;
 }
