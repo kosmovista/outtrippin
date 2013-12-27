@@ -22,8 +22,8 @@
           <div class="large-2 small-7 columns">
             <h5 class="subheader serif"><em>Day X</em></h5>
           </div>
-          <div class="large-2 small-5 right text-right columns">
-            <button ng-click="editing = true" class="small radius button">edit</button>
+          <div class="large-2 small-5 text-right right columns">
+            <a href="" class="secondary no-padding button small radius" ng-click="editing = true" title="Edit Day"><img src="/assets/edit.png" style="width:25px"></img></a>
           </div>       
           <div class="large-8 columns">
             <h3 style="margin-top:0;">{{day.title}}</h3>
@@ -46,9 +46,9 @@
               <h5 class="subheader serif"><em>Day X</em></h5>
             </div>
             <div class="large-2 right text-right small-5 columns">
-              <a href="" class="small round no-margin button" ng-click="update_day(day.id, day.title, day.body)">S</a>
-              <a href="" class="small round no-margin secondary button" ng-click="editing = false">C</a>
-              <a href="" class="small round no-margin alert button" ng-click="delete_day(day.id)">X</a>
+              <a href="" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><img src="/assets/save.png" style="width:25px"></img></a>
+              <a href="" title="Cancel" ng-click="editing = false"><img src="/assets/cancel.png" style="width:25px"></img></a>
+              <a href="" title="Delete Day" ng-click="delete_day(day.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
             </div>   
             <div class="large-8 small-12 columns">
               <h3><input type="text" autofocus="true" ng-model="day.title" /></h3>
@@ -73,7 +73,7 @@
             <h5 class="subheader serif"><em>Day X</em></h5>
           </div>
           <div class="large-2 right text-right small-5 columns">
-            <button class="small round no-margin" ng-click="save_day()">S</button>
+            <a href="" title="Save Day" ng-click="save_day()"><img src="/assets/save.png" style="width:26px"></a>
           </div>
           <div class="large-8 small-12 columns">
             <h3><input type="text" autofocus="true" ng-model="day.title"/></h3>

@@ -135,7 +135,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		bold: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>BOLD</a>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'><strong>b</strong</a>",
 			action: function() {
 				return this.$parent.wrapSelection("bold", null);
 			},
@@ -171,7 +171,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		italics: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>Italic</a>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'><em>i</em></a>",
 			action: function() {
 				return this.$parent.wrapSelection("italic", null);
 			},
@@ -205,7 +205,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		insertLink: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>LINK</a>",
+			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>Link</a>",
 			action: function() {
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');
