@@ -29,8 +29,11 @@
 
 
 .days li {
-	padding-top:40px;
 	.desc {margin-bottom: 80px;}
+}
+
+.edit, .read {
+	padding-top:40px;
 }
 
 .edit {
@@ -45,4 +48,16 @@
 	height: inherit;
 	font-weight: inherit;
 	box-shadow: none;
+}
+
+.upload {
+	float: right; 
+	margin-right: -30%; 
+	padding: 29px; 
+	opacity: .2;  
+	width: 300px;
+}
+
+.upload:hover {
+	opacity:.4;
 }
