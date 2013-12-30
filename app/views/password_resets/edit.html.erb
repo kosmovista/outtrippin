@@ -1,13 +1,13 @@
-<% unless flash[:notice].blank? %>
-<div data-alert class="ot-alert-no-margin large-6 large-centered columns">
-  <p><%= flash[:notice] %></p>
-  <a href="#" class="close">&times;</a>
-</div>
-<% end %>
-
 <div id='overlay'></div>
 <div id='map'></div>
-
+<% unless flash[:notice].blank? %>
+<div class="large-4 alerts columns">
+  <div data-alert class="secondary radius alert-box">
+    <p class="no-margin no-padding"><%= flash[:notice] %></p>
+    <a href="#" class="close">&times;</a>
+  </div>
+  <% end %>
+</div>
 <div class="row">
   <div class="large-5 small-12 text-center login large-centered columns">
 

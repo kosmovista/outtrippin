@@ -9,11 +9,15 @@
 
 .hide { display: none !important; }
 .top { padding-top: 100px; }
+.break {margin-top:40px !important;}
 .error { border-radius: 4px; opacity: 0.8; }
 .medium-textarea { height: 200px !important; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
 .rounded { border-radius:1000px; }
+.alerts {position:absolute !important; top:10%; z-index:9999;
+@media only screen and (min-width: 768px) {left:33.33333%;}
+}
 
 .ot-alert {
   @include alert-base;

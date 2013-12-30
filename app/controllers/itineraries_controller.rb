@@ -38,7 +38,7 @@ class ItinerariesController < ApplicationController
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
     if @itinerary_finalize.save
       if !current_user
-        flash[:notice] = "you have to login"
+        flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
         redirect_to login_path(itinerary: @itinerary)
       else
         redirect_to itinerary_path(@itinerary)
