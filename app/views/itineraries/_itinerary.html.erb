@@ -1,25 +1,25 @@
-<div class="row">
-  <div class="large-12 large-centered columns itinerary">
+<div class="row break">
+  <div class="large-8 large-centered columns">
     <div class="row">
       <div class="large-9 columns">
-        <h3><%= itinerary.extra_info[:name] %></h3>
+        <h3><%= itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name] %></h3>
       </div>
       <div class="large-3 columns">
-        <%= link_to "Trip Details", itinerary_path(itinerary), class: "right radius button" %>
+        <%= link_to "Trip Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" %>
       </div>
     </div>
-    <div class="row">
-      <div class="large-6 columns">
-        <p><strong>Travelers:</strong> <%= itinerary.extra_info[:travelers] %></p>
-        <p><strong>Destination:</strong> <%= itinerary.destination %></p>
-        <p><strong>Duration:</strong> <%= itinerary.duration %></p>
-        <p><strong>Travel Dates:</strong> <%= itinerary.departure %></p>
-        <p><strong>Budget:</strong> <%= itinerary.extra_info[:budget] %></p>
-      </div>
-      <div class="large-6 columns">
-        <p><strong>Style:</strong> <%= itinerary.extra_info[:style].join(', ') %></p>
-        <p><strong>Additional details:</strong> <%= itinerary.extra_info[:details] %></p>
-      </div>
-    </div>
+      <p><em><img src="/assets/marker.png"  style="width:25px; opacity:0.8; margin-top:-6px;"> <a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
+      <img src="/assets/plane.png"  style="width:17px; opacity:0.7; margin:-6px 4px 0;"> <%= itinerary.extra_info[:travelers] %> are traveling with a budget of <%= itinerary.extra_info[:budget] %> per person, per day.</em></p>
+    </ul>
+    <h5 class="subheader serif"><em>This trip, I'm on the hunt for some</em></h5>
+    <ul class="sans skill-list">
+      <% itinerary.extra_info[:style].each do |s| %>
+      <li><%= s %></li>
+      <% end %>
+    </ul>
+    <h5 class="subheader serif"><em>Some additional deets about the trip</em></h5>
+    <p style="margin-bottom:70px;"><%= itinerary.extra_info[:details] %></p>
+    <hr>
+    
   </div>
 </div>

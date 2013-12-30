@@ -1,4 +1,4 @@
-<div class="row" style="margin-top:40px">
+<div class="row break">
   <div id="personal" class="large-2 small-12 columns">
     <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:90px;"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
     <h4 class="no-margin no-padding">  <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %></h4>
