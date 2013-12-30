@@ -1,13 +1,18 @@
 <div class="cover">
   <div class="header">
     <div class="row">
+      <!-- THINK WE NEED TO GET RID OF THE BLOCK GRID, SINCE THIS WILL LIKELY BE ONLY ONE IMAGE ANYWAY 
       <ul class="pictures small-block-grid-3">
         <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
           <img src="{{pic.thumb}}" />
           <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
         </li>
-        <li><input type="file" ng-file-select="onFileSelect($files)"></li>
-      </ul>
+        <li>
+          <input type="file" class="upload" ng-file-select="onFileSelect($files)"></li>
+      </ul> -->
+      <div class="large-2 small-6 text-center large-centered small-centered columns">
+        <img src="/assets/imagew.png" class="header-upload"></img>
+      </div>
     </div>
   </div>
    <div class="row tabs"></div>
