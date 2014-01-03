@@ -7,7 +7,7 @@
     </ul>
   </li>
   <% if current_user %>
-  <li class="has-dropdown"><a href="#">Me</a>
+  <li class="user-menu has-dropdown"><a href="#" ><%= image_tag (defined?(@white_topbar).nil? ? 'user-menu.png' : 'user-menu-grey.png'), style: "width:25px;" %><div class="hide-for-medium-up">Me</div></a>
     <ul class="dropdown">
       <%= content_tag(:li, link_to("Dashboard", admin_path)) if current_user.is?("admin") %>
       <%= content_tag(:li, link_to("My Collection", itineraries_path)) if current_user.has_itineraries? %>

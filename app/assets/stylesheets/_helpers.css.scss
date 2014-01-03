@@ -98,10 +98,20 @@
   .top-bar-section { 
     margin-top:10px;
   }
+  
   .top-bar-section .has-dropdown > a:after {
     top:23px;
     margin-right: 18px;
   }
+
+  .top-bar-section .user-menu.has-dropdown > a {
+  padding: 0 10px !important;
+  }
+
+  .top-bar-section .user-menu.has-dropdown > a:after {
+    display: none!important;
+  }
+
   .top-bar-section .dropdown {
     padding-top: 7px; 
     :before {
