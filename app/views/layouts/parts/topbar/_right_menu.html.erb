@@ -10,7 +10,7 @@
   <li class="has-dropdown"><a href="#">Me</a>
     <ul class="dropdown">
       <%= content_tag(:li, link_to("Dashboard", admin_path)) if current_user.is?("admin") %>
-      <%= content_tag(:li, link_to("My Trips", itineraries_path)) if current_user.has_itineraries? %>
+      <%= content_tag(:li, link_to("My Collection", itineraries_path)) if current_user.has_itineraries? %>
       <%= content_tag(:li, link_to("Profile", user_path(current_user))) if current_user.is?("expert") %>
       <%= content_tag(:li, link_to("Logout", logout_path, method: :delete)) %>
     </ul>

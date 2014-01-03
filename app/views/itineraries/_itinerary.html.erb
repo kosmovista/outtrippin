@@ -5,7 +5,7 @@
         <h3><%= itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name] %></h3>
       </div>
       <div class="large-3 columns">
-        <%= link_to "Trip Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" %>
+        <%= link_to "Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" %>
       </div>
     </div>
       <p><em><img src="/assets/marker.png"  style="width:25px; opacity:0.8; margin-top:-6px;"> <a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
