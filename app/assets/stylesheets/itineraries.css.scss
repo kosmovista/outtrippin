@@ -75,7 +75,7 @@ div.container { margin-bottom: 30px; position: relative; }
 @media only screen and (min-width: 1280px) {
   .pitch-imgs {
     float: right;
-    margin-right: -26%;
+    margin-right: -35%;
     margin-left: 30px;
     margin-top:10px;
     width: 80%;
@@ -117,10 +117,10 @@ div.container { margin-bottom: 30px; position: relative; }
   background-image: image-url('passport.jpg');
   background-size: cover !important;
   background-position: 50% 50%;
-  .header {height:280px;}
-  .tabs {height:50px; 
+  .header {height:270px; overflow: hidden;}
+  .tabs {height:60px; 
     a {line-height: 1em;}
   }
 }
 
-@media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:250px;} } }
+@media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:240px;} } }
