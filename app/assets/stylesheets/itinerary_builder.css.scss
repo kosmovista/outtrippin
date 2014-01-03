@@ -6,6 +6,16 @@
   @include button-base;
 }
 
+.circle-button {
+	opacity:.8;
+	transition: all 200ms linear
+}
+
+.circle-button:hover {
+	opacity:1;
+	transition: all 200ms linear
+}
+
 
 // BUTTON TOOLBAR
 .btn-group {
