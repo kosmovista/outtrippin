@@ -12,14 +12,14 @@
 
         <% if @expert_registration.errors.any? %>
           <p style="margin-bottom:0px"><strong>Whoopsies! <u>We were unable to process your registration</u>. Please make sure you've filled in all the required fields below.</strong></p>
-          <p style="float:right;text-align:right"><small><strong>Indi Tansey</strong><br/>Community Manager</small></p>
+          <p class="subheader right" style="margin-top:15px;"><em><strong>Indi Tansey</strong><br/>OutTrippin Zookeeper</em></p>
         <% else %>
           <p style="margin-bottom:0px"><em>Hi there! Thanks for your interest in becoming a super-duper OutTrippin expert. This form helps me get to know your special talents and favorite destinations so I can match you to the trips and stories you're most interested in creating. Once you've completed the form I'll be in touch. Got a question? Drop me a line at indi@outtrippin.com.</em></p>
-          <p style="float:right;text-align:right"><small><strong>Indi Tansey</strong><br/>Community Manager</small></p>
+          <p class="subheader right" style="margin-top:15px;"><em><strong>Indi Tansey</strong><br>OutTrippin Zookeper</em></p>
         <% end %>
       </div>
-      <div class="large-3 hide-for-small columns avatar">
-        <%= image_tag 'indi.jpeg' %>
+      <div class="large-3 hide-for-small columns">
+        <%= image_tag 'indi-cheetah.jpg', class: "rounded" %>
       </div>
     </div>
   </div>
