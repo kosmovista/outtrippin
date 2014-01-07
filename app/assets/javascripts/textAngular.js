@@ -29,7 +29,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 	};
 	// Here we set up the global display defaults, make sure we don't overwrite any that the user may have already set.
 	$rootScope.textAngularOpts = deepExtend({
-		toolbar: [['p', 'h2', 'h3', 'bold', 'italics', 'insertLink']],
+		toolbar: [['bold', 'italics', 'insertLink']],
 //    , 'pre', 'quote'], [ 'underline', 'ul', 'ol', 'redo', 'undo', 'clear'], ['justifyLeft','justifyCenter','justifyRight'],['html', 'insertImage',  'unlink']],
 		classes: {
 			focussed: "focussed",
@@ -135,7 +135,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		bold: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'><strong>b</strong</a>",
+			display: "<a href='' ng-click='action()' title='Bold' ng-class='displayActiveToolClass(active)'><strong>B</strong</a>",
 			action: function() {
 				return this.$parent.wrapSelection("bold", null);
 			},
@@ -171,7 +171,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		italics: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'><em>i</em></a>",
+			display: "<a href='' ng-click='action()' title='italics' ng-class='displayActiveToolClass(active)'><em>i</em></a>",
 			action: function() {
 				return this.$parent.wrapSelection("italic", null);
 			},
@@ -205,7 +205,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		insertLink: {
-			display: "<a href='' ng-click='action()' ng-class='displayActiveToolClass(active)'>Link</a>",
+			display: "<a href='' ng-click='action()' title='Add a link' ng-class='displayActiveToolClass(active)'><img src='/assets/link.png' style='height:18px; opacity:0.4; margin-top: -3px;'></a>",
 			action: function() {
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');
