@@ -9,11 +9,15 @@
 
 .hide { display: none !important; }
 .top { padding-top: 100px; }
+.break {margin-top:50px !important;}
 .error { border-radius: 4px; opacity: 0.8; }
 .medium-textarea { height: 200px !important; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
 .rounded { border-radius:1000px; }
+.alerts {position:absolute !important; top:10%; z-index:9999;
+@media only screen and (min-width: 768px) {left:33.33333%;}
+}
 
 .ot-alert {
   @include alert-base;
@@ -94,10 +98,20 @@
   .top-bar-section { 
     margin-top:10px;
   }
+  
   .top-bar-section .has-dropdown > a:after {
     top:23px;
     margin-right: 18px;
   }
+
+  .top-bar-section .user-menu.has-dropdown > a {
+  padding: 0 10px !important;
+  }
+
+  .top-bar-section .user-menu.has-dropdown > a:after {
+    display: none!important;
+  }
+
   .top-bar-section .dropdown {
     padding-top: 7px; 
     :before {

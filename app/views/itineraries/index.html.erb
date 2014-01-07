@@ -1,7 +1,15 @@
-<% set_page_title("Trip Dashboard - OutTrippin") %>
-<div class="row top">
-	<div class="large-11 large-centered columns">
-		<div class="row"><h3>My Trips</h3></div>
-		<%= render @itineraries %>
+<% set_page_title("My Collection - OutTrippin") %>
+<div class="cover">
+	<div class="header">
+		<div class="row">
+			<div class="small-12 small-centered columns">
+  			<h2 class="white text-center">Collections</h2>
+  			<div class="large-1 hide-for-small large-centered columns">
+      		<hr style="border-color:white;">
+    		</div>
+  			<h5 class="white serif subheader text-center"><em>Like to make stories? Here, you'll find a collection of your past, present and future travel stories on OutTrippin.</em></h5>
+			</div>
+		</div>
 	</div>
 </div>
+<%= render @itineraries %>

@@ -1,0 +1,81 @@
+@import "foundation/foundation_and_overrides";
+@import "helpers";
+
+
+.editor-button {
+  @include button-base;
+}
+
+.circle-button {
+	opacity:.8;
+	transition: all 200ms linear
+}
+
+.circle-button:hover {
+	opacity:1;
+	transition: all 200ms linear
+}
+
+
+// BUTTON TOOLBAR
+.btn-group {
+  background-color: #f3f3f3;
+  a {
+    padding: 10px 10px 10px 10px;
+    color: #cccccc;
+  }
+}
+
+// TEXT AREA
+.ta-editor {
+  background-color: #f3f3f3 !important;
+  min-height: 200px;
+  cursor: text;
+}
+
+.ta-editor:focus {
+ outline:none;
+}
+
+
+.days li {
+	.desc {margin-bottom: 80px;}
+}
+
+.edit, .read {
+	padding-top:40px;
+}
+
+.edit {
+	background-color: #f3f3f3;
+}
+
+.edit input[type="text"]  {
+	background-color: #f3f3f3;
+	padding: 0;
+	margin: 0;
+	border: none;
+	height: inherit;
+	font-weight: inherit;
+	box-shadow: none;
+}
+
+.upload {
+	float: right; 
+	margin-right: -30%; 
+	padding: 29px; 
+	opacity: .2;  
+	width: 300px;
+}
+
+.upload:hover {
+	opacity:.4;
+}
+
+.header-upload {
+	opacity:0.7;
+	width: 120px;
+	margin-top: 30px;
+}
+
+.header-upload:hover {opacity:0.9;}

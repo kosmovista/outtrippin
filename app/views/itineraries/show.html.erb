@@ -5,14 +5,13 @@
 <% end %>
 <div class="cover">
 	<div class="header">
-		<div class="row">
-			<div class="large-11 large-centered columns">
-			    <!--<%= render 'steps', step: 'pick', disable: %w(describe launch) %>-->
-			  </div>
-			</div>
-
 		<% if current_user.is?("expert") %>
 		  <%= render 'itineraries/show/expert' %>
 		<% else %>
 		  <%= render 'itineraries/show/owner' %>
 		<% end %>
+<div class="row">
+  <div class="large-12 columns">
+    <%#= render 'steps', step: 'pick', disable: %w(describe launch) %>
+  </div>
+</div>

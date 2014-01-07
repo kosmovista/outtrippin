@@ -3,4 +3,5 @@ class Picture < ActiveRecord::Base
 
   belongs_to :user
   has_and_belongs_to_many :pitches
+  has_and_belongs_to_many :plans
 end

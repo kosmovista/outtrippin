@@ -36,6 +36,12 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user
   end
 
+  def authorize_expert
+    authorize_user
+    redirect_to root_path unless current_user.is?("expert")
+  end
+
+
   def authorize_admin
     redirect_to root_path unless current_user && current_user.is?("admin")
   end

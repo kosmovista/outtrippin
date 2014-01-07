@@ -21,6 +21,16 @@ Outtrippin::Application.routes.draw do
         put 'winner'
       end
     end
+    resource 'plan' do
+      member do
+        put 'day', action: 'add_day'
+        post 'day/:day_id', action: 'update_day'
+        delete 'day/:day_id', action: 'delete_day'
+
+        put 'picture', action: 'add_picture'
+        delete 'picture/:picture_id', action: 'delete_picture'
+      end
+    end
   end
 
   get     'login'     => 'user_sessions#new'

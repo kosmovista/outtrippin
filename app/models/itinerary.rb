@@ -3,6 +3,7 @@ class Itinerary < ActiveRecord::Base
 
   belongs_to :user, inverse_of: :itineraries
   has_many :pitches, inverse_of: :itinerary
+  has_many :plans, inverse_of: :itinerary
 
   default_scope { order('created_at DESC') }
 
@@ -32,11 +33,17 @@ class Itinerary < ActiveRecord::Base
     false
   end
 
+  # PITCHES
   def has_winner_pitch?
     !self.pitches.where(winner: true).first.nil?
   end
 
   def winner_pitch
     self.pitches.where(winner: true).first
+  end
+
+  # PLANS
+  def get_plan_from(user)
+    self.plans.where(user: user).first
   end
 end
