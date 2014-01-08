@@ -24,10 +24,10 @@ class ExpertRegistration
   validate do
     errors[:name] = "Can't be blank" if name.blank?
     errors[:website] = "Can't be blank" if website.blank?
-    errors[:cities] = "Enter at least one city" if cities.empty?
-    errors[:countries] = "Enter at least one country" if countries.empty?
-    errors[:style] = "Select at least one style" if style.empty?
-    errors[:terms_of_use] = "You must accept the terms of use" if terms_of_use == "0"
+    errors[:cities] = "Enter at least one city. Please be sure to select individual cities from the autofill dropdown." if cities.empty?
+    errors[:countries] = "Enter at least one country. Please be sure to select individual countries from the autofill dropdown." if countries.empty?
+    errors[:style] = "Select at least one style." if style.empty?
+    errors[:terms_of_use] = "You must accept the terms of use." if terms_of_use == "0"
   end
 
 
