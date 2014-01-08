@@ -27,6 +27,10 @@ Outtrippin::Application.routes.draw do
         post 'day/:day_id', action: 'update_day'
         delete 'day/:day_id', action: 'delete_day'
 
+        put 'tip_trick', action: 'add_tip_trick'
+        post 'tip_trick/:tip_trick_id', action: 'update_tip_trick'
+        delete 'tip_trick/:tip_trick_id', action: 'delete_tip_trick'
+
         put 'picture', action: 'add_picture'
         delete 'picture/:picture_id', action: 'delete_picture'
       end

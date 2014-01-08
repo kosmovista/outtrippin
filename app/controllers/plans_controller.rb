@@ -82,6 +82,42 @@ class PlansController < ApplicationController
     end
   end
 
+  def add_tip_trick
+    @plan = @itinerary.get_plan_from(current_user)
+    tip_trick = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join }
+    @plan.tips_tricks << tip_trick
+    @plan.save!
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.json { render json: @plan }
+    end
+  end
+
+  def update_tip_trick
+    @plan = @itinerary.get_plan_from(current_user)
+    @plan.tips_tricks.each do |tt|
+      if tt[:id] == params[:tip_trick_id]
+        tt[:title] = params[:title]
+        tt[:body] = params[:body]
+      end
+    end
+    @plan.save!
+    respond_to do |format|
+      format.json { render json: @plan }
+    end
+  end
+
+  def delete_tip_trick
+    @plan = @itinerary.get_plan_from(current_user)
+    @plan.tips_tricks.delete_if { |tt| tt[:id] == params[:tip_trick_id] }
+    @plan.save!
+
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.json { render json: @plan }
+    end
+  end
+
   private
     def set_itinerary
       @itinerary = Itinerary.find(params[:itinerary_id])

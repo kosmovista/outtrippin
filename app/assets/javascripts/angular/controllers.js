@@ -3,7 +3,10 @@ var planApp = angular.module('planApp', ['planServices', 'angularFileUpload', 't
 planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($scope, $http, Plan, $upload) {
   $scope.plan = Plan.query();
   $scope.days = $scope.plan.days;
+  $scope.tips_tricks = $scope.plan.tips_tricks;
+
   $scope.day = {"title": "", "body": "This is some text"};
+  $scope.tip_trick = {"title": "", "body": ""};
 
   // ADD DAY
   $scope.save_day = function() {
@@ -18,7 +21,6 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
 
   // UPDATE DAY
   $scope.update_day = function(id, title, body) {
-    // alert("lol");
     $http.post('plan/day/' + id + '.json', {"title": title, "body": body }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
@@ -31,6 +33,40 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   // DELETE DAY
   $scope.delete_day = function(id) {
     $http.delete('plan/day/' + id + '.json').
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while deleting");
+      });
+  }
+
+
+  // ADD TIP_TRICK
+  $scope.save_tip_trick = function() {
+    $http.put('plan/tip_trick.json', {"title": $scope.tip_trick.title, "body": $scope.tip_trick.body }).
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while creating");
+      });
+  }
+
+  // UPDATE TIP_TRICK
+  $scope.update_tip_trick = function(id, title, body) {
+    $http.post('plan/tip_trick/' + id + '.json', {"title": title, "body": body }).
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while deleting");
+      });
+  }
+
+  // DELETE TIP_TRICK
+  $scope.delete_tip_trick = function(id) {
+    $http.delete('plan/tip_trick/' + id + '.json').
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
       }).
