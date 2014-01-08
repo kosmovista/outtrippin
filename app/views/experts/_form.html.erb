@@ -77,7 +77,7 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :countries, "List your specialty countries *" %>
-        <span data-tooltip data-width="430px" class="has-tip tip-top" title="For best results, add destinations individually by selecting from the appearing dropdown list. On selection, each destination will appear as a tag underneath the text-box.">
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
         <%= f.text_field :countries, placeholder: "Start typing the name of a country..", value: "", class: "location-autocomplete add-to-list" %></span>
         <%= errors_for(object, :countries) %>
         <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_countries">
@@ -90,7 +90,7 @@
       </div>
       <div class="large-6 columns">
         <%= f.label :cities, "List your speciality cities *" %>
-         <span data-tooltip data-width="430px" class="has-tip tip-top" title="For best results, add destinations individually by selecting from the appearing dropdown list. On selection, each destination will appear as a tag underneath the text-box.">
+         <span data-tooltip data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
         <%= f.text_field :cities, placeholder: "Start typing the name of a city..", value: "", class: "location-autocomplete add-to-list" %></span>
         <%= errors_for(object, :cities) %>
         <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_cities">
