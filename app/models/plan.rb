@@ -6,4 +6,12 @@ class Plan < ActiveRecord::Base
 
   serialize :tips_tricks, Array
   serialize :days, Array
+
+  def cover
+    begin
+      self.pictures.cover.first.source.url.to_s
+    rescue
+      return nil
+    end
+  end
 end

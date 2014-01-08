@@ -24,7 +24,6 @@ class PlansController < ApplicationController
     @plan = @itinerary.get_plan_from(current_user)
     @plan.days.each do |d|
       if d[:id] == params[:day_id]
-        ap params[:title]
         d[:title] = params[:title]
         d[:body] = params[:body]
       end
@@ -50,7 +49,23 @@ class PlansController < ApplicationController
     @plan = @itinerary.get_plan_from(current_user)
     picture = Picture.create
     picture.source = params[:file]
+
+    # IT IT A COVER PIC?
+    if params[:cover] == "true"
+      @plan.pictures.each { |p|
+        p.cover = false
+        p.save
+      }
+      picture.cover = true
+    end
     picture.save
+
+    # IS IT A DAY PIC?
+    day = @plan.days.select {|d| d[:id] == params[:day]}
+    unless day.first.nil?
+      day.first[:picture] = picture.source.url.to_s
+    end
+
     @plan.pictures << picture
     @plan.save!
     respond_to do |format|

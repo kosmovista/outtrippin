@@ -60,18 +60,6 @@
 	box-shadow: none;
 }
 
-.upload {
-	float: right; 
-	margin-right: -30%; 
-	padding: 29px; 
-	opacity: .2;  
-	width: 300px;
-}
-
-.upload:hover {
-	opacity:.4;
-}
-
 .header-upload {
 	opacity:0.7;
 	width: 120px;
@@ -79,3 +67,27 @@
 }
 
 .header-upload:hover {opacity:0.9;}
+
+// UPLOAD BUTTON
+.file-input {
+  width: 150px;
+  height: 150px;
+  background-image: image-url("image.png");
+  background-size: cover;
+  //  background-position: center top;
+  margin: 0;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+
+  &:hover {
+    background-image: image-url("imagew.png");
+  }
+
+  input[type="file"] {
+    position: relative;
+    height: 100%;
+    width: auto;
+    opacity: 0;
+  }
+}

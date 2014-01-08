@@ -40,7 +40,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   }
 
   // UPLOAD PICTURE
-  $scope.onFileSelect = function($files) {
+  $scope.onFileSelect = function($files, cover, day) {
     //$files: an array of files selected, each file has name, size, and type.
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
@@ -48,7 +48,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
         url: 'plan/picture.json', //upload.php script, node.js route, or servlet url
         method: "PUT",
         // headers: {'headerKey': 'headerValue'}, withCredential: true,
-        data: { myObj: $scope.myModelObj },
+        data: { myObj: $scope.myModelObj, cover: cover, day: day },
         file: file,
         // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
         /* set file formData name for 'Content-Desposition' header. Default: 'file' */
