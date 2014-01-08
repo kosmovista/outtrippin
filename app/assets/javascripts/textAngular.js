@@ -135,7 +135,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		bold: {
-			display: "<a href='' ng-click='action()' title='Bold' ng-class='displayActiveToolClass(active)'><strong>B</strong</a>",
+			display: "<a href='' ng-click='action()' title='Bold' ng-class='displayActiveToolClass(active)'><strong>B</strong></a>",
 			action: function() {
 				return this.$parent.wrapSelection("bold", null);
 			},
@@ -210,7 +210,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');
 				if (urlLink !== '') {
-					return this.$parent.wrapSelection('createLink', urlLink);
+					return this.$parent.wrapSelection('createLink', "asd");
 				}
 			}
 		},

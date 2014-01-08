@@ -3,7 +3,7 @@ var planApp = angular.module('planApp', ['planServices', 'angularFileUpload', 't
 planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($scope, $http, Plan, $upload) {
   $scope.plan = Plan.query();
   $scope.days = $scope.plan.days;
-  $scope.day = {"title": "A title for the day", "body": "Write your story for this day..."};
+  $scope.day = {"title": "", "body": "This is some text"};
 
   // ADD DAY
   $scope.save_day = function() {

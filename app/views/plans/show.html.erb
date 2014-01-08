@@ -1,17 +1,17 @@
 <div class="cover">
   <div class="header">
     <div class="row">
-      <!-- THINK WE NEED TO GET RID OF THE BLOCK GRID, SINCE THIS WILL LIKELY BE ONLY ONE IMAGE ANYWAY 
+      <!-- THINK WE NEED TO GET RID OF THE BLOCK GRID, SINCE THIS WILL LIKELY BE ONLY ONE IMAGE ANYWAY
       <ul class="pictures small-block-grid-3">
         <li ng-repeat="pic in plan.pictures" id="{{pic.id}}">
           <img src="{{pic.thumb}}" />
           <button ng-click="delete_picture(pic.id)" class="small button">delete</button>
         </li>
         <li>
-          <input type="file" class="upload" ng-file-select="onFileSelect($files)"></li>
       </ul> -->
       <div class="large-2 small-6 text-center large-centered small-centered columns">
         <img src="/assets/imagew.png" class="header-upload"></img>
+        <input type="file" class="upload" ng-file-select="onFileSelect($files)">
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
           </div>
           <div class="large-2 small-6 text-right right columns">
             <a href="" class="circle-button"  ng-click="editing = true" title="Edit Day"><img src="/assets/edit-circle.png" style="width:30px" class="circle-button"></img></a>
-          </div>       
+          </div>
           <div class="large-8 columns">
             <h3 style="margin-top:0;">{{day.title}}</h3>
             <div class="desc">
@@ -56,7 +56,7 @@
                 <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><img src="/assets/save.png" style="width:25px"></img></a>
                 <a href="" class="circle-button" title="Cancel" ng-click="editing = false"><img src="/assets/cancel.png" style="width:25px"></img></a>
                 <a href="" class="circle-button" title="Delete Day" ng-click="delete_day(day.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
-              </div>   
+              </div>
               <div class="large-8 small-12 columns">
                 <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
                 <img src="/assets/image.png" class="upload hide-for-small" ></img>
@@ -86,19 +86,19 @@
             </div>
             <div class="large-2 right text-right small-6 columns">
               <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
-              <a href="" class="circle-button" title="Cancel"><img src="/assets/cancel.png" style="width:25px"></img></a>
+              <a href="" class="circle-button" title="Cancel" ng-click="add_day=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
               <a href="" class="circle-button" title="Save Day" ng-click="save_day()"><img src="/assets/save.png" style="width:26px"></a>
             </div>
             <div class="large-8 small-12 columns">
-              <h3><input type="text" autofocus="true" ng-model="day.title"/></h3>
+              <h3><input type="text" autofocus="true" ng-model="day.title" placeholder="Day Title"/></h3>
               <img src="/assets/image.png" class="upload hide-for-small"></img>
-              <div class="desc" text-angular ng-model="day.body"></div>
+              <div class="desc" text-angular ng-model="day.body" placeholder="lorem"></div>
             </div>
             <div class="large-1 small-12 large-centered columns">
               <hr>
             </div>
           </div>
-        </form> 
+        </form>
       </div>
     </div>
   </li>
