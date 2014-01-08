@@ -1,4 +1,4 @@
-<% set_page_title(@user.name + " - OutTrippin expert") %>
+<% set_page_title((@user.name.nil? ? "" : @user.name + " - ") + "OutTrippin expert") %>
 <div class="expert-cover"></div>
 <div class="avatar-container">
   <%= image_tag @user.avatar.url(:thumb), class: "avatar top" %>
