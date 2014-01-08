@@ -107,7 +107,7 @@ $glowing-effect-color: $input-focus-border-color !default;
   display: block;
   font-size: $input-font-size;
   margin-bottom: $form-spacing;
-  padding: $form-spacing / 2;
+  padding: 0 $form-spacing / 2;
   height: $input-height;
   width: 100%;
   @include box-sizing(border-box);
