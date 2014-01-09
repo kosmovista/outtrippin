@@ -1,49 +1,45 @@
 <% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
-<div id="destinations">
-  <%= image_tag "loading.gif", id: "loading" %>
-  <%= link_to "", "#", id: "left", class: "navigator"  %>
-  <%= link_to "", "#", id: "right", class: "navigator"   %>
-  <h1 id="header" ><%= homepage("header") %></h1>
-
-
-  <div id="expert-loader">
-    <% homepage_pics.each do |p| %>
-    <div class="row large-6 no-padding columns right expert <%= p[0] %>">
-      <div class="large-10 small-9 text-right columns">
-        <h5><%= p[1]["title"] %></h5>
-        <p><em class="hide-for-small">"<%= p[1]["text"] %>"</em> - <strong class="sans"><%= p[1]["expert"] %></strong></p>
-      </div>
-      <div class="large-2 small-3 right columns">
-        <%= image_tag p[1]["avatar"], class: "th rounded" %>
-      </div>
-    </div>
-    <% end %>
-  </div>
-</div>
-
-<div id="start-contest">
-  <div class="row">
-    <div class="large-12 small-12 columns text-center">
-      <h3 class="subheader text-center"><%= homepage("subheader") %></h4>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="large-10 small-12 large-centered columns">
-      <div class="row">
+<div class="cover">
+  <div id="destinations">
+    <%= image_tag "loading_black.gif", id: "loading" %>
+    <%= link_to "", "#", id: "left", class: "navigator"  %>
+    <%= link_to "", "#", id: "right", class: "navigator"   %>
+    <div class="row">
+      <div class="large-12 small-12 columns">
+        <h1 id="header" class="no-margin" ><%= homepage("header") %></h1>
+        <h4 id="sub-header" class="white subheader"><%= homepage("subheader") %></h4>
         <%= form_for @itinerary do |f| %>
-        <div id="dest" class="large-8 small-12 columns">
+        <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
           <%= f.text_field :destination, placeholder: homepage("placeholder") %>
           <%= errors_for(@itinerary, :destination) %>
         </div>
-        <div id="contestbtn" class="large-4 small-12 columns">
+        <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
           <%= f.submit homepage("submit"), class: "button radius expand" %>
         </div>
         <% end %>
       </div>
     </div>
+
+
+    <div id="expert-loader">
+      <% homepage_pics.each do |p| %>
+      <div class="row large-5 no-padding columns right expert <%= p[0] %>">
+        <div class="large-9 small-9 text-right columns">
+          <h5><%= p[1]["title"] %></h5>
+          <p><em class="hide-for-small">"<%= p[1]["text"] %>"</em> - <strong class="sans"><%= p[1]["expert"] %></strong></p>
+        </div>
+        <div class="large-3 small-3 right columns">
+          <%= image_tag p[1]["avatar"], class: "th rounded" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
+<div id="scroll-down" class="large-1 large-centered columns text-center">
+  <img src="/assets/down.png" style="margin-top:-30px; width:40px;">
+</div>
+
 
 <div id="steps">
   <div class="row">

@@ -1,24 +1,31 @@
 // LOADING GIF
 #image-loader { display: none; }
-#loading { position: absolute; top: 50%; margin-top: -33px; left: 50%; margin-left: -33px}
+#loading { position: absolute; top: 50%; left: 50%; margin-left: -33px}
 
 // LEFT AND RIGHT ARROWS
 .navigator { width: 42px; height: 64px; position: absolute; z-index: 99; }
 #left { background-image: image-url("left.png"); left: 10px; bottom: 0px;}
 #right { background-image: image-url("right.png"); left: 45px; bottom: -1px; }
-#header { display: none; }
-
+.cover {height:900px;}
+#header {display:none;}
+#sub-header {display:none;}
+#dest {display:none;}
+#contestbtn {display:none;}
 
 // BACKFROUND PICTURES
 div#destinations {
   position: relative;
-  text-align: center;
-  height: 550px;
+  height: 97%;
+  width:100%;
   background-size: cover !important;
-  h1 { color: white; font-size:2.2em; font-weight: normal; margin-top:0px; padding-top: 150px; }
-  @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 120px; } }
+  background-color:#4c4c4c;
+  h1 { color: white; font-size:2.2em; font-weight: normal; margin-top:0px; padding-top: 28%; }
+  @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 18%; } }
 }
 
+div#scroll-down {
+  margin-top:-20px;
+}
 
 // BACKGROUND EXPERTS
 .expert {
@@ -40,7 +47,7 @@ form#new_itinerary input[type="submit"] {
 }
 
 @media only screen and (min-width: 768px) { 
-  #contestbtn {padding:0; font-size:1.2em;} 
+  #contestbtn {margin-left: 10px !important; padding:0; font-size:1.2em;} 
   form#new_itinerary input[type="submit"] { padding-top:.55em; }
 }
 
