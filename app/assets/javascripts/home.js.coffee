@@ -1,4 +1,4 @@
-$('.cover').css("height", $(window).height())
+$('.home-cover').css("height", $(window).height())
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
@@ -33,7 +33,7 @@ window.setBg = ->
 # AFTER WINDOW LOADS #
 ######################
 $(window).resize ->
-  $('.cover').css("height", $(window).height())  
+  $('.home-cover').css("height", $(window).height())  
 
 $(window).load ->
   autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
