@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   validates_presence_of :email
-  validates_uniqueness_of :email, message: "Better to use the <a href='/password_resets/new'>recovery password</a> form!"
+  validates_uniqueness_of :email, message: "This email is already registered. Want to <a href='/login'>login</a> or <a href='/password_resets/new'>recover</a> your password?"
 
   has_many :itineraries, dependent: :destroy, inverse_of: :user
   has_many :pictures
