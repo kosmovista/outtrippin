@@ -20,7 +20,7 @@
           <div class="large-2 small-6 columns">
             <h5 class="subheader serif"><em>Day X</em></h5>
           </div>
-          <div class="large-2 small-6 text-right right columns">
+          <div class="large-2 small-6 right columns">
             <a href="" class="circle-button"  ng-click="editing = true" title="Edit Day"><img src="/assets/edit-circle.png" style="width:30px" class="circle-button"></img></a>
             <label class="file-input">
               <input type="file" ng-file-select="onFileSelect($files, false, day.id)">
@@ -50,7 +50,7 @@
               <div class="large-2 small-6 columns">
                 <h5 class="subheader serif"><em>Day X</em></h5>
               </div>
-              <div class="large-2 right text-right small-6 columns">
+              <div class="large-2 right small-6 columns">
                 <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
                 <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><img src="/assets/save.png" style="width:25px"></img></a>
                 <a href="" class="circle-button" title="Cancel" ng-click="editing = false"><img src="/assets/cancel.png" style="width:25px"></img></a>
@@ -72,7 +72,6 @@
     </div>
   </li>
 
-
   <!-- ADD NEW DAY -->
   <li>
     <div ng-show="add_day" class="edit">
@@ -82,7 +81,7 @@
             <div class="large-2 small-6 columns">
               <h5 class="subheader serif"><em>Day X</em></h5>
             </div>
-            <div class="large-2 right text-right small-6 columns">
+            <div class="large-2 right small-6 columns">
               <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
               <a href="" class="circle-button" title="Cancel" ng-click="add_day=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
               <a href="" class="circle-button" title="Save Day" ng-click="save_day()"><img src="/assets/save.png" style="width:26px"></img></a>
@@ -100,62 +99,86 @@
     </div>
   </li>
 
+  <li ng-repeat="tt in plan.tips_tricks" id="{{tt.id}}">
+    <!-- DISPLAY TITLE, PARAGRAPH AND EDIT BUTTON -->
+    <div class="row">
+      <div class="large-11 large-centered columns">
+        <div class="large-2 right columns">
+          <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><img src="/assets/edit-circle.png" style="width:30px;" class="circle-button"></img></a>
+        </div>
+        <div class="large-7 large-centered columns">
+          <div ng-show="!editing_tt">
+            <div class="itinerary panel">
+              <h4 class="subheader serif"><em><span style="font-size:120%;">{{tt.title}}</span> {{tt.body}}</em></h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHILE EDITING TIP & TRICK -->
+    <div class="row">
+      <div class="large-11 large-centered columns">
+        <div class="large-6 large-offset-3 columns">
+          <div ng-show="editing_tt">
+            <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><img src="/assets/save.png" style="width:25px"></img></a>
+            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
+            <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
+
+            <input type="text" autofocus="true" ng-model="tt.title" />
+            <input type="text" ng-model="tt.body" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- ADD NEW TIP TRICK -->
+  <li>
+    <div class="row">
+      <div class="large-11 large-centered columns">
+        <div class="large-6 large-offset-3 columns">
+          <div ng-show="add_tip_trick">
+            <div class="row">
+              <div class="large-9 columns">
+                <form ng-submit="add_tip_trick = false" style="margin:0;">
+                  <input type="text" autofocus="true" ng-model="tip_trick.title" placeholder="TT Title"/>
+                  <input type="text" ng-model="tip_trick.body" placeholder="TT Body"/>
+                </form>
+              </div>
+              <div class="large-3 columns">
+                <a href="" class="circle-button" title="Cancel" ng-click="add_tip_trick=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
+                <a href="" class="circle-button" title="Save Day" ng-click="save_tip_trick()"><img src="/assets/save.png" style="width:26px"></img></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </li>
+
+  <!-- ADD NEW DAY/TIPS&TRICKS BUTTONS -->
   <li>
     <div class="row">
       <div class="large-12 text-center columns">
         <a href="" class="button radius" ng-click="add_day=true">&#43; Add Day</a>
+        <a href="" class="button radius" style="margin-left:10px;" ng-click="add_tip_trick=true">&#43; Add a Tip </a>
       </div>
-    </div>
+    </div>  
   </li>
 </ul>
-
-
 <div class="row">
-  <h1>Tips and Tricks</h1>
-
-  <div class="large-12 columns">
+  <div class="large-11 large-centered columns">
     <ul class="small-block-grid-1">
-      <li ng-repeat="tt in plan.tips_tricks" id="{{tt.id}}">
-        <!-- DISPLAY TITLE, PARAGRAPH AND EDIT BUTTON -->
-        <div ng-show="!editing_tt">
-          <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><img src="/assets/edit-circle.png" style="width:30px;float:right;" class="circle-button"></img></a>
-          <strong>{{tt.title}}</strong><br />
-          <p>{{tt.body}}</p>
-        </div>
 
-        <!-- WHILE EDITING TIP & TRICK -->
-        <div ng-show="editing_tt">
-          <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><img src="/assets/save.png" style="width:25px"></img></a>
-          <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
-          <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
 
-          <input type="text" autofocus="true" ng-model="tt.title" />
-          <input type="text" ng-model="tt.body" />
-        </div>
-      </li>
-
-      <!-- ADD NEW TIP TRICK -->
-      <li>
-        <div ng-show="add_tip_trick">
-          <div class="row">
-            <div class="large-9 columns">
-              <form ng-submit="add_tip_trick = false" style="margin:0;">
-                <input type="text" autofocus="true" ng-model="tip_trick.title" placeholder="TT Title"/>
-                <input type="text" ng-model="tip_trick.body" placeholder="TT Body"/>
-              </form>
-            </div>
-            <div class="large-3 columns">
-              <a href="" class="circle-button" title="Cancel" ng-click="add_tip_trick=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
-              <a href="" class="circle-button" title="Save Day" ng-click="save_tip_trick()"><img src="/assets/save.png" style="width:26px"></img></a>
-            </div>
-          </div>
-        </div>
-      </li>
+      
+      
 
       <li>
         <div class="row">
           <div class="large-12 text-center columns">
-            <a href="" class="button radius" ng-click="add_tip_trick=true">&#43; Add Tip Trick</a>
+            
           </div>
         </div>
       </li>
