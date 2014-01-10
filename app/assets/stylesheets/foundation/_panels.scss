@@ -84,8 +84,8 @@ $callout-panel-link-color: #fff !default;
 
   }
   // display itinerary at itinerary#index
-  .itinerary, .pitch { @include panel(white, 20px);
-    border: 1px #e6e6e6 solid;
-    border-left: 3px $primary-color solid;
+  .itinerary, .pitch { @include panel(#fdfdfd, 20px);
+    border: 0 #fdfdfd solid;
+    border-left: 4px $primary-color solid;
   }
 }
