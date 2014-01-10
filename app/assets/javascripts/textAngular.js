@@ -205,7 +205,7 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 			}
 		},
 		insertLink: {
-			display: "<a href='' ng-click='action()' title='Add a link' ng-class='displayActiveToolClass(active)'><img src='/assets/link.png' style='height:18px; opacity:0.4; margin-top: -3px;'></a>",
+			display: "<a href='' ng-click='action()' title='Add a link' ng-class='displayActiveToolClass(active)'>Insert Link</a>",
 			action: function() {
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');
