@@ -18,7 +18,13 @@ module ItinerariesHelper
 
   def expanded_sidebar
     content_for :body do
-      "<script>window.showSidebar();</script>".html_safe
+      "<script>window.toogleSidebar();</script>".html_safe
+    end
+  end
+
+    def full_pitch
+    content_for :body do
+      "<script>window.showPitch();</script>".html_safe
     end
   end
 
