@@ -3,7 +3,7 @@
 <%= errors_for(pitch, :title) %>
 
 <%= f.label :why_me, "A short travel bio about yourself *" %>
-<%= f.text_area :why_me, class: 'medium-textarea', placeholder: "type here…" %>
+<%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "type here…" %>
 <%= errors_for(pitch, :why_me) %>
 
 <%= f.label :summary, "Pitch summary *" %>
