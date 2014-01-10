@@ -50,7 +50,7 @@
 	background-color: #f3f3f3;
 }
 
-.edit input[type="text"]  {
+.edit input[type="text"], .edit textarea {
 	background-color: #f3f3f3;
 	padding: 0;
 	margin: 0;
@@ -58,6 +58,10 @@
 	height: inherit;
 	font-weight: inherit;
 	box-shadow: none;
+}
+
+.edit textarea {
+  min-height: 150px;
 }
 
 .header-upload {
@@ -91,4 +95,15 @@
     width: auto;
     opacity: 0;
   }
+}
+
+// TIPS & TRICKS
+.tips {
+  border-left: 4px #00cccc solid;
+  padding:1em 0 1em 2em;
+  margin-bottom:40px;
+}
+
+.tip-avatar {
+  width:35px; margin-right:10px; margin-top:-5px;
 }
