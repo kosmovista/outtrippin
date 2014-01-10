@@ -46,4 +46,8 @@ class Itinerary < ActiveRecord::Base
   def get_plan_from(user)
     self.plans.where(user: user).first
   end
+
+  def has_plan?
+    self.plans.size > 0
+  end
 end

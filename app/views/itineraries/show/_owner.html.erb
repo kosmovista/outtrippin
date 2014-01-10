@@ -1,4 +1,6 @@
-<% if @itinerary.has_winner_pitch? %>
+<% if @plan %>
+  <%= render @plan %>
+<% elsif @itinerary.has_winner_pitch? %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>

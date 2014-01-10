@@ -1,0 +1,45 @@
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+<style>
+.cover { background-image:url(<%= @plan.cover %>); }
+</style>
+</div class="header">
+
+<ul class="small-block-grid-1" style="padding-top:100px">
+  <% @plan.days.each_with_index do |d, i| %>
+  <li>
+    <div class="read">
+      <div class="row">
+        <div class="large-11 large-centered small-12 columns">
+          <div class="large-2 small-6 columns">
+            <h5 class="subheader serif"><em>Day <%= i+1 %></em></h5>
+            <img src="<%= d[:picture] %>"></img>
+          </div>
+          <div class="large-8 columns">
+            <h3 style="margin-top:0;"><%= d[:title] %></h3>
+            <div class="desc">
+              <p><%= d[:body].html_safe %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-1 small-12 large-centered columns">
+          <hr>
+        </div>
+      </div>
+    </div>
+  </li>
+  <% end %>
+
+  <% @plan.tips_tricks.each do |tt| %>
+  <li>
+    <div class="row">
+      <div class="large-11 large-centered columns">
+        <div class="tips">
+          <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
+        </div>
+      </div>
+    </div>
+  </li>
+  <% end %>
+</ul>
