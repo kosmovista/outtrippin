@@ -15,7 +15,7 @@
 // BACKFROUND PICTURES
 div#destinations {
   position: relative;
-  height: 97%;
+  height: 96%;
   width:100%;
   background-size: cover !important;
   background-color:#4c4c4c;
@@ -23,9 +23,6 @@ div#destinations {
   @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 18%; } }
 }
 
-div#scroll-down {
-  margin-top:-20px;
-}
 
 // BACKGROUND EXPERTS
 .expert {
