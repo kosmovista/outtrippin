@@ -64,36 +64,50 @@
   min-height: 150px;
 }
 
-.header-upload {
-	opacity:0.7;
-	width: 120px;
-	margin-top: 30px;
-}
-
-.header-upload:hover {opacity:0.9;}
 
 // UPLOAD BUTTON
+
+.file-input.header {
+  padding:0;
+  margin-top: -50px;
+  opacity: 1;
+  cursor: pointer;
+  transition: all 200ms linear;
+  &:hover {
+    opacity:.8;
+    transition: all 200ms linear;
+  }
+}
+
+@media only screen and (min-width: 1279px) {
+  .file-input.perday {
+  float: right;
+  margin-right: -35%;
+  margin-left: 40px;
+  margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 1278px) {.file-input.perday {max-height: 400px; text-align: center;}}
+
+
+.file-input.perday {
+  padding:0;
+  margin-bottom: 30px;
+  cursor: pointer;
+  transition: all 200ms linear;
+    &:hover {
+    opacity:.6;
+    transition: all 200ms linear;
+  }
+}
+
 .file-input {
-  width: 150px;
-  height: 150px;
-  background-image: image-url("imagew.png");
-  opacity: 0.5;
-  background-size: cover;
-  //  background-position: center top;
   margin: 0;
   display: block;
   overflow: hidden;
-  cursor: pointer;
-
-  &:hover {
-    opacity:.9;
-  }
-
   input[type="file"] {
-    position: relative;
-    height: 100%;
-    width: auto;
-    opacity: 0;
+  display:none;
   }
 }
 
@@ -106,4 +120,17 @@
 
 .tip-avatar {
   width:35px; margin-right:10px; margin-top:-5px;
+}
+
+// IMAGES
+@media only screen and (min-width:1279px) {
+  .day-photo {
+    float: right;
+    max-height: 500px;
+    max-width: 550px;
+  }
+}
+.day-photo {
+  border-radius: 4px;
+  width:100%;
 }
