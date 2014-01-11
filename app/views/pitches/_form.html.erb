@@ -1,15 +1,42 @@
+<div class="row">
+  <div class="large-3 columns left">
+    <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar rounded", style: "width:90px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
+    <h4 class="no-margin no-padding">  <%= link_to current_user.personal_info[:name], user_path(current_user), target: "_blank", class: "black", title: "User Profile" %></h4>
+    <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(current_user.website), "http://" + expert_info_website_url(current_user.website), target: '_blank' unless current_user.website.blank? %></em></small></p>
+    <%= link_to (image_tag "facebook.png", style: "width:30px"),  expert_info_website_url(current_user.facebook), target: '_blank' unless current_user.facebook.blank? %>
+    <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(current_user.pinterest), target: '_blank' unless current_user.pinterest.blank? %>
+    <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(current_user.twitter), target: '_blank' unless current_user.twitter.blank? %>
+    <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(current_user.instagram), target: '_blank' unless current_user.instagram.blank? %>
+  </div>
+  <div class="large-9 columns">
+    <h5 class="subheader serif"><em>Travel interests:</em></h5>
+
+    <% unless current_user.expert_info[:style].blank? %>
+      <ul class="sans skill-list">
+        <% current_user.expert_info[:style].each do |s| %>
+          <li><%= s %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
+
+<hr />
+
+
 <%= f.label :title, "Give a title to your pitch *" %>
 <%= f.text_field :title, placeholder: "This is a title", value: pitch.title %>
 <%= errors_for(pitch, :title) %>
 
 <%= f.label :why_me, "A short travel bio about yourself *" %>
-<%= f.text_area :why_me, class: 'medium-textarea', placeholder: "type here…" %>
+<%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "type here…" %>
 <%= errors_for(pitch, :why_me) %>
 
 <%= f.label :summary, "Pitch summary *" %>
 <%= f.text_area :summary, class: 'medium-textarea', placeholder: "type here…" %>
 <%= errors_for(pitch, :summary) %>
 
+<%= f.label :pictures, "Please add at least one picture to your pitch *" %>
 <% for i in 1..3 %>
   <%= f.file_field "pictures[pic_#{i}]" %>
 <% end %>
