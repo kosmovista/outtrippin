@@ -23,6 +23,14 @@ div#destinations {
   @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 18%; } }
 }
 
+#scroll-down {
+  margin-top:-85px; 
+  width:40px;
+  transition: all 200ms ease-in;
+  &:hover {
+  margin-top:-77px;
+}
+}
 
 // BACKGROUND EXPERTS
 .expert {

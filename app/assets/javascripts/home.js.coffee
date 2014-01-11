@@ -31,7 +31,7 @@ window.setBg = ->
 window.scrollDown = ->
   $('html, body').animate({
     scrollTop: $("#steps").offset().top
-  }, 1000, 'swing')
+  }, 1000, 'easeOutQuart')
 
 
 ######################
