@@ -1,46 +1,52 @@
-<div class="row">
-  <div class="large-3 columns left">
-    <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar rounded", style: "width:90px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
+<div class="row break">
+  <div id="personal" class="large-2 small-12 columns">
+    <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar right rounded", style: "width:70px; margin-left:40px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
     <h4 class="no-margin no-padding">  <%= link_to current_user.personal_info[:name], user_path(current_user), target: "_blank", class: "black", title: "User Profile" %></h4>
     <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(current_user.website), "http://" + expert_info_website_url(current_user.website), target: '_blank' unless current_user.website.blank? %></em></small></p>
+    <div class="large-5 hide-for-small no-padding no-margin right columns">
+      <hr>
+    </div>
+    <%= f.submit submit_text, class: "small expand button radius" %>
+    <%= link_to "Cancel", itinerary_path(@itinerary), class: "small expand secondary button radius" %>
+  </div>
+
+  <div class="large-8 small-12 columns">
+    <%= f.text_field :title, placeholder: "Add a title for your pitch..*", value: pitch.title %>
+    <%= errors_for(pitch, :title) %>
+  </div>
+
+  <div class="large-5 small-12 columns">
+    <h5 class="subheader serif"><em>My travel interests:</em></h5>
+  </div>
+
+  <div class="large-3 text-right hide-for-small columns">
     <%= link_to (image_tag "facebook.png", style: "width:30px"),  expert_info_website_url(current_user.facebook), target: '_blank' unless current_user.facebook.blank? %>
     <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(current_user.pinterest), target: '_blank' unless current_user.pinterest.blank? %>
     <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(current_user.twitter), target: '_blank' unless current_user.twitter.blank? %>
     <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(current_user.instagram), target: '_blank' unless current_user.instagram.blank? %>
   </div>
-  <div class="large-9 columns">
-    <h5 class="subheader serif"><em>Travel interests:</em></h5>
 
+  <div class="large-8 small-12 left columns details">
     <% unless current_user.expert_info[:style].blank? %>
-      <ul class="sans skill-list">
-        <% current_user.expert_info[:style].each do |s| %>
-          <li><%= s %></li>
-        <% end %>
-      </ul>
+    <ul class="sans skill-list">
+      <% current_user.expert_info[:style].each do |s| %>
+      <li><%= s %></li>
+      <% end %>
+    </ul>
     <% end %>
+
+    <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em>*</h5>
+    <%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "Here's a chance to explain why you'd be the perfect person to write this story." %>
+    <%= errors_for(pitch, :why_me) %>
+    
+    <h5 class="subheader serif"><em>And I think you're going to love the trip I had in mind *</em></h5>
+      <%= f.text_area :summary, class: 'medium-textarea', placeholder: "Write a short brief on what you had in mind for this story." %>
+      <%= errors_for(pitch, :summary) %>
+
+    <%= f.label :pictures, "Care to add an image? Add at least one, por favor!*", class: "subheader serif", style: "margin-top:0; font-style:italic;" %>
+    <% for i in 1..3 %>
+    <%= f.file_field "pictures[pic_#{i}]" %>
+    <% end %>
+    <%= errors_for(pitch, :pictures) %>
   </div>
 </div>
-
-<hr />
-
-
-<%= f.label :title, "Give a title to your pitch *" %>
-<%= f.text_field :title, placeholder: "This is a title", value: pitch.title %>
-<%= errors_for(pitch, :title) %>
-
-<%= f.label :why_me, "A short travel bio about yourself *" %>
-<%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "type here…" %>
-<%= errors_for(pitch, :why_me) %>
-
-<%= f.label :summary, "Pitch summary *" %>
-<%= f.text_area :summary, class: 'medium-textarea', placeholder: "type here…" %>
-<%= errors_for(pitch, :summary) %>
-
-<%= f.label :pictures, "Please add at least one picture to your pitch *" %>
-<% for i in 1..3 %>
-  <%= f.file_field "pictures[pic_#{i}]" %>
-<% end %>
-<%= errors_for(pitch, :pictures) %>
-
-<%= f.submit submit_text, class: "button radius" %>
-<%= link_to "Cancel", itinerary_path(@itinerary), class: "small secondary button radius", style: "margin-left:20px" %>
