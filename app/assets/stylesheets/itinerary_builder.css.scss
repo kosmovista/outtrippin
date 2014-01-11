@@ -67,7 +67,7 @@
 
 // UPLOAD BUTTON
 
-.file-input.header {
+.file-input.story-cover {
   padding:0;
   margin-top: -50px;
   opacity: 1;
@@ -82,18 +82,15 @@
 @media only screen and (min-width: 1279px) {
   .file-input.perday {
   float: right;
-  margin-right: -35%;
-  margin-left: 40px;
-  margin-top: 15px;
+  margin: 15px -35% 30px 40px;
   }
 }
 
-@media only screen and (max-width: 1278px) {.file-input.perday {max-height: 400px; text-align: center;}}
+@media only screen and (max-width: 1278px) {.file-input.perday {max-height: 400px; text-align: center; margin:30px 0;}}
 
 
 .file-input.perday {
   padding:0;
-  margin-bottom: 30px;
   cursor: pointer;
   transition: all 200ms linear;
     &:hover {
