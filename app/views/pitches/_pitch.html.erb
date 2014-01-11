@@ -1,6 +1,6 @@
 <div class="row break">
   <div id="personal" class="large-2 small-12 columns">
-    <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:90px;"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
+    <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar right rounded", style: "width:70px; margin-left:40px;"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
     <h4 class="no-margin no-padding">  <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %></h4>
     <p class="no-margin no-padding"><small><em><%= link_to expert_info_website_url(pitch.user.website), "http://" + expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></small></p>
     <div class="large-5 hide-for-small no-padding no-margin right columns">
