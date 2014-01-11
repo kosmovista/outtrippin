@@ -28,10 +28,19 @@ window.setBg = ->
   $("#destinations").css("background", "url('" + image + "') no-repeat center center")
   jQuery(expert).show("fade")
 
+window.scrollDown = ->
+  $('html, body').animate({
+    scrollTop: $("#steps").offset().top
+  }, 1000, 'swing')
+
 
 ######################
 # AFTER WINDOW LOADS #
 ######################
+$("#scroll-down").on "click", ->
+    scrollDown()
+    return false
+
 $(window).resize ->
   $('.home-cover').css("height", $(window).height())  
 
