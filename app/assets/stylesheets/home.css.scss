@@ -22,10 +22,12 @@ div#destinations {
 }
 
 #scroll-down {
-  margin-top:-85px; 
-  width:40px;
+  position:absolute;
+  left:49%; 
+  bottom:-20px;
+  z-index: 999;
   transition: all 200ms ease-in;
-  &:hover { margin-top:-77px;}
+  &:hover { bottom: -25px;}
 }
 
 .inline-list.cover-bullets {
