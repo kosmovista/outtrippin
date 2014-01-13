@@ -2,7 +2,32 @@
 <style>
 .cover { background-image:url(<%= @plan.cover %>); }
 </style>
+<div class="row">
+  <div class="large-12 small-12 text-center columns">
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+          <hr style="border-color:white;">
+      </div>  
+    <h5 class="white serif subheader text-center"><em><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" style="width:30px;" ></img>By "Insert Expert Name" &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em></h5>
+  </div>
+</div>
 </div class="header">
+<div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="row tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" class="active-tab" > FULL STORY </a></li>
+          <li><a href="#" > BOOKING </a></li>
+          <li><a href="#" > MAPS </a></li>
+          <li><a href="#" > COMMENTS </a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+</div class="cover">
 
 <ul class="small-block-grid-1" style="padding-top:100px">
   <% @plan.days.each_with_index do |d, i| %>
@@ -10,13 +35,14 @@
     <div class="read">
       <div class="row">
         <div class="large-11 large-centered small-12 columns">
-          <div class="large-2 small-6 columns">
+          <div class="large-2 left small-6 columns">
             <h5 class="subheader serif"><em>Day <%= i+1 %></em></h5>
-            <img src="<%= d[:picture] %>"></img>
           </div>
-          <div class="large-8 columns">
+          <div class="large-8 left columns">
             <h3 style="margin-top:0;"><%= d[:title] %></h3>
             <div class="desc">
+              <div class="day-photo-C">
+              <img src="<%= d[:picture] %>"></img></div>
               <p><%= d[:body].html_safe %></p>
             </div>
           </div>
@@ -34,12 +60,44 @@
   <% @plan.tips_tricks.each do |tt| %>
   <li>
     <div class="row">
-      <div class="large-11 large-centered columns">
+      <div class="large-10 large-centered columns">
         <div class="tips">
           <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
+          <h6 class="subheader serif" style="padding-top:.8em;"><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" ></img><em> Indi J.</em></h6>
         </div>
       </div>
     </div>
   </li>
   <% end %>
 </ul>
+
+<div class="row written-by">
+  <div class="large-11 large-centered small-12 columns">  
+    <div class="large-8 large-centered columns"><hr>
+      <p class="sans subheader" style="margin-bottom:15px;"><small>WRITTEN BY</small></p>
+      <!<div class="row">
+        <img src="/assets/indi.jpeg" class="rounded avatar-footer" ></img>
+          <h5 class="no-margin no-padding"> Insert Expert Name</em></h5>
+          <h5 class="subheader serif" style="line-height:1em;"><em><small>Insert Expert Bio... up to like 230 characters or so with a ... I reckon. I represent an emerging group of travelers, one made up of young adults who have enough disposable income to splurge on their adventures. I work hard 48 weeks a year and don’t mind shelling out big bucks to experience once in a lifetime “must-see” sites.</em></small></h5>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="share">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Share your story with a friend</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<div id="share-modal" class="reveal-modal medium text-center">
+  <h3 style="margin-bottom:50px; margin-top:30px;">Awesome. Let's make your friends jealous!</h3>
+  <div class="large-7 small-12 columns large-centered">
+    <ul class="small-block-grid-3">
+      <li><img src="/assets/facebook-large.png", style="width:100%;"></li>
+      <li><img src="/assets/email-large.png", style="width:100%;"></li>
+      <li><img src="/assets/twitter-large.png", style="width:100%;"></li>
+    </ul>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

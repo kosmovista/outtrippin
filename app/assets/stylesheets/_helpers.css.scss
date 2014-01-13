@@ -72,6 +72,14 @@
   z-index: 1000 !important;
 }
 
+#guide {
+  color: #fff;
+  position: absolute;
+  top: 12px;
+  left: 55px;
+  font-size: 1.2em;
+}
+
 @media only screen and (min-width: 940px) {
 .top-logo {
   position:fixed;

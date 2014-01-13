@@ -1,5 +1,5 @@
 default:
-  header: "<strong>Make better stories.</STRONG>"
+  header: "<strong>Make better travel stories.</STRONG>"
   subheader: "Get inspiration, advice, and recommendations from travel experts around the world"
   placeholder: "Where would you like to go?"
   submit: "Let's get going!"
