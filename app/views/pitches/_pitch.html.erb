@@ -24,32 +24,33 @@
         <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(pitch.user.instagram), target: '_blank' unless pitch.user.instagram.blank? %>
       </div>
 
-    <div class="large-12 small-12 columns details">
-      <% unless pitch.user.expert_info[:style].blank? %>
-      <ul class="sans skill-list">
-        <% pitch.user.expert_info[:style].each do |s| %>
-        <li><%= s %></li>
+      <div class="large-12 small-12 columns details">
+        <% unless pitch.user.expert_info[:style].blank? %>
+        <ul class="sans skill-list">
+          <% pitch.user.expert_info[:style].each do |s| %>
+          <li><%= s %></li>
+          <% end %>
+        </ul>
         <% end %>
-      </ul>
-      <% end %>
 
-      <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
-      <p><%= pitch.why_me %></p>
+        <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
+        <p><%= pitch.why_me %></p>
 
-      <div class="pitches">
-        <h3><%= pitch.title %></h3>
-        <% unless pitch.pictures.empty? %>
-        <div class="pitch-imgs">
-          <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
-            <% pitch.pictures.each do |pic| %>
-            <li>
-              <%= image_tag pic.source %>
-            </li>
-            <% end %>
-          </ul>
+        <div class="pitches">
+          <h3><%= pitch.title %></h3>
+          <% unless pitch.pictures.empty? %>
+          <div class="pitch-imgs">
+            <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
+              <% pitch.pictures.each do |pic| %>
+              <li>
+                <%= image_tag pic.source %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+          <% end %>
+          <p><%= pitch.summary %></p>
         </div>
-        <% end %>
-        <p><%= pitch.summary %></p>
       </div>
     </div>
   </div>
