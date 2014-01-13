@@ -2,7 +2,31 @@
 <style>
 .cover { background-image:url(<%= @plan.cover %>); }
 </style>
+<div class="row">
+  <div class="large-12 small-12 text-center columns">
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+          <hr style="border-color:white;">
+      </div>  
+    <h5 class="white serif subheader text-center"><em><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" style="width:30px;" ></img>By "Insert Expert Name" &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em></h5>
+  </div>
+</div>
 </div class="header">
+<div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="row tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" class="active-tab" > FULL STORY </a></li>
+          <li><a href="#" > BOOKING </a></li>
+          <li><a href="#" > MAPS </a></li>
+          <li><a href="#" > COMMENTS </a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
 
 <ul class="small-block-grid-1" style="padding-top:100px">
   <% @plan.days.each_with_index do |d, i| %>
@@ -10,13 +34,13 @@
     <div class="read">
       <div class="row">
         <div class="large-11 large-centered small-12 columns">
-          <div class="large-2 small-6 columns">
+          <div class="large-2 left small-6 columns">
             <h5 class="subheader serif"><em>Day <%= i+1 %></em></h5>
-            <img src="<%= d[:picture] %>"></img>
           </div>
-          <div class="large-8 columns">
+          <div class="large-8 left columns">
             <h3 style="margin-top:0;"><%= d[:title] %></h3>
             <div class="desc">
+              <img src="<%= d[:picture] %>" class="day-photo"></img>
               <p><%= d[:body].html_safe %></p>
             </div>
           </div>

@@ -93,6 +93,10 @@ div.container { margin-bottom: 30px; position: relative; }
   cursor:pointer;
 }
 
+.pitch-imgs .orbit-bullets li {
+  border:0;
+}
+
 .pitch-imgs .orbit-container {
   border-radius: 4px;
   height:350px;
@@ -124,3 +128,25 @@ div.container { margin-bottom: 30px; position: relative; }
 }
 
 @media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:240px;} } }
+
+.inline-list.cover-tabs > li a {
+  margin-right: .7em;
+  font-size: 0.750em;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.70);
+  font-weight: bold;
+  -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  &:hover {color: #fff;}
+}
+
+.active-tab {
+  color:#fff !important;
+  border-bottom: 1px #fff solid;
+   -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  }
+
