@@ -16,4 +16,11 @@ class AdminMailer < ActionMailer::Base
     @itinerary = itinerary
     mail to: ADMINS, subject: "[outtrippin.com] a payment was made"
   end
+
+  def new_pitch_email(pitch)
+    @pitch = pitch
+    @itinerary = @pitch.itinerary
+    @user = @pitch.user
+    mail to: ADMINS, subject: "[outtrippin.com] new pitch added"
+  end
 end

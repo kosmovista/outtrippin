@@ -23,4 +23,12 @@ class UserMailer < ActionMailer::Base
     @reset_url = "http://outtrippin.com/password_resets/#{@user.perishable_token}/edit"
     mail to: @user.email, subject: "OutTrippin Password Reset Instructions"
   end
+
+  def new_pitch_email(pitch)
+    @pitch = pitch
+    @itinerary = @pitch.itinerary
+    @user = @itinerary.user
+    mail to: @user.email, subject: "New OutTrippin Pitch Received!"
+  end
+
 end
