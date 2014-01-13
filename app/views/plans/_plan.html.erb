@@ -40,7 +40,8 @@
           <div class="large-8 left columns">
             <h3 style="margin-top:0;"><%= d[:title] %></h3>
             <div class="desc">
-              <img src="<%= d[:picture] %>" class="day-photo"></img>
+              <div class="day-photo-C">
+              <img src="<%= d[:picture] %>"></img></div>
               <p><%= d[:body].html_safe %></p>
             </div>
           </div>
@@ -58,12 +59,17 @@
   <% @plan.tips_tricks.each do |tt| %>
   <li>
     <div class="row">
-      <div class="large-11 large-centered columns">
+      <div class="large-10 large-centered columns">
         <div class="tips">
           <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
+          <h6 class="subheader serif" style="padding-top:.8em;"><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" ></img><em> Indi J.</em></h6>
         </div>
       </div>
     </div>
   </li>
   <% end %>
 </ul>
+
+<div class="share">
+  <a href="" class="sharethis">Share this!</a>
+</div>

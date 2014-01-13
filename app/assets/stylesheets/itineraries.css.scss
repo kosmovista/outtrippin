@@ -150,3 +150,35 @@ div.container { margin-bottom: 30px; position: relative; }
   transition: color 0.25s ease-in-out;
   }
 
+
+// TIPS & TRICKS
+.tips {
+  border-left: 4px #00cccc solid;
+  padding:1em 0 1em 2em;
+  margin-bottom:40px;
+}
+
+.tip-avatar {
+  width:35px; margin-right:10px; margin-top:-5px;
+}
+
+// IMAGES
+@media only screen and (min-width:1279px) {
+  .day-photo-C img {
+    float: right;
+    max-height: 500px;
+    max-width: 550px;
+    float: right;
+    margin: 15px -35% 30px 40px;
+  }
+}
+@media only screen and (max-width:1279px) {
+  .day-photo-C {text-align: center;}
+  .day-photo-C img {
+    max-height: 400px;
+    margin:30px 0;
+  }
+}
+.day-photo-C img {
+  border-radius: 4px;
+}
