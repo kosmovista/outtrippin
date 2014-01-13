@@ -1,3 +1,4 @@
+<div ng-cloak>
 <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
 <div class="cover" style="background-image:url({{plan.cover}})">
   <div class="header">
@@ -32,7 +33,7 @@
           </div>
 
           <div class="large-2 small-6 right columns text-right">
-            <a href="" class="circle-button"  ng-click="editing = true" title="Edit Day"><img src="/assets/edit-circle.png" style="width:30px" class="circle-button"></img></a>
+            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day"><img src="/assets/edit-circle.png" style="width:30px" class="circle-button"></img></a>
           </div>
 
           <div class="large-8 columns">
@@ -66,7 +67,7 @@
               <div class="large-2 right small-6 columns text-right">
                 <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
                 <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><img src="/assets/save.png" style="width:25px"></img></a>
-                <a href="" class="circle-button" title="Cancel" ng-click="editing = false"><img src="/assets/cancel.png" style="width:25px"></img></a>
+                <a href="" class="circle-button" title="Cancel" ng-click="editing=false; cancel()"><img src="/assets/cancel.png" style="width:25px"></img></a>
                 <a href="" class="circle-button" title="Delete Day" ng-click="delete_day(day.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
               </div>
               <div class="large-8 small-12 columns">
@@ -138,7 +139,7 @@
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
             <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><img src="/assets/save.png" style="width:25px"></img></a>
-            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
+            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false;cancel();"><img src="/assets/cancel.png" style="width:25px"></img></a>
             <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
           </div>
           <div class="large-8 large-centered columns">
@@ -190,3 +191,4 @@
     </div>
   </li>
 </ul>
+</div>
