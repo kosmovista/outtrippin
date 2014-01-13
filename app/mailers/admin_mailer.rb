@@ -23,4 +23,12 @@ class AdminMailer < ActionMailer::Base
     @user = @pitch.user
     mail to: ADMINS, subject: "[outtrippin.com] new pitch added"
   end
+
+  def winner_expert_email(pitch)
+    @pitch = pitch
+    @expert = @pitch.user
+    @itinerary = @pitch.itinerary
+    @user = @itinerary.user
+    mail to: ADMINS, subject: "[outtrippin.com] An Expert was Picked!"
+  end
 end
