@@ -34,7 +34,6 @@ class PitchesController < ApplicationController
 
   def winner
     if current_user == @itinerary.user
-    # TODO verify that current_user owns the pitch
       @pitch.winner = true
       @pitch.save
       AdminMailer.delay.winner_expert_email(@pitch)

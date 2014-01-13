@@ -7,8 +7,11 @@
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
           <hr style="border-color:white;">
-      </div>  
-    <h5 class="white serif subheader text-center"><em><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" style="width:30px;" ></img>By "Insert Expert Name" &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em></h5>
+      </div>
+    <h5 class="white serif subheader text-center">
+      <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar", style:"width:30px;" %>
+      <em>By <%= @plan.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
+    </h5>
   </div>
 </div>
 </div class="header">
@@ -63,7 +66,10 @@
       <div class="large-10 large-centered columns">
         <div class="tips">
           <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
-          <h6 class="subheader serif" style="padding-top:.8em;"><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" ></img><em> Indi J.</em></h6>
+          <h6 class="subheader serif" style="padding-top:.8em;">
+            <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar" %>
+            <em><%= @plan.user.personal_info[:name] %></em>
+          </h6>
         </div>
       </div>
     </div>
@@ -72,14 +78,14 @@
 </ul>
 
 <div class="row written-by">
-  <div class="large-11 large-centered small-12 columns">  
+  <div class="large-11 large-centered small-12 columns">
     <div class="large-8 large-centered columns"><hr>
       <p class="sans subheader" style="margin-bottom:15px;"><small>WRITTEN BY</small></p>
-      <!<div class="row">
-        <img src="/assets/indi.jpeg" class="rounded avatar-footer" ></img>
-          <h5 class="no-margin no-padding"> Insert Expert Name</em></h5>
-          <h5 class="subheader serif" style="line-height:1em;"><em><small>Insert Expert Bio... up to like 230 characters or so with a ... I reckon. I represent an emerging group of travelers, one made up of young adults who have enough disposable income to splurge on their adventures. I work hard 48 weeks a year and don’t mind shelling out big bucks to experience once in a lifetime “must-see” sites.</em></small></h5>
-        
+      <div class="row">
+        <%= image_tag @plan.user.avatar.url, class: "rounded avatar-footer" %>
+        <h5 class="no-margin no-padding"><em><%= @plan.user.personal_info[:name] %></em></h5>
+        <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @plan.user.expert_info[:bio] %></em></small></h5>
+
       </div>
     </div>
   </div>
