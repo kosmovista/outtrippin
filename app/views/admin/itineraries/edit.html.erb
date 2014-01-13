@@ -1,0 +1,11 @@
+<br />
+<br />
+<br />
+<div class="row">
+  <div class="large-12 columns">
+      <%= form_for [:admin, @itinerary], method: :put do |f| %>
+      <%= f.text_area :details, value: @itinerary.extra_info[:details], class: "medium-textarea" %>
+      <%= f.submit "Update Itinerary", class: "button" %>
+      <% end %>
+  </div>
+</div>

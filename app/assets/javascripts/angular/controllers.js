@@ -13,6 +13,8 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
     $http.put('plan/day.json', {"title": $scope.day.title, "body": $scope.day.body }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
+        $scope.add_day = false;
+        $scope.day = {"title": "", "body": "This is some text"};
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");
@@ -41,12 +43,20 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
       });
   }
 
+  // CANCEL DAY EDITING
+  $scope.cancel = function() {
+    //this is a bit of an hack
+    $scope.plan = Plan.query();
+  };
 
   // ADD TIP_TRICK
   $scope.save_tip_trick = function() {
     $http.put('plan/tip_trick.json', {"title": $scope.tip_trick.title, "body": $scope.tip_trick.body }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
+        $scope.add_tip_trick = false;
+        $scope.tip_trick = {"title": "", "body": ""};
+
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");

@@ -1,6 +1,7 @@
 <div id="sidebar">
 	<div id="home">
-		<a href="/" class="sans"><strong><small>HOME</small></strong></a></li>
+		<a href="/" class="sans"><strong>HOME</strong></a>
+    <strong><%= link_to "EDIT", edit_admin_itinerary_path(@itinerary), class: "sans" if current_user.is?("admin") %></strong>
 	</div>
   <%= content_tag(:h5, (@itinerary.extra_info[:name].blank? ? "Trip Overview" : @itinerary.extra_info[:name])) %>
   <%= content_tag(:p, ("<strong>Destination:</strong> " + @itinerary.destination).html_safe) unless @itinerary.destination.blank? %>

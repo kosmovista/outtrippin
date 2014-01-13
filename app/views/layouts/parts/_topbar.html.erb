@@ -13,7 +13,8 @@
    <% if @itinerary.nil? %>
     <a href="/" title="OutTrippin Home">
     <% else %>
-    <a href="#" class="toggle-sidebar" title="Show Trip Overview">
+    <a href="#" class="toggle-sidebar" title="Click here to show or hide the trip brief">
+      <div id="guide">&#9656;</div>
     <% end %>
     <%= image_tag (defined?(@white_topbar).nil? ? 'o-white.png' : 'o-color.png'), style: "height:35px;" %></a>
 

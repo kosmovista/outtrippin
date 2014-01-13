@@ -3,9 +3,6 @@
 #loading { position: absolute; top: 50%; left: 50%; margin-left: -33px}
 
 // LEFT AND RIGHT ARROWS
-.navigator { width: 42px; height: 64px; position: absolute; z-index: 99; }
-#left { background-image: image-url("left.png"); left: 10px; bottom: 0px;}
-#right { background-image: image-url("right.png"); left: 45px; bottom: -1px; }
 .home-cover {height:900px;}
 #header {display:none;}
 #sub-header {display:none;}
@@ -15,25 +12,70 @@
 // BACKFROUND PICTURES
 div#destinations {
   position: relative;
-  height: 97%;
+  height: 96%;
   width:100%;
   background-size: cover !important;
   background-color:#4c4c4c;
+  transition: background 60ms ease-out;
   h1 { color: white; font-size:2.2em; font-weight: normal; margin-top:0px; padding-top: 28%; }
   @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 18%; } }
 }
 
-div#scroll-down {
-  margin-top:-20px;
+#scroll-down {
+  position:absolute;
+  left:49%; 
+  bottom:-20px;
+  z-index: 999;
+  transition: all 200ms ease-in;
+  &:hover { bottom: -25px;}
+}
+
+.inline-list.cover-bullets {
+  position: absolute;
+  padding-top: 1px;
+  padding-left: 1px;
+  right: 0;
+  top: -25%;
+  float: right;
+  text-align: right;
+}
+
+.inline-list.cover-bullets > li a {
+  margin-right: 1.4em;
+  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  opacity: 0.6;
+  transition: opacity 150ms ease-out;
+  &:hover {
+    opacity:0.8;
+    transition: opacity 150ms ease-out;
+  }
+}
+
+
+
+.act {
+  opacity:1 !important;
+  width: 12px !important;
+  height: 12px !important;
+  margin-top: -1px !important;
+  margin-left:-1px !important;
 }
 
 // BACKGROUND EXPERTS
-.expert {
-  text-align: right;
-  display: none;
+.navig {
   position: absolute;
   bottom: 0;
   right: 0;
+  width:100%;
+}
+
+.expert {
+  text-align: right;
+  display: none;
   z-index: 98;
   h5, p { color: white; margin-right: -20px; text-shadow: 0 0 20px rgba(0,0,0,0.6),0 2px 2px rgba(0,0,0,0.4); }
   h5 { margin-bottom: 0; }

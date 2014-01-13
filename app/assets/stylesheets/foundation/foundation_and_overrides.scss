@@ -842,8 +842,8 @@ $orbit-timer-show-progress-bar: false;
 
 // We use these to control the bullet nav styles
 
-$orbit-bullet-nav-color: #fdfdfd;
-$orbit-bullet-nav-color-active: #7e7e7e;
+$orbit-bullet-nav-color: rgba(255,255,255,0.6);
+$orbit-bullet-nav-color-active: rgba(255,255,255,1);
 $orbit-bullet-radius: emCalc(10px);
 
 // We use these to controls the style of slide numbers
@@ -1013,16 +1013,16 @@ $panel-border-size: 0;
 
 // We use these to control the style of the reveal overlay.
 
-// $reveal-overlay-bg: rgba(#000, .45);
+$reveal-overlay-bg: rgba(253,253,253, 0.9);
 // $reveal-overlay-bg-old: #000;
 
 // We use these to control the style of the modal itself.
 
-// $reveal-modal-bg: #fff;
+$reveal-modal-bg: rgba(253,253,253, 0);
 // $reveal-position-top: 50px;
 // $reveal-default-width: 80%;
 // $reveal-modal-padding: em-calc(20);
-// $reveal-box-shadow: 0 0 10px rgba(#000,.4);
+$reveal-box-shadow: 0;
 
 // We use these to style the reveal close button
 
@@ -1035,7 +1035,7 @@ $panel-border-size: 0;
 // We use these to control the modal border
 
 // $reveal-border-style: solid;
-// $reveal-border-width: 1px;
+$reveal-border-width: 0px;
 // $reveal-border-color: #666;
 
 // $reveal-modal-class: "reveal-modal";
@@ -1346,6 +1346,7 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 @import "custom-forms";
 @import "top-bar";
 @import "panels";
+@import "foundation/components/reveal";
 
 // ADMIN
 @import "foundation/components/side-nav";

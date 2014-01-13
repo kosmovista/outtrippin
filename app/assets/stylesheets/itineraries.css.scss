@@ -7,7 +7,7 @@
 @import "footer";
 @import "sidebar";
 
-div.container { margin-bottom: 30px; position: relative; }
+div.container { position: relative; }
 
 .hold {
   display: none;
@@ -76,14 +76,14 @@ div.container { margin-bottom: 30px; position: relative; }
   .pitch-imgs {
     float: right;
     margin-right: -35%;
-    margin-left: 30px;
-    margin-top:10px;
+    margin-left: 40px;
+    margin-top: 15px;
     width: 80%;
   }
 }
 
 .pitch-imgs {
-  margin-bottom:10px;
+  margin-bottom:30px;
 }
 
 .pitch-imgs .orbit-bullets {
@@ -91,6 +91,10 @@ div.container { margin-bottom: 30px; position: relative; }
   top: 330px;
   z-index: 99;
   cursor:pointer;
+}
+
+.pitch-imgs .orbit-bullets li {
+  border:0;
 }
 
 .pitch-imgs .orbit-container {
@@ -124,3 +128,90 @@ div.container { margin-bottom: 30px; position: relative; }
 }
 
 @media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:240px;} } }
+
+.inline-list.cover-tabs > li a {
+  margin-right: .7em;
+  font-size: 0.750em;
+  padding-bottom: 0.5em;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.70);
+  font-weight: bold;
+  -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  &:hover {color: #fff;}
+}
+
+.active-tab {
+  color:#fff !important;
+  border-bottom: 1px #fff solid;
+   -webkit-transition: color 0.25s ease-in-out;
+  -moz-transition: color 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out;
+  }
+
+
+// TIPS & TRICKS
+.tips {
+  border-left: 4px #00cccc solid;
+  padding:1em 0 1em 2em;
+  margin-bottom:40px;
+}
+
+.tip-avatar {
+  width:35px; margin-right:10px; margin-top:-5px;
+}
+
+// IMAGES
+@media only screen and (min-width:1279px) {
+  .day-photo-C img {
+    float: right;
+    max-height: 500px;
+    max-width: 550px;
+    float: right;
+    margin: 15px -35% 30px 40px;
+  }
+}
+@media only screen and (max-width:1279px) {
+  .day-photo-C {text-align: center;}
+  .day-photo-C img {
+    max-height: 400px;
+    margin:30px 0;
+  }
+}
+.day-photo-C img {
+  border-radius: 4px;
+}
+
+// WRITTEN BY & SHARE
+.written-by {
+  margin-bottom: 60px;
+}
+
+.avatar-footer {
+  float:left;
+  height: 90px;
+  width: 90px;
+  margin: 0 25px 25px 0;
+}
+
+.share {
+  text-align: center;
+  margin-top:30px;
+  padding-bottom: 60px;
+  padding-top: 80px;
+  background: #f3f3f3;
+  .sharethis {
+    border: 2px #cccccc solid;
+    padding: 10px 30px 14px;
+    color: #4c4c4c;
+    border-radius: 1000px;
+    background: #f3f3f3;
+    transition:all 200ms linear;
+    &:hover {
+      border: 2px #00cccc solid;
+      background: #00cccc;
+      color: white;
+    }
+  }
+}
