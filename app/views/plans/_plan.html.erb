@@ -27,6 +27,7 @@
     </div>
   </div>
 </div>
+</div class="cover">
 
 <ul class="small-block-grid-1" style="padding-top:100px">
   <% @plan.days.each_with_index do |d, i| %>
@@ -70,6 +71,33 @@
   <% end %>
 </ul>
 
+<div class="row written-by">
+  <div class="large-11 large-centered small-12 columns">  
+    <div class="large-8 large-centered columns"><hr>
+      <p class="sans subheader" style="margin-bottom:15px;"><small>WRITTEN BY</small></p>
+      <!<div class="row">
+        <img src="/assets/indi.jpeg" class="rounded avatar-footer" ></img>
+          <h5 class="no-margin no-padding"> Insert Expert Name</em></h5>
+          <h5 class="subheader serif" style="line-height:1em;"><em><small>Insert Expert Bio... up to like 230 characters or so with a ... I reckon. I represent an emerging group of travelers, one made up of young adults who have enough disposable income to splurge on their adventures. I work hard 48 weeks a year and don’t mind shelling out big bucks to experience once in a lifetime “must-see” sites.</em></small></h5>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="share">
-  <a href="" class="sharethis">Share this!</a>
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Share your story with a friend</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<div id="share-modal" class="reveal-modal medium text-center">
+  <h3 style="margin-bottom:50px; margin-top:30px;">Awesome. Let's make your friends jealous!</h3>
+  <div class="large-7 small-12 columns large-centered">
+    <ul class="small-block-grid-3">
+      <li><img src="/assets/facebook-large.png", style="width:100%;"></li>
+      <li><img src="/assets/email-large.png", style="width:100%;"></li>
+      <li><img src="/assets/twitter-large.png", style="width:100%;"></li>
+    </ul>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
 </div>

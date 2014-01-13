@@ -7,7 +7,7 @@
 @import "footer";
 @import "sidebar";
 
-div.container { margin-bottom: 30px; position: relative; }
+div.container { position: relative; }
 
 .hold {
   display: none;
@@ -181,4 +181,37 @@ div.container { margin-bottom: 30px; position: relative; }
 }
 .day-photo-C img {
   border-radius: 4px;
+}
+
+// WRITTEN BY & SHARE
+.written-by {
+  margin-bottom: 60px;
+}
+
+.avatar-footer {
+  float:left;
+  height: 90px;
+  width: 90px;
+  margin: 0 25px 25px 0;
+}
+
+.share {
+  text-align: center;
+  margin-top:30px;
+  padding-bottom: 60px;
+  padding-top: 80px;
+  background: #f3f3f3;
+  .sharethis {
+    border: 2px #cccccc solid;
+    padding: 10px 30px 14px;
+    color: #4c4c4c;
+    border-radius: 1000px;
+    background: #f3f3f3;
+    transition:all 200ms linear;
+    &:hover {
+      border: 2px #00cccc solid;
+      background: #00cccc;
+      color: white;
+    }
+  }
 }
