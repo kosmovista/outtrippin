@@ -15,7 +15,7 @@
   <div class="row tabs">
     <div class="large-1 small-2 text-center large-centered small-centered columns">
       <label class="file-input story-cover">
-         <img src="/assets/imagew.png" style="width:70px;" >
+        <%= image_tag "imagew.png", style: "width:70px;" %>
         <input type="file" ng-file-select="onFileSelect($files, true, 0)">
       </label>
     </div>
@@ -33,7 +33,9 @@
           </div>
 
           <div class="large-2 small-6 right columns text-right">
-            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day"><img src="/assets/edit-circle.png" style="width:30px" class="circle-button"></img></a>
+            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day">
+              <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
+            </a>
           </div>
 
           <div class="large-8 columns">
@@ -41,7 +43,7 @@
 
             <div class="desc">
               <label class="file-input perday">
-                <img ng-if="!day.picture" src="/assets/image.png" style="width:250px; opacity:0.2;"></img>
+                <span ng-if="!day.picture"><%= image_tag "image.png", style:"width:250px; opacity:0.2;" %></span>
                 <img ng-if="day.picture" ng-src="{{day.picture}}" class="day-photo"></img>
                 <input type="file" ng-file-select="onFileSelect($files, false, day.id)">
               </label>
@@ -65,10 +67,10 @@
               <div class="large-2 small-6 columns">
               </div>
               <div class="large-2 right small-6 columns text-right">
-                <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
-                <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><img src="/assets/save.png" style="width:25px"></img></a>
-                <a href="" class="circle-button" title="Cancel" ng-click="editing=false; cancel()"><img src="/assets/cancel.png" style="width:25px"></img></a>
-                <a href="" class="circle-button" title="Delete Day" ng-click="delete_day(day.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
+                <a href="" class="circle-button" title="Add Image"><%= image_tag "camera.png", class:"hide-for-medium-up", style:"width:25px; opacity:0.7;" %></a>
+                <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Cancel" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                <a href="" class="circle-button" title="Delete Day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
               </div>
               <div class="large-8 small-12 columns">
                 <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
@@ -96,9 +98,9 @@
               <h5 class="subheader serif"><em>Day X</em></h5>
             </div>
             <div class="large-2 right small-6 columns text-right">
-              <a href="" class="circle-button" title="Add Image"><img src="/assets/camera.png" class="hide-for-medium-up" style="width:25px; opacity:0.7;"></img></a>
-              <a href="" class="circle-button" title="Cancel" ng-click="add_day=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
-              <a href="" class="circle-button" title="Save Day" ng-click="save_day()"><img src="/assets/save.png" style="width:26px"></img></a>
+              <a href="" class="circle-button" title="Add Image"><%= image_tag "camera.png", class: "hide-for-medium-up", style: "width:25px; opacity:0.7;" %></a>
+              <a href="" class="circle-button" title="Cancel" ng-click="add_day=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+              <a href="" class="circle-button" title="Save Day" ng-click="save_day()"><%= image_tag "save.png", style: "width:26px" %></a>
             </div>
             <div class="large-8 small-12 columns">
               <h3><input type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
@@ -121,12 +123,12 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><img src="/assets/edit-circle.png" style="width:30px;" class="circle-button"></img></a>
+            <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
               <h4 class="subheader black serif"><em><span style="font-size:120%;">{{tt.title}}</span> {{tt.body}}</em></h4>
-              <!-- Insert expert avatar and name <h6 class="subheader serif" style="padding-top:.8em;"><img src="/assets/indi.jpeg" class="rounded text-right tip-avatar" ></img><em> Indi J.</em></h6> -->
+              <h6 class="subheader serif" style="padding-top:.8em;"><%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar" %><em><%= @plan.user.personal_info[:name] %></em></h6>
             </div>
           </div>
         </div>
@@ -138,9 +140,9 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><img src="/assets/save.png" style="width:25px"></img></a>
-            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false;cancel();"><img src="/assets/cancel.png" style="width:25px"></img></a>
-            <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><img src="/assets/delete-circle.png" style="width:25px"></img></a>
+            <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
+            <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
@@ -159,8 +161,8 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Cancel" ng-click="add_tip_trick=false"><img src="/assets/cancel.png" style="width:25px"></img></a>
-            <a href="" class="circle-button" title="Save Day" ng-click="save_tip_trick()"><img src="/assets/save.png" style="width:26px"></img></a>
+            <a href="" class="circle-button" title="Cancel" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+            <a href="" class="circle-button" title="Save Day" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
