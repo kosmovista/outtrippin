@@ -18,7 +18,7 @@
   @media only screen and (max-width: 1200px) {
     margin-left: -300px;
   }
-  #home {color:#a2a2a2; position: absolute; left:70px; top:20px;
+  #home {color:#a2a2a2; position: absolute; left:70px; top:28px; font-size: 0.750em; letter-spacing: 0.15em;
   a {color:#a2a2a2;}
   }
 }
@@ -62,23 +62,15 @@
   display:none;
 }
 
+#guide {
+  color: #fff;
+  position: absolute;
+  top: 12px;
+  left: 55px;
+  font-size: 1.2em;
+}
+
 .pitches.showall {
   display:block;
 }
 
-.hidePitch, .showPitch {
-  color: rgba(255,255,255,0.70);
-  font-weight: bold;
-}
-
-.hidePitch:hover, .showPitch:hover {
-  color: #fff;
-}
-
-.active {
-  color:#fff;
-  border-bottom: 1px #fff solid;
-   -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-}
