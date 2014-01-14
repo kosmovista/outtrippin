@@ -39,6 +39,8 @@ class PitchNew
   def save
     return false unless valid?
     if create_objects
+      UserMailer.delay.new_pitch_email(@pitch)
+      AdminMailer.delay.new_pitch_email(@pitch)
       true
     else
       false
