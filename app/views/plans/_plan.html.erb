@@ -24,6 +24,7 @@
           <li><a href="#" > BOOKING </a></li>
           <li><a href="#" > MAPS </a></li>
           <li><a href="#" > COMMENTS </a></li>
+          <li><a href="#" data-reveal-id="share-modal"> ADD A TRAVELER </a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -58,6 +59,7 @@
       </div>
     </div>
   </li>
+
   <% end %>
 
   <% @plan.tips_tricks.each do |tt| %>
@@ -68,7 +70,7 @@
           <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
           <h6 class="subheader serif" style="padding-top:.8em;">
             <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar" %>
-            <em><%= @plan.user.personal_info[:name] %></em>
+            <em>A tip by <%= @plan.user.personal_info[:name] %></em>
           </h6>
         </div>
       </div>
