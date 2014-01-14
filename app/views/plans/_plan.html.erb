@@ -79,13 +79,14 @@
 
 <div class="row written-by">
   <div class="large-11 large-centered small-12 columns">
-    <div class="large-8 large-centered columns"><hr>
+    <div class="large-8 small-12 large-centered columns"><hr>
       <p class="sans subheader" style="margin-bottom:15px;"><small>WRITTEN BY</small></p>
       <div class="row">
-        <%= image_tag @plan.user.avatar.url, class: "rounded avatar-footer" %>
-        <h5 class="no-margin no-padding"><em><%= @plan.user.personal_info[:name] %></em></h5>
-        <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @plan.user.expert_info[:bio] %></em></small></h5>
-
+        <div class="large-12 small-12 columns">
+          <%= image_tag @plan.user.avatar.url, class: "rounded avatar-footer" %>
+          <h5 class="no-margin no-padding"><%= @plan.user.personal_info[:name] %></h5>
+          <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @plan.user.expert_info[:bio] %></em></small></h5>
+        </div>
       </div>
     </div>
   </div>
