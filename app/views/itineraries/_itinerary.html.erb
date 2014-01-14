@@ -5,11 +5,12 @@
         <h3><%= itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name] %></h3>
       </div>
       <div class="large-3 columns">
-        <%= link_to "Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" %>
+        <%= link_to "Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" if current_user.owns?(@itinerary) %>
+        <%= link_to "Submit Pitch", new_itinerary_pitch_path(@itinerary), class: "button small radius" if current_user.is?("expert") %>
       </div>
     </div>
-      <p><em><img src="/assets/marker.png"  style="width:25px; opacity:0.8; margin-top:-6px;"> <a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
-      <img src="/assets/plane.png"  style="width:17px; opacity:0.7; margin:-6px 4px 0;"> <%= itinerary.extra_info[:travelers] %> are traveling with a budget of <%= itinerary.extra_info[:budget] %> per person, per day.</em></p>
+      <p><em><%= image_tag "/assets/marker.png",  style: "width:25px; opacity:0.8; margin-top:-6px;" %> <a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
+      <%= image_tag "/assets/plane.png",  style:"width:17px; opacity:0.7; margin:-6px 4px 0;" %> <%= itinerary.extra_info[:travelers] %> are traveling with a budget of <%= itinerary.extra_info[:budget] %> per person, per day.</em></p>
     </ul>
     <h5 class="subheader serif"><em>This trip, I'm on the hunt for some</em></h5>
     <ul class="sans skill-list">
