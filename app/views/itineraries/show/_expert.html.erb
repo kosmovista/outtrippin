@@ -1,55 +1,65 @@
-<% expanded_sidebar %>
 <% full_pitch %>
 <% if @pitch.blank? %>
 <div class="row">
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
-        <hr style="border-color:white;">
-      </div>
+      <hr style="border-color:white;">
+    </div>
     <h5 class="white serif subheader text-center"><em>Wanna help <%= @itinerary.extra_info[:travelers] %> plan their trip? Game on, we've taken the liberty of adding a few details from your profile so you can simply edit and send!</em></h5>
   </div>
 </div>
 </div class="header">
-<div class="tabs"></div>
-</div class="cover">
 <div class="row">
-  <div class="large-11 large-centered small-12 columns">
-    <div class="row break">
-      <div id="personal" class="large-2 small-12 columns">
-        <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar right rounded", style: "width:70px; margin-left:40px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
-        <div class="large-5 hide-for-small no-padding no-margin right columns">
-          <hr>
-        </div>
-        <%= link_to "Submit Pitch", new_itinerary_pitch_path(@itinerary), class: "button small radius" %>
-      </div>
-
-      <div class="large-5 small-12 columns">
-        <h4 class="no-margin no-padding">  <%= link_to current_user.personal_info[:name], user_path(current_user), target: "_blank", class: "black", title: "User Profile" %></h4>
-        <p class="no-margin no-padding"><em><%= link_to expert_info_website_url(current_user.website), "http://" + expert_info_website_url(current_user.website), target: '_blank' unless current_user.website.blank? %></em></p>
-      </div>
-
-      <div class="large-3 text-right hide-for-small columns">
-        <%= link_to (image_tag "facebook.png", style: "width:30px"),  expert_info_website_url(current_user.facebook), target: '_blank' unless current_user.facebook.blank? %>
-        <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(current_user.pinterest), target: '_blank' unless current_user.pinterest.blank? %>
-        <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(current_user.twitter), target: '_blank' unless current_user.twitter.blank? %>
-        <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(current_user.instagram), target: '_blank' unless current_user.instagram.blank? %>
-      </div>
-
-      <div class="large-8 small-12 left columns details">
-        <h5 class="subheader serif"><em>My travel interests:</em></h5>
-        <% unless current_user.expert_info[:style].blank? %>
-        <ul class="sans skill-list">
-          <% current_user.expert_info[:style].each do |s| %>
-          <li><%= s %></li>
-          <% end %>
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
-        <% end %>
-
-        <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
-        <p><%= current_user.expert_info[:bio] %></p>
+        <hr style="border-color:white; margin-top:0;">
       </div>
     </div>
+  </div>
+</div>
+</div class="cover">
+<div class="row" id="slide0-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render @itinerary %>
+  </div>
+</div>
+
+
+<% elsif @pitch.won_by?(current_user) %>
+<div class="row">
+  <div class="small-12 small-centered columns">
+    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+    <div class="large-1 hide-for-small large-centered columns">
+        <hr style="border-color:white;">
+      </div>
+    <h5 class="white serif subheader text-center"><em>WOOHOO! You've won! <%= @itinerary.extra_info[:travelers] %> have picked your beautiful self to write their travel story! So let's get started, shall we? <br> Click "edit story" and you'll be on your way.</em></h5>
+  </div>
+</div>
+</div class="header">
+<div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">THE PITCH</a></li>
+          <li><%= link_to "EDIT STORY", itinerary_plan_path(@itinerary)%></li>
+          <li><a href="#" id="slide1" >COMMENTS</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+</div class="cover">
+<div class="row" id="slide0-content">
+  <div class="large-11 large-centered small-12 columns">
+  	<%= render @pitch %>
   </div>
 </div>
 <% else %>
@@ -59,15 +69,51 @@
     <div class="large-1 hide-for-small large-centered columns">
         <hr style="border-color:white;">
       </div>
-    <h5 class="white serif subheader text-center"><em>Thanks for offering <%= @itinerary.extra_info[:travelers] %> to help plan their trip! They're checking it out and we'll keep you updated on how it goes. In the meantime, you can still edit your offer if you'd like to.</em></h5>
-  </div>
+    <h5 class="white serif subheader text-center"><em> @itinerary.extra_info[:travelers] %> to help plan their trip! They're checking it out and we'll keep you updated on how it goes. In the meantime, you can still edit your offer if you'd like to.</em></h5>
+  </div>w
 </div>
 </div class="header">
-<div class="tabs"></div>
-</div class="cover">
 <div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >COMMENTS</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+</div class="cover">
+<div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
-  	<%= render @pitch %>
+    <%= render @pitch %>
   </div>
 </div>
 <% end %>
+
+<div class="row break" id="slide1-content">
+  <div class="large-11 large-centered small-12 columns">
+    <div class="large-8 large-centered small-12 columns">
+      <%= render 'itineraries/show/comments' %>
+    </div>
+  </div>
+</div>
+<div class="share">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+<div id="share-modal" class="reveal-modal medium text-center">
+  <h3>Awesome! Let's make some people jealous.</h3>
+  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+  <div class="large-7 small-12 columns large-centered">
+    <ul class="small-block-grid-3">
+      <li><img src="/assets/facebook-large.png", style="width:100%;"></li>
+      <li><img src="/assets/email-large.png", style="width:100%;"></li>
+      <li><img src="/assets/twitter-large.png", style="width:100%;"></li>
+    </ul>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

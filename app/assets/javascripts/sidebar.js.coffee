@@ -3,6 +3,24 @@ window.toogleSidebar = ->
   $('#sidebar').toggleClass("show")
   $("#guide").toggle()
 
+window.act_tab = 0
+window.tabbs = $("#cover-tabs").children()
+
+window.tabbs.each (i) ->
+  $('#slide' + i + '-content').hide()
+  $('#slide' + window.act_tab + '-content').show()
+
+  $('#slide' + i).on "click", ->
+    $('#slide' + window.act_tab).removeClass("active-tab")
+    $('#slide' + window.act_tab + '-content').toggle()
+    # Goto to selected slide
+    window.act_tab = i
+    $('#slide' + window.act_tab).addClass("active-tab")
+    $('#slide' + window.act_tab + '-content').toggle()
+    return false
+
+
+
 window.showPitch = ->
   $('.pitches').animate({
         height: ['show', 'swing']

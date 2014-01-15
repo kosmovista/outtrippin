@@ -92,7 +92,11 @@ class User < ActiveRecord::Base
   end
 
   def geo_expertise
-   [self.hometown, self.location] + self.countries + self.cities
+    if self.expert?
+      (([self.hometown, self.location] + self.countries + self.cities).join(", ")) 
+    else
+      nil
+    end
   end
 
   # TODO generalize

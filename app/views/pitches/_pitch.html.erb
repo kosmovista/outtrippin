@@ -36,21 +36,20 @@
         <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em></h5>
         <p><%= pitch.why_me %></p>
 
-        <div class="pitches">
-          <h3><%= pitch.title %></h3>
-          <% unless pitch.pictures.empty? %>
-          <div class="pitch-imgs">
-            <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
-              <% pitch.pictures.each do |pic| %>
-              <li>
-                <%= image_tag pic.source %>
-              </li>
-              <% end %>
-            </ul>
-          </div>
-          <% end %>
-          <p><%= pitch.summary %></p>
+        <h3><%= pitch.title %></h3>
+        <% unless pitch.pictures.empty? %>
+        <div class="pitch-imgs">
+          <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
+            <% pitch.pictures.each do |pic| %>
+            <li>
+              <%= image_tag pic.source %>
+            </li>
+            <% end %>
+          </ul>
         </div>
+        <% end %>
+        <p><%= pitch.summary %></p>
+        
       </div>
     </div>
   </div>
