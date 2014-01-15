@@ -4,21 +4,33 @@
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
-        <hr style="border-color:white;">
-      </div>
+      <hr style="border-color:white;">
+    </div>
     <h5 class="white serif subheader text-center"><em>Wanna help <%= @itinerary.extra_info[:travelers] %> plan their trip? Game on, we've taken the liberty of adding a few details from your profile so you can simply edit and send!</em></h5>
   </div>
 </div>
 </div class="header">
-<div class="tabs"></div>
-</div class="cover">
 <div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >COMMENTS</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+</div class="cover">
+<div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
       <%= render @itinerary %>
   </div>
 </div>
 <% else %>
-<% expanded_sidebar %>
+
 <div class="row">
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -29,11 +41,47 @@
   </div>
 </div>
 </div class="header">
-<div class="tabs"></div>
-</div class="cover">
 <div class="row">
+  <div class="large-11 large-centered text-center small-12 columns">
+    <div class="tabs">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >COMMENTS</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+</div class="cover">
+<div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
   	<%= render @pitch %>
   </div>
 </div>
 <% end %>
+
+<div class="row break" id="slide1-content">
+  <div class="large-11 large-centered small-12 columns">
+    <div class="large-8 large-centered small-12 columns">
+      <%= render 'itineraries/show/comments' %>
+    </div>
+  </div>
+</div>
+<div class="share">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+<div id="share-modal" class="reveal-modal medium text-center">
+  <h3>Awesome! Let's make some people jealous.</h3>
+  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+  <div class="large-7 small-12 columns large-centered">
+    <ul class="small-block-grid-3">
+      <li><img src="/assets/facebook-large.png", style="width:100%;"></li>
+      <li><img src="/assets/email-large.png", style="width:100%;"></li>
+      <li><img src="/assets/twitter-large.png", style="width:100%;"></li>
+    </ul>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
