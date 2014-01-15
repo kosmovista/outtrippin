@@ -10,6 +10,9 @@
   </div>
 
   <div class="large-10 columns">
+
+    <%= link_to "Download Expert List", admin_expert_list_path(format: 'xls'), class: "right small button" %>
+
     <table style="width:100%">
       <thead>
         <tr>
@@ -25,7 +28,7 @@
           <td><%= link_to (u.name || u.email), user_path(u) %></td>
           <td><%= u.roles %> </td>
           <td><%= time_ago_in_words u.created_at %></td>
-          <td><%= link_to "Delete", user_path(u), method: :delete, confirm: "Please confirm that you want to delete user #{u.name}." %></td>
+          <td><%= link_to "Delete", user_path(u), method: :delete, data: { confirm: "Please confirm that you want to delete user #{u.name || u.email}." } %></td>
         </tr>
         <% end %>
       </tbody>
