@@ -43,7 +43,7 @@ gem 'turbolinks'
 gem 'capistrano', '= 2.15.5', group: :development
 
 group :production do
-  # gem 'pg'
+  gem 'pg'
   gem 'unicorn'
 end
 
