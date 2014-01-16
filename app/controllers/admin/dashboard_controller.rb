@@ -4,4 +4,11 @@ class Admin::DashboardController < ApplicationController
   def index
 
   end
+
+  def expert_list
+    @experts = User.experts
+    respond_to do |format|
+      format.xls
+    end
+  end
 end

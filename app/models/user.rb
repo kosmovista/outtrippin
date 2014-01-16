@@ -34,6 +34,11 @@ class User < ActiveRecord::Base
   def is?(role)
     roles.include?(role.to_s)
   end
+
+  def self.experts
+    User.all.select { |u| u.is?("expert") }
+  end
+
   # (end) ROLE MANAGER LOGIC
 
   def expert?

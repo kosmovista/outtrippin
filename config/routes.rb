@@ -44,6 +44,7 @@ Outtrippin::Application.routes.draw do
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
+    get 'expert_list' => 'dashboard#expert_list'
     resources 'itineraries'
   end
 
