@@ -10,12 +10,12 @@
   </div>
 </div>
 </div class="header">
-<div class="row">
-  <div class="large-11 large-centered text-center small-12 columns">
-    <div class="tabs">
+<div class="tabs">
+  <div class="row">
+    <div class="large-11 large-centered text-center small-12 columns">
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
-          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide0" class="active-tab">THE BRIEF</a></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
@@ -23,7 +23,6 @@
     </div>
   </div>
 </div>
-</div class="cover">
 <div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
       <%= render @itinerary %>
@@ -42,12 +41,13 @@
   </div>
 </div>
 </div class="header">
-<div class="row">
-  <div class="large-11 large-centered text-center small-12 columns">
-    <div class="tabs">
+<div class="tabs">
+  <div class="row">
+    <div class="large-11 large-centered text-center small-12 columns">
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">THE PITCH</a></li>
+          <li><a href="#" id="slide2" >THE BRIEF</a></li>
           <li><%= link_to "EDIT STORY", itinerary_plan_path(@itinerary)%></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
@@ -56,10 +56,14 @@
     </div>
   </div>
 </div>
-</div class="cover">
 <div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
   	<%= render @pitch %>
+  </div>
+</div>
+<div class="row" id="slide2-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render @itinerary %>
   </div>
 </div>
 <% else %>
@@ -69,16 +73,17 @@
     <div class="large-1 hide-for-small large-centered columns">
         <hr style="border-color:white;">
       </div>
-    <h5 class="white serif subheader text-center"><em> @itinerary.extra_info[:travelers] %> to help plan their trip! They're checking it out and we'll keep you updated on how it goes. In the meantime, you can still edit your offer if you'd like to.</em></h5>
-  </div>w
+    <h5 class="white serif subheader text-center"><em>Thanks for offering to <%= @itinerary.extra_info[:travelers] %> to help plan their trip! They're checking it out and we'll keep you updated on how it goes. In the meantime, you can still edit your offer if you'd like to.</em></h5>
+  </div>
 </div>
 </div class="header">
-<div class="row">
-  <div class="large-11 large-centered text-center small-12 columns">
-    <div class="tabs">
+<div class="tabs">
+  <div class="row">
+    <div class="large-11 large-centered text-center small-12 columns">
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
-          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide0" class="active-tab">THE PITCH</a></li>
+          <li><a href="#" id="slide2" >THE BRIEF</a></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
@@ -86,10 +91,14 @@
     </div>
   </div>
 </div>
-</div class="cover">
 <div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
     <%= render @pitch %>
+  </div>
+</div>
+<div class="row" id="slide2-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render @itinerary %>
   </div>
 </div>
 <% end %>
@@ -110,9 +119,9 @@
   <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><img src="/assets/facebook-large.png", style="width:100%;"></li>
-      <li><img src="/assets/email-large.png", style="width:100%;"></li>
-      <li><img src="/assets/twitter-large.png", style="width:100%;"></li>
+      <li><%= image_tag '/assets/facebook-large.png', style: "width:100%;" %></li>
+      <li><%= image_tag '/assets/email-large.png', style: "width:100%;" %></li>
+      <li><%= image_tag '/assets/twitter-large.png', style: "width:100%;" %></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>

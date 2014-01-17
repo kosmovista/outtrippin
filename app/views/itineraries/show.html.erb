@@ -3,7 +3,8 @@
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
-<div class="cover">
+<div class="cover"></div>
+<div id="overlay"></div>
 	<div class="header">
 		<% if current_user.is?("expert") %>
 		  <%= render 'itineraries/show/expert' %>
