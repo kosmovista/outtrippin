@@ -67,7 +67,6 @@
   height:45px;
   padding: 7px 10px;
   border-radius: 4px;
-  background-color: #00cccc;
   z-index: 1000 !important;
 }
 
@@ -84,7 +83,7 @@
   position:fixed;
 }
 
-.top-bar-section ul li { 
+.top-bar-section ul li {
     margin-right:10px;
   }
 
@@ -102,10 +101,10 @@
     background-color: rgba(0,0,0,0) !important;
   }
 
-  .top-bar-section { 
+  .top-bar-section {
     margin-top:10px;
   }
-  
+
   .top-bar-section .has-dropdown > a:after {
     top:23px;
     margin-right: 18px;
@@ -120,7 +119,7 @@
   }
 
   .top-bar-section .dropdown {
-    padding-top: 7px; 
+    padding-top: 7px;
     :before {
       content: "";
       display: block;
