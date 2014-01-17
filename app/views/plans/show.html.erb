@@ -16,7 +16,7 @@
 <div class="tabs">
   <div class="large-1 small-2 text-center large-centered small-centered columns">
     <label class="file-input story-cover text-center">
-      <%= image_tag "imagew.png", style: "width:70px;" %>
+      <%= image_tag "edit-circle.png", style: "width:30px;", title: "Change Cover Picture" %>
       <input type="file" ng-file-select="onFileSelect($files, true, 0)">
     </label>
   </div>
@@ -43,7 +43,7 @@
 
             <div class="desc">
               <label class="file-input perday">
-                <span ng-if="!day.picture"><%= image_tag "image.png", style:"width:250px; opacity:0.2;" %></span>
+                <span ng-if="!day.picture"><%= image_tag "image.png", style:"width:300px; opacity:0.2;" %></span>
                 <img ng-if="day.picture" ng-src="{{day.picture}}" class="day-photo"></img>
                 <input type="file" ng-file-select="onFileSelect($files, false, day.id)">
               </label>
