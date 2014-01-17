@@ -1,5 +1,4 @@
 footer {
-  text-align: center;
   padding: 30px 0;
   font-family: "calluna-sans", helvetica, sans-serif;
   background-color: whitesmoke;
@@ -14,11 +13,10 @@ footer h6 {
   font-weight:normal;
 }
 
-a.text {
-  font-size: 13px;
-  display: block;
-  color: #6e6e6e;
-  &:hover {
-    color: #00cccc;
-  }
+.side-nav li {
+  margin: 0px !important;
+}
+
+.side-nav li a{
+  color:#e6e6e6;
 }
