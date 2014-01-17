@@ -114,20 +114,28 @@ div.container { position: relative; }
 .cover {
   background-color: #4a4a4a;
   top:0;
-  padding-top: 80px;
+  opacity:0.7;
   width: 100%;
   height: 400px;
   margin-bottom: 30px;
   background-image: image-url('passport.jpg');
   background-size: cover !important;
   background-position: 50% 50%;
-  .header {height:270px; overflow: hidden;}
-  .tabs {height:60px; 
-    a {line-height: 1em;}
-  }
+}
+#overlay { 
+  top: 0;
+  height: 400px;
+  width: 100%;
+  z-index: -9 !important;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 1)
+}
+.header {top: 80px; position:absolute; height:260px; width:100%; overflow: hidden;}
+.tabs {height:60px; width:100%; position:absolute; top: 340px;
+  a {line-height: 1em;}
 }
 
-@media only screen and (min-width: 1200px) { .cover {padding-top: 100px;  .header {height:240px;} } }
+@media only screen and (min-width: 1200px) {  .header {top: 100px; height:240px;}  }
 
 .inline-list.cover-tabs > li a {
   margin-right: .7em;
@@ -141,6 +149,7 @@ div.container { position: relative; }
   transition: color 0.25s ease-in-out;
   &:hover {color: #fff;}
 }
+
 
 .active-tab {
   color:#fff !important;
