@@ -1,11 +1,6 @@
 <div class="row break">
   <div id="personal" class="large-2 small-12 columns">
     <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar right rounded", style: "width:70px; margin-left:40px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
-    <div class="large-5 hide-for-small no-padding no-margin right columns">
-      <hr>
-    </div>
-    <%= f.submit submit_text, class: "small expand button radius" %>
-    <%= link_to "Cancel", itinerary_path(@itinerary), class: "small expand secondary button radius" %>
   </div>
 
   <div class="large-8 small-12 columns">
@@ -49,5 +44,7 @@
     <%= f.file_field "pictures[pic_#{i}]" %>
     <% end %>
     <%= errors_for(pitch, :pictures) %>
+    <%= f.submit submit_text, class: "small button radius" %>
+    <%= link_to "Cancel", itinerary_path(@itinerary), class: "small secondary button radius" %>
   </div>
 </div>
