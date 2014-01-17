@@ -6,7 +6,7 @@
     </div>
     <%= link_to "Edit Pitch", edit_itinerary_pitch_path(@itinerary, pitch), class: "small button radius" if current_user.is?("expert") && !pitch.winner %>
     <%= link_to "Start Plan", itinerary_plan_path(@itinerary), class: "small button radius" if pitch.won_by?(current_user) %>
-    <%= button_to "Pick Expert!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "small button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
+    <%= button_to "Pick Me!", winner_itinerary_pitch_path(@itinerary, pitch), method: :put, class: "small button radius" if current_user.owns?(@itinerary) && !@itinerary.has_winner_pitch? %>
   </div>
   <div class="row">
     <div class="large-8 left small-12 columns">
