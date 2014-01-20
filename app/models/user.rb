@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   acts_as_authentic
 
   # Kaminari (pagination)
-  paginates_per 1
+  paginates_per 50
 
   # Carrierwave
   mount_uploader :avatar, AvatarUploader
