@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   # Authlogic configuration
   acts_as_authentic
 
+  # Kaminari (pagination)
+  paginates_per 1
+
   # Carrierwave
   mount_uploader :avatar, AvatarUploader
 
@@ -36,8 +39,17 @@ class User < ActiveRecord::Base
   end
 
   def self.experts
-    User.all.select { |u| u.is?("expert") }
+    User.where(roles_mask: 2)
   end
+
+  def self.admins
+    User.where(roles_mask: 1)
+  end
+
+  def self.customers
+    User.where(roles_mask: nil)
+  end
+
 
   # (end) ROLE MANAGER LOGIC
 
@@ -93,7 +105,7 @@ class User < ActiveRecord::Base
 
   def geo_expertise
     if self.expert?
-      (([self.hometown, self.location] + self.countries + self.cities).join(", ")) 
+      (([self.hometown, self.location] + self.countries + self.cities).join(", "))
     else
       nil
     end

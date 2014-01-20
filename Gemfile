@@ -20,6 +20,9 @@ gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 
+# Pagination
+gem 'kaminari'
+
 # Payment
 gem 'stripe'
 
