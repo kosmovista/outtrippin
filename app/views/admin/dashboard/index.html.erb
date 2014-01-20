@@ -10,28 +10,48 @@
   </div>
 
   <div class="large-10 columns">
+    <div class="row">
+      <div class="large-9 columns">
+        <%= link_to admin_path(filter: "experts"), class: "small secondary button #{ "round" if params[:filter] == 'experts'}" do %>
+          <%= image_tag("expert.png") %>Experts
+        <% end %>
 
-    <%= link_to "Download Expert List", admin_expert_list_path(format: 'xls'), class: "right small button" %>
+        <%= link_to admin_path(filter: "customers"), class: "small secondary button #{ "round" if params[:filter] == 'customers'}" do %>
+          <%= image_tag("user.png") %>Customers
+        <% end %>
+
+        <%= link_to admin_path(filter: "admins"), class: "small secondary button #{ "round" if params[:filter] == 'admins'}" do %>
+          <%= image_tag("admin.png") %>Admins
+        <% end %>
+
+        <%= link_to admin_path do %>
+          <%= image_tag("delete-circle.png", size: "20x20") %>
+        <% end %>
+      </div>
+      <div class="large-3 columns"><%= link_to "Download Expert List", admin_expert_list_path(format: 'xls'), class: "right small button" %></div>
+    </div>
 
     <table style="width:100%">
       <thead>
         <tr>
           <th>Name</th>
-          <th>Roles</th>
           <th>Signed Up</th>
           <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        <% User.all.each do |u| %>
+        <% @users.each do |u| %>
         <tr>
-          <td><%= link_to (u.name || u.email), user_path(u) %></td>
-          <td><%= u.roles %> </td>
+          <td><%= image_tag("expert.png") if u.is?("expert") %>
+              <%= image_tag("admin.png") if u.is?("admin") %>
+              <%= image_tag("user.png") if u.roles_mask.nil? %>
+              <%= link_to (u.name || u.email), user_path(u) %></td>
           <td><%= time_ago_in_words u.created_at %></td>
           <td><%= link_to "Delete", user_path(u), method: :delete, data: { confirm: "Please confirm that you want to delete user #{u.name || u.email}." } %></td>
         </tr>
         <% end %>
       </tbody>
     </table>
+    <%= paginate @users %>
   </div>
 </div>
