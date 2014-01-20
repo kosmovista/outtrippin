@@ -1,7 +1,12 @@
 <% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
 <div class="home-cover">
   <div id="destinations">
-    <%= image_tag "loading_black.gif", id: "loading" %>
+    <div id="loading" >
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+    </div>
     <div class="row">
       <div class="large-12 small-12 columns">
         <h1 id="header" class="no-margin" ><%= homepage("header") %></h1>
