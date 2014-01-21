@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin expert]
 
+  acts_as_voter
+
   default_scope { order('created_at DESC') }
 
   serialize :personal_info, Hash

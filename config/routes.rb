@@ -15,6 +15,7 @@ Outtrippin::Application.routes.draw do
       get 'checkout'
       put 'purchase'
       get 'thankyou'
+      post 'toggle_star'
     end
     resources 'pitches' do
       member do

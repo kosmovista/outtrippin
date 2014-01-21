@@ -10,6 +10,7 @@ gem 'high_voltage'
 
 # Tracking exceptions
 gem 'exceptional'
+gem 'acts_as_votable', '~> 0.8.0'
 
 # Intercom
 gem 'intercom'

@@ -12,4 +12,10 @@
 		</div>
 	</div>
 </div>
+
+<% unless @starred_itineraries.blank? %>
+  <h1>STARRED ITINERARIES</h1>
+  <%= render @starred_itineraries %>
+<% end %>
+
 <%= render @itineraries %>

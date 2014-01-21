@@ -26,6 +26,15 @@ class ItinerariesController < ApplicationController
     end
   end
 
+  def toggle_star
+    if current_user.liked? @itinerary
+      @itinerary.unliked_by current_user
+    else
+      current_user.likes @itinerary
+    end
+    redirect_to :back
+  end
+
   def details
     @itinerary_details = ItineraryDetails.new(itinerary: @itinerary)
   end

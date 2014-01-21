@@ -1,6 +1,8 @@
 class Itinerary < ActiveRecord::Base
   include Chargeable
 
+  acts_as_votable
+
   belongs_to :user, inverse_of: :itineraries
   has_many :pitches, inverse_of: :itinerary
   has_many :plans, inverse_of: :itinerary
