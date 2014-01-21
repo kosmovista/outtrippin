@@ -16,6 +16,10 @@ class Itinerary < ActiveRecord::Base
     10 * self.duration.to_i
   end
 
+  def self.published
+    Itinerary.where(published: true)
+  end
+
   def price_in_cents
     10 * self.duration.to_i * 100
   end

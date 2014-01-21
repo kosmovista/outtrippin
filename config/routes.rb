@@ -46,7 +46,9 @@ Outtrippin::Application.routes.draw do
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
     get 'expert_list' => 'dashboard#expert_list'
-    resources 'itineraries'
+    resources 'itineraries' do
+      post 'toggle_published'
+    end
   end
 
   get "/delayed_job" => DelayedJobWeb, anchor: false

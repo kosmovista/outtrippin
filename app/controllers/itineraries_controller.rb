@@ -5,7 +5,9 @@ class ItinerariesController < ApplicationController
   before_action :authorize_user, only: [:index, :show] # TODO some more actions should be here
 
   def index
-    @itineraries = current_user.itineraries
+    @itineraries = current_user.itineraries unless current_user.is?("expert")
+    @itineraries = Itinerary.published if current_user.is?("expert")
+    @starred_itineraries = current_user.find_voted_items
   end
 
   def create
