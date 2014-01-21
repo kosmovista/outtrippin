@@ -33,11 +33,12 @@
 <% elsif @pitch.won_by?(current_user) %>
 <div class="row">
   <div class="small-12 small-centered columns">
+    <h5 class="white text-center subheader serif"><em><%= image_tag '/assets/trophy.png', style: "height:1.6em; margin:-10px 20px 0;" %>WOOHOO! You've won!<%= image_tag '/assets/trophy.png', style: "height:1.6em; margin:-10px 20px 0;" %></em></h5>
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
     <div class="large-1 hide-for-small large-centered columns">
         <hr style="border-color:white;">
       </div>
-    <h5 class="white serif subheader text-center"><em>WOOHOO! You've won! <%= @itinerary.extra_info[:travelers] %> have picked your beautiful self to write their travel story! So let's get started, shall we? <br> Click "edit story" and you'll be on your way.</em></h5>
+    <h5 class="white serif subheader text-center"><em>You've been picked by <%= @itinerary.extra_info[:travelers] %> to write their travel story! Click "edit story" to get started.</em></h5>
   </div>
 </div>
 </div class="header">

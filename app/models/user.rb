@@ -43,7 +43,11 @@ class User < ActiveRecord::Base
   end
 
   def self.admins
+<<<<<<< HEAD
     User.where(roles_mask: [1,3])
+=======
+    User.where(roles_mask: 1)
+>>>>>>> dev
   end
 
   def self.customers

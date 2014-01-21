@@ -1,6 +1,4 @@
 # SET COVER HEIGHT 
-$('.home-cover').css("height", $(window).height())
-
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
@@ -36,7 +34,7 @@ window.setBg = ->
   jQuery(window.experts).fadeOut(10, 'easeInQuad')
   $('#slide' + window.active_bg).addClass("act")
   $("#destinations").css("background", "url('" + image + "') no-repeat center center")
-  jQuery(expert).fadeIn(10, 'easeOutQuad')
+  jQuery(expert).fadeIn(100, 'easeOutQuad')
 
 # SCROLL DOWN
 window.scrollDown = ->
@@ -59,10 +57,12 @@ $(window).resize ->
   $('.home-cover').css("height", $(window).height())  
 
 $(window).load ->
+  $('.home-cover').css("height", $(window).height())
   autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
-  $("#loading").hide()
   setBg()
-  $("#header").fadeIn(1000, 'easeOutQuad')
-  $("#sub-header").fadeIn(1000, 'easeOutQuad')
-  $("#dest").fadeIn(1000, 'easeOutQuad')
-  $("#contestbtn").fadeIn(1000, 'easeOutQuad')
+  $("#header").show()
+  $("#sub-header").show()
+  $("#dest").show()
+  $("#contestbtn").show()
+  $("#loading").delay(200).fadeOut(100, 'easeOutQuad')
+  $("#scroll-down").delay(1000).fadeIn(100, 'easeOutQuad')
