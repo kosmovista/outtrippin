@@ -81,7 +81,7 @@
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <% if (current_user && current_user.is("admin")) %>
+  <% if (current_user && current_user.is?("admin")) %>
   <script>
 $("#contestbtn").click(function() {
     // This sends us an event every time a user clicks the button
