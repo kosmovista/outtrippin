@@ -31,7 +31,9 @@
     ga('send', 'pageview');
   </script>
 
-  <%= render 'tools/mixpanel' if current_user.is?("admin") && !Rails.env.development? %>
+  <% if current_user %>
+    <%= render 'tools/mixpanel' if current_user.is?("admin") && !Rails.env.development? %>
+  <% end %>
 
 
   <%= csrf_meta_tags %>
