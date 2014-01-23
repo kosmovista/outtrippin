@@ -9,9 +9,8 @@
   <% if current_user %>
   <li class="user-menu has-dropdown"><a href="#" ><%= image_tag 'user-menu.png', style: "width:25px;" %><div class="hide-for-medium-up">Me</div></a>
     <ul class="dropdown">
-      <%= content_tag(:li, link_to("Dashboard", admin_path)) if current_user.is?("admin") %>
-      <%= content_tag(:li, link_to("My Collection", itineraries_path)) if current_user.has_itineraries? %>
-      <%= content_tag(:li, link_to("Itineraries", itineraries_path)) if current_user.is?("expert") %>
+      <%= content_tag(:li, link_to("Admin Dashboard", admin_path)) if current_user.is?("admin") %>
+      <%= content_tag(:li, link_to("Dashboard", itineraries_path)) if current_user.has_itineraries? or current_user.is?("expert")  %>
       <%= content_tag(:li, link_to("Profile", user_path(current_user))) if current_user.is?("expert") %>
       <%= content_tag(:li, link_to("Logout", logout_path, method: :delete)) %>
     </ul>
