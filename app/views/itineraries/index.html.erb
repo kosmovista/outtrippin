@@ -46,8 +46,21 @@
   <% end %>
 </div>
 
+<div id="slide2-content">
+  <% if @pitched_itineraries.blank? %>
+    <!-- ADD SOME COPY FOR WHEN THIS IS BLANK -->
+  <% else %>
+    <%= render @pitched_itineraries %>
+  <% end %>
+</div>
 
-
+<div id="slide3-content">
+  <% if @won_itineraries.blank? %>
+    <!-- ADD SOME COPY FOR WHEN THIS IS BLANK -->
+  <% else %>
+    <%= render @won_itineraries %>
+  <% end %>
+</div>
 
 <% else %>
 <div class="header">
