@@ -18,6 +18,7 @@
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLER</a></li>
+          <li><a href="#" id="slide2" >THE BRIEF</a></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
           <li><a href="#" data-reveal-id="share-modal" >ADD A TRAVELER</a></li>
         </ul>
@@ -32,7 +33,11 @@
     <%= render @itinerary.winner_pitch %>
   </div>
 </div>
-
+<div class="row" id="slide2-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+</div>
   <% elsif !@pitches.blank? %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
@@ -51,6 +56,7 @@
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLERS</a></li>
+          <li><a href="#" id="slide2" >THE BRIEF</a></li>
           <li><a href="#" data-reveal-id="share-modal" >ADD A TRAVELER</a></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
@@ -63,6 +69,11 @@
 <div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
     <%= render @pitches %>
+  </div>
+</div>
+<div class="row" id="slide2-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
   </div>
 </div>
 <% else %>
@@ -84,6 +95,7 @@
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
+          <li><a href="#" id="slide2" >THE BRIEF</a></li>
           <li><a href="#" data-reveal-id="share-modal" >ADD A TRAVELER</a></li>
           <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
@@ -123,6 +135,11 @@
   </div>
   <% end %>
 </div>    
+<div class="row" id="slide2-content">
+  <div class="large-11 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+</div>
 <% end %>
 
 <div class="row break" id="slide1-content">
