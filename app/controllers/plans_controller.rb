@@ -3,7 +3,7 @@ class PlansController < ApplicationController
   before_action :set_itinerary
 
   def show
-    @plan = @itinerary.get_plan_from(current_user)
+    @plan = @itinerary.plan
     if @plan.nil?
       @plan = @itinerary.plans.create(user: current_user)
     end

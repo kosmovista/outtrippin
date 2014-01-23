@@ -6,7 +6,7 @@
 <div class="cover"></div>
 <div id="overlay"></div>
 	<div class="header">
-		<% if current_user.is?("expert") %>
+		<% if current_user && current_user.is?("expert") %>
 		  <%= render 'itineraries/show/expert' %>
 		<% else %>
 		  <%= render 'itineraries/show/owner' %>
