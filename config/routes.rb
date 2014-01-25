@@ -49,6 +49,10 @@ Outtrippin::Application.routes.draw do
     resources 'itineraries' do
       post 'toggle_published'
     end
+
+    resources 'plans' do
+      post 'toggle_published'
+    end
   end
 
   get "/delayed_job" => DelayedJobWeb, anchor: false

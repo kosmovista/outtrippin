@@ -81,10 +81,11 @@
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <% if (current_user && current_user.is?("admin")) %>
   <script>
 $("#contestbtn").click(function() {
     // This sends us an event every time a user clicks the button
-    mixpanel.track("Started Contest"); 
+    mixpanel.track("Started Contest");
     <% if current_user %>
     mixpanel.identify("<%= current_user.id %>");
     mixpanel.people.set({
@@ -93,8 +94,9 @@ $("#contestbtn").click(function() {
         "$email": "<%= current_user.email %>"
     });
     <% else %>
-    
+
     <% end %>
 });
 </script>
+<% end %>
 <% end %>

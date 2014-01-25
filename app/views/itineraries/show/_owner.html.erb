@@ -1,5 +1,7 @@
+<% if current_user %>
+
 <% full_pitch %>
-<% if @plan %>
+<% if @plan && @plan.published %>
   <%= render @plan %>
 <% elsif @itinerary.has_winner_pitch? %>
 <div class="row">
@@ -27,7 +29,7 @@
     </div>
   </div>
 </div>
-  
+
 <div class="row" id="slide0-content">
   <div class="large-11 large-centered small-12 columns">
     <%= render @itinerary.winner_pitch %>
@@ -134,7 +136,7 @@
     </div>
   </div>
   <% end %>
-</div>    
+</div>
 <div class="row" id="slide2-content">
   <div class="large-11 large-centered small-12 columns">
       <%= render 'itineraries/itinerary_full' %>
@@ -165,3 +167,9 @@
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
+
+<% else # no current_user %>
+  <% if @plan && @plan.published %>
+    <%= render @plan %>
+  <% end %>
+<% end %>

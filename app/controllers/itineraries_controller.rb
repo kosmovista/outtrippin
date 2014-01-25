@@ -2,12 +2,14 @@ class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles, only: [:details, :update]
-  before_action :authorize_user, only: [:index, :show] # TODO some more actions should be here
+  before_action :authorize_user, only: [:index] # TODO some more actions should be here
 
   def index
     @itineraries = current_user.itineraries unless current_user.is?("expert")
     @itineraries = Itinerary.published if current_user.is?("expert")
     @starred_itineraries = current_user.find_voted_items
+    @pitched_itineraries = Pitch.find_by_user(current_user)
+    @won_itineraries = Pitch.find_winner_expert_by_itinerary(current_user)
   end
 
   def create
@@ -61,8 +63,10 @@ class ItinerariesController < ApplicationController
 
   def show
     @plan = @itinerary.plans.first if @itinerary.has_plan?
-    @pitches = @itinerary.pitches
-    @pitch = @pitches.where(user: current_user).first if current_user.is?("expert")
+    if current_user
+      @pitches = @itinerary.pitches
+      @pitch = @pitches.where(user: current_user).first if current_user.is?("expert")
+    end
     # TODO SET SOME PERMISSION HERE
     # authorize_user is not enough
   end

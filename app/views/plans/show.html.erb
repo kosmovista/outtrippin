@@ -15,10 +15,12 @@
 </div>
 <div class="tabs">
   <div class="large-1 small-2 text-center large-centered small-centered columns">
-    <label class="file-input story-cover text-center">
-      <%= image_tag "edit-circle.png", style: "width:30px;", title: "Change Cover Picture" %>
-      <input type="file" ng-file-select="onFileSelect($files, true, 0)">
-    </label>
+    <% if current_user && @plan.user == current_user %>
+     <label class="file-input story-cover text-center">
+       <%= image_tag "edit-circle.png", style: "width:30px;", title: "Change Cover Picture" %>
+       <input type="file" ng-file-select="onFileSelect($files, true, 0)">
+     </label>
+    <% end %>
   </div>
 </div>
 
@@ -31,13 +33,6 @@
           <div class="large-2 small-6 columns">
             <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
           </div>
-
-          <div class="large-2 small-6 right columns text-right">
-            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day">
-              <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
-            </a>
-          </div>
-
           <div class="large-8 columns">
             <h3 style="margin-top:0;">{{day.title}}</h3>
 
@@ -49,6 +44,14 @@
               </label>
               <p ng-bind-html="day.body"></p>
             </div>
+          </div>
+
+          <div class="large-2 small-6 right columns text-right">
+            <% if current_user && @plan.user == current_user %>
+            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day">
+              <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
+            </a>
+            <% end %>
           </div>
         </div>
       </div>
@@ -123,7 +126,9 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
+            <% if current_user && @plan.user == current_user %>
+              <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
+            <% end %>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
@@ -184,6 +189,7 @@
   </li>
 
   <!-- ADD NEW DAY/TIPS&TRICKS BUTTONS -->
+  <% if current_user && @plan.user == current_user %>
   <li>
     <div class="row">
       <div class="large-12 text-center columns">
@@ -192,5 +198,6 @@
       </div>
     </div>
   </li>
+  <% end %>
 </ul>
 </div>
