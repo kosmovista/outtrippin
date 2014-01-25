@@ -1,4 +1,5 @@
 window.toogleSidebar = ->
+  $('.top-logo').toggle()
   $('.container').toggleClass("shrink")
   $('#sidebar').toggleClass("show")
   $("#guide").toggle()
