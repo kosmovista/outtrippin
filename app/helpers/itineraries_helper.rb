@@ -46,7 +46,7 @@ module ItinerariesHelper
 
  # helpers for step bar  ##########################
   def expert_steps
-    ['Submit a pitch', 'Get picked', 'Write the story']
+    ['Submit a pitch', 'The requestor picks a winner', 'Winner writes the story']
   end
 
   def left_bar_or_space(index, steps)

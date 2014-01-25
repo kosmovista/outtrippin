@@ -10,6 +10,7 @@
 .hide { display: none !important; }
 .top { padding-top: 100px; }
 .break {margin-top:50px !important;}
+.big-break {margin-top:80px !important;}
 .error { border-radius: 4px; opacity: 0.8; }
 .medium-textarea { height: 200px !important; }
 .no-margin { margin: 0 !important; }
@@ -61,7 +62,7 @@
 }
 
 .top-logo {
-  position:absolute;
+  position:fixed;
   top:10px;
   left:10px;
   height:45px;

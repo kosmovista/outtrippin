@@ -1,14 +1,13 @@
 <div class="break">
   <div class="large-8 large-centered columns">
     <div class="row">
-      <div class="large-9 columns">
+      <div class="large-12 columns">
+        <%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "button small right radius" if current_user && current_user.is?("expert") && @pitch.blank? %>
         <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : 
         @itinerary.extra_info[:name] %></h3>
       </div>
-      <div class="large-3 columns">
 
-        <%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "button small radius" if current_user && current_user.is?("expert") && @pitch.blank? %>
-      </div>
+        
     </div>
       <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
       <%= image_tag "plane.png", style: "width:17px; opacity:0.7; margin:-6px 4px 0;" %> <%= @itinerary.extra_info[:travelers] %> are traveling with a budget of <%= @itinerary.extra_info[:budget] %> per person, per day</em></p>

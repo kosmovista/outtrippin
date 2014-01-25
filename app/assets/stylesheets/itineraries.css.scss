@@ -97,7 +97,7 @@ div.container { position: relative; }
 }
 
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1000px) {
   .pitch-imgs {
     float: right;
     margin-right: -35%;
@@ -135,6 +135,18 @@ div.container { position: relative; }
 .details {
   padding-bottom: 20px;
 }
+
+
+.pitch-number {
+  border: 2px #00cccc solid;
+  width: 42px;
+  height: 42px;
+  text-align: center;
+  color: white;
+  border-radius: 1000px;
+  background: #00cccc;
+  @media only screen and (min-width: 940px) { float: right; }
+  }
 
 .cover {
   background-color: #4a4a4a;
