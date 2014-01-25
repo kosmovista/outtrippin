@@ -49,6 +49,31 @@ div.container { position: relative; }
 .step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
 
+#expert-steps li {
+  color: #4a4a4a; padding:0em !important; overflow-x:hidden;
+  hr { border: 2px solid #fff; opacity:0.5; }
+  .step p { font-size:.9em; }
+  .step p.disable { color:#e6e6e3; }
+  .step-circle {
+    opacity:0.5;
+    padding-top: 2px;
+    margin: 0 auto;
+    background-color: #fff;
+    color:#4a4a4a;
+    border-radius: 20px;
+    border: solid 4px #fff;
+    width: 40px;
+    height: 40px;
+    font-size:.9em;
+  }
+
+  .steps {
+    z-index:89;
+  }
+
+  .step-circle.active { opacity:1; background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
+  .step-circle.disable { color:#e6e6e3; }
+}
 
 @media only screen and (min-width: 768px) {
   #personal h4 {
@@ -72,7 +97,7 @@ div.container { position: relative; }
 }
 
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1200px) {
   .pitch-imgs {
     float: right;
     margin-right: -35%;
@@ -201,7 +226,7 @@ div.container { position: relative; }
   float:left;
   height: 90px;
   width: 90px;
-  margin: 0 25px 25px 0;
+  margin: 0 25px 40px 0;
 }
 
 .share {
