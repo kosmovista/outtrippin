@@ -39,15 +39,15 @@
   <div class="large-12 large-centered small-12 columns">
       <%= render 'itineraries/itinerary_full' %>
   </div>
-</div>
-
-<div class="row written-by">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="large-8 large-centered small-12 columns">
-      <%= render 'itineraries/show/comments' %>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
     </div>
   </div>
 </div>
+
 <div class="share break">
   <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
@@ -66,13 +66,12 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-11 large-centered text-center small-12 columns">
+    <div class="large-12 large-centered text-center small-12 columns">
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
-          <li><a href="#" id="slide0" class="active-tab">THE PITCH</a></li>
-          <li><a href="#" id="slide2" >THE REQUEST</a></li>
+          <li><a href="#" id="slide0" class="active-tab">YOUR PITCH</a></li>
+          <li><a href="#" id="slide1" >THE REQUEST</a></li>
           <li><%= link_to "EDIT STORY", itinerary_plan_path(@itinerary)%></li>
-          <li><a href="#" id="slide1" >COMMENTS</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -80,13 +79,20 @@
   </div>
 </div>
 <div class="row" id="slide0-content">
-  <div class="large-11 large-centered small-12 columns">
+  <div class="large-12 large-centered small-12 columns">
   	<%= render @pitch %>
   </div>
 </div>
-<div class="row" id="slide2-content">
-  <div class="large-11 large-centered small-12 columns">
+<div class="row" id="slide1-content">
+  <div class="large-12 large-centered small-12 columns">
       <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
   </div>
 </div>
 <% else %>
