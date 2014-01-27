@@ -18,7 +18,7 @@ module ItinerariesHelper
 
   def expanded_sidebar
     content_for :body do
-      "<script>window.toogleSidebar();</script>".html_safe
+      "<script>window.showSidebar();</script>".html_safe
     end
   end
 
