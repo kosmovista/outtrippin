@@ -1,6 +1,6 @@
 <div id="sidebar">
   <div class="top-logo-sidebar">
-    <a href="#" class="toggle-sidebar" title="Click here to show or hide the trip brief">
+    <a href="#" class="hide-sidebar" title="Click here to show or hide the trip brief">
     <%= image_tag 'o-white.png', style: "height:35px;" %></a>
 </div>
 	<div id="home">
@@ -18,5 +18,5 @@
   <%= image_tag "dollar.png",  title: "Budget", style: "width:9px; opacity:0.7; margin:-3px 8px 0 0;" %><%= @itinerary.extra_info[:budget] %> per person, per day.</p>
   <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
   <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>
- <a href="#" class="toggle-sidebar close" title="Hide Trip Overview"><h5>&#9666;</h5></a>
+ <a href="#" class="hide-sidebar close" title="Hide Trip Overview"><h5>&#9666;</h5></a>
 </div>
