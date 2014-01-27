@@ -196,6 +196,8 @@ div.container { position: relative; }
   transition: color 0.25s ease-in-out;
   }
 
+// SUMMARY
+.summary {background-color:#f3f3f3; padding-top:30px; padding-bottom:30px;}
 
 // TIPS & TRICKS
 .tips {
@@ -209,7 +211,7 @@ div.container { position: relative; }
 }
 
 // IMAGES
-@media only screen and (min-width:1279px) {
+@media only screen and (min-width:1000px) {
   .day-photo-C img {
     float: right;
     max-height: 500px;
@@ -218,7 +220,7 @@ div.container { position: relative; }
     margin: 15px -35% 30px 40px;
   }
 }
-@media only screen and (max-width:1279px) {
+@media only screen and (max-width:999px) {
   .day-photo-C {text-align: center;}
   .day-photo-C img {
     max-height: 400px;
