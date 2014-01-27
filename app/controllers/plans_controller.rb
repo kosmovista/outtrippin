@@ -1,16 +1,15 @@
 class PlansController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :set_itinerary
+  before_action :set_plan
 
   def show
-    @plan = @itinerary.get_plan
     if @plan.nil?
       @plan = @itinerary.plans.create(user: current_user)
     end
   end
 
   def add_day
-    @plan = @itinerary.get_plan_from(current_user)
     day = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join }
     @plan.days << day
     @plan.save!
@@ -21,7 +20,6 @@ class PlansController < ApplicationController
   end
 
   def update_day
-    @plan = @itinerary.get_plan_from(current_user)
     @plan.days.each do |d|
       if d[:id] == params[:day_id]
         d[:title] = params[:title]
@@ -35,7 +33,6 @@ class PlansController < ApplicationController
   end
 
   def delete_day
-    @plan = @itinerary.get_plan_from(current_user)
     @plan.days.delete_if { |d| d[:id] == params[:day_id] }
     @plan.save!
 
@@ -46,7 +43,6 @@ class PlansController < ApplicationController
   end
 
   def add_picture
-    @plan = @itinerary.get_plan_from(current_user)
     picture = Picture.create
     picture.source = params[:file]
 
@@ -74,7 +70,6 @@ class PlansController < ApplicationController
   end
 
   def delete_picture
-    @plan = @itinerary.get_plan_from(current_user)
     @plan.pictures.find_by_id(params[:picture_id].to_i).delete
 
     respond_to do |format|
@@ -83,7 +78,6 @@ class PlansController < ApplicationController
   end
 
   def add_tip_trick
-    @plan = @itinerary.get_plan_from(current_user)
     tip_trick = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join }
     @plan.tips_tricks << tip_trick
     @plan.save!
@@ -94,7 +88,6 @@ class PlansController < ApplicationController
   end
 
   def update_tip_trick
-    @plan = @itinerary.get_plan_from(current_user)
     @plan.tips_tricks.each do |tt|
       if tt[:id] == params[:tip_trick_id]
         tt[:title] = params[:title]
@@ -108,7 +101,6 @@ class PlansController < ApplicationController
   end
 
   def delete_tip_trick
-    @plan = @itinerary.get_plan_from(current_user)
     @plan.tips_tricks.delete_if { |tt| tt[:id] == params[:tip_trick_id] }
     @plan.save!
 
@@ -121,5 +113,10 @@ class PlansController < ApplicationController
   private
     def set_itinerary
       @itinerary = Itinerary.find(params[:itinerary_id])
+    end
+
+    def set_plan
+      # TODO: VALIDATE IF ADMIN OR OWNER
+      @plan = @itinerary.plans.first
     end
 end
