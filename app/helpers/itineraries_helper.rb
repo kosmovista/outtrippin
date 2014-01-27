@@ -44,6 +44,22 @@ module ItinerariesHelper
   end
   ##################################################
 
+ # helpers for step bar  ##########################
+  def expert_steps
+    ['Submit a pitch', 'The requestor picks a winner', 'Winner writes the story']
+  end
+
+  def left_bar_or_space(index, steps)
+    return "&nbsp;" if (index == 1)
+    "<hr />"
+  end
+
+  def right_bar_or_space(index, steps)
+    return "&nbsp;" if (index == steps.length)
+    "<hr />"
+  end
+  ##################################################
+
   def expert_info_website_url(website)
     "http://" + website
   end

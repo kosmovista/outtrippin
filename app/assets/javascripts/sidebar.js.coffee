@@ -1,7 +1,14 @@
-window.toogleSidebar = ->
-  $('.container').toggleClass("shrink")
-  $('#sidebar').toggleClass("show")
-  $("#guide").toggle()
+window.showSidebar = ->
+  $('.top-logo').hide()
+  $('.container').addClass("shrink")
+  $('#sidebar').addClass("show")
+  
+
+window.hideSidebar = ->
+  $('.container').removeClass("shrink")
+  $('#sidebar').removeClass("show")
+  $('.top-logo').delay(800).fadeIn(200)
+  
 
 window.act_tab = 0
 window.tabbs = $("#cover-tabs").children()
@@ -36,8 +43,12 @@ window.hidePitch = ->
   $('.showPitch').removeClass("active-tab")
 
 $ ->
-  $(".toggle-sidebar").on "click", ->
-    toogleSidebar()
+  $(".show-sidebar").on "click", ->
+    showSidebar()
+    return false
+
+  $(".hide-sidebar").on "click", ->
+    hideSidebar()
     return false
 
   $(".showPitch").on "click", ->

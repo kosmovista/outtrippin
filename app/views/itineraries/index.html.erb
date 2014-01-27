@@ -48,7 +48,10 @@
 
 <div id="slide2-content">
   <% if @pitched_itineraries.blank? %>
-    <!-- ADD SOME COPY FOR WHEN THIS IS BLANK -->
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>You haven't pitched for anything yet, but you can change that.</em><h4>
+      <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
+    </div>
   <% else %>
     <%= render @pitched_itineraries %>
   <% end %>
@@ -56,7 +59,10 @@
 
 <div id="slide3-content">
   <% if @won_itineraries.blank? %>
-    <!-- ADD SOME COPY FOR WHEN THIS IS BLANK -->
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>No wins yet. But you could still get a chicken dinner. :)</em><h4>
+      <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
+    </div>
   <% else %>
     <%= render @won_itineraries %>
   <% end %>
@@ -66,20 +72,11 @@
 <div class="header">
   <div class="row">
     <div class="small-12 large-10 small-centered columns">
-      <h2 class="white">Traveler's Dashboard</h2>
+      <h2 class="white">My Trips</h2>
     </div>
   </div>
 </div>
 <div class="tabs">
-  <div class="row">
-    <div class="small-12 large-10 small-centered columns">
-      <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
-        <li><a href="#" id="slide0" class="active-tab">IN PROGRESS</a></li>
-        <li><a href="#" id="slide1" >COMPLETED</a></li>
-      </ul>
-      <hr style="border-color:white; margin-top:0;">
-    </div>
-  </div>
 </div>
 <%= render @itineraries %>
 <% end %>

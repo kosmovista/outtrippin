@@ -52,12 +52,14 @@ class User < ActiveRecord::Base
     User.where(roles_mask: nil)
   end
 
-
-  # (end) ROLE MANAGER LOGIC
-
   def expert?
     self.is?("expert")
   end
+
+  def admin?
+    self.is?("admin")
+  end
+  # (end) ROLE MANAGER LOGIC
 
   def has_itineraries?
     self.itineraries.count > 0

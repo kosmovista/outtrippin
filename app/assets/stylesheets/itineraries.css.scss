@@ -49,6 +49,31 @@ div.container { position: relative; }
 .step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
 
+#expert-steps li {
+  color: #4a4a4a; padding:0em !important; overflow-x:hidden;
+  hr { border: 2px solid #fff; opacity:0.5; }
+  .step p { font-size:.9em; }
+  .step p.disable { color:#e6e6e3; }
+  .step-circle {
+    opacity:0.5;
+    padding-top: 2px;
+    margin: 0 auto;
+    background-color: #fff;
+    color:#4a4a4a;
+    border-radius: 20px;
+    border: solid 4px #fff;
+    width: 40px;
+    height: 40px;
+    font-size:.9em;
+  }
+
+  .steps {
+    z-index:89;
+  }
+
+  .step-circle.active { opacity:1; background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
+  .step-circle.disable { color:#e6e6e3; }
+}
 
 @media only screen and (min-width: 768px) {
   #personal h4 {
@@ -72,7 +97,7 @@ div.container { position: relative; }
 }
 
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1000px) {
   .pitch-imgs {
     float: right;
     margin-right: -35%;
@@ -110,6 +135,18 @@ div.container { position: relative; }
 .details {
   padding-bottom: 20px;
 }
+
+
+.pitch-number {
+  border: 2px #00cccc solid;
+  width: 42px;
+  height: 42px;
+  text-align: center;
+  color: white;
+  border-radius: 1000px;
+  background: #00cccc;
+  @media only screen and (min-width: 940px) { float: right; }
+  }
 
 .cover {
   background-color: #4a4a4a;
@@ -159,6 +196,8 @@ div.container { position: relative; }
   transition: color 0.25s ease-in-out;
   }
 
+// SUMMARY
+.summary {background-color:#f3f3f3; padding-top:30px; padding-bottom:30px;}
 
 // TIPS & TRICKS
 .tips {
@@ -172,7 +211,7 @@ div.container { position: relative; }
 }
 
 // IMAGES
-@media only screen and (min-width:1279px) {
+@media only screen and (min-width:1000px) {
   .day-photo-C img {
     float: right;
     max-height: 500px;
@@ -181,7 +220,7 @@ div.container { position: relative; }
     margin: 15px -35% 30px 40px;
   }
 }
-@media only screen and (max-width:1279px) {
+@media only screen and (max-width:999px) {
   .day-photo-C {text-align: center;}
   .day-photo-C img {
     max-height: 400px;
@@ -201,7 +240,7 @@ div.container { position: relative; }
   float:left;
   height: 90px;
   width: 90px;
-  margin: 0 25px 25px 0;
+  margin: 0 25px 40px 0;
 }
 
 .share {

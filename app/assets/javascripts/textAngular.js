@@ -210,7 +210,8 @@ textAngular.directive("textAngular", ['$compile', '$window', '$document', '$root
 				var urlLink;
 				urlLink = prompt("Please enter an URL to insert", 'http://');
 				if (urlLink !== '') {
-					return this.$parent.wrapSelection('createLink', "asd");
+          var link = "<a href='" + urlLink + "' target=_blank>" + window.getSelection() + "</a>";
+					return this.$parent.wrapSelection('insertHTML', link);
 				}
 			}
 		},
