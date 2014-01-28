@@ -1,4 +1,4 @@
-<% set_page_title( @itinerary.winner_pitch.title + " - OutTrippin") %>
+<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin") %>
 <style>
 .cover { background-image:url(<%= @plan.cover %>); margin-bottom:0; }
 </style>
