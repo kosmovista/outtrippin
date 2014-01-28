@@ -20,6 +20,18 @@
 @media only screen and (min-width: 768px) {left:33.33333%;}
 }
 
+// BUTTONS
+
+.circle-button {
+  opacity:.8;
+  transition: all 200ms linear;
+}
+
+.circle-button:hover {
+  opacity:1;
+  transition: all 200ms linear;
+}
+
 .ot-alert {
   @include alert-base;
   margin-top: -30px;
@@ -180,5 +192,6 @@
     -webkit-transform: scale(1.0);
   }
 }
+
 
 @import "helpers/input_file"
