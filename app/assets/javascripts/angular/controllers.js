@@ -5,7 +5,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   $scope.days = $scope.plan.days;
   $scope.tips_tricks = $scope.plan.tips_tricks;
 
-  $scope.day = {"title": "", "body": "This is some text"};
+  $scope.day = {"title": "", "body": "Start typing a description of the day..."};
   $scope.tip_trick = {"title": "", "body": ""};
 
   // ADD DAY

@@ -4,6 +4,7 @@
 <% if @plan && @plan.published %>
   <%= render @plan %>
 <% elsif @itinerary.has_winner_pitch? %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -63,6 +64,7 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
   <% elsif !@pitches.blank? %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
@@ -122,7 +124,7 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 <% else %>
-
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
 <div class="row">
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -213,6 +215,7 @@
   <% if @plan && @plan.published %>
     <%= render @plan %>
   <% else %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
   <div class="row">
     <div class="large-12 text-center small-12 columns">
       <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
