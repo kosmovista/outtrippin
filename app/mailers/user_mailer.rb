@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  helper ActionView::Helpers::UrlHelper
   default from: "\"OutTrippin\" <contact@outtrippin.com>"
 
   def welcome_expert_email(user)
