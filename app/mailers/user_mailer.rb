@@ -32,4 +32,17 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "New OutTrippin Pitch Received!"
   end
 
+  def new_pitch_email(pitch)
+    @pitch = pitch
+    @itinerary = @pitch.itinerary
+    @user = @itinerary.user
+    mail to: @user.email, subject: "New OutTrippin Pitch Received!"
+  end
+
+  def winner_expert_email(pitch)
+    @pitch = pitch
+    @expert = @pitch.user
+    @itinerary = @pitch.itinerary
+    mail to: @expert.email, subject: "Congratulations, you've been picked"
+  end
 end

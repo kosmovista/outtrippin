@@ -4,6 +4,6 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <p><%= @user.email %> picked <%= @expert.personal_info[:name] %> as the winning expert for <%= link_to itinerary_url(@itinerary) %>.</p>
+  <p><%= @user.email %> picked <%= @expert.personal_info[:name] %> as the winning expert for <%= link_to itinerary_url(@itinerary), itinerary_url(@itinerary) %>.</p>
 </body>
 </html>
