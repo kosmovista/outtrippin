@@ -11,4 +11,9 @@ class Admin::PlansController < ApplicationController
     redirect_to :back
   end
 
+  def toggle_featured
+    @plan = Plan.find(params[:plan_id])
+    FeaturedPlan::toggle(@plan)
+    redirect_to :back
+  end
 end

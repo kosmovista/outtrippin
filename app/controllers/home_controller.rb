@@ -4,5 +4,6 @@ class HomeController < ApplicationController
 
   def index
     @itinerary = Itinerary.new
+    @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
   end
 end

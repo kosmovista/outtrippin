@@ -67,6 +67,8 @@
   </div>
 </div>
 
+<%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan if current_user && current_user.admin? %>
+
 <div id="image-loader">
   <% homepage_pics.each do |p| %>
     <%= image_tag p[1]["src"], class: p[0] %>

@@ -60,4 +60,9 @@ class Itinerary < ActiveRecord::Base
   def has_plan?
     self.plans.size > 0
   end
+
+  # getters
+  def name
+    self.extra_info[:name]
+  end
 end

@@ -1,0 +1,9 @@
+<div id="featuring" class="row">
+  <div class="large-12 columns">
+    <%= image_tag plan.cover %>
+    <p><%= plan.user.name %></p>
+    <%= image_tag plan.user.avatar.url(:thumb) %>
+    <p><%= plan.itinerary.name %></p>
+    <p><%= plan.itinerary.destination %></p>
+  </div>
+</div>

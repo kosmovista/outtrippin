@@ -52,6 +52,7 @@ Outtrippin::Application.routes.draw do
 
     resources 'plans' do
       post 'toggle_published'
+      post 'toggle_featured'
     end
   end
 
