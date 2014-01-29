@@ -1,4 +1,9 @@
 <% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin") %>
+<% set_page_desc( @itinerary.winner_pitch.summary ) %>
+<% set_page_pic( @plan.cover ) %>
+<%= content_for :head do %>
+  <meta name="twitter:creator" content="<%= "@" +  @plan.user.twitter unless @plan.user.twitter.blank? %>"> 
+<% end %>
 <style>
 .cover { background-image:url(<%= @plan.cover %>); margin-bottom:0; }
 </style>
@@ -157,14 +162,17 @@
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Share this story with a friend.</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+  <h3>Sharing this with a friend.</h3>
+  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>If you like what you see or know someone who'll love this, share it with them. :)</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><%= image_tag 'facebook-large.png', style: "width:100%;" %></li>
-      <li><%= image_tag 'email-large.png', style: "width:100%;" %></li>
-      <li><%= image_tag 'twitter-large.png', style: "width:100%;" %></li>
+      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="email-share" class="reveal-modal medium text-center">
+  <h3>Send via email</h3>
 </div>
