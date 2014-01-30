@@ -1,5 +1,5 @@
 // LOADING GIF
-#image-loader, #trip-loader, #path-loader { display: none; }
+#image-loader { display: none; }
 #loading { 
   position: absolute;
   height: 100%;
@@ -127,71 +127,5 @@ div#steps { padding: 30px 0; text-align: center; }
 div#steps img { margin-bottom:10px; }
 div#steps h4 { line-height: 1.8; }
 div#steps h3 { color:#979797; }
-
-//BROWSE
-div#featuring {
-  background:#f3f3f3;
-  #detail-loader {
-    height:70%;
-    @media only screen and (max-width: 940px) { height: 65%;}
-  }
-  .trip {
-    height:100%;
-    border-radius:4px;
-    position:relative;
-    background-color: #4c4c4c;
-    background-size: cover !important;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    .detail {
-      position: absolute;
-      z-index: 99;
-      margin-top: 16%;
-      width: 100%;
-      text-align: center;
-    }
-  }
-  .overlay { 
-      position:relative;
-      border-radius: 4px;
-      height: 100%;
-      width: 100%;
-      z-index: 9 !important;
-      position: absolute;
-      background-color: rgba(0, 0, 0, 0.4)
-    }
-}
-
-.inline-list.browse-bullets {
-  position: relative;
-  padding-top: 20px;
-  padding-left: 1px;
-  text-align: center;
-}
-.inline-list.browse-bullets > li {
-  float:none;
-  display: inline-block;
-}
-  
-.inline-list.browse-bullets > li a {
-  margin-right: 1.4em;
-  -webkit-border-radius: 1000px;
-  border-radius: 1000px;
-  background-color: #4a4a4a;
-  width: 11px;
-  height: 11px;
-  opacity: 0.4;
-  transition: opacity 250ms ease-out;
-  &:hover {
-    opacity:0.8;
-    transition: opacity 250ms ease-out;
-  }
-}
-
-.act1 {
-  opacity:.8 !important;
-  }
-
 
 .top150 {padding-top:150px;}
