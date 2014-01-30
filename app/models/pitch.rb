@@ -11,10 +11,12 @@ class Pitch < ActiveRecord::Base
   end
 
   def self.find_by_user(user)
-    Pitch.where(user_id: user.id)
+    pitches = Pitch.where(user_id: user.id)
+    pitches
   end
 
   def self.find_winner_expert_by_itinerary(user)
-    Pitch.where(user_id: user.id, winner: true).map { |p| p.itinerary }
+    pitches = Pitch.where(user_id: user.id, winner: true).map { |p| p.itinerary }
+    pitches
   end
 end
