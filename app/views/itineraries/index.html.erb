@@ -64,7 +64,7 @@
       <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
     </div>
   <% else %>
-    <%= render @won_itineraries %>
+    <%= render @won_itineraries unless @won_itineraries.nil? %>
   <% end %>
 </div>
 
