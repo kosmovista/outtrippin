@@ -68,9 +68,11 @@ window.covers.each (i) ->
 
 # SET TRIP
 window.changeTrip = ->
-  cover = window.covers[window.active_trip].src
-  detail = window.details[window.active_trip]
-  path_to = window.paths_to[window.active_trip].href
+  if window.active_trip
+    cover = window.covers[window.active_trip].src
+    detail = window.details[window.active_trip]
+    path_to = window.paths_to[window.active_trip].href
+
   $(".trip").on "click", ->
       window.location = path_to
       return false
@@ -98,7 +100,7 @@ $("#scroll-down").on "click", ->
     return false
 
 $(window).resize ->
-  $('.home-cover').css("height", $(window).height())  
+  $('.home-cover').css("height", $(window).height())
   $('#featuring').css("height", $(window).height())
 
 $(window).load ->
