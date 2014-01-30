@@ -1,4 +1,4 @@
-# SET COVER HEIGHT 
+# SET COVER HEIGHT
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
@@ -36,6 +36,45 @@ window.setBg = ->
   $("#destinations").css("background", "url('" + image + "') no-repeat center center")
   jQuery(expert).fadeIn(100, 'easeOutQuad')
 
+# BROWSE TRIPS
+featureNav = $("<ul>"
+    class: "inline-list browse-bullets"
+  ).appendTo(".navigate")
+
+# BROWSE TRIPS BULLETS
+window.covers.each (i) ->
+  tripItem = $("<li>"
+    class: "trip-item"
+  ).appendTo(featureNav)
+
+  tripLink = $("<a>"
+    href: "#"
+    id: "tripNo" + i
+  ).appendTo(tripItem)
+
+  # bind click events
+  tripLink.on "click", ->
+    $('#tripNo' + window.active_trip).removeClass("act1")
+    # Goto to selected slide
+    window.active_trip = i
+    changeTrip()
+    return false
+
+# SET TRIP
+window.changeTrip = ->
+  if window.active_trip
+    cover = window.covers[window.active_trip].src
+    detail = window.details[window.active_trip]
+    path_to = window.paths_to[window.active_trip].href
+
+  $(".trip").on "click", ->
+      window.location = path_to
+      return false
+  jQuery(window.details).fadeOut(10, 'easeInQuad')
+  $('#tripNo' + window.active_trip).addClass("act1")
+  $(".trip").css("background", "url('" + cover + "') no-repeat center center")
+  jQuery(detail).fadeIn(0, 'easeOutQuad')
+
 # SCROLL DOWN
 window.scrollDown = ->
   $('html, body').animate({
@@ -54,7 +93,8 @@ $("#scroll-down").on "click", ->
     return false
 
 $(window).resize ->
-  $('.home-cover').css("height", $(window).height())  
+  $('.home-cover').css("height", $(window).height())
+  $('#featuring').css("height", $(window).height())
 
 $(window).load ->
   $('.home-cover').css("height", $(window).height())
