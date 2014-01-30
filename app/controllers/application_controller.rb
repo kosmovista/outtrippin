@@ -33,17 +33,20 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize_user
-    redirect_to root_path unless current_user
+    unless current_user
+      session[:original_uri] = request.url
+      flash[:notice] = "You need to login before acessing this page."
+      redirect_to login_path
+    end
   end
 
   def authorize_expert
     authorize_user
-    redirect_to root_path unless current_user.is?("expert")
   end
 
 
   def authorize_admin
-    redirect_to root_path unless current_user && current_user.is?("admin")
+    redirect_to root_path unless current_user && current_user.admin?
   end
 
   def set_white_topbar
