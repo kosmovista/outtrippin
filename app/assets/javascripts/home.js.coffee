@@ -42,10 +42,11 @@ featureNav = $("<ul>"
   ).appendTo(".navigate")
 
 # BROWSE TRIPS BULLETS
-window.covers.each (i) ->
-  tripItem = $("<li>"
-    class: "trip-item"
-  ).appendTo(featureNav)
+if window.covers
+  window.covers.each (i) ->
+    tripItem = $("<li>"
+      class: "trip-item"
+    ).appendTo(featureNav)
 
   tripLink = $("<a>"
     href: "#"
