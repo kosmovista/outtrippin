@@ -16,4 +16,13 @@ class Plan < ActiveRecord::Base
       return nil
     end
   end
+
+  def target_user
+    begin
+      self.itinerary.user
+    rescue
+      nil
+    end
+  end
+
 end

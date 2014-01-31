@@ -23,7 +23,7 @@
       <tbody>
         <% Plan.all.each do |p| %>
         <tr>
-          <td><%= p.itinerary.user.email %></td>
+          <td><%= p.target_user.email unless p.target_user.nil? %></td>
           <td><%= link_to p.itinerary.destination, itinerary_plan_path(p.itinerary) %></td>
           <% unless p.user.nil? %>
             <td><%= link_to p.user.name, user_path(p.user) %></td>
