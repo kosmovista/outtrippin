@@ -1,5 +1,6 @@
-<% full_pitch %>
-<% if @pitch.blank? %>
+<% if @plan && @plan.published %>
+  <%= render @plan %>
+<% elsif @pitch.blank? && !@itinerary.has_winner_pitch? %>
 <% set_page_title(@itinerary.extra_info[:name].blank? ? "Submit a pitch for a trip to " + @itinerary.destination + " - OutTrippin" : "Submit a pitch for '" + @itinerary.extra_info[:name] + "' - OutTrippin") %>
 <style>
 .cover { background-image: none; height:300px; }
@@ -48,12 +49,12 @@
     </div>
   </div>
 </div>
-
 <div class="share break">
   <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
-<% elsif @pitch.won_by?(current_user) %>
+
+<% elsif !@pitch.blank? && @pitch.won_by?(current_user) %>
 <% set_page_title(@itinerary.extra_info[:name].blank? ? "You've won the 'Trip to " + @itinerary.destination + "' contest! - OutTrippin" : "You've won the '" + @itinerary.extra_info[:name] + "' contest! - OutTrippin") %>
 <div class="row">
   <div class="small-12 small-centered columns">
@@ -82,7 +83,7 @@
 </div>
 <div class="row" id="slide0-content">
   <div class="large-12 large-centered small-12 columns">
-  	<%= render @pitch %>
+    <%= render @pitch %>
   </div>
 </div>
 <div class="row" id="slide1-content">
@@ -97,6 +98,75 @@
     </div>
   </div>
 </div>
+<div class="share break">
+  <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<% elsif @itinerary.has_winner_pitch? %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
+<% set_page_desc( @itinerary.winner_pitch.summary ) %>
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">This story request is closed. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>The traveler has picked their favorite expert.</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      The traveler has chosen their favorite expert and they are now working on building their personalized travel story. The winning pitch is featured below.</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered text-center small-12 columns">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
+          <li><a href="#" id="slide1" >TRAVELER'S REQUEST</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="slide0-content">
+  <div class="large-12 large-centered small-12 columns">
+    <%= render @itinerary.winner_pitch %>
+  </div>
+</div>
+<div class="row" id="slide1-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="share break">
+  <h4 class="serif subheader"><em><%= link_to "Browse other stories", itineraries_path, class: "sharethis" %></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+
+
 <% else %>
 <style>
 .cover { background-image: none; height:300px; }
