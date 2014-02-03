@@ -52,6 +52,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'rack-cors', require: 'rack/cors'
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'quiet_assets'
