@@ -74,7 +74,7 @@
 }
 
 .top-logo {
-  position:fixed;
+  position:absolute;
   top:10px;
   left:10px;
   height:45px;
@@ -157,6 +157,7 @@
   height: 40px;
   position: relative;
   margin: 100px 47%;
+  @media only screen and (max-width: 940px) { margin: 100px 39%; }
 }
 
 .double-bounce1, .double-bounce2 {
