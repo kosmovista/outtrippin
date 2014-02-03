@@ -1,5 +1,5 @@
 // LOADING GIF
-#image-loader { display: none; }
+#image-loader, #trip-loader { display: none; }
 #loading { 
   position: absolute;
   height: 100%;
@@ -21,23 +21,32 @@
 // BACKFROUND PICTURES
 div#destinations {
   position: relative;
-  height: 96%;
+  height: 100%;
   width:100%;
   background-size: cover !important;
   background-color:#4c4c4c;
   transition: background 30ms ease-out;
-  h1 { color: white; font-size:2.2em; font-weight: normal; margin-top:0px; padding-top: 28%; }
-  @media only screen and (min-width: 768px) { h1 {font-size: 3.5em; padding-top: 18%; } }
+  h1 { color: white; font-size:2em; font-weight: normal; margin-top:0px; padding-top: 60px; }
+  @media only screen and (min-width: 768px) { 
+    height: 96% !important; 
+    h1 {font-size: 3.5em; padding-top: 18%; } 
+  }
 }
 
 #scroll-down {
   display:none;
   position:absolute;
   left:49%; 
+  width:40px;
   bottom:-20px;
   z-index: 998;
   transition: all 200ms ease-in;
   &:hover { bottom: -25px;}
+  @media only screen and (max-width: 940px) { 
+    width:25px !important;
+    bottom: 10px !important;
+    left: 46% !important; 
+  }
 }
 
 .inline-list.cover-bullets {
@@ -129,3 +138,73 @@ div#steps h4 { line-height: 1.8; }
 div#steps h3 { color:#979797; }
 
 .top150 {padding-top:150px;}
+
+// BROWSE TRIPS
+div#featuring {
+  padding-top:50px;
+  background:#f3f3f3;
+  h3 {margin-bottom:40px;}
+  @media only screen and (max-width: 940px) { padding-top:10px !important; h3 {margin-bottom:15px;}}
+  #detail-loader {
+    height:70%;
+    @media only screen and (max-width: 940px) { height: 60%;}
+  }
+  .trip {
+    height:100%;
+    border-radius:4px;
+    position:relative;
+    background-color: #4c4c4c;
+    background-size: cover !important;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    .detail {
+      position: absolute;
+      z-index: 99;
+      margin-top: 16%;
+      width: 100%;
+      text-align: center;
+    }
+  }
+  .overlay { 
+      position:relative;
+      border-radius: 4px;
+      height: 100%;
+      width: 100%;
+      z-index: 9 !important;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.4)
+    }
+}
+
+.inline-list.browse-bullets {
+  position: relative;
+  padding-top: 20px;
+  padding-left: 1px;
+  text-align: center;
+  @media only screen and (max-width: 940px) { padding-top:10px !important; }
+}
+.inline-list.browse-bullets > li {
+  float:none;
+  display: inline-block;
+}
+  
+.inline-list.browse-bullets > li a {
+  margin-right: 1.2em;
+  -webkit-border-radius: 1000px;
+  border-radius: 1000px;
+  background-color: #4a4a4a;
+  width: 11px;
+  height: 11px;
+  opacity: 0.4;
+  transition: opacity 250ms ease-out;
+  &:hover {
+    opacity:0.8;
+    transition: opacity 250ms ease-out;
+  }
+  @media only screen and (max-width: 940px) { margin-right:0 !important; }
+}
+
+.act1 {
+  opacity:.8 !important;
+  }
