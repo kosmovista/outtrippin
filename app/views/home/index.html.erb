@@ -34,7 +34,8 @@
           <div class="large-3 small-3 right columns">
             <%= image_tag p[1]["avatar"], class: "th rounded" %>
           </div>
-        </div>
+        </div>      
+
         <% end %>
       </div>
     </div>
@@ -42,30 +43,63 @@
   </div>
 </div>
 
-<div id="steps">
-  <div class="row">
-    <div class="large-12 columns">
-      <h3 class="subheader"><%= homepage(["process", "header"]) %>
+<div id="steps" class="row break">
+  <div class="large-8 large-centered text-center small-12 columns">
+    <h2><%= homepage(["process", "header"]) %></h2>
+    <h3 class="subheader serif" style="margin-bottom:60px;"><em><%= homepage(["process", "text"]) %><em></h3>
+    <hr style="border:1px #e6e6e6 solid;">
+    <div class="break">
+      <h3><%= homepage(["process", "step-title"]) %></h3>
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white"><%= homepage(["process", "step1", "title"]) %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step1", "text"]) %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'describe.png', style: "margin-top:70px;" %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
-  </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= image_tag 'marker.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step1", "title"]) %></h4>
-      <p><%= homepage(["process", "step1", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white"><%= homepage(["process", "step2", "title"]) %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step2", "text"]) %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'pick.png' %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
-    <div class="large-4 columns">
-      <%= image_tag 'idea.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step2", "title"]) %></h4>
-      <p><%= homepage(["process", "step2", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white" style="margin: -9px 0 0 -3px;"><%= homepage(["process", "step3", "title"]) %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step3", "text"]) %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'script.png' %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
-    <div class="large-4 columns">
-      <%= image_tag 'calendar.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step3", "title"]) %></h4>
-      <p><%= homepage(["process", "step3", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white" style="margin: -9px 0 0 -7px;" ><%= homepage(["process", "step4", "title"]) %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step4", "text"]) %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'ready.png' %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
   </div>
 </div>
+
 
 <% unless @featuring_stories.blank? %>
 <div id="featuring" class="break">

@@ -132,10 +132,32 @@ form#new_itinerary input[type="text"]:hover {
 div#start-contest { padding: 1.2em 0; background-color: whitesmoke; }
 
 // STEPS
-div#steps { padding: 30px 0; text-align: center; }
-div#steps img { margin-bottom:10px; }
-div#steps h4 { line-height: 1.8; }
-div#steps h3 { color:#979797; }
+div#steps { 
+  text-align: center;
+  .step-detail {margin-top:20px;}
+ }
+div#steps h3 { @media only screen and (min-width: 768px) {font-size:2em;} }
+div#steps h4 { @media only screen and (min-width: 768px) {margin-bottom:40px;} }
+div#steps img {
+  margin-top:40px;
+  @media only screen and (max-width: 768px) {margin-top: 0px !important ;} } 
+.step-number {
+  border: 2px #bccf00 solid;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  color: white;
+  border-radius: 1000px;
+  background: #bccf00;
+  margin-top:50px;
+  h2 {
+    margin: -4px 0 0 -4px;
+    line-height: 45px;
+    font-size: 2.3125em;
+    padding: 0;
+    vertical-align: middle;
+  }
+}
 
 .top150 {padding-top:150px;}
 
