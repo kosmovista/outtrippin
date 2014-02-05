@@ -56,6 +56,18 @@ Outtrippin::Application.routes.draw do
     end
   end
 
+
+
+  # API ###########################################################
+  namespace :api do
+    namespace :v1 do
+      resources :stories
+    end
+  end
+  #################################################################
+
+
+
   get "/delayed_job" => DelayedJobWeb, anchor: false
 
   root 'home#index'

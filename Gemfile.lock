@@ -129,6 +129,7 @@ GEM
     rabl (0.9.3)
       activesupport (>= 2.3.14)
     rack (1.5.2)
+    rack-cors (0.2.9)
     rack-protection (1.5.1)
       rack
     rack-test (0.6.2)
@@ -232,6 +233,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rabl
+  rack-cors
   rails (= 4.0.0)
   rspec-rails (~> 2.0)
   sass-rails (~> 4.0.0)
