@@ -88,4 +88,9 @@ $callout-panel-link-color: #fff !default;
     border: 0 #fdfdfd solid;
     border-left: 4px $primary-color solid;
   }
+
+  .pricing {
+    @include panel (#121212, 30px);
+    border-radius: 5px;
+  }
 }
