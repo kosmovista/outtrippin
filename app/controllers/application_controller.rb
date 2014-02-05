@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   def authorize_user
     unless current_user
       session[:original_uri] = request.url
-      flash[:notice] = "You need to login before acessing this page."
+      flash[:notice] = "Howdy! You must login to access this page!"
       redirect_to login_path
     end
   end

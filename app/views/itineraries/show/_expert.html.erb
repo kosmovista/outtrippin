@@ -31,6 +31,9 @@
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">TRAVELER'S REQUEST</a></li>
+          <% if current_user.is?("admin") %>
+          <li><a href="#" id="slide1">ALL PITCHES</a></li>
+          <% end %>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -49,6 +52,11 @@
     </div>
   </div>
 </div>
+<% if current_user.is?("admin") %>
+  <div id="slide1-content"> 
+    <%= render @pitches %>
+  </div>
+<% end %>
 <div class="share break">
   <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
@@ -75,6 +83,9 @@
           <li><a href="#" id="slide0" class="active-tab">MY PITCH</a></li>
           <li><a href="#" id="slide1" >THE REQUEST</a></li>
           <li><%= link_to "EDIT STORY", itinerary_plan_path(@itinerary)%></li>
+          <% if current_user.is?("admin") %>
+          <li><a href="#" id="slide2">ALL PITCHES</a></li>
+          <% end %>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -98,6 +109,11 @@
     </div>
   </div>
 </div>
+<% if current_user.is?("admin") %>
+  <div id="slide2-content"> 
+    <%= render @pitches %>
+  </div>
+<% end %>
 <div class="share break">
   <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
@@ -136,6 +152,9 @@
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
           <li><a href="#" id="slide1" >TRAVELER'S REQUEST</a></li>
+          <% if current_user.is?("admin") %>
+          <li><a href="#" id="slide2">ALL PITCHES</a></li>
+          <% end %>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -159,7 +178,11 @@
     </div>
   </div>
 </div>
-
+<% if current_user.is?("admin") %>
+  <div id="slide2-content"> 
+    <%= render @pitches %>
+  </div>
+<% end %>
 <div class="share break">
   <h4 class="serif subheader"><em><%= link_to "Browse other stories", itineraries_path, class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
@@ -202,6 +225,9 @@
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">MY PITCH</a></li>
           <li><a href="#" id="slide1" >TRAVELER'S REQUEST</a></li>
+          <% if current_user.is?("admin") %>
+          <li><a href="#" id="slide2">ALL PITCHES</a></li>
+          <% end %>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -217,12 +243,17 @@
       <%= render 'itineraries/itinerary_full' %>
   </div>
   <div class="written-by">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="large-8 large-centered small-12 columns">
-      <%= render 'itineraries/show/comments' %>
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
     </div>
   </div>
 </div>
-</div>
+<% if current_user.is?("admin") %>
+  <div id="slide2-content"> 
+    <%= render @pitches %>
+  </div>
+<% end %>
 
 <% end %>
