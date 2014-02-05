@@ -53,7 +53,9 @@
       <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
     </div>
   <% else %>
-    <%= render @pitched_itineraries %>
+    <% @pitched_itineraries.each do |p| %>
+      <%= render p.itinerary %>
+    <% end %>
   <% end %>
 </div>
 

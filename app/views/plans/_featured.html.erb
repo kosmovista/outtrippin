@@ -1,9 +1,13 @@
-<div id="featuring" class="row">
-  <div class="large-12 columns">
-    <%= image_tag plan.cover %>
-    <p><%= plan.user.name %></p>
-    <%= image_tag plan.user.avatar.url(:thumb) %>
-    <p><%= plan.itinerary.name %></p>
-    <p><%= plan.itinerary.destination %></p>
-  </div>
+<div class="row large-10 small-11 small-centered large-centered columns no-padding trip">
+	<%= link_to "", itinerary_path(plan.itinerary), class: "overlay", title: "Read the story" %>
+	<div class="large-12 detail small-12 columns">
+	  <h2 class="white"><%= link_to plan.itinerary.name, itinerary_path(plan.itinerary), class: "white", title: "Read the story" %></h2>
+	  <div class="large-1 hide-for-small large-centered columns">
+	      <hr style="border-color:white;">
+	  </div>
+		<h5 class="white serif subheader text-center">
+		  <%= link_to (image_tag plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; margin-top:-5px; margin-right:5px;"), user_path(plan.user), title: "Storyteller's profile" %>
+		  <em>By <%= link_to plan.user.name, user_path(plan.user), class: "white", title: "Storyteller's profile" %> &#8226; <%= plan.itinerary.destination %></em>
+		</h5>
+	</div>
 </div>

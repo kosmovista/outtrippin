@@ -149,12 +149,17 @@
   </div>
 <% end %>
 
+
 <div id="update-modal" class="reveal-modal medium text-center">
   <h2>This power feature is coming soon!</h3>
   <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
   <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" class="radius button" style="margin-top:40px;">Send me updates!</a>
+  <a href="#" data-reveal-id="recorded" class="radius button" style="margin-top:40px;">Send me updates!</a>
   <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div id="recorded" class="reveal-modal medium text-center">
+  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
 </div>
 
 <div class="share">
@@ -173,6 +178,9 @@
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
-<div id="email-share" class="reveal-modal medium text-center">
+<div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
+   <input type="text" placeholder="c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com...">
+    <textarea placeholder="Write a message" style="height:150px;">Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!</textarea>
+    <div href="" class="expand button radius">Send</div>
 </div>

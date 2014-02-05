@@ -1,13 +1,19 @@
-# SET COVER HEIGHT
+# SET COVER VARIABLES
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
 
+#SET BROWSE TRIP VARIABLES
+window.active_trip = 0
+window.covers = $("#trip-loader").children()
+window.details = $("#detail-loader").children()
+
+# HOME PAGE COVER
 bulletNav = $("<ul>"
     class: "inline-list cover-bullets"
   ).appendTo(".navig")
 
-# Create a list item and anchor for each slide
+# HOME PAGE COVER BULLETS
 window.images.each (i) ->
   bulletItem = $("<li>"
     class: "bullet-item"
@@ -25,7 +31,6 @@ window.images.each (i) ->
     window.active_bg = i
     setBg()
     return false
-
 
 # SET BACKGROUND
 window.setBg = ->
@@ -63,18 +68,13 @@ if window.covers
 
 # SET TRIP
 window.changeTrip = ->
-  if window.active_trip
-    cover = window.covers[window.active_trip].src
-    detail = window.details[window.active_trip]
-    path_to = window.paths_to[window.active_trip].href
-
-  $(".trip").on "click", ->
-      window.location = path_to
-      return false
+  cover = window.covers[window.active_trip].src
+  detail = window.details[window.active_trip]
   jQuery(window.details).fadeOut(10, 'easeInQuad')
   $('#tripNo' + window.active_trip).addClass("act1")
   $(".trip").css("background", "url('" + cover + "') no-repeat center center")
   jQuery(detail).fadeIn(0, 'easeOutQuad')
+
 
 # SCROLL DOWN
 window.scrollDown = ->
@@ -94,7 +94,7 @@ $("#scroll-down").on "click", ->
     return false
 
 $(window).resize ->
-  $('.home-cover').css("height", $(window).height())
+  $('.home-cover').css("height", $(window).height())  
   $('#featuring').css("height", $(window).height())
 
 $(window).load ->
@@ -107,3 +107,5 @@ $(window).load ->
   $("#contestbtn").show()
   $("#loading").delay(200).fadeOut(100, 'easeOutQuad')
   $("#scroll-down").delay(1000).fadeIn(100, 'easeOutQuad')
+  $('#featuring').css("height", $(window).height())
+  changeTrip()
