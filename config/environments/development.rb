@@ -33,5 +33,4 @@ Outtrippin::Application.configure do
       resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put]
     end
   end
-
 end

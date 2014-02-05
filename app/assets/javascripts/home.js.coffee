@@ -53,18 +53,18 @@ if window.covers
       class: "trip-item"
     ).appendTo(featureNav)
 
-  tripLink = $("<a>"
-    href: "#"
-    id: "tripNo" + i
-  ).appendTo(tripItem)
+    tripLink = $("<a>"
+      href: "#"
+      id: "tripNo" + i
+    ).appendTo(tripItem)
 
   # bind click events
-  tripLink.on "click", ->
-    $('#tripNo' + window.active_trip).removeClass("act1")
-    # Goto to selected slide
-    window.active_trip = i
-    changeTrip()
-    return false
+    tripLink.on "click", ->
+      $('#tripNo' + window.active_trip).removeClass("act1")
+      # Goto to selected slide
+      window.active_trip = i
+      changeTrip()
+      return false
 
 # SET TRIP
 window.changeTrip = ->
@@ -94,7 +94,7 @@ $("#scroll-down").on "click", ->
     return false
 
 $(window).resize ->
-  $('.home-cover').css("height", $(window).height())  
+  $('.home-cover').css("height", $(window).height())
   $('#featuring').css("height", $(window).height())
 
 $(window).load ->
