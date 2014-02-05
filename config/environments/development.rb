@@ -26,4 +26,12 @@ Outtrippin::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  config.middleware.use Rack::Cors do
+    allow do
+      origins '127.0.0.1:9000'
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put]
+    end
+  end
+
 end
