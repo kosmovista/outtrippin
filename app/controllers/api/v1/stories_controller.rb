@@ -1,7 +1,7 @@
 class Api::V1::StoriesController < ApplicationController
   respond_to :json
   skip_before_action :verify_authenticity_token # TODO remove THIS before PRODUCTION
-  before_action :set_story, only: [:update]
+  before_action :set_story, only: [:show, :update]
 
   ## GET index
   def index
@@ -34,16 +34,12 @@ class Api::V1::StoriesController < ApplicationController
     end
   end
 
-  ## DELETE destroy
-  # def destroy
-  # end
-
   private
   def set_story
     @itinerary = Itinerary.find(params[:id])
   end
 
   def story_params
-    params.permit(:duration, :departure, extra_info: [style:[]])
+    params.permit(:duration, :departure, extra_info: [:budget, :details, style:[]])
   end
 end

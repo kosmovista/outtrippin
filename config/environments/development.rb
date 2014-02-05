@@ -29,8 +29,8 @@ Outtrippin::Application.configure do
 
   config.middleware.use Rack::Cors do
     allow do
-      origins 'localhost:8000'
-      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+      origins '127.0.0.1:9000'
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put]
     end
   end
 
