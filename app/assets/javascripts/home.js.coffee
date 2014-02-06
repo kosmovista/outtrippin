@@ -99,13 +99,13 @@ $(window).resize ->
 
 $(window).load ->
   $('.home-cover').css("height", $(window).height())
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
-  setBg()
+  $("#dest").show()
   $("#header").show()
   $("#sub-header").show()
-  $("#dest").show()
   $("#contestbtn").show()
-  $("#loading").delay(200).fadeOut(100, 'easeOutQuad')
-  $("#scroll-down").delay(1000).fadeIn(100, 'easeOutQuad')
+  $("#loading").hide()
+  $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  setBg()
   $('#featuring').css("height", $(window).height())
   changeTrip()
