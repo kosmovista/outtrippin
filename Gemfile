@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
+# CORS
+gem 'rack-cors', require: 'rack/cors'
+
 # JSON responses
 gem 'rabl'
 
@@ -52,7 +55,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'rack-cors', require: 'rack/cors'
+
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'quiet_assets'
