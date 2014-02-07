@@ -1,9 +1,10 @@
 <footer>
   <div class="row">
-    <div class="large-3 small-12 text-center columns">
-      <%= image_tag 'logo-footer.png' %>
+
+    <div class="large-3 large-centered small-12 text-center columns">
+      <%= image_tag 'o-color.png', style: "width: 90px; margin-top: -40px; margin-bottom: 0; background: #f3f3f3; padding: 5px 5px 35px; border-radius: 1000px;"%>
     </div>
-    <div class="large-3 small-12 columns">
+    <div class="large-3 large-centered small-12 columns">
       <h6>Follow Us</h6>
       <%= link_to "http://facebook.com/outtrippin", target: "blank_" do %>
         <%= image_tag "facebook_40.png" %>
@@ -16,19 +17,16 @@
       <% end %>
 
     </div>
-    <div class="large-3 small-12 columns">
-      <h6>Company</h6>
-      <p><%= link_to "Blog", "#", class: "text" %>
-      <%= link_to "Privacy Policy", page_path('privacy_policy'), class: "text" %>
-      <%= link_to "Terms and Conditions", page_path('terms_and_conditions'), class: "text" %>
-      <%= link_to "Contact Us", "mailto:contact@outtrippin.com", class: "text" %><p>
-    </div>
-    <div class="large-3 small-12 columns">
-      <h6>Brand</h6>
-      <p><%= link_to "OutTrippin Honeymoons", "http://honeymoon.outtrippin.com", class: "text" %>
-      <%= link_to "OutTrippin World Cup 2014", "#", class: "text" %>
-      <%= link_to "OutTrippin Family Travel", "#", class: "text" %>
-      <%= link_to "OutTrippin Experiences", "#", class: "text" %></p>
-    </div>
+    <div class="large-6 short-break columns small-12 large-centered text-center">
+    <a href="/register" class="tiny radius button" style="font-weight:normal!important;"> Become an OutTrippin Storyteller</span></a>
+    <ul class="short-break inline-list footer">
+      <li><%= link_to "Blog", "http://blog.outtrippin.com", class: "text" %></li>
+      <li><%= link_to "Privacy Policy", page_path('privacy_policy'), class: "text" %></li>
+      <li><%= link_to "Terms", page_path('terms_and_conditions'), class: "text" %></li>
+      <li><%= link_to "Contact Us", "mailto:contact@outtrippin.com", class: "text" %></li>
+      <li><%= link_to "Support", "http://support.outtrippin.com", target: "blank", class: "text" %>
+    </ul>
+    <p class="serif"><small><em>OutTrippin is made with love in Melbourne and Porto.</em></small></p>
   </div>
 </footer>
+
