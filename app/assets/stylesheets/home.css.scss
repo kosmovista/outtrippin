@@ -116,7 +116,7 @@ form#new_itinerary input[type="text"] {
   height:50px;
   font-style:italic;
   margin:0 1em 1em 0;
-  border-color: #00cccc;
+  border-color: #00bccf;
   background: #fff image-url('marker.png') no-repeat left;
   background-size: 40px;
   padding-left: 40px;
@@ -209,6 +209,7 @@ div#featuring {
 .inline-list.browse-bullets > li {
   float:none;
   display: inline-block;
+  margin-right:0.5em;
 }
   
 .inline-list.browse-bullets > li a {

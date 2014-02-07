@@ -82,6 +82,12 @@ window.scrollDown = ->
     scrollTop: $("#steps").offset().top
   }, 1000, 'easeOutQuart')
 
+# SCROLL UP
+window.scrollUp = ->
+  $('html, body').animate({
+    scrollTop: $(".home-cover").offset().top
+  }, 2000, 'easeOutQuart')
+
 
 ######################
 # AFTER WINDOW LOADS #
@@ -91,6 +97,10 @@ window.scrollDown = ->
 
 $("#scroll-down").on "click", ->
     scrollDown()
+    return false
+
+$("#scroll-up").on "click", ->
+    scrollUp()
     return false
 
 $(window).resize ->
