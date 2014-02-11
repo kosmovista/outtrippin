@@ -9,11 +9,22 @@
   </section>
 </nav>
 
-<div class="top-logo">
-   <% if @itinerary.nil? %>
+<% if @itinerary.nil?  %>
+  <div class="top-logo">
     <a href="/" title="OutTrippin Home">
-    <% else %>
-    <a href="#" class="show-sidebar" title="Click here to show or hide the trip brief">
-    <% end %>
     <%= image_tag 'o-white.png', style: "height:34px;" %></a>
-</div>
+  </div>
+  <div class="top-ot">
+    <a href="/" title="OutTrippin Home"><%= image_tag 'outtrippin-white.png', style: "height:25px;" %></a>
+  </div>
+
+  <% else %>
+  <div class="top-logo has-tip" data-tooltip title="Click here to show or hide the traveler's request">
+    <a href="#" class="show-sidebar">
+    <%= image_tag 'o-white.png', style: "height:34px;" %></a>
+  </div>
+  <div id="guide"></div>
+  <div class="top-ot">
+    <a href="#" class="show-sidebar"><%= image_tag 'outtrippin-white.png', style: "height:25px;" %></a>
+  </div>
+<% end %>
