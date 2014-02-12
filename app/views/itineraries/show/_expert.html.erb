@@ -71,13 +71,12 @@
 .tabs {top:240px;}
 </style>
 <% content_for :body do %>
- <%= link_to "Write the story", itinerary_plan_path(@itinerary), class: "button radius right", style: "position:absolute; top:10px; right:70px; height:49px; z-index:999;", target: "blank" %>
 <% end %>
 <div class="row">
   <div class="small-12 small-centered columns">
      <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
     <div class="large-8 large-centered small-12 columns">
-      <h2 style="margin-top:20px;" class="white"><%= image_tag 'trophy.png', style: "height:1em; margin:-10px 15px 0 -55px;" %>You've won! <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+      <h2 style="margin-top:20px;" class="white"><%= image_tag 'trophy.png', style: "height:1em; margin:-10px 15px 0 -55px;" %>You've won! <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a> </h2>  
     </div>
     <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
       <h5>Woohoo! You've been chosen to write this story!</h5>
@@ -107,7 +106,6 @@
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
          <li><a href="#" id="slide0" class="active-tab">MY PITCH</a></li>
           <li><a href="#" id="slide1" >THE REQUEST</a></li>
-          <li><%= link_to "WRITE THE STORY", itinerary_plan_path(@itinerary), target: "blank" %></li>
           <% if current_user.is?("admin") %>
           <li><a href="#" id="slide2">ALL PITCHES</a></li>
           <% end %>
@@ -141,7 +139,7 @@
   </div>
 <% end %>
 <div class="share break">
-  <h4 class="serif subheader"><em><%=  link_to "Write the story", itinerary_plan_path(@itinerary), target: "blank", class: "sharethis" %></em></h4>
+  <h4 class="serif subheader"><em><%=  link_to "Start writing...", itinerary_plan_path(@itinerary), target: "blank", class: "sharethis" %></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
 
