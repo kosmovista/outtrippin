@@ -131,3 +131,25 @@
   border-radius: 4px;
   width:100%;
 }
+
+
+// JOYRIDE
+.joyride-tip-guide {
+  border-radius: 4px;
+}
+
+.joyride-next-tip {
+  border-radius:2px;
+}
+
+.joyride-tip-guide p {
+  line-height: 1.5;
+}
+
+.joyride-tip-guide .joyride-nub.top {
+  top: -127px !important;
+}
+
+.joyride-tip-guide .joyride-nub.bottom {
+  bottom: -27px !important;
+}

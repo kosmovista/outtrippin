@@ -733,17 +733,17 @@ $inline-list-default-float-margin: em-calc(10);
 
 // Controlling default Joyride styles
 
-// $joyride-tip-bg: rgb(0,0,0);
-// $joyride-tip-default-width: 300px;
-// $joyride-tip-padding: em-calc(18 20 24);
-// $joyride-tip-border: solid 1px #555;
-// $joyride-tip-radius: 4px;
-// $joyride-tip-position-offset: 22px;
+$joyride-tip-bg: #1b1b1b;
+$joyride-tip-default-width: 400px;
+$joyride-tip-padding: em-calc(26 28 32);
+// $joyride-tip-border: solid 1px #00bccf;
+// $joyride-tip-radius: 10px;
+// $joyride-tip-position-offset: 15px;
 
 // Here, we're setting the tip dont styles
 
 // $joyride-tip-font-color: #fff;
-// $joyride-tip-font-size: em-calc(14);
+// $joyride-tip-font-size: em-calc(16);
 // $joyride-tip-header-weight: bold;
 
 // This changes the nub size
@@ -764,7 +764,7 @@ $inline-list-default-float-margin: em-calc(10);
 
 // When Joyride is filling the screen, we use this style for the bg
 
-// $joyride-screenfill: rgba(0,0,0,0.5);
+$joyride-screenfill: rgba(255,255,255,0.5);
 
 //
 // Keystroke Variables
@@ -1348,6 +1348,7 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 @import "top-bar";
 @import "panels";
 @import "foundation/components/reveal";
+@import "foundation/components/joyride";
 
 // ADMIN
 @import "foundation/components/side-nav";
