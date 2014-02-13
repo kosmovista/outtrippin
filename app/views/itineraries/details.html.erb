@@ -55,3 +55,13 @@
     <% end %>
   </div>
 </div>
+
+<%= content_for :body do %>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.id %>");
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "Step 1: Details"});
+  mixpanel.track_forms("#new_itinerary_details", "Entered Trip Details");
+</script>
+<% end %>

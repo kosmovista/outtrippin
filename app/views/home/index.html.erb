@@ -151,22 +151,16 @@
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-  <% if (current_user && current_user.is?("admin")) %>
   <script>
-$("#contestbtn").click(function() {
-    // This sends us an event every time a user clicks the button
-    mixpanel.track("Started Contest");
-    <% if current_user %>
-    mixpanel.identify("<%= current_user.id %>");
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
     mixpanel.people.set({
         "Name": "<%= current_user.personal_info[:name] %>",
         "Roles": "<%= current_user.roles.join(', ') %>",
         "$email": "<%= current_user.email %>"
     });
-    <% else %>
-
-    <% end %>
-});
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "landing page"});
+  mixpanel.track_forms("#new_itinerary", "Started Contest");
 </script>
-<% end %>
 <% end %>

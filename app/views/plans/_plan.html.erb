@@ -177,3 +177,13 @@
     <textarea placeholder="Write a message" style="height:150px;">Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!</textarea>
     <div href="" class="expand button radius">Send</div>
 </div>
+
+<%= content_for :body do %>
+  <script>
+  mixpanel.track("Page Loaded", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Author": "<%= @plan.user.personal_info[:name] %>",
+    "Stage": "Final Story"
+  });
+  </script>
+<% end %>
