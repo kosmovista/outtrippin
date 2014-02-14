@@ -102,7 +102,7 @@
         <div class="row">
           <div class="large-12 small-12 columns">
             <%= image_tag @plan.user.avatar.url, class: "rounded avatar-footer" %>
-            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
               <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank' unless @plan.user.facebook.blank? %>
               <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank' unless @plan.user.pinterest.blank? %>
               <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank' unless @plan.user.twitter.blank? %>
@@ -147,7 +147,7 @@
   <h2>This power feature is coming soon!</h3>
   <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
   <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" class="radius button" style="margin-top:40px;">Send me updates!</a>
+  <a href="#" id="power-feature" data-reveal-id="recorded" class="radius button" style="margin-top:40px;">Send me updates!</a>
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
@@ -156,17 +156,17 @@
 </div>
 
 <div class="share hide-on-print">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
+  <h4 class="serif subheader"><em><a href="#" id="sharebutton" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
   <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Sharing this with a friend.</h3>
+  <h3>Share this with a friend.</h3>
   <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>If you like what you see or know someone who'll love this, share it with them. :)</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></li>
+      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -175,7 +175,8 @@
   <h3>Send via email</h3>
    <input type="text" placeholder="c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com...">
     <textarea placeholder="Write a message" style="height:150px;">Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!</textarea>
-    <div href="" class="expand button radius">Send</div>
+    <div href="" id="email-share-send" class="expand button radius">Send</div>
+    <a class="close-reveal-modal">&#215;</a>
 </div>
 
 <%= content_for :body do %>
@@ -185,9 +186,31 @@
     "Author": "<%= @plan.user.personal_info[:name] %>",
     "Stage": "Final Story"
   });
+  mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+  });
+  mixpanel.track_links("#facebook-share", "Facebook Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#twitter-share", "Twitter Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#power-feature", "Request Feature Update", {
+    'Feature': 'Add Traveler'
+  });
+  $("#sharebutton").click(function() {
+    mixpanel.track("Share Button", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
+  $("#email-share").click(function() {
+    mixpanel.track("Email Share", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
   </script>
-<% end %>
-
-<%= content_for :head do %>
-  <base target="_blank">
 <% end %>
