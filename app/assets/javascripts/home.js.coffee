@@ -82,15 +82,29 @@ window.scrollDown = ->
     scrollTop: $("#steps").offset().top
   }, 1000, 'easeOutQuart')
 
+# SCROLL UP
+window.scrollUp = ->
+  $('html, body').animate({
+    scrollTop: $(".home-cover").offset().top
+  }, 2000, 'easeOutQuart')
+
 
 ######################
 # AFTER WINDOW LOADS #
 ######################
 
-
+$(window).on "scroll", ->
+  $('.top-logo').css( "display", "none" ).fadeIn(200);
+  $('.top-ot').css( "display", "none" ).fadeIn(200);
+  $('#guide').css( "display", "none" ).fadeIn(200);
+  return false
 
 $("#scroll-down").on "click", ->
     scrollDown()
+    return false
+
+$("#scroll-up").on "click", ->
+    scrollUp()
     return false
 
 $(window).resize ->
@@ -99,13 +113,13 @@ $(window).resize ->
 
 $(window).load ->
   $('.home-cover').css("height", $(window).height())
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
-  setBg()
+  $("#dest").show()
   $("#header").show()
   $("#sub-header").show()
-  $("#dest").show()
   $("#contestbtn").show()
-  $("#loading").delay(200).fadeOut(100, 'easeOutQuad')
-  $("#scroll-down").delay(1000).fadeIn(100, 'easeOutQuad')
+  $("#loading").hide()
+  $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  setBg()
   $('#featuring').css("height", $(window).height())
   changeTrip()

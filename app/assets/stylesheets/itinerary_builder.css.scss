@@ -110,7 +110,7 @@
 
 // TIPS & TRICKS
 .tips {
-  border-left: 4px #00cccc solid;
+  border-left: 4px #00bccf solid;
   padding:1em 0 1em 2em;
   margin-bottom:40px;
 }
@@ -130,4 +130,26 @@
 .day-photo {
   border-radius: 4px;
   width:100%;
+}
+
+
+// JOYRIDE
+.joyride-tip-guide {
+  border-radius: 4px;
+}
+
+.joyride-next-tip {
+  border-radius:2px;
+}
+
+.joyride-tip-guide p {
+  line-height: 1.5;
+}
+
+.joyride-tip-guide .joyride-nub.top {
+  top: -127px !important;
+}
+
+.joyride-tip-guide .joyride-nub.bottom {
+  bottom: -27px !important;
 }

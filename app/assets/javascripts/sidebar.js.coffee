@@ -1,5 +1,7 @@
 window.showSidebar = ->
   $('.top-logo').hide()
+  $('.top-ot').hide()
+  $('#guide').hide()
   $('.container').addClass("shrink")
   $('#sidebar').addClass("show")
   
@@ -8,6 +10,8 @@ window.hideSidebar = ->
   $('.container').removeClass("shrink")
   $('#sidebar').removeClass("show")
   $('.top-logo').delay(800).fadeIn(200)
+  $('.top-ot').delay(800).fadeIn(200)
+  $('#guide').delay(800).fadeIn(200)
   
 
 window.act_tab = 0

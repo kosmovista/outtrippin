@@ -1,8 +1,8 @@
 footer {
+  background:#f3f3f3;
   text-align: center;
-  padding: 30px 0;
+  margin-top:60px;
   font-family: "calluna-sans", helvetica, sans-serif;
-  background-color: whitesmoke;
 }
 
 footer img {
@@ -14,11 +14,14 @@ footer h6 {
   font-weight:normal;
 }
 
-a.text {
-  font-size: 13px;
-  display: block;
-  color: #6e6e6e;
-  &:hover {
-    color: #00cccc;
-  }
+.inline-list.footer > li {
+  float:none;
+  display: inline-block;
+  margin-right:.825em;
+  a {color: #7a7a7a;}
 }
+
+.inline-list.footer {
+  font-size:0.750em;
+  color: #7a7a7a;
+  }

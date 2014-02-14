@@ -8,9 +8,9 @@
     </div>
 
     <div class="large-8 large-centered small-12 columns">
-      <%= button_to "Pick Me!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "small right button radius" if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
-      <%= link_to (image_tag "edit-circle.png"), edit_itinerary_pitch_path(pitch.itinerary, pitch), class: "right", title: "Edit Pitch", style: "width:25px;" if current_user.is?("expert") && !pitch.winner %>
-        <%= link_to "Start Story", itinerary_plan_path(pitch.itinerary), class: "small button radius right" if pitch.won_by?(current_user) %>
+      <%= button_to "Pick Me!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "small right button radius", id: "Pick-Winner" if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
+      <%= link_to (image_tag "edit-circle.png"), edit_itinerary_pitch_path(pitch.itinerary, pitch), class: "right", id: "Edit-Pitch", title: "Edit Pitch", style: "width:25px;" if current_user.is?("expert") && !pitch.winner %>
+      <%= link_to "Start writing...", itinerary_plan_path(pitch.itinerary), id: "Start-Story", class: "small button radius right" if pitch.won_by?(current_user) %>
       <h3><%= pitch.title %> </h3>
       <% unless pitch.pictures.empty? %>
       <div class="pitch-imgs">

@@ -5,7 +5,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   $scope.days = $scope.plan.days;
   $scope.tips_tricks = $scope.plan.tips_tricks;
 
-  $scope.day = {"title": "", "body": "Start typing a description of the day..."};
+  $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save."};
   $scope.tip_trick = {"title": "", "body": ""};
 
   // ADD DAY

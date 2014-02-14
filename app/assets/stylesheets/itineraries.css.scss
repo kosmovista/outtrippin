@@ -138,13 +138,13 @@ div.container { position: relative; }
 
 
 .pitch-number {
-  border: 2px #00cccc solid;
+  border: 2px #00bccf solid;
   width: 42px;
   height: 42px;
   text-align: center;
   color: white;
   border-radius: 1000px;
-  background: #00cccc;
+  background: #00bccf;
   @media only screen and (min-width: 940px) { float: right; }
   }
 
@@ -201,7 +201,7 @@ div.container { position: relative; }
 
 // TIPS & TRICKS
 .tips {
-  border-left: 4px #00cccc solid;
+  border-left: 4px #00bccf solid;
   padding:1em 0 1em 2em;
   margin-bottom:40px;
 }
@@ -257,8 +257,8 @@ div.container { position: relative; }
     background: #f3f3f3;
     transition:all 200ms linear;
     &:hover {
-      border: 2px #00cccc solid;
-      background: #00cccc;
+      border: 2px #00bccf solid;
+      background: #00bccf;
       color: white;
     }
   }
@@ -269,7 +269,7 @@ div.container { position: relative; }
   border-radius: 0 0 5px 5px !important
   }
 .pricing {
-  @media only screen and (min-width:768px) {height:410px;}
+  @media only screen and (min-width:768px) {height:445px;}
   .popular {
     background-color: #00bccf;
     left: 0;

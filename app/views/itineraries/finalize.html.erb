@@ -67,3 +67,13 @@
     <% end %>
   </div>
 </div>
+
+<%= content_for :body do %>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.id %>");
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "Step 2: Finalize"});
+  mixpanel.track_forms("#new_itinerary_finalize", "Finalized Trip");
+</script>
+<% end %>
