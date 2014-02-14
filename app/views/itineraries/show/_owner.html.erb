@@ -86,7 +86,9 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
-  mixpanel.track_links("#sharebutton", "Share");
+  $("#sharebutton").click(function() {
+    mixpanel.track("Share Button");
+  });
   mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Awaiting Story"});
 </script>
 <% end %>
@@ -175,7 +177,9 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
-  mixpanel.track_links("#sharebutton", "Share");
+  $("#sharebutton").click(function() {
+    mixpanel.track("Share Button");
+  });
   $("#Pick-Winner").click(function() {
     // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
@@ -294,7 +298,9 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
-  mixpanel.track_links("#sharebutton", "Share");
+  $("#sharebutton").click(function() {
+    mixpanel.track("Share Button");
+  });
   $("#Pick-Winner").click(function() {
     // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
