@@ -6,7 +6,6 @@ class Api::V1::StoriesController < ApplicationController
   ## GET index
   def index
     @itineraries = Itinerary.all
-    ap @user
   end
 
   ## GET show
@@ -27,7 +26,6 @@ class Api::V1::StoriesController < ApplicationController
   ## PATCH update
   def update
     @itinerary = Itinerary.find(params[:id])
-    ap story_params
     if @itinerary.update_attributes(story_params)
       render :show
     else
@@ -37,7 +35,6 @@ class Api::V1::StoriesController < ApplicationController
 
   private
   def set_story
-    ap params
     @itinerary = Itinerary.find(params[:id])
   end
 
