@@ -1,11 +1,12 @@
 class Api::V1::StoriesController < ApplicationController
   respond_to :json
-  skip_before_action :verify_authenticity_token # TODO remove THIS before PRODUCTION
   before_action :set_story, only: [:show, :update]
+  before_action :authorize_admin
 
   ## GET index
   def index
     @itineraries = Itinerary.all
+    ap @user
   end
 
   ## GET show
@@ -36,10 +37,22 @@ class Api::V1::StoriesController < ApplicationController
 
   private
   def set_story
+    ap params
     @itinerary = Itinerary.find(params[:id])
   end
 
   def story_params
-    params.permit(:duration, :departure, extra_info: [:budget, :details, style:[]])
+    params.permit(:duration, :destination, :departure, extra_info: [:budget, :details, :name, :travelers, style:[]])
+  end
+
+  def verify_authenticity_token
+    @user = User.find_by_single_access_token(request.headers["auth-token"])
+    render json: { message: "Unauthorized" }, status: 401 if @user.nil?
+
+  end
+
+  def authorize_admin
+    render json: { message: "Forbidden" }, status: 403 unless @user.admin?
+
   end
 end

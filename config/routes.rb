@@ -62,6 +62,7 @@ Outtrippin::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :stories
+      resource :user_sessions, only: :create
     end
   end
   #################################################################
