@@ -51,19 +51,20 @@
 
 <body>
   <%= render 'layouts/parts/topbar' %>
+  <%= render 'utils/errors', object: nil %>
   <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
 
   <div class="container">
     <%= yield %>
   </div>
-  
+
 
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <script src="/assets/foundation/foundation.joyride.js"></script>
-  <script src="/assets/foundation/foundation.cookie.js"></script> 
+  <script src="/assets/foundation/foundation.cookie.js"></script>
   <script type="text/javascript">
-  $(function(){ $(document).foundation('joyride', 'start') }); 
+  $(function(){ $(document).foundation('joyride', 'start') });
   </script>
   <%= yield :body %>
 </body>

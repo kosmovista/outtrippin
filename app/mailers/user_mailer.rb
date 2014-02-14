@@ -45,4 +45,12 @@ class UserMailer < ActionMailer::Base
     @itinerary = @pitch.itinerary
     mail to: @expert.email, subject: "Congratulations, you've been picked"
   end
+
+  def email_sharer_email(destination, message, itinerary)
+    @destination = destination
+    @message = message
+    @itinerary = itinerary
+    @user = @itinerary.user
+    mail to: @destination, subject: "Your friend is asking for an opinion"
+  end
 end

@@ -110,7 +110,7 @@
   </div>
 </div>
 
-<div id="slide0-content"> 
+<div id="slide0-content">
     <%= render @pitches %>
   </div>
 
@@ -262,9 +262,11 @@
 </div>
 <div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
-   <input type="text" placeholder="c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com...">
-    <textarea placeholder="Write a message" style="height:150px;">Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!</textarea>
-    <div href="" class="expand button radius">Send</div>
+  <%= form_tag email_sharer_itinerary_path, method: :put do %>
+    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= submit_tag "Send", class: "expand button radius" %>
+  <% end %>
 </div>
 
 <% end %>
