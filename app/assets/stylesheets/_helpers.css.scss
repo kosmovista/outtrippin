@@ -25,12 +25,12 @@
 
 .circle-button {
   opacity:.8;
-  transition: all 200ms linear;
+  transition: opacity 200ms linear;
 }
 
 .circle-button:hover {
   opacity:1;
-  transition: all 200ms linear;
+  transition: opacity 200ms linear;
 }
 
 .ot-alert {
