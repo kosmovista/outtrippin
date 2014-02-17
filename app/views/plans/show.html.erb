@@ -48,7 +48,7 @@
       <div class="large-8 large-centered small-12 columns">
         <h4 class="subheader black serif text-center"><em>Welcome to the OutTrippin Story Builder.</em></h4> 
        
-        <h5 class="subheader serif text-center"><em> <a href="" onclick="$(document).foundation('joyride', 'start');">Take a tour</a>, or to get started, click on "Add Day."</em></h5>
+        <h5 class="subheader serif text-center"><em> <a href="" id="take-tour" onclick="$(document).foundation('joyride', 'start');">Take a tour</a>, or to get started, click on "Add Day."</em></h5>
       </div>
     </div>
   </li>
@@ -62,7 +62,7 @@
           </div>
           <div id="edit-day" class="large-2 small-6 right columns text-right">
             <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-            <a href="" class="circle-button"  ng-click="editing=true;" title="Edit Day">
+            <a href="" id="editday" class="circle-button"  ng-click="editing=true;" title="Edit Day">
               <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
             </a>
             <% end %>
@@ -97,9 +97,9 @@
                 <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
               </div>
               <div class="large-2 right small-6 columns text-right">
-                <a href="" class="circle-button" title="Save Changes" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
-                <a href="" class="circle-button" title="Cancel" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
-                <a href="" class="circle-button" title="Delete Day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
+                <a href="" class="circle-button" title="Save Changes" id="Save-day"sng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                <a href="" class="circle-button" title="Delete Day" id="delete-day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
               </div>
               <div class="large-8 small-12 columns">
                 <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
@@ -127,8 +127,8 @@
               <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
             </div>
             <div id="menu-day" class="large-2 right small-6 columns text-right">
-              <a href="" class="circle-button" title="Cancel" ng-click="add_day=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-              <a href="" class="circle-button" title="Save Day" ng-click="save_day()"><%= image_tag "save.png", style: "width:26px" %></a>
+              <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_day=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+              <a href="" class="circle-button" title="Save Day" id="save-day" ng-click="save_day()"><%= image_tag "save.png", style: "width:26px" %></a>
             </div>
             <div class="large-8 small-12 columns">
               <h3><input id="title-day" type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
@@ -152,7 +152,7 @@
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
             <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-              <a href="" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
+              <a href="" id="edittip" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
             <% end %>
           </div>
           <div class="large-8 large-centered columns">
@@ -170,9 +170,9 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Save Changes" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><%= image_tag "save.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Cancel" ng-click="editing_tt=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Delete Tip Trick" ng-click="delete_tip_trick(tt.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
+            <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_tt=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
+            <a href="" class="circle-button" title="Delete Tip Trick" id="delete-tip" ng-click="delete_tip_trick(tt.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
@@ -191,8 +191,8 @@
       <div class="row">
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Cancel" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-            <a href="" class="circle-button" title="Save Day" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
+            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+            <a href="" class="circle-button" title="Save Tip" id="Ssve-tip" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
@@ -259,6 +259,13 @@
 </ul>
 </div>
 
+<%= content_for :body do %>
+  <script>
+    mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Story Builder"});
+  </script>
+<% end %>
+
+
 <div id="joyrideDiv">
   <ol class="joyride-list" data-joyride>
     <li data-text="Next">
@@ -310,3 +317,5 @@
     </li>
   </ol>
 </div>
+
+

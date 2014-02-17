@@ -30,10 +30,11 @@
   <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
-
+  <%= render 'tools/mixpanel' %>
   <%= yield :head %>
 </head>
 
+  
 <body ng-controller="PlanCtrl">
   <%= render 'layouts/parts/topbar' %>
   <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
@@ -44,5 +45,6 @@
 
   <%= javascript_include_tag "itinerary_builder", "data-turbolinks-track" => true %>
   <%= yield :body %>
+  
 </body>
 </html>

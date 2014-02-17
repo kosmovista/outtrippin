@@ -7,3 +7,10 @@
 </div>
 
 <% expanded_sidebar %>
+
+<%= content_for :body do %>
+  <script>
+   mixpanel.track("Page Loaded", {"page": "Edit Pitch Page"});
+   mixpanel.track_forms("#new_pitch_edit", "Edited Pitch");
+</script>
+<% end %>
