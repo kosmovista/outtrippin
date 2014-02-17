@@ -7,7 +7,7 @@ class Api::V1::UserSessionsController < ApplicationController
     if user_session && user_session.save
       render json: { token: current_user.single_access_token }, status: 201
     else
-      render json: { message: "Could not authenticate", errors: user_session.errors.full_messages }, status: 401
+      render json: { message: "Could not authenticate", errors: user_session.errors.full_messages }, status: 500
     end
   end
 
