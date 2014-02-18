@@ -40,6 +40,7 @@ class PitchNew
     return false unless valid?
     if create_objects
       UserMailer.delay.new_pitch_email(@pitch)
+      UserMailer.delay.new_pitch_expert_email(@pitch)
       AdminMailer.delay.new_pitch_email(@pitch)
       true
     else

@@ -39,11 +39,19 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "New OutTrippin Pitch Received!"
   end
 
+  def new_pitch_expert_email(pitch)
+    @pitch = pitch
+    @itinerary = @pitch.itinerary
+    @expert = @pitch.user
+    mail to: @expert.email, subject: "Your New OutTrippin Pitch Received!"
+  end
+
+
   def winner_expert_email(pitch)
     @pitch = pitch
     @expert = @pitch.user
     @itinerary = @pitch.itinerary
-    mail to: @expert.email, subject: "Congratulations, you've been picked"
+    mail to: @expert.email, subject: "Woohoo! Your Travel Story concept has been chosen."
   end
 
   def email_sharer_email(destination, message, itinerary)
