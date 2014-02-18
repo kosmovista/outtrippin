@@ -1,7 +1,7 @@
 class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
-  before_action :load_styles, only: [:details, :update]
+  before_action :load_styles_personalities, only: [:details, :finalize, :update, :publish]
   before_action :authorize_user, only: [:index] # TODO some more actions should be here
 
   def index
@@ -114,8 +114,8 @@ class ItinerariesController < ApplicationController
   end
 
   # TODO REFACTOR THIS
-  def load_styles
-    configuration_file = File.join(Rails.root.to_s, 'config', 'styles.yml')
-    @styles = YAML.load_file(configuration_file)
+  def load_styles_personalities
+    @styles = YAML.load_file(File.join(Rails.root.to_s, 'config', 'styles.yml'))
+    @personalities = YAML.load_file(File.join(Rails.root.to_s, 'config', 'personalities.yml'))
   end
 end

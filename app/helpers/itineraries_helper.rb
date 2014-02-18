@@ -12,8 +12,12 @@ module ItinerariesHelper
     return options
   end
 
-  def budget_options
-    ['$50-100', '$100-200', '$200-500','$500+']
+  def activity_budget_options
+    ['$0-50', '$50-100', '$100-200', '$200+']
+  end
+
+  def accommodation_budget_options
+    ['$0-50', '$50-100', '$100-200', '$200-500', '$500+']
   end
 
   def expanded_sidebar

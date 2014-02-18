@@ -5,7 +5,7 @@ class ItineraryDetails
     false
   end
 
-  ATTRIBUTES = [:departure, :duration, :style]
+  ATTRIBUTES = [:name, :travelers, :departure, :duration, :style]
 
   attr_accessor *ATTRIBUTES
 
@@ -30,8 +30,6 @@ class ItineraryDetails
   def save
     return false unless valid?
     if create_objects
-      # UserMailer.welcome_expert_email(user).deliver
-      # AdminMailer.new_expert_email(user).deliver # TODO ADD DELAYED JOB
       true
     else
       false
@@ -42,7 +40,7 @@ class ItineraryDetails
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { style: style }
+      extra_info = { style: style, name: name, travelers: travelers }
       @itinerary.update_attributes(departure: departure, duration: duration, extra_info: extra_info)
       @itinerary.save!
     end
