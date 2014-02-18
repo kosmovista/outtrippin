@@ -209,11 +209,11 @@ div#featuring {
 .inline-list.browse-bullets > li {
   float:none;
   display: inline-block;
-  margin-right:0.5em;
+  margin-right: 20px !important
 }
   
 .inline-list.browse-bullets > li a {
-  margin-right: 1.2em;
+  margin-right: 0 !important;
   -webkit-border-radius: 1000px;
   border-radius: 1000px;
   background-color: #4a4a4a;
