@@ -1,0 +1,176 @@
+<% if @plan && @plan.published %>
+  <%= render @plan %>
+<% elsif @itinerary.has_winner_pitch? %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
+<% set_page_desc( @itinerary.winner_pitch.summary ) %>
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">Winner has been chosen. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>The traveler has picked their favorite expert.</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      The traveler has chosen their favorite expert and they are now working on building their personalized travel story. The winning pitch is featured below.</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered text-center small-12 columns">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
+          <li><%= link_to "EDIT STORY", itinerary_plan_path(@itinerary)%></li>
+          <li><a href="#" id="slide2" >TRAVELER'S REQUEST</a></li>
+          <li><a href="#" id="slide1">ALL PITCHES</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="slide0-content">
+  <div class="large-12 large-centered small-12 columns">
+    <%= render @itinerary.winner_pitch %>
+  </div>
+</div>
+<div id="slide1-content"> 
+	<%= render @pitches %>
+</div>
+<div class="row" id="slide2-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% elsif @pitches.blank? %>
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'expertsteps', expert_step: 'Submit a pitch', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">Accepting pitches now. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>No pitches have been submited yet.</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      First step is to put in a fantastic pitch. If the requestor picks you as their favorite, you'll have the opportunity to write the full story. Cool?  Hit the <%= image_tag 'submit-a-pitch.png', style: "height:1.5em; margin-top: -0.5em;" %> button below to get started!</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered text-center small-12 columns">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab" >TRAVELER'S REQUEST</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="slide0-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div><div class="share break">
+  <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<% else %>
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'expertsteps', expert_step: 'The requestor picks a winner', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">Still accepting pitches. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>The story request is still accepting pitches.</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      The traveler has received expert pitches but has not yet picked a winner.</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered text-center small-12 columns">
+      <div class="large-8 large-centered text-center small-12 columns">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+          <li><a href="#" id="slide0" class="active-tab">TRAVELER'S REQUEST</a></li>
+          <li><a href="#" id="slide1">ALL PITCHES</a></li>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="slide1-content"> 
+  <%= render @pitches %>	
+</div>
+<div class="row" id="slide0-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="share break">
+  <h4 class="serif subheader"><em><%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target:"blank", class: "sharethis" %></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<% end %>

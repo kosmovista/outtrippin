@@ -165,18 +165,20 @@
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></li>
+      <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
 <div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
-   <input type="text" placeholder="c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com...">
-    <textarea placeholder="Write a message" style="height:150px;">Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!</textarea>
-    <div href="" id="email-share-send" class="expand button radius">Send</div>
+   <%= form_tag email_sharer_itinerary_path, method: :put do %>
+    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= submit_tag "Send", id: "email-share", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
+    <% end %>
 </div>
 
 <%= content_for :body do %>

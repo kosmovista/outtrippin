@@ -1,6 +1,6 @@
 class UserSessionsController < ApplicationController
   def new
-    redirect_to root_url unless current_user.blank?
+    redirect_to itineraries_path unless current_user.blank?
     @user_session = UserSession.new
   end
 
@@ -27,7 +27,7 @@ class UserSessionsController < ApplicationController
       else
         return admin_path if current_user.admin?
         return itineraries_path if current_user.expert?
-        return root_path
+        return itineraries_path
       end
     end
 end

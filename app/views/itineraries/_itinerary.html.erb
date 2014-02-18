@@ -3,7 +3,7 @@
     <div class="row">
       <div class="large-9 small-12 columns">
         <h4>
-          <%= link_to (itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name]), itinerary_path(itinerary), style: "margin-top:10px;", class: "black" %><%= link_to (current_user.voted_for?(itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(itinerary), method: :post if current_user.is?("expert") %>
+          <%= link_to (itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name]), itinerary_path(itinerary), style: "margin-top:10px;", class: "story-title black" %><%= link_to (current_user.voted_for?(itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned", class: "unbookmark") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign", class: "bookmark")), toggle_star_itinerary_path(itinerary), method: :post if current_user.is?("expert") %>
         </h4>
         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
           <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
@@ -13,8 +13,8 @@
         </em></p>
       </div>
       <div class="large-2 small-12 text-center columns">
-        <%= link_to "Details", itinerary_path(itinerary), class: "secondary expand tiny radius button" %>
-        <%= link_to "Submit Pitch", new_itinerary_pitch_path(itinerary), class: "button tiny expand radius" if current_user.is?("expert") && @pitch.blank? %>
+        <%= link_to "Details", itinerary_path(itinerary), class: "story-request secondary expand tiny radius button" %>
+        <%= link_to "Submit Pitch", new_itinerary_pitch_path(itinerary), class: "submit-pitch button tiny expand radius" if current_user.is?("expert") && @pitch.blank? %>
       </div>
 
       <hr style="border:1px #e6e6e6 solid;">

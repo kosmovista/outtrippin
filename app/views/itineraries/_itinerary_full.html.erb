@@ -2,7 +2,7 @@
   <div class="large-8 large-centered columns">
     <div class="row">
       <div class="large-12 columns">
-        <%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "button small right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !@itinerary.has_winner_pitch? %>
+        <%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "submit-pitch button small right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !@itinerary.has_winner_pitch? %>
         <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : 
         @itinerary.extra_info[:name] %><%= link_to (current_user.voted_for?(@itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(@itinerary), method: :post if current_user && current_user.is?("expert") %></h3>
       </div>
