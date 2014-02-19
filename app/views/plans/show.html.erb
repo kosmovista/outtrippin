@@ -13,7 +13,7 @@
         <hr style="border-color:white;">
       </div>
       <h5 class="white serif subheader text-center">
-      <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar", style:"width:30px;" %>
+      <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
       <em>By <%= @plan.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
     </h5>
     </div>
@@ -34,7 +34,7 @@
       <div class="large-11 large-centered small-12 columns">
         <h5 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
         <h5 class="serif black text-right subheader" style="margin-top:20px;">
-          <%= image_tag @plan.user.avatar.url, class: "rounded right tip-avatar", style:"width:2.5em; margin-top:5px; margin-left:20px;" %>
+          <%= image_tag @plan.user.avatar.url, class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %>
           <em>- <%= @plan.user.personal_info[:name] %> <br>
             OutTrippin Storyteller</em>
 
