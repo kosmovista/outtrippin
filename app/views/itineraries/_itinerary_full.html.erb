@@ -9,8 +9,8 @@
 
         
     </div>
-      <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
-      <%= image_tag "plane.png", style: "width:17px; opacity:0.7; margin:-6px 4px 0;" %> <%= @itinerary.extra_info[:travelers] %> are traveling with a budget of <%= @itinerary.extra_info[:budget] %> per person, per day</em></p>
+      <p><em><%= image_tag "plane.png", style:"width:17px; opacity:0.7; margin:-6px 4px 0;" %><%= @itinerary.extra_info[:travelers] %> to <a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
+      <%= image_tag "dollar.png", style: "width:12px; opacity:0.7; margin:-6px 5px 0;" %> With a budget of <%= @itinerary.extra_info[:accommodation_budget] %> for accommodation and <%= @itinerary.extra_info[:activity_budget] %> for activities, per person, per day</em></p>
     </ul>
 
     <% unless @itinerary.extra_info[:style].nil? %>
@@ -20,6 +20,25 @@
         <li><%= s %></li>
         <% end %>
       </ul>
+    <% end %>
+
+    <% unless @itinerary.extra_info[:personality].nil? %>
+      <h5 class="subheader serif"><em>My travel personality:</em></h5>
+      <ul class="sans skill-list">
+        <% @itinerary.extra_info[:personality].each do |s| %>
+        <li><%= s %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+     <% unless @itinerary.extra_info[:must].blank? %>
+      <h5 class="subheader serif"><em>Things I absolutely must see/do:</em></h5>
+      <p style="margin-bottom:70px;"><%= @itinerary.extra_info[:must] %></p>
+    <% end %>
+
+     <% unless @itinerary.extra_info[:avoid].blank? %>
+      <h5 class="subheader serif"><em>Stuff I'd really like to avoid:</em></h5>
+      <p style="margin-bottom:70px;"><%= @itinerary.extra_info[:avoid] %></p>
     <% end %>
 
     <% unless @itinerary.extra_info[:details].blank? %>

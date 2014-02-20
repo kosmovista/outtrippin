@@ -1,32 +1,43 @@
 <% set_page_title("Trip to " + @itinerary.destination + " - OutTrippin") %>
-<div class="row top">
-  <div class="large-11 large-centered columns">
-    <div class="row">
-      <div class="large-12 columns">
-        <%= render 'steps', step: 'launch', disable: %w() %>
-        <h3 class="text-center primary">Next up, let's get to know each other!</h3>
-        <div class="large-4 large-centered small-12 columns">
-          <hr>
-        </div>
-      </div>
+<style>
+.cover { background-image: none; height:250px; }
+#overlay {height:250px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="cover"></div>
+<div id="overlay"></div>
+<div class="header">
+<div class="row trip-details">
+  <div class="small-12 large-11 columns">
+     <%= render 'steps', step: 'launch', disable: %w() %>
+    <div class="large-12 large-centered small-12 columns">
+      <h3 class="text-center white">You're almost ready to roll..<a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-20px;" %></a></h3>  
     </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>This info is the fuel for a tailored travel story - designed just for you!</h5>
+    </div>
+
+  </div>
+</div>
+</div class="header">
 
     <%= form_for @itinerary_finalize, url: publish_itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
 
-    <div class="row">
-      <div class="large-6 columns">
-        <%= f.label :activity_budget, "What's your activity budget (per person, per day)?" %>
+    <div class="row break">
+      <div class="large-7 columns">
+        <%= f.label :activity_budget, "Your activity budget (per person, per day)?", :autofocus => true %>
       </div>
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= f.select :activity_budget, options_for_select(activity_budget_options) %>
       </div>
     </div>
 
     <div class="row">
-      <div class="large-6 columns">
-        <%= f.label :accommodation_budget, "What's your accommodation budget (per person, per night)?" %>
+      <div class="large-7 columns">
+        <%= f.label :accommodation_budget, "Your accommodation budget (per person, per night)?" %>
       </div>
-      <div class="large-6 columns">
+      <div class="large-5 columns">
         <%= f.select :accommodation_budget, options_for_select(accommodation_budget_options) %>
       </div>
     </div>
