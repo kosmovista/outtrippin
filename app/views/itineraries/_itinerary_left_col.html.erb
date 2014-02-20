@@ -15,8 +15,13 @@
   <p>
     <%= image_tag "marker.png", title: "Destination", style:"width:20px; opacity:0.8; margin:-4px 4px 0 -4px;" %><a href=""><%= @itinerary.destination %></a><br>
     <%= image_tag "plane.png", title: "Duration", style: "width:12px; opacity:0.7; margin:-2px 5px 0 0;" %> <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
-  <%= image_tag "dollar.png",  title: "Budget", style: "width:9px; opacity:0.7; margin:-3px 8px 0 0;" %><%= @itinerary.extra_info[:budget] %> per person, per day.</p>
-  <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
-  <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>
+    <%= image_tag "dollar.png",  title: "Activity Budget", style: "width:9px; opacity:0.7; margin:-3px 8px 0 0;" %><%= @itinerary.extra_info[:activity_budget] %> per person, per day.</p>
+    <%= image_tag "dollar.png",  title: "Accommodation Budget", style: "width:9px; opacity:0.7; margin:-3px 8px 0 0;" %><%= @itinerary.extra_info[:accommodation_budget] %> per person, per day.</p>
+    <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
+    <%= content_tag(:p, ("<strong>Travel personality:</strong> " + @itinerary.extra_info[:personality].join(', ')).html_safe) unless @itinerary.extra_info[:personality].blank? %>
+    <%= content_tag(:p, ("<strong>Must see:</strong> " + @itinerary.extra_info[:must]).html_safe) unless @itinerary.extra_info[:must].blank? %>
+    <%= content_tag(:p, ("<strong>Must avoid:</strong> " + @itinerary.extra_info[:avoid]).html_safe) unless @itinerary.extra_info[:avoid].blank? %>
+    <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>
+
  <a href="#" class="hide-sidebar close" title="Hide Trip Overview"><h5>&#9666;</h5></a>
 </div>
