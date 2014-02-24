@@ -34,7 +34,7 @@ module ItinerariesHelper
 
   # helpers for step bar  ##########################
   def steps
-    %w(describe launch pick book)
+    %w(describe launch pick)
   end
 
   def left_bar_or_space(index, steps)

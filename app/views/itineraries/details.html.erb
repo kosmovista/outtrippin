@@ -1,24 +1,35 @@
 <% set_page_title("Trip to " + @itinerary.destination + " - OutTrippin") %>
-<div class="row top">
-  <div class="large-11 large-centered columns">
-    <div class="row">
-      <div class="large-12 columns">
-        <%= render 'steps', step: 'describe', disable: %w() %>
-        <h3 class="text-center primary">Gidday Globetrotter, let's get to know each other first</h3>
-        <h6 class="text-center"><em>This info is the fuel for a tailored travel story - designed just for you!</em></h6>
-        <div class="large-4 large-centered small-12 columns">
-          <hr>
-        </div>
-      </div>
+<style>
+.cover { background-image: none; height:250px; }
+#overlay {height:250px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="cover"></div>
+<div id="overlay"></div>
+<div class="header">
+<div class="row trip-details">
+  <div class="small-12 large-11 columns">
+     <%= render 'steps', step: 'describe', disable: %w() %>
+    <div class="large-12 large-centered small-12 columns">
+      <h3 class="text-center white">Gidday Globetrotter, let's get to know each other first <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-20px;" %></a></h3>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>This info is the fuel for a tailored travel story - designed just for you!</h5>
     </div>
 
+  </div>
+</div>
+</div class="header">
+    
+
     <%= form_for @itinerary_details, url: itinerary_path, method: :put, html: { class: 'custom' } do |f| %>
-    <div class="row">
+    <div class="row break">
       <div class="large-6 columns">
         <%= f.label :name, "Give your trip a spectacular name" %>
       </div>
       <div class="large-6 columns">
-        <%= f.text_field :name, placeholder: "Our amazing adventure to Costa Rica!" %>
+        <%= f.text_field :name, placeholder: "Our amazing adventure to Costa Rica!", :autofocus => true %>
       </div>
     </div>
 
