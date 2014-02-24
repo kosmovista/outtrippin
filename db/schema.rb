@@ -100,7 +100,7 @@ ActiveRecord::Schema.define(version: 20140212142013) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "perishable_token",    default: ""
-    t.string   "single_access_token",              null: false
+    t.string   "single_access_token"
   end
 
   add_index "users", ["perishable_token"], name: "index_users_on_perishable_token"

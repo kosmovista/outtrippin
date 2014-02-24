@@ -5,7 +5,7 @@ class ItineraryFinalize
     false
   end
 
-  ATTRIBUTES = [:name, :budget, :travelers, :email, :details]
+  ATTRIBUTES = [:activity_budget, :accommodation_budget, :email, :details, :must, :avoid, :personality]
 
   attr_accessor *ATTRIBUTES
 
@@ -18,6 +18,8 @@ class ItineraryFinalize
       ATTRIBUTES.each do |attribute|
         send("#{attribute}=", attributes[attribute])
       end
+
+      send("personality=", parsed_personality)
     end
   end
 
@@ -55,7 +57,7 @@ class ItineraryFinalize
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { name: name, budget: budget, travelers: travelers, details: details, style: @itinerary.extra_info[:style] }
+      extra_info = { activity_budget: activity_budget, accommodation_budget: accommodation_budget, details: details, must: must, avoid: avoid, style: @itinerary.extra_info[:style], personality: personality, name: @itinerary.name, travelers: @itinerary.travelers }
       user.save!
       @itinerary.update_attributes(extra_info: extra_info, user: user)
       @itinerary.save!
@@ -68,5 +70,12 @@ class ItineraryFinalize
   def generate_password
     o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
     (0...8).map{ o[rand(o.length)] }.join
+  end
+
+  def parsed_personality
+    return nil if personality.nil?
+    _personality = []
+    personality.each { |k, v| _personality << k if v != "0" }
+    _personality
   end
 end

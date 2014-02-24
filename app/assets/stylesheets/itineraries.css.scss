@@ -25,7 +25,7 @@ div.container { position: relative; }
 }
 
 // STEPS
-#itinerary-steps li { color: #4a4a4a; padding:0em !important; }
+
 
 .step hr { border: 2px solid #e6e6e3; }
 .step p { font-size:.9em; }
@@ -49,7 +49,7 @@ div.container { position: relative; }
 .step-circle.active { background-color: $primary-color; color:#fdfdfd; border: solid 4px $primary-color; }
 .step-circle.disable { color:#e6e6e3; }
 
-#expert-steps li {
+#steps li {
   color: #4a4a4a; padding:0em !important; overflow-x:hidden;
   hr { border: 2px solid #fff; opacity:0.5; }
   .step p { font-size:.9em; }
@@ -159,7 +159,7 @@ div.container { position: relative; }
   background-size: cover !important;
   background-position: 50% 50%;
 }
-#overlay { 
+#overlay {
   top: 0;
   height: 400px;
   width: 100%;
@@ -314,17 +314,18 @@ div.container { position: relative; }
   }
 }
 .check {
-  background: image-url('save.png') no-repeat 10px 4px; 
+  background: image-url('save.png') no-repeat 10px 4px;
   background-size: 15px;
   padding-left:35px;
 }
 
 .cross {
-  background: image-url('delete-circle.png') no-repeat 10px 4px; 
+  background: image-url('delete-circle.png') no-repeat 10px 4px;
   background-size: 15px;
   padding-left:35px;
   color:#afafaf;
 }
+
 
 //BOOKING
 .pricethis {
@@ -369,4 +370,9 @@ div.container { position: relative; }
   border-radius:4px;
   width:100%;
   margin-top:15px;
+}
+// ENTER TRIP DETAILS PAGE
+
+.trip-details {
+  @media only screen and (min-width: 768px) { h3 { font-size:2em;  margin-top:30px; } }
 }

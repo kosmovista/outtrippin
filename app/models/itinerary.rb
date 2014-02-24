@@ -65,4 +65,8 @@ class Itinerary < ActiveRecord::Base
   def name
     self.extra_info[:name]
   end
+  def travelers
+    self.extra_info[:travelers]
+  end
+
 end
