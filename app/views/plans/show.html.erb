@@ -97,7 +97,7 @@
                 <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
               </div>
               <div class="large-2 right small-6 columns text-right">
-                <a href="" class="circle-button" title="Save Changes" id="Save-day"sng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Save Changes" id="Save-day" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
                 <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
                 <a href="" class="circle-button" title="Delete Day" id="delete-day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
               </div>
@@ -192,7 +192,7 @@
         <div class="large-11 large-centered columns">
           <div class="large-2 right columns text-right">
             <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-            <a href="" class="circle-button" title="Save Tip" id="Ssve-tip" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
+            <a href="" class="circle-button" title="Save Tip" id="Save-tip" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
           </div>
           <div class="large-8 large-centered columns">
             <div class="tips">
