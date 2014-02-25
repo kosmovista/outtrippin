@@ -20,13 +20,13 @@ class Itinerary < ActiveRecord::Base
     Itinerary.where(published: true)
   end
 
-  def price_in_cents
-    10 * self.duration.to_i * 100
+  def price_in_cents(plan)
+    plan * self.duration.to_i * 100
   end
 
-  def process_payment(token)
+  def process_payment(token, plan)
     if self.valid?
-      self.charge(token)
+      self.charge(token, plan)
       self.paid = true
       self.save
       return true
