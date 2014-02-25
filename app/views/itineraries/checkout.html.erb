@@ -3,91 +3,164 @@
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
-<div class="row top">
-  <div class="large-11 large-centered columns">
-    <div class="hold">
-      <%= image_tag "loading_black.gif", id: "loading" %><br/><br/>
-      <p class="primary sans">Please hold a few seconds while we process your payment.</p>
-    </div>
 
-    <h3 class="primary">Trip Checkout</h3>
-    <div class="itinerary">
-      <% unless @itinerary.extra_info[:name].blank? %>
-        <div class="row">
-          <div class="large-4 columns">
-             <p><strong>Trip Name:</strong></p>
-          </div>
-          <div class="large-8 columns">
-            <p><%= @itinerary.extra_info[:name] %></p>
-          </div>
-        </div>
-      <% end %>
 
-      <% unless @itinerary.extra_info[:travelers].blank? %>
-        <div class="row">
-          <div class="large-4 columns">
-             <p><strong>Travelers:</strong></p>
-          </div>
-          <div class="large-8 columns">
-            <p><%= @itinerary.extra_info[:travelers] %></p>
-          </div>
-        </div>
-      <% end %>
+<% set_page_title("Pricing - OutTrippin") %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+<style>
+.cover { background-image: url('/assets/ocean.jpg') !important; margin-bottom:0; background-position: 50% 70%; opacity:1; height:450px;}
+.header {overflow: visible; top:50px;height:0; }
+.tabs {height:0;}
+#overlay {height:450px;}
+</style>
+<div class="cover"></div>
+<div id="overlay"></div>
+<div class="header"></div>
+<div class="tabs"></div>
+	<div class="row" style="margin-top:-380px;">
+	  <div class="large-12 no-margin no-padding text-center small-12 columns">
+	    <h1 class="white text-center">An ocean of options</h1>
+	  </div>
+	</div>
+	<div class="row medium-break">
+		<div class="large-10 large-centered small-12 columns">
+			<div class="large-4 small-12  columns">
+				<div class="panel text-center pricing" >
+					<H5 class="option-title">CATCH OF THE DAY</H5>
+					<h3 class="serif price">$<span class="larger">12</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<%= image_tag "plain-fish.png", style: "margin-top:20px;" %>
+					<h6 class="white serif option-detail"><em>Pick 1 storyteller</em></h6>
+					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
+          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 12 %>
+				</div>
+				<ul class="side-nav subheader"><em>
+					<li class="cross">3+ storytellers compete</li>
+					<li class="divider"></li>
+					<li class="cross">Receive multiple story concepts</li>
+					<li class="divider"></li>
+					<li class="check">Choose your storyteller</li>
+					<li class="divider"></li>
+					<li class="check">Day-by-day tailored plan</li>
+					<li class="divider"></li>
+					<li class="check">Activity recommendations</li>
+					<li class="divider"></li>
+					<li class="check">Dining/nightlife suggestions</li>
+					<li class="divider"></li>
+					<li class="check">Accommodation ideas</li>
+					<li class="divider"></li>
+					<li class="check">Handy Tips & Tricks</li>
+					<li class="divider"></li>
+					<li class="check">Easy Booking</li>
+					<li class="divider"></li>
+					<li class="cross">30 minute skype consultation</li>
+					<li class="divider"></li>
+					<li class="cross">Printed & bound Trip Script</li>
+					<li class="divider"></li>
+					<li class="cross">Printed City Map</li></em>
+				</ul>
+			</div>
+			<div class="large-4 small-12  columns">
+				<div class="panel text-center pricing pop" >
+					<div class="popular">
+						<h5 class="no-margin">POPULAR</h5>
+					</div>
+					<H5 class="option-title">PLENTY O' FISH</H5>
+					<h3 class="serif price">$<span class="larger">14</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<%= image_tag "comp-fish.png", style: "margin-top:25px;" %>
+					<h6 class="white serif option-detail"><em>3+ storytellers compete</em></h6>
+					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
+          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 14 %>
+				</div>
+				<ul class="side-nav subheader"><em>
+					<li class="check">3+ storytellers compete</li>
+					<li class="divider"></li>
+					<li class="check">Receive multiple story concepts</li>
+					<li class="divider"></li>
+					<li class="check">Choose your storyteller</li>
+					<li class="divider"></li>
+					<li class="check">Day-by-day tailored plan</li>
+					<li class="divider"></li>
+					<li class="check">Activity recommendations</li>
+					<li class="divider"></li>
+					<li class="check">Dining/nightlife suggestions</li>
+					<li class="divider"></li>
+					<li class="check">Accommodation ideas</li>
+					<li class="divider"></li>
+					<li class="check">Handy Tips & Tricks</li>
+					<li class="divider"></li>
+					<li class="check">Easy Booking</li>
+					<li class="divider"></li>
+					<li class="cross">30 minute skype consultation</li>
+					<li class="divider"></li>
+					<li class="cross">Printed & bound Trip Script</li>
+					<li class="divider"></li>
+					<li class="cross">Printed City Map</li></em>
+				</ul>
+			</div>
+			<div class="large-4 small-12 columns">
+				<div class="panel text-center pricing" >
+					<H5 class="option-title">FANCY FISHIN'</h5>
+					<h3 class="serif price">$<span class="larger">18</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<%= image_tag "fancy-fish.png", style: "margin-top:20px;" %>
+					<h6 class="white serif option-detail"><em>3+ storytellers premium</em></h6>
+					<h6 class="white option-text serif subheader"><em>with cool extras on top of your tailored travel story</span></em></h6>
+          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 18 %>
+				</div>
+				<ul class="side-nav subheader"><em>
+					<li class="check">3+ storytellers compete</li>
+					<li class="divider"></li>
+					<li class="check">Receive multiple story concepts</li>
+					<li class="divider"></li>
+					<li class="check">Choose your storyteller</li>
+					<li class="divider"></li>
+					<li class="check">Day-by-day tailored plan</li>
+					<li class="divider"></li>
+					<li class="check">Activity recommendations</li>
+					<li class="divider"></li>
+					<li class="check">Dining/nightlife suggestions</li>
+					<li class="divider"></li>
+					<li class="check">Accommodation ideas</li>
+					<li class="divider"></li>
+					<li class="check">Handy Tips & Tricks</li>
+					<li class="divider"></li>
+					<li class="check">Easy Booking</li>
+					<li class="divider"></li>
+					<li class="check">30 minute skype consultation</li>
+					<li class="divider"></li>
+					<li class="check">Printed & bound Trip Script</li>
+					<li class="divider"></li>
+					<li class="check">Printed City Map</li></em>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="row short-break">
+		<div class="large-9 large-centered small-12 columns">
+			<hr style="border:1px #e6e6e6 solid;">
+			<h3 class="text-center">Common Questions</h3>
+			<ul class="medium-break small-block-grid-1 large-block-grid-1">
+				<li>
+					<h5>What if I don't love my story?</h5>
+					<p style="font-size:90%;">OutTrippin offers <strong><em>"a better vacation, or your money back"</em></strong> 100% guarantee. If you're not happy with the service or the plan you've received, we'll refund your payment in full, no questions asked.</p>
+				</li>
+				<li>
+					<h5>How does OutTrippin work?</h5>
+					<p style="font-size:90%;">OutTrippin combines travel planning with the magic of storytelling. Tell us where you want to go what you're into and OutTrippin storytellers will compete to design your next vacation.<nr>
+					Your Storyteller works with you to create a personalized, day-by-day Trip Script, giving you all the tools to make incredible travel stories of your own.</p>
+				</li>
+				<li>
+					<h5>Who are OutTrippin storytellers?</h5>
+					<p style="font-size:90%;">OutTrippin storytellers are travel experts like travel bloggers and writers from all over the world. Name a spot, and they've been there, done it, and didn't get the tourist t-shirt. Wherever you're going, our storytellers can recommend the best things to do, see, buy, photograph, eat, drink, dance to, laugh at, and the list keeps going... </p>
+				</li>
+			</ul>
+		</div>
+	</div>
 
-      <% unless @itinerary.duration.blank? %>
-        <div class="row">
-          <div class="large-4 columns">
-             <p><strong>Duration:</strong></p>
-          </div>
-          <div class="large-8 columns">
-            <p><%= @itinerary.duration + " " + (@itinerary.duration == 1 ? "day" : "days") %></p>
-          </div>
-        </div>
-      <% end %>
 
-      <% unless @itinerary.extra_info[:budget].blank? %>
-        <div class="row">
-          <div class="large-4 columns">
-             <p><strong>Budget:</strong> <br />
-             <small><%= @itinerary.extra_info[:budget] %> per day</small></p>
-          </div>
-          <div class="large-8 columns">
-            <p><%= @itinerary.extra_info[:budget] %></p>
-          </div>
-        </div>
-      <% end %>
 
-      <div class="row">
-        <div class="large-4 columns">
-           <p><strong>Expert Planning Fee:</strong><br />
-           <small>$10 per vacation day x <%= @itinerary.duration %> days</small></p>
-        </div>
-        <div class="large-8 columns">
-          <p><%= number_to_currency(@itinerary.price) %></p>
-        </div>
-      </div>
 
-      <div class="row">
-        <div class="large-4 columns">
-           <p><strong>Terms:</strong></p>
-        </div>
-        <div class="large-8 columns">
-          <ul>
-            <li>You will only be charged for the expert planning fee</li>
-            <li>OutTrippin will provide booking options as you add/remove components to your itinerary</li>
-            <li>We offer a 100% money-back guarantee if you're not satisfied (although we've never had to issue it!)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="large-7 columns">
-        <h6 class="subheader"><%= button_to "Hire Expert", purchase_itinerary_path, method: :put, class: "button radius", id: "checkout-btn" %> <small>Final Checkout Price: <%= number_to_currency(@itinerary.price) %></small></h6>
-      </div>
-    </div>
-  </div>
-</div>
 
 <script src="https://checkout.stripe.com/v2/checkout.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
@@ -95,17 +168,21 @@
 <%= image_tag "logo128.png", style:"display:none" %>
 
 <script>
-  $('#checkout-btn').click(function() {
-    var token = function(res){
+  $('.checkout-btn').click(function() {
+    var plan = $(this).attr("id");
+    var duration = parseInt("<%= @itinerary.duration.to_i %>");
+    var token = function(res) {
       $('div.hold').show();
-      var $input = $('<input type=hidden name=stripeToken />').val(res.id);
-      $('form').append($input).submit();
+      var $input1 = $('<input type=hidden name=stripeToken />').val(res.id);
+      var $input2 = $('<input type=hidden name=plan />').val(plan);
+      $('form').append($input1, $input2).submit();
     };
 
     StripeCheckout.open({
       key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
-      amount:      '<%= @itinerary.price_in_cents %>',
+      amount:      duration * plan * 100,
       image:       '<%= asset_path('logo128.png') %>',
+      email:       '<%= current_user.email %>',
       currency:    'usd',
       name:        'OutTrippin',
       description: '100% money back guarantee',

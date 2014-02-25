@@ -52,9 +52,10 @@ class ItinerariesController < ApplicationController
     if @itinerary_finalize.save
       if !current_user
         flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
-        redirect_to login_path(itinerary: @itinerary)
+        session[:original_uri] = checkout_itinerary_path(@itinerary)
+        redirect_to login_path
       else
-        redirect_to itinerary_path(@itinerary)
+        redirect_to checkout_itinerary_path(@itinerary)
       end
     else
       render 'finalize'
@@ -77,8 +78,9 @@ class ItinerariesController < ApplicationController
 
   def purchase
     token = params[:stripeToken]
+    plan = params[:plan].to_i
 
-    if @itinerary.process_payment(token)
+    if @itinerary.process_payment(token, plan)
       UserMailer.delay.payment_received_email(@itinerary.user, @itinerary)
       AdminMailer.delay.payment_received_email(@itinerary)
       flash[:fresh_purchase] = true

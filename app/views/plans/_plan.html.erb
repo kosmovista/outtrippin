@@ -2,7 +2,7 @@
 <% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <% set_page_pic( @plan.cover ) %>
 <%= content_for :head do %>
-  <meta name="twitter:creator" content="<%= "@" +  @plan.user.twitter unless @plan.user.twitter.blank? %>"> 
+  <meta name="twitter:creator" content="<%= "@" +  @plan.user.twitter unless @plan.user.twitter.blank? %>">
 <% end %>
 <style>
 .cover { background-image:url(<%= @plan.cover %>); margin-bottom:0; }
@@ -14,7 +14,7 @@
           <hr style="border-color:white;">
       </div>
     <h5 class="white serif subheader text-center">
-      <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar", style:"width:30px;" %>
+      <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
       <em>By <%= @plan.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
     </h5>
   </div>
@@ -32,7 +32,7 @@
           <li><a href="#" id="slide1" >THE REQUEST</a></li>
           <% end %>
           <li><a href="#" data-reveal-id="update-modal" >MAPS</a></li>
-          <li><a href="#" data-reveal-id="update-modal" >BOOKING</a></li>
+          <li><a href="#" id="slide2" >BOOKING</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -45,7 +45,7 @@
     <div class="row">
       <div class="large-11 large-centered small-12 columns">
         <h5 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
-        <h5 class="serif black text-right subheader" style="margin-top:20px;"><%= image_tag @plan.user.avatar.url, class: "rounded right tip-avatar", style:"width:2.5em; margin-top:5px; margin-left:20px;" %><em>- <%= @plan.user.personal_info[:name] %> <br>OutTrippin Storyteller</em></h5>
+        <h5 class="serif black text-right subheader" style="margin-top:20px;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %><em>- <%= @plan.user.personal_info[:name] %> <br>OutTrippin Storyteller</em></h5>
       </div>
     </div>
   </div>
@@ -85,7 +85,7 @@
           <div class="tips">
             <h4 class="subheader black serif"><em><span style="font-size:120%;"><%= tt[:title] %></span> <%= tt[:body] %></em></h4>
             <h6 class="subheader serif" style="padding-top:.8em;">
-              <%= image_tag @plan.user.avatar.url, class: "rounded text-right tip-avatar" %>
+              <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar" %>
               <em>A tip by <%= @plan.user.personal_info[:name] %></em>
             </h6>
           </div>
@@ -101,8 +101,8 @@
         <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
         <div class="row">
           <div class="large-12 small-12 columns">
-            <%= image_tag @plan.user.avatar.url, class: "rounded avatar-footer" %>
-            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> 
+            <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
+            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
               <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank' unless @plan.user.facebook.blank? %>
               <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank' unless @plan.user.pinterest.blank? %>
               <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank' unless @plan.user.twitter.blank? %>
@@ -129,6 +129,47 @@
     </div>
   </div>
 <% end %>
+<div class="row short-break" id="slide2-content">
+  <div class="row booking">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-3 small-12 columns">
+        <%= image_tag "hotel.jpeg", class: "booking-img" %>
+      </div>
+      <div class="large-7 small-12 columns">
+        <h3 style="margin-bottom:0px;">The Pierre New York Hotel
+          <%= image_tag "star.png", class: "stars" %>
+        <%= image_tag "star.png", class: "stars" %>
+      <%= image_tag "star.png", class: "stars" %>
+    <%= image_tag "star.png", class: "stars" %>
+  <%= image_tag "star.png", class: "stars" %></h3>
+         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a>Central Park, Manhattan, New York</a></em></p>
+         <p>Known for its gracious service, the iconic Fifth Avenue hotel overlooking the emerald expanse of Central Park has re-opened as of June 1st, 2009 following a meticulous 100 million renovation to create new guestroom and bath interiors...<p>
+       </div>
+       <div class="large-2 small-12 text-center columns">
+        <span class="radius price small white label" >~ $700 per night *</span>
+        <a class="button pricethis expand secondary small text-center serif" style="margin-top:-3px">Book now</a>
+      </div>
+    </div>
+  </div>
+  <hr style="border:1px #e6e6e6 solid">
+  <div class="row booking">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-3 columns">
+        <%= image_tag "hotel.jpeg", class: "booking-img" %>
+      </div>
+      <div class="large-7 columns">
+        <h3 style="margin-bottom:0px;">The Pierre New York Hotel</h3>
+         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a>Central Park, Manhattan, New York</a></em></p>
+         <p>Known for its gracious service, the iconic Fifth Avenue hotel overlooking the emerald expanse of Central Park has re-opened as of June 1st, 2009 following a meticulous 100 million renovation to create new guestroom and bath interiors...<p>
+       </div>
+       <div class="large-2 text-center columns">
+        <span class="radius price small white label" >~ $700 per night *</span>
+        <a class="button pricethis expand secondary small text-center serif" style="margin-top:-3px">Book now</a>
+      </div>
+    </div>
+  </div>
+  <hr style="border:1px #e6e6e6 solid">
+</div>
 
 
 <div id="update-modal" class="reveal-modal medium text-center">

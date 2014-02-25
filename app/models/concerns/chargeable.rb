@@ -1,21 +1,21 @@
 module Chargeable
   extend ActiveSupport::Concern
 
-  def charge(token)
+  def charge(token, plan)
     charge = Stripe::Charge.create(
-      :amount => self.price_in_cents,
+      :amount => self.price_in_cents(plan),
       :currency => "usd",
       :card => token,
       :description => self.user.email
     )
   end
 
-  def price
-    self.duration.to_i * 10
+  def price(plan)
+    self.duration.to_i * plan
   end
 
-  def price_in_cents
-    return (self.price * 100).to_i
+  def price_in_cents(plan)
+    return (self.price(plan) * 100).to_i
   end
 
   # def apply_discount(coupon)

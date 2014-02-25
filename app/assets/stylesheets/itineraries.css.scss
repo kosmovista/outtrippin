@@ -159,7 +159,7 @@ div.container { position: relative; }
   background-size: cover !important;
   background-position: 50% 50%;
 }
-#overlay { 
+#overlay {
   top: 0;
   height: 400px;
   width: 100%;
@@ -207,7 +207,7 @@ div.container { position: relative; }
 }
 
 .tip-avatar {
-  width:35px; margin-right:10px; margin-top:-5px;
+  width:35px; height:35px; margin-right:10px; margin-top:-5px;
 }
 
 // IMAGES
@@ -314,20 +314,65 @@ div.container { position: relative; }
   }
 }
 .check {
-  background: image-url('save.png') no-repeat 10px 4px; 
+  background: image-url('save.png') no-repeat 10px 4px;
   background-size: 15px;
   padding-left:35px;
 }
 
 .cross {
-  background: image-url('delete-circle.png') no-repeat 10px 4px; 
+  background: image-url('delete-circle.png') no-repeat 10px 4px;
   background-size: 15px;
   padding-left:35px;
   color:#afafaf;
 }
 
+
+//BOOKING
+.pricethis {
+  border: 2px #00bccf solid !important;
+  border-top: 0px;
+  border-radius:0 0 4px 4px !important;
+  padding-top: 0.4em !important;
+  background-color: #fdfdfd !important;
+  transition: all 200ms linear;
+  font-weight: normal;
+  font-size: 1.1em !important;
+  font-style: italic;
+  color: #4c4c4c !important;
+  transition:all 200ms linear;
+  &:hover {
+    border: 2px #00bccf solid;
+    background-color: #00bccf !important;
+    color: white !important;
+  }
+}
+
+.price.label {
+  padding-top:.5em;
+  padding-bottom:.5em;
+  margin-top: .85em;
+  width: 100%;
+}
+
+.booking {
+  margin-bottom:35px !important;
+  margin-top:60px !important;
+  .stars {
+    width: 12px;
+    margin-right: -5px;
+    opacity: .9;
+    margin-top: -.6em;
+  }
+  @media only screen and (max-width: 768px) { h3 {margin-top:20px;} }
+}
+
+.booking-img {
+  border-radius:4px;
+  width:100%;
+  margin-top:15px;
+}
 // ENTER TRIP DETAILS PAGE
 
 .trip-details {
-  @media only screen and (min-width: 768px) { h3 {font-size:2em;  margin-top:30px;} }
+  @media only screen and (min-width: 768px) { h3 { font-size:2em;  margin-top:30px; } }
 }
