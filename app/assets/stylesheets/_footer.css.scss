@@ -1,8 +1,7 @@
 footer {
-  background:#f3f3f3;
-  text-align: center;
-  margin-top:60px;
-  font-family: "calluna-sans", helvetica, sans-serif;
+  padding: 30px 0;
+  font-family: "PT-Sans", helvetica, sans-serif;
+  background-color: #282828;
 }
 
 footer img {
@@ -14,14 +13,10 @@ footer h6 {
   font-weight:normal;
 }
 
-.inline-list.footer > li {
-  float:none;
-  display: inline-block;
-  margin-right:.825em;
-  a {color: #7a7a7a;}
+.side-nav li {
+  margin: 0px !important;
 }
 
-.inline-list.footer {
-  font-size:0.750em;
-  color: #7a7a7a;
-  }
+.side-nav li a{
+  color:#e6e6e6;
+}

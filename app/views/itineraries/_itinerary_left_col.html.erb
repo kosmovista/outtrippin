@@ -5,9 +5,6 @@
 </div>
 	<div id="home">
 		<a href="/" class="sans"><strong>HOME</strong></a>
-    <% unless current_user.nil? %>
-     <strong><%= link_to "|  EDIT", edit_admin_itinerary_path(@itinerary), class: "sans" if current_user.is?("admin") %></strong>
-    <% end %>
 	</div>
   <hr class="no-margin no-padding ">
   <h6 class="subheader" style="font-size: 0.750em;margin-top:15px; margin-bottom:15px;" >TRAVELER'S REQUEST</h6>

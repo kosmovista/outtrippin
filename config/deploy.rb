@@ -1,8 +1,8 @@
 require "bundler/capistrano"
 
-server "166.78.23.121", :web, :app, :db, primary: true
+server "23.253.75.67", :web, :app, :db, primary: true
 
-set :application, "outtrippin"
+set :application, "ot-zuji"
 set :user, "deployer"
 set :deploy_to, "/home/#{user}/apps/#{application}"
 set :deploy_via, :remote_cache
@@ -11,7 +11,7 @@ set :rails_env, "production" #added for delayed job
 
 set :scm, "git"
 set :repository, "git@github.com:kosmovista/outtrippin.git"
-set :branch, "master"
+set :branch, "zuji"
 
 default_run_options[:pty] = true
 ssh_options[:forward_agent] = true
@@ -34,6 +34,12 @@ namespace :deploy do
     end
   end
 
+  task :cold do
+    update
+    # migrate
+    start
+  end
+
   task :setup_config, roles: :app do
     sudo "ln -nfs #{current_path}/config/nginx.conf /etc/nginx/sites-enabled/#{application}"
     sudo "ln -nfs #{current_path}/config/unicorn_init.sh /etc/init.d/unicorn_#{application}"
@@ -52,7 +58,7 @@ namespace :deploy do
 
   desc "Make sure local git is in sync with remote."
   task :check_revision, roles: :web do
-    unless `git rev-parse HEAD` == `git rev-parse origin/master`
+    unless `git rev-parse HEAD` == `git rev-parse origin/zuji`
       puts "WARNING: HEAD is not the same as origin/master"
       puts "Run `git push` to sync changes."
       exit
