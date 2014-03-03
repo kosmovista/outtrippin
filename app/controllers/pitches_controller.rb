@@ -36,7 +36,7 @@ class PitchesController < ApplicationController
     if current_user == @itinerary.user
       @pitch.winner = true
       @pitch.save
-      UserMailer.delay.winner_expert_email(@itinerary)
+      UserMailer.delay.winner_expert_email(@pitch)
       AdminMailer.delay.winner_expert_email(@pitch)
     end
     redirect_to itinerary_path(@itinerary)
