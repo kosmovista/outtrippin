@@ -4,7 +4,7 @@ default:
   placeholder: "Where would you like to go?"
   submit: "Let's get going!"
   process:
-    header: "What is <SPAN class='primary'>OutTrippin</SPAN>?"
+    header: "What is <SPAN class='primary'>Plan My Trip</SPAN>?"
     text: "It's where travel planning meets<br>the magic of storytelling."
     step-title: "How does the magic happen?"
     step1:
