@@ -2,7 +2,7 @@
 <% if @plan && @plan.published %>
   <%= render @plan %>
 <% elsif @itinerary.has_winner_pitch? %>
-<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.winner_pitch.title + " - Zuji") %>
 <% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
@@ -55,9 +55,9 @@
   <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -66,7 +66,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -74,7 +74,7 @@
 
 <div id="traveler-modal" class="reveal-modal medium text-center">
   <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+  <h4 style="margin-top:40px;" class="serif black subheader"><em>The Plan My Trip team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
   <h4 class="serif subheader black"><em></em></h4>
   <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
   <a class="close-reveal-modal">&#215;</a>
@@ -96,7 +96,7 @@
 </script>
 <% end %>
 <% elsif !@pitches.blank? %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
@@ -141,7 +141,7 @@
 </div>
 <div id="traveler-modal" class="reveal-modal medium text-center">
   <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+  <h4 style="margin-top:40px;" class="serif black subheader"><em>The Plan My Trip team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
   <h4 class="serif subheader black"><em></em></h4>
   <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
   <a class="close-reveal-modal">&#215;</a>
@@ -161,9 +161,9 @@
   <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with Zuji" : "I'm planning " + @itinerary.extra_info[:name] + " - Zuji") + "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -172,7 +172,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -194,7 +194,7 @@
 <% end %>
 
 <% else %>
-<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
 <div class="row">
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -245,7 +245,7 @@
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>Get the best storytellers!</h5>
-      <p>A guaranteed reward attracts more storytellers to your trip and remember, OutTrippin offers a money back guarantee if you're not 100% happy with the advice you've received.</p>
+      <p>A guaranteed reward attracts more storytellers to your trip and remember, Plan My Trip offers a money back guarantee if you're not 100% happy with the advice you've received.</p>
         <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
     </div>
   </div>
@@ -265,7 +265,7 @@
 </div>
 <div id="traveler-modal" class="reveal-modal medium text-center">
   <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+  <h4 style="margin-top:40px;" class="serif black subheader"><em>The Zuji.com working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
   <h4 class="serif subheader black"><em></em></h4>
   <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
   <a class="close-reveal-modal">&#215;</a>
@@ -285,9 +285,9 @@
   <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-     <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+     <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with Zuji" : "I'm planning " + @itinerary.extra_info[:name] + " - Zuji") + "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -296,7 +296,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -322,7 +322,7 @@
   <% if @plan && @plan.published %>
     <%= render @plan %>
   <% else %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
   <div class="row">
     <div class="large-12 text-center small-12 columns">
       <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -355,7 +355,7 @@
   </div>
 <div id="login-modal" class="reveal-modal small text-center">
   <h3>Login to get the full story.</h3>
-  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other OutTrippin power features by logging in.</em></h5>
+  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other Plan My Trip power features by logging in.</em></h5>
   <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
   <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
   <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
