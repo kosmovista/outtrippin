@@ -16,8 +16,8 @@ gem 'exceptional'
 gem 'acts_as_votable', '~> 0.8.0'
 
 # Intercom
-gem 'intercom'
-gem 'intercom-rails'
+# gem 'intercom'
+# gem 'intercom-rails'
 
 # Delayed jobs
 gem 'daemons'
