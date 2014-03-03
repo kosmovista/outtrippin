@@ -19,7 +19,7 @@
   @media only screen and (max-width: 1200px) {
     margin-left: -300px;
   }
-  #home {color:#a2a2a2; position: absolute; left:70px; top:28px; font-size: 0.750em; letter-spacing: 0.15em;
+  #home {color:#a2a2a2; position: absolute; left:110px; top:28px; font-size: 0.750em; letter-spacing: 0.15em;
   a {color:#a2a2a2;}
   }
 }
@@ -39,10 +39,8 @@ display: none;
   top:10px;
   left:10px;
   height:49px;
-  width:49px;
   padding: 7px 3px 7px 5px;
   border-radius: 4px;
-  background-color: #00bccf;
   z-index: 1000 !important;
 }
 .close {
