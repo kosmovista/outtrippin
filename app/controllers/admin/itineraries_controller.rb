@@ -1,4 +1,5 @@
 class Admin::ItinerariesController < ApplicationController
+  before_action :authorize_user
   before_action :authorize_admin
 
   def index
@@ -6,6 +7,13 @@ class Admin::ItinerariesController < ApplicationController
 
   def edit
     @itinerary = Itinerary.find(params[:id])
+  end
+
+  def toggle_published
+    @itinerary = Itinerary.find(params[:itinerary_id])
+    @itinerary.published = !@itinerary.published
+    @itinerary.save
+    redirect_to :back
   end
 
   def update

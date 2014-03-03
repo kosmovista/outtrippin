@@ -1,6 +1,8 @@
 class Itinerary < ActiveRecord::Base
   include Chargeable
 
+  acts_as_votable
+
   belongs_to :user, inverse_of: :itineraries
   has_many :pitches, inverse_of: :itinerary
   has_many :plans, inverse_of: :itinerary
@@ -14,13 +16,17 @@ class Itinerary < ActiveRecord::Base
     10 * self.duration.to_i
   end
 
-  def price_in_cents
-    10 * self.duration.to_i * 100
+  def self.published
+    Itinerary.where(published: true)
   end
 
-  def process_payment(token)
+  def price_in_cents(plan)
+    plan * self.duration.to_i * 100
+  end
+
+  def process_payment(token, plan)
     if self.valid?
-      self.charge(token)
+      self.charge(token, plan)
       self.paid = true
       self.save
       return true
@@ -47,7 +53,20 @@ class Itinerary < ActiveRecord::Base
     self.plans.where(user: user).first
   end
 
+  def get_plan
+    self.plans.first
+  end
+
   def has_plan?
     self.plans.size > 0
   end
+
+  # getters
+  def name
+    self.extra_info[:name]
+  end
+  def travelers
+    self.extra_info[:travelers]
+  end
+
 end

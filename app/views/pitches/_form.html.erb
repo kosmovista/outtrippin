@@ -1,53 +1,81 @@
-<div class="row break">
-  <div id="personal" class="large-2 small-12 columns">
-    <%= link_to (image_tag current_user.avatar.url(:thumb), class: "avatar right rounded", style: "width:70px; margin-left:40px;"), user_path(current_user), target: "_blank", title: "User Profile" %>
-    <div class="large-5 hide-for-small no-padding no-margin right columns">
-      <hr>
+<div class="row big-break">
+  <h3>My Pitch</h3>
+  <h5 class="subheader serif">
+    <em>A catchy title for your story</em>* 
+    <a href="#" data-dropdown="title-d" data-options="is_hover:true"><%= image_tag 'question.png', style: "width:15px; margin:-4px 0 0 5px; opacity:0.7;" %></a> </h5>
+    <%= f.text_field :title, placeholder: "Add a title for your story..*", value: pitch.title %>
+  </h5>
+  <%= errors_for(pitch, :title) %>
+  <div id="title-d" class="f-dropdown medium content" data-dropdown-content>
+    <h5 class="subheader serif"><em>A catchy title is informative and inspiring. Some examples:</em></h5>
+    <h6>A Moveable Feast: Culinary Specialties from Liguria to Lombardy</h6>
+    <h6>The Urban Explorer: 72 Hours New York City</h6>
+    <h6>Putting the Sparkle in Your Champagne Birthday</h6>
+  </div>
+  
+  <h5 class="subheader serif">
+    <em>Your brief (but exciting) description of the trip you have in mind: *</em>
+    <a href="#" data-dropdown="description-d" data-options="is_hover:true"><%= image_tag 'question.png', style: "width:15px; margin:-4px 0 0 5px; opacity:0.7;" %></a>
+  </h5>
+  <%= f.text_area :summary, class: 'medium-textarea', placeholder: "A brief description (Maximum 1200 characters)..." %>
+  <%= errors_for(pitch, :summary) %>
+  <div id="description-d" class="f-dropdown large content" data-dropdown-content>
+    <h5 class="subheader serif"><em>Let your personality shine and inspire a journey. Here's an example:</em></h5>
+    <p>
+      I was just in Chile last December, and as fellow sci-fi geeks, you’ll like that I visited Paranal! The sci-fi bookstore you are looking for is called DUMBO (Down Under the Manhattan Bridge Overpass) in Brooklyn, a Kickstarter-funded charmer! All sci-fi.
+      There’s also a secret bookshop a man runs in his Upper East Side apartment that’s raved about…secretly. 
+    </p>
+    <p>
+       Beyond the activities you already have planned, how about a visit to Columbia University’s old nuclear reactor, the ancient pneumatic tube system still moving books around the NY Public Library, and anything you can imagine to eat, from savory Ethiopian to half a pig’s head to balut. Via subway, boat and taxi, you’ll see the places you mentioned as well as numerous amazing spots I know of, with plenty of time to explore if you like!
+    </p>
+  </div>
+  <hr>
+  <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
+  <div class="row">
+    <div class="large-2 small-2 columns">
+      <%= link_to (image_tag current_user.avatar.url(:thumb), class: "rounded"), user_path(current_user), target: "_blank", title: "User Profile" %> 
     </div>
-    <%= f.submit submit_text, class: "small expand button radius" %>
-    <%= link_to "Cancel", itinerary_path(@itinerary), class: "small expand secondary button radius" %>
+    <div class="large-10 small-10 columns">
+      <h5 class="no-margin no-padding">
+        <%= link_to current_user.personal_info[:name], user_path(current_user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+        <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(current_user.facebook), target: '_blank' unless current_user.facebook.blank? %>
+        <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(current_user.pinterest), target: '_blank' unless current_user.pinterest.blank? %>
+        <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(current_user.twitter), target: '_blank' unless current_user.twitter.blank? %>
+        <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(current_user.instagram), target: '_blank' unless current_user.instagram.blank? %>
+      </h5>
+      <p style="font-size:90%" class="no-margin no-padding"><em>I blog at <%= link_to expert_info_website_url(current_user.website), "http://" + expert_info_website_url(current_user.website), target: '_blank' unless current_user.website.blank? %></em></p>
+    </div>
   </div>
-
-  <div class="large-8 small-12 columns">
-    
+  <h5 class="subheader serif">
+    <em>You should pick ME to design your travel story because...</em>*
+    <a href="#" data-dropdown="aboutme-d" data-options="is_hover:true"><%= image_tag 'question.png', style: "width:15px; margin:-4px 0 0 5px; opacity:0.7;" %></a>
+  </h5>
+  <%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "Here's a chance to explain why you'd be the perfect person to write this story." %>
+  <%= errors_for(pitch, :why_me) %>
+  <div id="aboutme-d" class="f-dropdown large content" data-dropdown-content>
+    <h5 class="subheader serif"><em>Share your travel chops. Been there? Done that? Share it! Here's an example:</em></h5>
+    <p>
+      I’m a pro at planning trips that combine classic travel experiences with offbeat, local adventures. My trip plans work well with your travel style: they are designed to guide you towards having amazing vacations without micromanaging your trip. I love your idea for a champagne birthday trip, and I’m really excited to help you make it a memorable experience!
+    </p>
   </div>
-
-  <div class="large-5 small-12 columns">
-    <h4 class="no-margin no-padding">  <%= link_to current_user.personal_info[:name], user_path(current_user), target: "_blank", class: "black", title: "User Profile" %></h4>
-    <p class="no-margin no-padding"><em><%= link_to expert_info_website_url(current_user.website), "http://" + expert_info_website_url(current_user.website), target: '_blank' unless current_user.website.blank? %></em></p>
-  </div>
-
-  <div class="large-3 text-right hide-for-small columns">
-    <%= link_to (image_tag "facebook.png", style: "width:30px"),  expert_info_website_url(current_user.facebook), target: '_blank' unless current_user.facebook.blank? %>
-    <%= link_to (image_tag "pinterest_40.png", style: "width:23px"), expert_info_website_url(current_user.pinterest), target: '_blank' unless current_user.pinterest.blank? %>
-    <%= link_to (image_tag "twitter.png", style: "width:30px"), expert_info_twitter_url(current_user.twitter), target: '_blank' unless current_user.twitter.blank? %>
-    <%= link_to (image_tag "instagram.png", style: "width:30px"),  expert_info_instagram_url(current_user.instagram), target: '_blank' unless current_user.instagram.blank? %>
-  </div>
-
-  <div class="large-8 small-12 left columns details">
-    <h5 class="subheader serif"><em>My travel interests:</em></h5>
-    <% unless current_user.expert_info[:style].blank? %>
-    <ul class="sans skill-list">
-      <% current_user.expert_info[:style].each do |s| %>
-      <li><%= s %></li>
-      <% end %>
-    </ul>
+  
+             
+  <%= f.label :pictures, "A picture paints 1000 words so upload photos that bring your story to life *", class: "subheader serif", style: "margin-top:0; font-style:italic;" %>
+  <% for i in 1..3 %>
+  <%= f.file_field "pictures[pic_#{i}]" %>
+  <% end %>
+  <%= errors_for(pitch, :pictures) %>
+  <%= f.submit submit_text, class: "small button radius" %>
+</div>
+<div id="interestd" class="f-dropdown medium content" data-dropdown-content>
+  <h5 class="subheader serif"><em>My travel interests:</em></h5>
+  <p>
+ <% unless current_user.expert_info[:style].blank? %>
+  <ul class="sans skill-list">
+    <% current_user.expert_info[:style].each do |s| %>
+    <li><%= s %></li>
     <% end %>
-
-    <h5 class="subheader serif"><em>Why I'm perfect for your trip to <%= @itinerary.destination %></em>*</h5>
-    <%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "Here's a chance to explain why you'd be the perfect person to write this story." %>
-    <%= errors_for(pitch, :why_me) %>
-    <h5 class="subheader serif"><em>A title for your trip</em>*</h5>
-    <%= f.text_field :title, placeholder: "Add a title for your pitch..*", value: pitch.title %>
-    <%= errors_for(pitch, :title) %>
-    <h5 class="subheader serif"><em>And I think you're going to love the trip I had in mind *</em></h5>
-      <%= f.text_area :summary, class: 'medium-textarea', placeholder: "Write a short brief on what you had in mind for this story." %>
-      <%= errors_for(pitch, :summary) %>
-
-    <%= f.label :pictures, "Care to add an image? Add at least one, por favor!*", class: "subheader serif", style: "margin-top:0; font-style:italic;" %>
-    <% for i in 1..3 %>
-    <%= f.file_field "pictures[pic_#{i}]" %>
-    <% end %>
-    <%= errors_for(pitch, :pictures) %>
-  </div>
+  </ul></p>
+  <% end %>
+  <em><%= link_to "...See my full profile", user_path(current_user), target: "_blank", title: "Storyteller's Profile" %></em>
 </div>

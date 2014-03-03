@@ -1,14 +1,20 @@
-<% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
+<% set_page_title("Tailored travel planning & expert travel advice, on tap - Zuji") %>
 <div class="home-cover">
   <div id="destinations">
-    <%= image_tag "loading_black.gif", id: "loading" %>
+    <div id="loading" class="text-center">
+      <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+      </div>
+      <h6 class="subheader primary serif"><em>Please hold on, we're just loading up the awesome...</em></h6>
+    </div>
     <div class="row">
       <div class="large-12 small-12 columns">
         <h1 id="header" class="no-margin" ><%= homepage("header") %></h1>
         <h4 id="sub-header" class="white subheader"><%= homepage("subheader") %></h4>
-        <%= form_for @itinerary do |f| %>
+        <%= form_for @itinerary, html: { class: 'custom' } do |f| %>
         <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
-          <%= f.text_field :destination, placeholder: homepage("placeholder") %>
+          <%= f.select :destination, options_for_select(@cities), prompt: "Pick a city" %>
           <%= errors_for(@itinerary, :destination) %>
         </div>
         <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
@@ -18,7 +24,7 @@
       </div>
     </div>
 
-    <div class="navig">
+    <div class="navig hide-for-small">
       <div id="expert-loader">
         <% homepage_pics.each do |p| %>
         <div class="row large-5 no-padding columns right expert <%= p[0] %>">
@@ -30,37 +36,106 @@
             <%= image_tag p[1]["avatar"], class: "th rounded" %>
           </div>
         </div>
+
         <% end %>
       </div>
     </div>
-    <a href=""><%= image_tag "down.png", id: "scroll-down", style: "width:40px;" %></a>
+    <a href="" class="text-center"><%= image_tag "down.png", id: "scroll-down" %></a>
   </div>
 </div>
 
-<div id="steps">
-  <div class="row">
-    <div class="large-12 columns">
-      <h3 class="subheader"><%= homepage(["process", "header"]) %>
+<div id="steps" class="row break">
+  <div class="large-8 large-centered text-center small-12 columns">
+    <h2><%= homepage(["process", "header"]).html_safe %></h2>
+    <h3 class="subheader serif" style="margin-bottom:60px;"><em><%= homepage(["process", "text"]).html_safe %></em></h3>
+    <hr style="border:1px #e6e6e6 solid;">
+    <div class="break">
+      <h3><%= homepage(["process", "step-title"]).html_safe %></h3>
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white"><%= homepage(["process", "step1", "title"]).html_safe %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step1", "text"]).html_safe %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'describe.png', style: "margin-top:88px;" %>
+      </div>
+      <hr style="border:1px #e6e6e70px6 solid;">
     </div>
-  </div>
-  <div class="row">
-    <div class="large-4 columns">
-      <%= image_tag 'marker.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step1", "title"]) %></h4>
-      <p><%= homepage(["process", "step1", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white"><%= homepage(["process", "step2", "title"]).html_safe %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step2", "text"]).html_safe %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'pick.png' %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
-    <div class="large-4 columns">
-      <%= image_tag 'idea.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step2", "title"]) %></h4>
-      <p><%= homepage(["process", "step2", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white" style="margin: -9px 0 0 -3px;"><%= homepage(["process", "step3", "title"]).html_safe %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step3", "text"]).html_safe %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'script.png' %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
-    <div class="large-4 columns">
-      <%= image_tag 'calendar.png' %>
-      <h4 class="subheader"><%= homepage(["process", "step3", "title"]) %></h4>
-      <p><%= homepage(["process", "step3", "text"]) %></p>
+    <div class="short-break">
+      <div class="large-6 small-12 text-center columns">
+        <div class="large-1 small-2 columns large-centered small-centered step-number">
+          <h2 class="white" style="margin: -9px 0 0 -7px;" ><%= homepage(["process", "step4", "title"]).html_safe %></h2>
+        </div>
+        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step4", "text"]).html_safe %></em></h4>
+      </div>
+      <div class="large-6 small-12 text-center columns">
+        <%= image_tag 'ready.png', style: "margin-top:57px;" %>
+      </div>
+      <hr style="border:1px #e6e6e6 solid;">
     </div>
   </div>
 </div>
+
+
+<% unless @featuring_stories.blank? %>
+<div id="featuring" class="break">
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <h3 class="text-center serif subheader black"><em>Need ideas? Here are some featured stories from Zuji.</em></h3>
+    </div>
+  </div>
+  <div id="detail-loader" >
+    <%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan %>
+  </div>
+  <div class="row">
+    <div class="large-12 small-12 columns navigate">
+      <!-- adds jquery navigation -->
+    </div>
+  </div>
+</div>
+
+<div class="row top" style="margin-top: 50px;margin-bottom: 150px;">
+ <div class="large-12 text-center small-12 columns">
+   <h2 class="serif subheader black">
+     <em>Have a better vacation, or your money back!</em>
+   </h2>
+   <a class="large button radius" id="scroll-up" href="/" style="margin-top:50px;">Hook me up!</a>
+ </div>
+</div>
+
+
+<div id="trip-loader">
+  <% @featuring_stories.each do |i| %>
+    <%= image_tag i.cover %>
+  <% end %>
+</div>
+
+<% end %>
 
 <div id="image-loader">
   <% homepage_pics.each do |p| %>
@@ -69,11 +144,22 @@
 </div>
 
 <%= content_for :head do %>
-<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
 <%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
-<%= stylesheet_link_tag "white_topbar", media: "all", "data-turbolinks-track" => true %>
+
 <% end %>
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "landing page"});
+  mixpanel.track_forms("#new_itinerary", "Started Contest");
+</script>
 <% end %>

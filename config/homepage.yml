@@ -4,16 +4,21 @@ default:
   placeholder: "Where would you like to go?"
   submit: "Let's get going!"
   process:
-    header: "Tailored vacation planning from a real travel expert!"
+    header: "What is <SPAN class='primary'>Plan My Trip</SPAN>?"
+    text: "It's where travel planning meets<br>the magic of storytelling."
+    step-title: "How does the magic happen?"
     step1:
-      title: "Describe"
-      text: "Tell us where and when you want to go and describe your travel style and personality."
+      title: "1"
+      text: "Tell us where you want<BR> to go and describe your<br> travel personality"
     step2:
-      title: "Pick"
-      text: "Our travel writers & bloggers send you their best vacation ideas and you pick a favorite."
+      title: "2"
+      text: "Storytellers pitch you<br> travel concepts and<br> you pick a winner"
     step3:
-      title: "Book"
-      text: "Your chosen expert plans a tailored day-by-day trip plan that is all easily bookable."
+      title: "3"
+      text: "Your storyteller writes<br> a day-by-day Trip Script<br> full of tips & tricks"
+    step4:
+      title: "4"
+      text: "Now you're ready<br> to make your own<br> incredible travel story"
   pics:
     rio:
       title: "Rio Sunset"

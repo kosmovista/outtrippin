@@ -15,6 +15,8 @@ Outtrippin::Application.routes.draw do
       get 'checkout'
       put 'purchase'
       get 'thankyou'
+      post 'toggle_star'
+      put 'email_sharer'
     end
     resources 'pitches' do
       member do
@@ -45,8 +47,28 @@ Outtrippin::Application.routes.draw do
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
     get 'expert_list' => 'dashboard#expert_list'
-    resources 'itineraries'
+    resources 'itineraries' do
+      post 'toggle_published'
+    end
+
+    resources 'plans' do
+      post 'toggle_published'
+      post 'toggle_featured'
+    end
   end
+
+
+
+  # API ###########################################################
+  namespace :api do
+    namespace :v1 do
+      resources :stories
+      resource :user_sessions, only: :create
+    end
+  end
+  #################################################################
+
+
 
   get "/delayed_job" => DelayedJobWeb, anchor: false
 

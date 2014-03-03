@@ -1,15 +1,19 @@
-# SET COVER HEIGHT 
-$('.home-cover').css("height", $(window).height())
-
+# SET COVER VARIABLES
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
 
+#SET BROWSE TRIP VARIABLES
+window.active_trip = 0
+window.covers = $("#trip-loader").children()
+window.details = $("#detail-loader").children()
+
+# HOME PAGE COVER
 bulletNav = $("<ul>"
     class: "inline-list cover-bullets"
   ).appendTo(".navig")
 
-# Create a list item and anchor for each slide
+# HOME PAGE COVER BULLETS
 window.images.each (i) ->
   bulletItem = $("<li>"
     class: "bullet-item"
@@ -28,7 +32,6 @@ window.images.each (i) ->
     setBg()
     return false
 
-
 # SET BACKGROUND
 window.setBg = ->
   image = window.images[window.active_bg].src
@@ -36,7 +39,42 @@ window.setBg = ->
   jQuery(window.experts).fadeOut(10, 'easeInQuad')
   $('#slide' + window.active_bg).addClass("act")
   $("#destinations").css("background", "url('" + image + "') no-repeat center center")
-  jQuery(expert).fadeIn(10, 'easeOutQuad')
+  jQuery(expert).fadeIn(100, 'easeOutQuad')
+
+# BROWSE TRIPS
+featureNav = $("<ul>"
+    class: "inline-list browse-bullets"
+  ).appendTo(".navigate")
+
+# BROWSE TRIPS BULLETS
+if window.covers
+  window.covers.each (i) ->
+    tripItem = $("<li>"
+      class: "trip-item"
+    ).appendTo(featureNav)
+
+    tripLink = $("<a>"
+      href: "#"
+      id: "tripNo" + i
+    ).appendTo(tripItem)
+
+  # bind click events
+    tripLink.on "click", ->
+      $('#tripNo' + window.active_trip).removeClass("act1")
+      # Goto to selected slide
+      window.active_trip = i
+      changeTrip()
+      return false
+
+# SET TRIP
+window.changeTrip = ->
+  cover = window.covers[window.active_trip].src
+  detail = window.details[window.active_trip]
+  jQuery(window.details).fadeOut(10, 'easeInQuad')
+  $('#tripNo' + window.active_trip).addClass("act1")
+  $(".trip").css("background", "url('" + cover + "') no-repeat center center")
+  jQuery(detail).fadeIn(0, 'easeOutQuad')
+
 
 # SCROLL DOWN
 window.scrollDown = ->
@@ -44,25 +82,43 @@ window.scrollDown = ->
     scrollTop: $("#steps").offset().top
   }, 1000, 'easeOutQuart')
 
+# SCROLL UP
+window.scrollUp = ->
+  $('html, body').animate({
+    scrollTop: $(".home-cover").offset().top
+  }, 2000, 'easeOutQuart')
+
 
 ######################
 # AFTER WINDOW LOADS #
 ######################
 
-
+$(window).on "scroll", ->
+  $('.top-logo').css( "display", "none" ).fadeIn(200);
+  $('.top-ot').css( "display", "none" ).fadeIn(200);
+  $('#guide').css( "display", "none" ).fadeIn(200);
+  return false
 
 $("#scroll-down").on "click", ->
     scrollDown()
     return false
 
+$("#scroll-up").on "click", ->
+    scrollUp()
+    return false
+
 $(window).resize ->
-  $('.home-cover').css("height", $(window).height())  
+  $('.home-cover').css("height", $(window).height())
+  $('#featuring').css("height", $(window).height())
 
 $(window).load ->
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  $('.home-cover').css("height", $(window).height())
+  $("#dest").show()
+  $("#header").show()
+  $("#sub-header").show()
+  $("#contestbtn").show()
   $("#loading").hide()
+  $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
   setBg()
-  $("#header").fadeIn(1000, 'easeOutQuad')
-  $("#sub-header").fadeIn(1000, 'easeOutQuad')
-  $("#dest").fadeIn(1000, 'easeOutQuad')
-  $("#contestbtn").fadeIn(1000, 'easeOutQuad')
+  $('#featuring').css("height", $(window).height())
+  changeTrip()

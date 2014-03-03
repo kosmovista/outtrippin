@@ -14,7 +14,7 @@
   <!-- Set the viewport width to device width for mobile -->
   <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 
-  <title><%= content_for?(:title) ? yield(:title) : "Welcome to OutTrippin!" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Welcome to Zuji!" %></title>
 
   <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "itinerary_builder", media: "all", "data-turbolinks-track" => true %>
@@ -30,10 +30,11 @@
   <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <%= csrf_meta_tags %>
-
+  <%= render 'tools/mixpanel' %>
   <%= yield :head %>
 </head>
 
+  
 <body ng-controller="PlanCtrl">
   <%= render 'layouts/parts/topbar' %>
   <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
@@ -44,5 +45,6 @@
 
   <%= javascript_include_tag "itinerary_builder", "data-turbolinks-track" => true %>
   <%= yield :body %>
+  
 </body>
 </html>

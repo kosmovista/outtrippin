@@ -9,13 +9,15 @@
   </section>
 </nav>
 
-<div class="top-logo">
-   <% if @itinerary.nil? %>
-    <a href="/" title="OutTrippin Home">
-    <% else %>
-    <a href="#" class="toggle-sidebar" title="Click here to show or hide the trip brief">
-   
-    <% end %>
-    <%= image_tag (defined?(@white_topbar).nil? ? 'o-white.png' : 'o-color.png'), style: "height:35px;" %></a>
-
-</div>
+<% if !@itinerary.nil? && @itinerary.new_record? %>
+  <div class="top-logo">
+    <a href="/" title="Plan My Trip Home">
+    <%= image_tag 'o-white.png', style: "height:34px;" %></a>
+  </div>
+  <% else %>
+  <div id="top-logo" class="top-logo has-tip" data-options="disable-for-touch:true" data-tooltip title="Click here to show or hide the traveler's request">
+    <a href="#" class="show-sidebar">
+    <%= image_tag 'o-white.png', style: "height:34px;" %></a>
+  </div>
+  <div id="guide"></div>
+<% end %>

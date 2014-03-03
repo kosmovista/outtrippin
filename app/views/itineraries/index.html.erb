@@ -1,15 +1,120 @@
-<% set_page_title("My Collection - OutTrippin") %>
-<div class="cover">
-	<div class="header">
-		<div class="row">
-			<div class="small-12 small-centered columns">
-  			<h2 class="white text-center">Collections</h2>
-  			<div class="large-1 hide-for-small large-centered columns">
-      		<hr style="border-color:white;">
-    		</div>
-  			<h5 class="white serif subheader text-center"><em>Like to make stories? Here, you'll find a collection of your past, present and future travel stories on OutTrippin.</em></h5>
-			</div>
-		</div>
-	</div>
+<% set_page_title("Dashboard - Zuji") %>
+<style>
+.cover { background-image:url('/assets/cover1.jpg'); height:200px; }
+#overlay {height:200px;}
+.header {top:60px;}
+.tabs {top:160px;}
+</style>
+<div class="cover"></div>
+<div id="overlay"></div>
+<% if current_user.is?("expert") %>
+<div class="header">
+  <div class="row">
+    <div class="small-12 large-10 small-centered columns">
+      <h2 class="white">Storyteller's Dashboard</h2>
+    </div>
+  </div>
+</div>
+<div class="tabs">
+  <div class="row">
+    <div class="small-12 large-10 small-centered columns">
+      <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+        <li><a href="#" id="slide0" class="active-tab">OPEN REQUESTS</a></li>
+        <li><a href="#" id="slide1" >ASSIGNED REQUESTS</a></li>
+        <li><a href="#" id="slide2" >PITCHED</a></li>
+        <li><a href="#" id="slide3" >WON</a></li>
+        <li><a href="#" id="slide4" >COMPLETED</a></li>
+        <li><a href="#" id="slide5" >AS A TRAVELER</a></li>
+      </ul>
+      <hr style="border-color:white; margin-top:0;">
+    </div>
+  </div>
+</div>
+<div id="slide0-content">
+  <%= render @itineraries %>
+</div>
+
+
+<div id="slide1-content">
+  <% if @starred_itineraries.blank? %>
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>Your assignments folder is empty, but it doesn't have to be.</em><h4>
+      <h5 class="serif subheader"><em>Click the <%= image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; opacity:0.3;" %> icon to save a request to this folder.</em></h5>
+    </div>
+  <% else %>
+    <%= render @starred_itineraries %>
+  <% end %>
+</div>
+
+<div id="slide2-content">
+  <% if @pitched_itineraries.blank? %>
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>You haven't pitched for anything yet, but you can change that.</em><h4>
+      <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
+    </div>
+  <% else %>
+    <% @pitched_itineraries.each do |p| %>
+      <%= render p.itinerary %>
+    <% end %>
+  <% end %>
+</div>
+
+<div id="slide3-content">
+  <% if @won_itineraries.blank? %>
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>No wins yet. But you could still get a chicken dinner. :)</em><h4>
+      <h5 class="serif subheader"><em>Submit a pitch for one of our open requests</em></h5>
+    </div>
+  <% else %>
+    <%= render @won_itineraries unless @won_itineraries.nil? %>
+  <% end %>
+</div>
+
+<%= content_for :body do %>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "Discovery: Dashboard"});
+  $(".bookmark").click(function() {
+    mixpanel.track("Bookmark", {
+    "Referred_from": "Dashboard"
+    });
+  });
+  $(".unbookmark").click(function() {
+    mixpanel.track("Un-Bookmark", {
+    "Referred_from": "Dashboard"
+    });
+  });
+  mixpanel.track_links(".submit-pitch", "Write a Pitch", {
+    "Referred_from": "Dashboard"
+  });
+  mixpanel.track_links(".story-request", "See Request", {
+    "Referred_from": "Dashboard",
+    "Referred_button": "Details"
+  });
+  mixpanel.track_links(".story-title", "See Request", {
+    "Referred_from": "Dashboard",
+    "Referred_button": "Details"
+  });
+</script>
+<% end %>
+
+
+<% else %>
+<div class="header">
+  <div class="row">
+    <div class="small-12 large-10 small-centered columns">
+      <h2 class="white">My Trips</h2>
+    </div>
+  </div>
+</div>
+<div class="tabs">
 </div>
 <%= render @itineraries %>
+<% end %>

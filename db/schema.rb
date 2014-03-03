@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110182026) do
+ActiveRecord::Schema.define(version: 20140212142013) do
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -29,6 +29,10 @@ ActiveRecord::Schema.define(version: 20140110182026) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "featured_plans", force: true do |t|
+    t.integer "plan_id"
+  end
+
   create_table "itineraries", force: true do |t|
     t.string   "departure"
     t.integer  "user_id"
@@ -39,6 +43,7 @@ ActiveRecord::Schema.define(version: 20140110182026) do
     t.text     "extra_info"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "published",   default: false
   end
 
   create_table "pictures", force: true do |t|
@@ -84,19 +89,35 @@ ActiveRecord::Schema.define(version: 20140110182026) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "email",                          null: false
+    t.string   "email",                            null: false
     t.text     "personal_info"
     t.text     "expert_info"
     t.string   "avatar"
     t.integer  "roles_mask"
-    t.string   "crypted_password",               null: false
-    t.string   "password_salt",                  null: false
-    t.string   "persistence_token",              null: false
+    t.string   "crypted_password",                 null: false
+    t.string   "password_salt",                    null: false
+    t.string   "persistence_token",                null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "perishable_token",  default: ""
+    t.string   "perishable_token",    default: ""
+    t.string   "single_access_token"
   end
 
   add_index "users", ["perishable_token"], name: "index_users_on_perishable_token"
+
+  create_table "votes", force: true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
 end

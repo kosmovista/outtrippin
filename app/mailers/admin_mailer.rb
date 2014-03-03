@@ -4,24 +4,24 @@ class AdminMailer < ActionMailer::Base
 
   def new_expert_email(user)
     @user = user
-    mail to: ADMINS, subject: "[outtrippin.com] new expert registered"
+    mail to: ADMINS, subject: "[PlanMyTrip] new expert registered"
   end
 
   def new_itinerary_email(itinerary)
     @itinerary = itinerary
-    mail to: ADMINS, subject: "[outtrippin.com] new itinerary submitted"
+    mail to: ADMINS, subject: "[PlanMyTrip] new itinerary submitted"
   end
 
   def payment_received_email(itinerary)
     @itinerary = itinerary
-    mail to: ADMINS, subject: "[outtrippin.com] a payment was made"
+    mail to: ADMINS, subject: "[PlanMyTrip] a payment was made"
   end
 
   def new_pitch_email(pitch)
     @pitch = pitch
     @itinerary = @pitch.itinerary
     @user = @pitch.user
-    mail to: ADMINS, subject: "[outtrippin.com] new pitch added"
+    mail to: ADMINS, subject: "[PlanMyTrip] new pitch added"
   end
 
   def winner_expert_email(pitch)
@@ -29,6 +29,6 @@ class AdminMailer < ActionMailer::Base
     @expert = @pitch.user
     @itinerary = @pitch.itinerary
     @user = @itinerary.user
-    mail to: ADMINS, subject: "[outtrippin.com] An Expert was Picked!"
+    mail to: ADMINS, subject: "[PlanMyTrip] An Expert was Picked!"
   end
 end

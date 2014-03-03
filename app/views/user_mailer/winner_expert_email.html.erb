@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <p>Hi <% @expert %>,</p>
+  <p>Drum roll please... your <%= @itinerary.destination %> pitch has been chosen as the winner!</p>
+  <p>Your story is <%= @itinerary.duration %> days long. To write your story, here's how to get started:</p>
+  <ol>
+  	<li>Login to <a href="http://outtrippin.com/login">OutTrippin.com</a></li>
+  	<li>Click <%= link_to "here", itinerary_url(@itinerary) %> to see your pitch and click the "Start Writing" button to begin.</li>
+  </ol>
+
+  <p>Some additional tips:</p>
+  <ul>
+  	<li>Want to see a customer's story request? Click the fish icon on top left corner.</li>
+  	<li>Need to ask the customer a question? Comments are at the bottom on the request tab.</li>
+  	<li>Need more photos? Check out <a href="http://compfight.com/">compfight</a>. (<a href="http://bit.ly/1bwP8Am">Here are instructions</a> on how to save photos).</li>
+  </ul>
+
+  <p>When you're happy with the story, send me an email and I'll share it with the customer and pay you via Paypal.</p>
+
+  <p>Any questions, just drop me a line – I am the A to your Q!</p>
+
+  <p>Indi</p>
+
+  <p>P.S. For story inspiration check out:<br>
+  	<a href="https://s3.amazonaws.com/BattleTrip/ICELAND+Full+Trip+-+Clare+%26+Lauren.pdf">Birthday getaway to Iceland</a> or <a href="https://s3.amazonaws.com/BattleTrip/Sri+Lanka+Full+Trip+Plan+-+Tim.pdf">Real but romantic in Sri Lanka</a>
+  </p>
+</body>
+</html>

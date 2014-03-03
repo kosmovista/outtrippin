@@ -2,8 +2,8 @@
 // Foundation Variables
 //
 
-$serif-font-family: "PT Sans", georgia, serif;
-$sans-font-family: "PT Sans", helvetica, sans-serif;
+$serif-font-family: "ff-tisa-web-pro", georgia, droid sans;
+$sans-font-family: "Calluna-sans", Helvetica, arial, sans-serif;
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 $base-font-size: 105% !default;
@@ -80,11 +80,10 @@ $body-font-family: $serif-font-family;
 // $text-direction: ltr;
 
 // Colors
-
 $primary-color: #003e74;
 $secondary-color: #e9e9e9;
 $alert-color: #C46752;
-// $success-color: #5da423;
+$success-color: #aabb00;
 
 // Make sure border radius matches unless we want it different.
 
@@ -93,9 +92,9 @@ $alert-color: #C46752;
 
 // Inset shadow shiny edges and depressions.
 
-// $shiny-edge-size: 0 1px 0;
-// $shiny-edge-color: rgba(#fff, .5);
-// $shiny-edge-active-color: rgba(#000, .2);
+$shiny-edge-size: 0 0 0;
+$shiny-edge-color: rgba(#fff, 0);
+$shiny-edge-active-color: rgba(#000, 0);
 
 // Control whether or not CSS classes come through in the CSS files.
 
@@ -375,7 +374,7 @@ $button-font-family: $sans-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-med: em-calc(16);
-// $button-font-tny: em-calc(11);
+$button-font-tny: em-calc(12);
 // $button-font-sml: em-calc(13);
 // $button-font-lrg: em-calc(20);
 // $button-font-weight: bold;
@@ -733,17 +732,17 @@ $inline-list-default-float-margin: em-calc(10);
 
 // Controlling default Joyride styles
 
-// $joyride-tip-bg: rgb(0,0,0);
-// $joyride-tip-default-width: 300px;
-// $joyride-tip-padding: em-calc(18 20 24);
-// $joyride-tip-border: solid 1px #555;
-// $joyride-tip-radius: 4px;
-// $joyride-tip-position-offset: 22px;
+$joyride-tip-bg: #1b1b1b;
+$joyride-tip-default-width: 400px;
+$joyride-tip-padding: em-calc(26 28 32);
+// $joyride-tip-border: solid 1px #00bccf;
+// $joyride-tip-radius: 10px;
+// $joyride-tip-position-offset: 15px;
 
 // Here, we're setting the tip dont styles
 
 // $joyride-tip-font-color: #fff;
-// $joyride-tip-font-size: em-calc(14);
+// $joyride-tip-font-size: em-calc(16);
 // $joyride-tip-header-weight: bold;
 
 // This changes the nub size
@@ -764,7 +763,7 @@ $inline-list-default-float-margin: em-calc(10);
 
 // When Joyride is filling the screen, we use this style for the bg
 
-// $joyride-screenfill: rgba(0,0,0,0.5);
+$joyride-screenfill: rgba(255,255,255,0.5);
 
 //
 // Keystroke Variables
@@ -1236,7 +1235,7 @@ $thumb-box-shadow-hover: 0 0 6px 1px rgba($primary-color,0);
 //
 
 $has-tip-border-bottom: dotted 0 #ccc;
-// $has-tip-font-weight: bold;
+$has-tip-font-weight: normal;
 $has-tip-font-color: #616161;
 $has-tip-border-bottom-hover: dotted 0 darken($primary-color, 20%);
 // $has-tip-font-color-hover: $primary-color;
@@ -1246,7 +1245,7 @@ $tooltip-padding: emCalc(12px);
 $tooltip-bg: #4c4c4c;
 $tooltip-font-size: emCalc(12px);
 $tooltip-font-weight: normal;
-$tooltip-font-color: whitesmoke;
+$tooltip-font-color: #f3f3f3;
 // $tooltip-line-height: 1.3;
 // $tooltip-close-font-size: emCalc(10px);
 // $tooltip-close-font-weight: normal;
@@ -1261,7 +1260,7 @@ $tooltip-font-color: whitesmoke;
 
 // Background color for the top bar
 
-$topbar-bg-color: $primary-color;
+$topbar-bg-color: #fdfdfd;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1283,17 +1282,17 @@ $topbar-font-family: $sans-font-family;
 // Style the top bar dropdown elements
 
 $topbar-dropdown-bg: $topbar-bg-color;
-// $topbar-dropdown-link-color: #fff;
+$topbar-dropdown-link-color: $primary-color;
 $topbar-dropdown-link-bg: $topbar-bg-color;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-color: $primary-color;
 // $topbar-dropdown-toggle-alpha: 0.5;
 
 // Set the link colors and styles for top-level nav
 
-// $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
-// $topbar-link-color-active: #fff;
+$topbar-link-color: $primary-color;
+$topbar-link-color-hover: $primary-color;
+$topbar-link-color-active: $primary-color;
 // $topbar-link-weight: bold;
 $topbar-link-font-size: em-calc(15);
 $topbar-link-hover-lightness: 3%; // Darken by 30%
@@ -1311,8 +1310,8 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: em-calc(13);
 // $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
+$topbar-menu-link-color: $primary-color;
+$topbar-menu-icon-color: $primary-color;
 // $topbar-menu-link-color-toggled: #888;
 // $topbar-menu-icon-color-toggled: #888;
 
@@ -1342,15 +1341,18 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 @import "foundation/components/alert-boxes";
 @import "foundation/components/tooltips";
 @import "foundation/components/orbit";
+@import "foundation/components/dropdown";
 @import "forms";
 @import "custom-forms";
 @import "top-bar";
 @import "panels";
 @import "foundation/components/reveal";
+@import "foundation/components/joyride";
 
 // ADMIN
 @import "foundation/components/side-nav";
 @import "foundation/components/tables";
+@import "foundation/components/pagination";
 
 // EXPERT PROFILE
 @import "inline-lists";     // THIS CAN BE REMOVED

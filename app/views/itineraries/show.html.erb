@@ -1,12 +1,25 @@
-<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
-
 <%= content_for :left_col do %>
   <%= render 'itinerary_left_col' %>
 <% end %>
-<div class="cover">
+<%= content_for :body do %>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.register({ Role: "<%= current_user.roles.join(', ') %>" });
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+  <% end %>
+</script>
+<% end %>
+<div class="cover"></div>
+<div id="overlay"></div>
 	<div class="header">
-		<% if current_user.is?("expert") %>
+		<% if current_user && current_user.is?("expert") %>
 		  <%= render 'itineraries/show/expert' %>
 		<% else %>
 		  <%= render 'itineraries/show/owner' %>
 		<% end %>
+

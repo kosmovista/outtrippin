@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="large-10 large-offset-2 columns">
+    <h1>Plans</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-2 columns">
+    <%= render 'layouts/parts/admin_menu' %>
+  </div>
+
+  <div class="large-10 columns">
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Destination</th>
+          <th>Expert</th>
+          <th>Published?</th>
+          <th>Featured?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Plan.all.each do |p| %>
+        <tr>
+          <td><%= p.target_user.email unless p.target_user.nil? %></td>
+          <td><%= link_to p.itinerary.destination, itinerary_plan_path(p.itinerary) unless p.itinerary.nil? %></td>
+          <% unless p.user.nil? %>
+            <td><%= link_to p.target_user.name, user_path(p.target_user) unless p.target_user.nil? %></td>
+          <% end %>
+          <td><%= link_to (p.published? ? "Unpublish" : "Publish"), admin_plan_toggle_published_path(p), method: 'post' %></td>
+          <td><%= link_to (FeaturedPlan.featuring?(p) ? "'Un'feature" : "Feature"), admin_plan_toggle_featured_path(p), method: 'post' %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

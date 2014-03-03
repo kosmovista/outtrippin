@@ -1,12 +1,12 @@
-<% set_page_title("Thanks for your application - OutTrippin") %>
+<% set_page_title("Thanks for your application - Zuji") %>
 <div id='overlay'></div>
 <div id='map'></div>
 
 <div class="row">
   <div class="large-7 large-centered small-12 columns text-center login">
     <h3 class="primary">Thank You</h3>
-    <p>Thanks for your application to become an OutTrippin Storyteller. Indi will review your application and be in touch as soon as her 10 fingers can tap dance their way to your inbox.</p>
-    <p>In the meantime, why not introduce yourself to the rest of the gang via our secret OutTrippin Glomad <a href="https://www.facebook.com/groups/167052713455682/">facebook group</a>.
+    <p>Thanks for your application to become an Zuji Storyteller. Indi will review your application and be in touch as soon as her 10 fingers can tap dance their way to your inbox.</p>
+    <p>In the meantime, why not introduce yourself to the rest of the gang via our secret Zuji Glomad <a href="https://www.facebook.com/groups/167052713455682/">facebook group</a>.
     </p>
     <p> Happy Trippin!</p>
     <%= link_to "Go to your profile page!", user_path(current_user), class: "button radius" %>
@@ -33,5 +33,20 @@ var map = L.mapbox.map('map', 'jvalente.map-2usavnxz');
 map.touchZoom.disable()
 map.doubleClickZoom.disable();
 map.scrollWheelZoom.disable();
+</script>
+<% end %>
+
+<%= content_for :body do %>
+  <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.register({ Role: "<%= current_user.roles.join(', ') %>" });
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+    mixpanel.track("Page Loaded", {"page": "Completed Expert Registration"});
+  <% end %>
 </script>
 <% end %>

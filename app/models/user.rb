@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   ROLES = %w[admin expert]
 
+  acts_as_voter
+
   default_scope { order('created_at DESC') }
 
   serialize :personal_info, Hash
@@ -8,6 +10,9 @@ class User < ActiveRecord::Base
 
   # Authlogic configuration
   acts_as_authentic
+
+  # Kaminari (pagination)
+  paginates_per 50
 
   # Carrierwave
   mount_uploader :avatar, AvatarUploader
@@ -36,14 +41,25 @@ class User < ActiveRecord::Base
   end
 
   def self.experts
-    User.all.select { |u| u.is?("expert") }
+    User.where(roles_mask: 2)
   end
 
-  # (end) ROLE MANAGER LOGIC
+  def self.admins
+    User.where(roles_mask: [1,3])
+  end
+
+  def self.customers
+    User.where(roles_mask: nil)
+  end
 
   def expert?
     self.is?("expert")
   end
+
+  def admin?
+    self.is?("admin")
+  end
+  # (end) ROLE MANAGER LOGIC
 
   def has_itineraries?
     self.itineraries.count > 0
@@ -93,7 +109,11 @@ class User < ActiveRecord::Base
 
   def geo_expertise
     if self.expert?
-#      (([self.hometown, self.location] + self.countries + self.cities).join(", "))
+      begin
+        (([self.hometown, self.location] + self.countries + self.cities).join(", "))
+      rescue
+        nil
+      end
     else
       nil
     end

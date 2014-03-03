@@ -9,6 +9,18 @@ module ApplicationHelper
     end
   end
 
+  def set_page_desc(desc)
+    content_for :desc do
+      desc
+    end
+  end
+
+  def set_page_pic(pic)
+    content_for :pic do
+      pic
+    end
+  end
+
   private
 
   def parse_error_message(messages)

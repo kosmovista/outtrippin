@@ -1,0 +1,17 @@
+<div id="steps" class="row">
+  <div class="large-11 small-12 large-centered columns">
+    <ul class="small-block-grid-<%= expert_steps.size %>">
+      <% expert_steps.each do |s| %>
+      <li class="text-center step">
+        <div class="row">
+          <div class="large-4 small-3 columns text-center no-margin no-padding"><%= left_bar_or_space(expert_steps.index(s) + 1, expert_steps).html_safe %></div>
+          <div class="large-4 small-6 columns text-center steps no-margin no-padding">
+            <div data-tooltip title="<%= s.capitalize %>" class="has-tip step-circle <%= s == expert_step ? "active" : "" %> <%= disable.include?(s) ? "disable" : "" %>"><%= expert_steps.index(s) + 1 %></div>
+          </div>
+          <div class="large-4 small-3 columns text-center no-margin no-padding"><%= right_bar_or_space(expert_steps.index(s) + 1, expert_steps).html_safe %></div>
+        </div>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

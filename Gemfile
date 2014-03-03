@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 
+# CORS
+gem 'rack-cors', require: 'rack/cors'
+
 # JSON responses
 gem 'rabl'
 
@@ -10,6 +13,7 @@ gem 'high_voltage'
 
 # Tracking exceptions
 gem 'exceptional'
+gem 'acts_as_votable', '~> 0.8.0'
 
 # Intercom
 gem 'intercom'
@@ -19,6 +23,9 @@ gem 'intercom-rails'
 gem 'daemons'
 gem 'delayed_job_active_record'
 gem 'delayed_job_web'
+
+# Pagination
+gem 'kaminari'
 
 # Payment
 gem 'stripe'
@@ -48,6 +55,7 @@ group :production do
 end
 
 group :development, :test do
+
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.0'
   gem 'quiet_assets'

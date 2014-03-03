@@ -4,6 +4,8 @@ class Plan < ActiveRecord::Base
 
   has_and_belongs_to_many :pictures
 
+  default_scope { order('created_at DESC') }
+
   serialize :tips_tricks, Array
   serialize :days, Array
 
@@ -14,4 +16,13 @@ class Plan < ActiveRecord::Base
       return nil
     end
   end
+
+  def target_user
+    begin
+      self.itinerary.user
+    rescue
+      nil
+    end
+  end
+
 end

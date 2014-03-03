@@ -33,20 +33,48 @@ class ApplicationController < ActionController::Base
   private
 
   def authorize_user
-    redirect_to root_path unless current_user
+    unless current_user
+      session[:original_uri] = request.url
+      flash[:notice] = "Howdy! You must login to access this page!"
+      redirect_to login_path
+    end
   end
 
   def authorize_expert
     authorize_user
-    redirect_to root_path unless current_user.is?("expert")
   end
 
 
   def authorize_admin
-    redirect_to root_path unless current_user && current_user.is?("admin")
+    redirect_to root_path unless current_user && current_user.admin?
   end
 
   def set_white_topbar
     @white_topbar = true
+  end
+
+  def set_cities
+    @cities = ["London",
+    "New York",
+    "Singapore",
+    "Amsterdam",
+    "Paris",
+    "Los Angeles",
+    "Hong Kong",
+    "Bangkok",
+    "Dubai",
+    "Denpasar",
+    "Beijing",
+    "Guangzhou",
+    "Shanghai",
+    "Nadi",
+    "Seoul",
+    "Manila",
+    "Kuala Lumpar",
+    "Jakarta",
+    "Phuket",
+    "Tokyo",
+    "Melbourne",
+    "Sydney"]
   end
 end

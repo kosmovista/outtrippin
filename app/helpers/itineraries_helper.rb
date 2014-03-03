@@ -12,13 +12,17 @@ module ItinerariesHelper
     return options
   end
 
-  def budget_options
-    ['$50-100', '$100-200', '$200-500','$500+']
+  def activity_budget_options
+    ['$0-50', '$50-100', '$100-200', '$200+']
+  end
+
+  def accommodation_budget_options
+    ['$0-50', '$50-100', '$100-200', '$200-500', '$500+']
   end
 
   def expanded_sidebar
     content_for :body do
-      "<script>window.toogleSidebar();</script>".html_safe
+      "<script>window.showSidebar();</script>".html_safe
     end
   end
 
@@ -30,7 +34,23 @@ module ItinerariesHelper
 
   # helpers for step bar  ##########################
   def steps
-    %w(describe launch pick book)
+    %w(describe launch pick)
+  end
+
+  def left_bar_or_space(index, steps)
+    return "&nbsp;" if (index == 1)
+    "<hr />"
+  end
+
+  def right_bar_or_space(index, steps)
+    return "&nbsp;" if (index == steps.length)
+    "<hr />"
+  end
+  ##################################################
+
+ # helpers for step bar  ##########################
+  def expert_steps
+    ['Submit a pitch', 'The requestor picks a winner', 'Winner writes the story']
   end
 
   def left_bar_or_space(index, steps)
@@ -56,5 +76,9 @@ module ItinerariesHelper
     "http://instagram.com/" + handle
   end
 
+  def pitches_so_far(itinerary)
+    return "No pitches in so far" if itinerary.pitches.nil?
+    itinerary.pitches.count == 1 ? "1 pitch in so far." : "#{itinerary.pitches.count} pitches in so far."
+  end
 
 end

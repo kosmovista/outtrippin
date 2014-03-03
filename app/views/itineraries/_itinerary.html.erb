@@ -1,26 +1,24 @@
-<div class="row break">
-  <div class="large-8 large-centered columns">
+<div class="row">
+  <div class="large-10 small-12 large-centered columns">
     <div class="row">
-      <div class="large-9 columns">
-        <h3><%= itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name] %></h3>
+      <div class="large-9 small-12 columns">
+        <h4>
+          <%= link_to (itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name]), itinerary_path(itinerary), style: "margin-top:10px;", class: "story-title black" %><%= link_to (current_user.voted_for?(itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned", class: "unbookmark") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign", class: "bookmark")), toggle_star_itinerary_path(itinerary), method: :post if current_user.is?("expert") %>
+        </h4>
+        <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
+          <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
+          <span class="subheader">Submitted <%= time_ago_in_words itinerary.created_at %> ago.
+           <%= pitches_so_far itinerary %>
+          </span>
+        </em></p>
       </div>
-      <div class="large-3 columns">
-        <%= link_to "Details", itinerary_path(itinerary), style: "margin-top:10px;", class: "right small radius button" if current_user.owns?(@itinerary) %>
-        <%= link_to "Submit Pitch", new_itinerary_pitch_path(@itinerary), class: "button small radius" if current_user.is?("expert") %>
+      <div class="large-2 small-12 text-center columns">
+        <%= link_to "Details", itinerary_path(itinerary), class: "story-request secondary expand tiny radius button" %>
+        <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "submit-pitch button tiny expand right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !itinerary.has_winner_pitch? %>
       </div>
-    </div>
-      <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
-      <%= image_tag "plane.png", style: "width:17px; opacity:0.7; margin:-6px 4px 0;" %> <%= itinerary.extra_info[:travelers] %> are traveling with a budget of <%= itinerary.extra_info[:budget] %> per person, per day.</em></p>
-    </ul>
-    <h5 class="subheader serif"><em>This trip, I'm on the hunt for some</em></h5>
-    <ul class="sans skill-list">
-      <% itinerary.extra_info[:style].each do |s| %>
-      <li><%= s %></li>
-      <% end %>
-    </ul>
-    <h5 class="subheader serif"><em>Some additional deets about the trip</em></h5>
-    <p style="margin-bottom:70px;"><%= itinerary.extra_info[:details] %></p>
-    <hr>
 
+      <hr style="border:1px #e6e6e6 solid;">
+
+    </div>
   </div>
 </div>

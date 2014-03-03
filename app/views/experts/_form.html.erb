@@ -70,7 +70,8 @@
       </div>
       <div class="large-6 columns">
         <%= f.label :twitter, "Twitter Handle" %>
-        <%= f.text_field :twitter, placeholder: "@indiana_june" %>
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Only type in your twitter handle. Without the '@'.">
+        <%= f.text_field :twitter, placeholder: "indiana_june" %></span>
       </div>
     </div>
 

@@ -77,4 +77,11 @@ Outtrippin::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.middleware.use Rack::Cors do
+    allow do
+      origins '23.253.82.30'
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete, :put]
+    end
+  end
 end

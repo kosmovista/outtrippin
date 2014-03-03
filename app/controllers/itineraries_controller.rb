@@ -1,11 +1,16 @@
 class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
+  before_action :set_cities, only: [:create]
   before_action :set_itinerary, except: [:index, :create]
-  before_action :load_styles, only: [:details, :update]
-  before_action :authorize_user, only: [:index, :show] # TODO some more actions should be here
+  before_action :load_styles_personalities, only: [:details, :finalize, :update, :publish]
+  before_action :authorize_user, only: [:index] # TODO some more actions should be here
 
   def index
-    @itineraries = current_user.itineraries
+    @itineraries = current_user.itineraries unless current_user.is?("expert")
+    @itineraries = Itinerary.published if current_user.is?("expert")
+    @starred_itineraries = current_user.find_voted_items
+    @pitched_itineraries = Pitch.find_by_user(current_user)
+    @won_itineraries = Pitch.find_winner_expert_by_itinerary(current_user)
   end
 
   def create
@@ -26,6 +31,15 @@ class ItinerariesController < ApplicationController
     end
   end
 
+  def toggle_star
+    if current_user.liked? @itinerary
+      @itinerary.unliked_by current_user
+    else
+      current_user.likes @itinerary
+    end
+    redirect_to :back
+  end
+
   def details
     @itinerary_details = ItineraryDetails.new(itinerary: @itinerary)
   end
@@ -39,9 +53,10 @@ class ItinerariesController < ApplicationController
     if @itinerary_finalize.save
       if !current_user
         flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
-        redirect_to login_path(itinerary: @itinerary)
+        session[:original_uri] = checkout_itinerary_path(@itinerary)
+        redirect_to login_path
       else
-        redirect_to itinerary_path(@itinerary)
+        redirect_to checkout_itinerary_path(@itinerary)
       end
     else
       render 'finalize'
@@ -50,8 +65,10 @@ class ItinerariesController < ApplicationController
 
   def show
     @plan = @itinerary.plans.first if @itinerary.has_plan?
-    @pitches = @itinerary.pitches
-    @pitch = @pitches.where(user: current_user).first if current_user.is?("expert")
+    if current_user
+      @pitches = @itinerary.pitches
+      @pitch = @pitches.where(user: current_user).first if current_user.is?("expert")
+    end
     # TODO SET SOME PERMISSION HERE
     # authorize_user is not enough
   end
@@ -62,8 +79,9 @@ class ItinerariesController < ApplicationController
 
   def purchase
     token = params[:stripeToken]
+    plan = params[:plan].to_i
 
-    if @itinerary.process_payment(token)
+    if @itinerary.process_payment(token, plan)
       UserMailer.delay.payment_received_email(@itinerary.user, @itinerary)
       AdminMailer.delay.payment_received_email(@itinerary)
       flash[:fresh_purchase] = true
@@ -81,6 +99,13 @@ class ItinerariesController < ApplicationController
     end
   end
 
+  def email_sharer
+    @destination = params[:emails].split(',')
+    UserMailer.delay.email_sharer_email(@destination, params[:message], @itinerary)
+    flash[:notice] = "Emails on their way!"
+    redirect_to :back
+  end
+
   private
 
   def set_itinerary
@@ -92,8 +117,8 @@ class ItinerariesController < ApplicationController
   end
 
   # TODO REFACTOR THIS
-  def load_styles
-    configuration_file = File.join(Rails.root.to_s, 'config', 'styles.yml')
-    @styles = YAML.load_file(configuration_file)
+  def load_styles_personalities
+    @styles = YAML.load_file(File.join(Rails.root.to_s, 'config', 'styles.yml'))
+    @personalities = YAML.load_file(File.join(Rails.root.to_s, 'config', 'personalities.yml'))
   end
 end
