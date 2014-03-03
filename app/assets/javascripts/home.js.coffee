@@ -119,7 +119,6 @@ $(window).load ->
   $("#contestbtn").show()
   $("#loading").hide()
   $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
   setBg()
   $('#featuring').css("height", $(window).height())
   changeTrip()
