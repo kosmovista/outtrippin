@@ -33,12 +33,12 @@
 
      <% unless @itinerary.extra_info[:must].blank? %>
       <h5 class="subheader serif"><em>Things I absolutely must see/do:</em></h5>
-      <p style="margin-bottom:70px;"><%= @itinerary.extra_info[:must] %></p>
+      <p><%= @itinerary.extra_info[:must] %></p>
     <% end %>
 
      <% unless @itinerary.extra_info[:avoid].blank? %>
       <h5 class="subheader serif"><em>Stuff I'd really like to avoid:</em></h5>
-      <p style="margin-bottom:70px;"><%= @itinerary.extra_info[:avoid] %></p>
+      <p><%= @itinerary.extra_info[:avoid] %></p>
     <% end %>
 
     <% unless @itinerary.extra_info[:details].blank? %>
