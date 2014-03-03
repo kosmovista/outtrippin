@@ -12,7 +12,7 @@
   <div class="small-12 large-11 columns">
      <%= render 'steps', step: 'launch', disable: %w() %>
     <div class="large-12 large-centered small-12 columns">
-      <h3 class="text-center white">You're almost ready to roll..<a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-20px;" %></a></h3>  
+      <h3 class="text-center white">You're almost ready to roll..<a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-20px;" %></a></h3>
     </div>
     <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
       <h5>This info is the fuel for a tailored travel story - designed just for you!</h5>
@@ -89,6 +89,8 @@
       </div>
     </div>
 
+    <% unless current_user %>
+
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :email, "Send my tailored travel story ideas to:" %>
@@ -98,6 +100,10 @@
         <%= errors_for(@itinerary_finalize, :email) %>
       </div>
     </div>
+
+    <% else %>
+      <%= f.hidden_field :email, value: current_user.email %>
+    <% end %>
 
     <div class="row">
       <div class="large-2 large-offset-10 small-12 columns">
