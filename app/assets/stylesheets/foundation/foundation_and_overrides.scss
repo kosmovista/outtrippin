@@ -2,8 +2,8 @@
 // Foundation Variables
 //
 
-$serif-font-family: "PT Sans", georgia, serif;
-$sans-font-family: "PT Sans", helvetica, sans-serif;
+$serif-font-family: "ff-tisa-web-pro", georgia, droid sans;
+$sans-font-family: "Calluna-sans", Helvetica, arial, sans-serif;
 // The default font-size is set to 100% of the browser style sheet (usually 16px)
 // for compatibility with browser-based text zoom or user-set defaults.
 $base-font-size: 105% !default;
@@ -1260,7 +1260,7 @@ $tooltip-font-color: #f3f3f3;
 
 // Background color for the top bar
 
-$topbar-bg-color: $primary-color;
+$topbar-bg-color: #fdfdfd;
 // $topbar-bg: $topbar-bg-color;
 
 // Height and margin
@@ -1282,17 +1282,17 @@ $topbar-font-family: $sans-font-family;
 // Style the top bar dropdown elements
 
 $topbar-dropdown-bg: $topbar-bg-color;
-// $topbar-dropdown-link-color: #fff;
+$topbar-dropdown-link-color: $primary-color;
 $topbar-dropdown-link-bg: $topbar-bg-color;
 // $topbar-dropdown-toggle-size: 5px;
-// $topbar-dropdown-toggle-color: #fff;
+$topbar-dropdown-toggle-color: $primary-color;
 // $topbar-dropdown-toggle-alpha: 0.5;
 
 // Set the link colors and styles for top-level nav
 
-// $topbar-link-color: #fff;
-// $topbar-link-color-hover: #fff;
-// $topbar-link-color-active: #fff;
+$topbar-link-color: $primary-color;
+$topbar-link-color-hover: $primary-color;
+$topbar-link-color-active: $primary-color;
 // $topbar-link-weight: bold;
 $topbar-link-font-size: em-calc(15);
 $topbar-link-hover-lightness: 3%; // Darken by 30%
@@ -1310,8 +1310,8 @@ $topbar-link-hover-lightness: 3%; // Darken by 30%
 // $topbar-menu-link-transform: uppercase;
 // $topbar-menu-link-font-size: em-calc(13);
 // $topbar-menu-link-weight: bold;
-// $topbar-menu-link-color: #fff;
-// $topbar-menu-icon-color: #fff;
+$topbar-menu-link-color: $primary-color;
+$topbar-menu-icon-color: $primary-color;
 // $topbar-menu-link-color-toggled: #888;
 // $topbar-menu-icon-color-toggled: #888;
 
