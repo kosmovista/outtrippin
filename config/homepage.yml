@@ -1,54 +1,52 @@
 default:
-  header: "<strong>Make better travel stories.</STRONG>"
-  subheader: "Get inspiration, advice, and recommendations from travel experts around the world"
+  header: "<strong>A travel experience like no other</STRONG>"
+  subheader: "Let Zuji travel experts craft a unique holiday plan just for you"
   placeholder: "Where would you like to go?"
-  submit: "Let's get going!"
+  submit: "Send me ideas!"
   process:
-    header: "What is <SPAN class='primary'>Plan My Trip</SPAN>?"
-    text: "It's where travel planning meets<br>the magic of storytelling."
-    step-title: "How does the magic happen?"
+    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from an OutTrippin expert."
     step1:
-      title: "1"
-      text: "Tell us where you want<BR> to go and describe your<br> travel personality"
+      title: "How does it work?"
+      text: "Describe your travel personality, and the trip you have in mind and our experts will pitch you travel ideas."
     step2:
-      title: "2"
-      text: "Storytellers pitch you<br> travel concepts and<br> you pick a winner"
+      title: "Who are the experts?"
+      text: "Pro travel ploggers and writers who've been there, care and are ready to share all their best experiences."
     step3:
-      title: "3"
-      text: "Your storyteller writes<br> a day-by-day Trip Script<br> full of tips & tricks"
+      title: "What do I get?"
+      text: "A day-by-day trip plan, tailored to your personality full of tips, tricks and advice from a travel expert."
     step4:
-      title: "4"
-      text: "Now you're ready<br> to make your own<br> incredible travel story"
+      title: "Ready to book?"
+      text: "Zuji makes it easy to book the expert recommendations you get and make your unique holiday plan a reality."
   pics:
     rio:
-      title: "Rio Sunset"
+      title: "Lake Matheson, New Zealand"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg"
-      text: "I have champagne and caviar tastes but I can also help you find the nitty gritty heart of Rio de Janeiro. Let me show you the best of both worlds!"
-      expert: "Alexandra P."
+      text: "Famous for its reflected mirror views of Aoraki (Mt Cook) the tallest mountain in NZ."
+      expert: "<a href='/users/337'>Luke C.</a> from Top 100 Experiences"
       avatar: http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_alexandra.jpeg
     maldives:
-      title: "House on stilts in water — Maldives"
+      title: "Cours Julien, Marseille, France"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_maldives.jpg"
-      text: "I am the travel editor for a magazine and can recommend luxury vacations in the Maldives that promote responsible tourism."
-      expert: "Aline D."
+      text: "This is the place to go if you're looking for a hip bar, alternative crafts or colourful street art."
+      expert: "Karl D. from Hobography"
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_aline.png"
     cartagena:
-      title: "Water umbrellas — Cartagena"
+      title: "Mt. Wai'ale'ale, Kaua'i, Hawai'i"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_colombia.jpg"
-      text: "I have uncovered local culinary delights and an enormous network of local connections to help you discover best bits of Cartagena de Indias and surrounds."
-      expert: "Kristy E."
+      text: "The park houses more than 1000 animals, they rescue any animal in need not just elephants."
+      expert: "Chiara S. from Lavencid"
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
     venice:
-      title: "Venice"
+      title: "Yi Peng Lantern Festival, Chiang Mai, Thailand"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
-      text: "To me, Venice means meandering through plazas and hidden alleyways, romantic gondola rides and restaurants well off the tourist track."
-      expert: "Alena H."
+      text: "This ancient volcanic crater is one of the wettest spots on earth with 460 inches of annual rainfall!"
+      expert: "Toccara B. from My Travel Days"
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
     santorini:
-      title: "Santorini"
+      title: "Yi Peng Lantern Festival, Chiang Mai, Thailand"
       src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
-      text: "I’m an ex-tour guide, turned travel writer and adore sharing unforgettable Greek adventures with visitors to my adopted country."
-      expert: "Heidi F."
+      text: "Bring a marker pen to write your dreams on the paper lanterns before sending them to the heavens."
+      expert: "Chris B. from One Weird Globe"
       avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_heidi.jpeg"
 
 honeymoon:
