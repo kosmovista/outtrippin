@@ -1,6 +1,14 @@
 footer {
   padding: 30px 0;
   background-color: #282828;
+  .side-nav li {
+    margin: 0px !important;
+    font-size:.8em;
+  }
+
+  .side-nav li a{
+    color:#e6e6e6;
+  }
 }
 
 footer img {
@@ -12,11 +20,3 @@ footer h6 {
   font-weight:normal;
 }
 
-.side-nav li {
-  margin: 0px !important;
-  font-size:.8em;
-}
-
-.side-nav li a{
-  color:#e6e6e6;
-}

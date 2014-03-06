@@ -181,10 +181,10 @@
     StripeCheckout.open({
       key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
       amount:      duration * plan * 100,
-      // image:       '<%= asset_path('logo128.png') %>',
+      image:       '<%= asset_path('logo128.png') %>',
       email:       '<%= current_user.email %>',
       currency:    'usd',
-      name:        'Zuji',
+      name:        'Zuji Plan My Trip',
       description: '100% money back guarantee',
       panelLabel:  'Checkout',
       token:       token
