@@ -2,11 +2,17 @@
 window.active_bg = 0
 window.images = $("#image-loader").children()
 window.experts = $("#expert-loader").children()
+bgCount = $("#image-loader").children().length
+
+rotateBg = ''
 
 #SET BROWSE TRIP VARIABLES
 window.active_trip = 0
 window.covers = $("#trip-loader").children()
 window.details = $("#detail-loader").children()
+tripCount = $("#trip-loader").children().length
+
+rotateTrip = ''
 
 # HOME PAGE COVER
 bulletNav = $("<ul>"
@@ -34,12 +40,24 @@ window.images.each (i) ->
 
 # SET BACKGROUND
 window.setBg = ->
+  clearTimeout(rotateBg)
   image = window.images[window.active_bg].src
   expert = window.experts[window.active_bg]
-  jQuery(window.experts).fadeOut(10, 'easeInQuad')
+  jQuery(window.experts).hide()
   $('#slide' + window.active_bg).addClass("act")
   $("#destinations").css("background", "url('" + image + "') no-repeat center center")
-  jQuery(expert).fadeIn(100, 'easeOutQuad')
+  jQuery(expert).show()
+  rotateBg = setTimeout(nextBg, 6000)
+  
+
+# NEXT BG
+window.nextBg = ->
+ $('#slide' + window.active_bg).removeClass("act")
+ if window.active_bg == bgCount-1
+  window.active_bg = 0
+ else
+  window.active_bg++
+ setBg()
 
 # BROWSE TRIPS
 featureNav = $("<ul>"
@@ -68,13 +86,23 @@ if window.covers
 
 # SET TRIP
 window.changeTrip = ->
+  clearTimeout(rotateTrip)
   cover = window.covers[window.active_trip].src
   detail = window.details[window.active_trip]
-  jQuery(window.details).fadeOut(10, 'easeInQuad')
+  jQuery(window.details).fadeOut(0, 'easeInQuad')
   $('#tripNo' + window.active_trip).addClass("act1")
   $(".trip").css("background", "url('" + cover + "') no-repeat center center")
   jQuery(detail).fadeIn(0, 'easeOutQuad')
+  rotateTrip = setTimeout(nextTrip, 6000)
 
+# NEXT TRIP
+window.nextTrip = ->
+ $('#tripNo' + window.active_trip).removeClass("act1")
+ if window.active_trip == tripCount-1
+  window.active_trip = 0
+ else
+  window.active_trip++
+ changeTrip()
 
 # SCROLL DOWN
 window.scrollDown = ->
@@ -119,7 +147,7 @@ $(window).load ->
   $("#contestbtn").show()
   $("#loading").hide()
   $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
   setBg()
+  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
   $('#featuring').css("height", $(window).height())
   changeTrip()
