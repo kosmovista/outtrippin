@@ -34,19 +34,25 @@ default:
       title: "Mt. Wai'ale'ale, Kaua'i, Hawai'i"
       src: "3.jpg"
       text: "This ancient volcanic crater is one of the wettest spots on earth with 460 inches of annual rainfall!"
-      expert: "<a href='users/163'>Toccara B.</a> from <a href='http://mytraveldays.com'>mytraveldays.com</a></a>"
+      expert: "<a target='blank' href='users/163'>Toccara B.</a> from <a target='blank' href='http://mytraveldays.com'>mytraveldays.com</a></a>"
       avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/163/thumb_Tuscany__302_.JPG"
     cmai:
       title: "Yi Peng Lantern Festival, Chiang Mai, Thailand"
       src: "4.jpg"
       text: "Bring a marker pen to write your dreams on the paper lanterns before sending them to the heavens."
-      expert: "<a href='users/133'>Chris B.</a> from <a href='http://oneweirdglobe.com'>oneweirdglobe.com</a>"
+      expert: "<a target='blank' href='users/133'>Chris B.</a> from <a target='blank' href='http://oneweirdglobe.com'>oneweirdglobe.com</a>"
       avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/172/thumb_Headshot_square_small.JPG"
+    nyc:
+      title: "Manhattan, New York City"
+      src: "5.jpg"
+      text: "To catch an iconic NYC yellow taxi, look at the roof light. If it's lit the taxi is ready to take your fare."
+      expert: "<a target='blank' href='users/366'>Kellie N.</a> from <a target='blank' href='http://mydestinationunknown.com'>mydestinationunknown.com</a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/366/thumb_296477_10150372870103436_1643175515_n.jpg"
     cmai2:
       title: "The Elephant Nature Park, Chiang Mai, Thailand"
       src: "6.jpg"
       text: "The park houses more than 1000 animals, they rescue any animal in need not just elephants."
-      expert: "<a href='users/133'>Chiara S.</a> from <a href='http://www.lavencid.blogspot.com'>lavencid.com</a>"
+      expert: "<a target='blank' href='users/133'>Chiara S.</a> from <a target='blank' href='http://www.lavencid.blogspot.com'>lavencid.com</a>"
       avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/132/thumb_CHIARITA.jpg"
 
 honeymoon:
