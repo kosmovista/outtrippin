@@ -1,10 +1,10 @@
 default:
-  header: "<strong>A travel experience like no other</STRONG>"
-  subheader: "Let Zuji travel experts craft a unique holiday plan just for you"
+  header: "<strong>A travel experience like no other.</STRONG>"
+  subheader: "Let travel experts craft a unique holiday plan just for you."
   placeholder: "Where would you like to go?"
   submit: "Send me ideas!"
   process:
-    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from an OutTrippin expert."
+    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from a Zuji expert."
     step1:
       title: "How does it work?"
       text: "Describe your travel personality, and the trip you have in mind and our experts will pitch you travel ideas."
@@ -16,38 +16,38 @@ default:
       text: "A day-by-day trip plan, tailored to your personality full of tips, tricks and advice from a travel expert."
     step4:
       title: "Ready to book?"
-      text: "Zuji makes it easy to book the expert recommendations you get and make your unique holiday plan a reality."
+      text: "Zuji helps make your unique holiday plan a reality with quick and easy bookings."
   pics:
-    rio:
+    nz:
       title: "Lake Matheson, New Zealand"
-      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg"
+      src: "1.jpg"
       text: "Famous for its reflected mirror views of Aoraki (Mt Cook) the tallest mountain in NZ."
-      expert: "<a href='/users/337'>Luke C.</a> from Top 100 Experiences"
-      avatar: http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_alexandra.jpeg
-    maldives:
+      expert: "<a href='/users/337'>Luke C.</a> from <a href='http://www.top100experiences.com.au/'>top100experiences.com.au</a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/337/thumb_578407_10150886493477463_1896779031_n.jpg"
+    marseille:
       title: "Cours Julien, Marseille, France"
-      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_maldives.jpg"
+      src: "2.jpg"
       text: "This is the place to go if you're looking for a hip bar, alternative crafts or colourful street art."
-      expert: "Karl D. from Hobography"
-      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/02_aline.png"
-    cartagena:
+      expert: "<a href='users/166/'>Karl D.</a> from <a href='http://hobography.net/'>hobography.net</a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/166/thumb_karl.delandsheere.jpg"
+    hawaii:
       title: "Mt. Wai'ale'ale, Kaua'i, Hawai'i"
-      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_colombia.jpg"
-      text: "The park houses more than 1000 animals, they rescue any animal in need not just elephants."
-      expert: "Chiara S. from Lavencid"
-      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/03_kristy.png"
-    venice:
-      title: "Yi Peng Lantern Festival, Chiang Mai, Thailand"
-      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_venice.jpg"
+      src: "3.jpg"
       text: "This ancient volcanic crater is one of the wettest spots on earth with 460 inches of annual rainfall!"
-      expert: "Toccara B. from My Travel Days"
-      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/04_Alena.png"
-    santorini:
+      expert: "<a href='users/163'>Toccara B.</a> from <a href='http://mytraveldays.com'>mytraveldays.com</a></a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/163/thumb_Tuscany__302_.JPG"
+    cmai:
       title: "Yi Peng Lantern Festival, Chiang Mai, Thailand"
-      src: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_santorini.jpg"
+      src: "4.jpg"
       text: "Bring a marker pen to write your dreams on the paper lanterns before sending them to the heavens."
-      expert: "Chris B. from One Weird Globe"
-      avatar: "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/05_heidi.jpeg"
+      expert: "<a href='users/133'>Chris B.</a> from <a href='http://oneweirdglobe.com'>oneweirdglobe.com</a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/172/thumb_Headshot_square_small.JPG"
+    cmai2:
+      title: "The Elephant Nature Park, Chiang Mai, Thailand"
+      src: "6.jpg"
+      text: "The park houses more than 1000 animals, they rescue any animal in need not just elephants."
+      expert: "<a href='users/133'>Chiara S.</a> from <a href='http://www.lavencid.blogspot.com'>lavencid.com</a>"
+      avatar: "http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/132/thumb_CHIARITA.jpg"
 
 honeymoon:
   header: "<strong>ZAP YOUR</strong><br/>HONEYMOON PLANNING<strong><br/>STRESS</strong>"
