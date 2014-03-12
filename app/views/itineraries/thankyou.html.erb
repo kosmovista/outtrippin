@@ -1,19 +1,55 @@
-<div class="row top">
-	<div class="large-11 large-centered columns">
-		<% set_page_title("Thanks for your payment! Trip to " + @itinerary.destination + " - Zuji") %>
-		<%= content_for :left_col do %>
-		  <h5>Your Trip, So Far:</h5>
-		  <%= render 'itinerary_left_col' %>
-		<% end %>
+<% set_page_title("Thanks for your payment! Trip to " + @itinerary.destination + " - Zuji") %>
+<%= content_for :left_col do %>
+  <h5>Your Trip, So Far:</h5>
+  <%= render 'itinerary_left_col' %>
+<% end %>
 
-		<div class="row">
-		  <div class="large-12 columns">
-		    <h4 class="green">Thanks for your payment and welcome to travel planning heaven!</h3>
+<div id='overlay-full'></div>
+<div id='map'></div>
+
+<div class="row">
+  <div class="large-7 large-centered small-12 columns text-center login">
+    <h3 class="primary">Thanks for your payment and welcome to travel planning heaven!</h3>
 		    <p>Now you can put your feet up and relax as our travel experts get to work designing your dream trip.</p>
 		    <p>Next you will receive an email from the Plan My Trip team confirming your trip details and outlining the next steps in the process.</p>
 		    <p>Exciting times!<br /> The Plan My Trip team</p>
-		    <%= link_to "Back to my Itinerary", itinerary_path(@itinerary), class: "button large" %>
-		  </div>
-		</div>
-	</div>
+
+    <%= link_to "Back to my Itinerary", itinerary_path(@itinerary), class: "button radius" %>
+  </div>
 </div>
+
+<% content_for :head do %>
+<style>
+  .top-bar {display:none;}
+  footer {display:none;}
+</style>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+<!--[if lte IE 8]>
+<link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
+<![endif]-->
+<% end %>
+
+
+<% content_for :body do %>
+<script type='text/javascript'>
+var map = L.mapbox.map('map', 'jvalente.map-2usavnxz');
+map.touchZoom.disable()
+map.doubleClickZoom.disable();
+map.scrollWheelZoom.disable();
+</script>
+ <script>
+  <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.register({ Role: "<%= current_user.roles.join(', ') %>" });
+    mixpanel.register({ 'User Type': "Paid" });
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+    mixpanel.track("Page Loaded", {"page": "Completed Payment"});
+  <% end %>
+</script>
+<% end %>
