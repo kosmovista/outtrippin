@@ -19,6 +19,7 @@ class Admin::ItinerariesController < ApplicationController
   def update
     @itinerary = Itinerary.find(params[:id])
     @itinerary.extra_info[:details] = params[:itinerary][:details]
+    @itinerary.extra_info[:reward] = params[:itinerary][:reward]
     @itinerary.save!
     redirect_to @itinerary
   end
