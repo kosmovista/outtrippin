@@ -101,7 +101,7 @@ class ItinerariesController < ApplicationController
   def email_sharer
     @destination = params[:emails].split(',')
     UserMailer.delay.email_sharer_email(@destination, params[:message], @itinerary)
-    flash[:notice] = "Emails on their way!"
+    flash[:notice] = "Emails are on their way!"
     redirect_to :back
   end
 
