@@ -57,7 +57,7 @@ class UserMailer < ActionMailer::Base
     if @itinerary.extra_info.has_key?[:source]
       mail to: @user.email, subject: "New Zuji Pitch Received!", from: "\"Zuji\" <planmytrip@Zuji.com>"
     else
-      mail to: @user.email, from: subject: "New OutTrippin Pitch Received!"
+      mail to: @user.email, subject: "New OutTrippin Pitch Received!"
     end
   end
 end
