@@ -14,7 +14,7 @@
         <h3 id="sub-header" class="white subheader"><%= homepage("subheader") %></h3>
         <%= form_for @itinerary, html: { class: 'custom' } do |f| %>
         <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
-          <%= f.text_field :destination, placeholder: homepage("placeholder"), :autofocus => true %>
+          <%= f.select :destination, options_for_select(@cities), prompt: "Pick a city" %>
           <%= errors_for(@itinerary, :destination) %>
         </div>
         <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
