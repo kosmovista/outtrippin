@@ -148,6 +148,5 @@ $(window).load ->
   $("#loading").hide()
   $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
   setBg()
-  autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
   $('#featuring').css("height", $(window).height())
   changeTrip()
