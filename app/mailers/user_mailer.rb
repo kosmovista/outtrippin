@@ -25,19 +25,6 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "OutTrippin Password Reset Instructions"
   end
 
-  def new_pitch_email(pitch)
-    @pitch = pitch
-    @itinerary = @pitch.itinerary
-    @user = @itinerary.user
-    mail to: @user.email, subject: "New OutTrippin Pitch Received!"
-  end
-
-  def new_pitch_email(pitch)
-    @pitch = pitch
-    @itinerary = @pitch.itinerary
-    @user = @itinerary.user
-    mail to: @user.email, subject: "New OutTrippin Pitch Received!"
-  end
 
   def new_pitch_expert_email(pitch)
     @pitch = pitch
@@ -60,5 +47,17 @@ class UserMailer < ActionMailer::Base
     @itinerary = itinerary
     @user = @itinerary.user
     mail to: @destination, subject: "Check out my tailored trip plan on OutTrippin"
+  end
+
+  def new_pitch_email(pitch)
+    @pitch = pitch
+    @itinerary = @pitch.itinerary
+    @user = @itinerary.user
+
+    if @itinerary.extra_info.has_key?[:source]
+      mail to: @user.email, subject: "New Zuji Pitch Received!", from: "\"Zuji\" <planmytrip@Zuji.com>"
+    else
+      mail to: @user.email, from: subject: "New OutTrippin Pitch Received!"
+    end
   end
 end
