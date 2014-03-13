@@ -14,7 +14,13 @@ class ItinerariesController < ApplicationController
   end
 
   def create
+    source = itinerary_params[:source]
     @itinerary = Itinerary.new(itinerary_params)
+
+    if !source.nil?
+      @itinerary.extra_info[:source] = source
+    end
+
     if @itinerary.save
       redirect_to details_itinerary_path(@itinerary)
     else
@@ -113,7 +119,7 @@ class ItinerariesController < ApplicationController
   end
 
   def itinerary_params
-    params.require(:itinerary).permit(:destination)
+    params.require(:itinerary).permit(:destination, :source)
   end
 
   # TODO REFACTOR THIS

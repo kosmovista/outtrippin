@@ -7,6 +7,8 @@ class Itinerary < ActiveRecord::Base
   has_many :pitches, inverse_of: :itinerary
   has_many :plans, inverse_of: :itinerary
 
+  attr_accessor :source
+
   default_scope { order('created_at DESC') }
 
   serialize :extra_info, Hash
