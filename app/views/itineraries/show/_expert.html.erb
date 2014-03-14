@@ -210,9 +210,10 @@
       <div class="large-8 large-centered text-center small-12 columns">
         <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
           <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
-          <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
+          <li><a href="#" id="slide1" >MY PITCH</a></li>
+          <li><a href="#" id="slide2" >REQUEST & COMMENTS</a></li>
           <% if current_user.is?("admin") %>
-          <li><a href="#" id="slide2">ALL PITCHES</a></li>
+          <li><a href="#" id="slide3">ALL PITCHES</a></li>
           <% end %>
         </ul>
         <hr style="border-color:white; margin-top:0;">
@@ -225,7 +226,10 @@
     <%= render @itinerary.winner_pitch %>
   </div>
 </div>
-<div class="row" id="slide1-content">
+<div id="slide1-content">
+  <%= render @pitch %>
+</div>
+<div class="row" id="slide2-content">
   <div class="large-12 large-centered small-12 columns">
       <%= render 'itineraries/itinerary_full' %>
   </div>
@@ -238,7 +242,7 @@
   </div>
 </div>
 <% if current_user.is?("admin") %>
-  <div id="slide2-content"> 
+  <div id="slide3-content"> 
     <%= render @pitches %>
   </div>
 <% end %>
@@ -330,7 +334,6 @@
 </div>
 <div id="slide1-content">
   <%= render @pitch %>
-</div>
 </div>
 <div class="row" id="slide2-content">
   <div class="large-12 large-centered small-12 columns">
