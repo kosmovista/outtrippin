@@ -73,7 +73,7 @@ class ItinerariesController < ApplicationController
   end
 
   def checkout
-
+    @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
   end
 
   def purchase
