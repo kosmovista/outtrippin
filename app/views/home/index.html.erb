@@ -113,7 +113,7 @@
    <h2 class="serif subheader black">
      <em>Have a better vacation, or your money back!</em>
    </h2>
-   <a class="large button radius" id="scroll-up" href="/" style="margin-top:50px;">Hook me up!</a>
+   <a class="large button radius" id="scrollup" href="#scroll-up" style="margin-top:50px;">Hook me up!</a>
  </div>
 </div>
 
@@ -140,6 +140,13 @@
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(window).load(function() {
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  });
+  </script>
+
+
   <script>
   <% if current_user %>
     mixpanel.alias("<%= current_user.email %>");
