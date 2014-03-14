@@ -159,6 +159,46 @@
 	</div>
 
 
+<% unless @featuring_stories.blank? %>
+<div id="featuring" class="break">
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <h3 class="text-center serif subheader black"><em>Trips other travelers have planned with OutTrippin.</em></h3>
+    </div>
+  </div>
+  <div id="detail-loader" >
+    <%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan %>
+  </div>
+  <div class="row">
+    <div class="large-12 small-12 columns navigate">
+      <!-- adds jquery navigation -->
+    </div>
+  </div>
+</div>
+
+<div class="row top" style="margin-top: 50px;margin-bottom: 150px;">
+ <div class="large-12 text-center small-12 columns">
+   <h2 class="serif subheader black">
+     <em>Have a better vacation, or your money back!</em>
+   </h2>
+   <a class="large button radius" id="scrollup" href="#scroll-up" style="margin-top:50px;">Hook me up!</a>
+   <p>
+   	<%= link_to "Get ideas first & pay later >>", itinerary_path, style: "font-style: italic; font-size:.8em;" %>
+   </p>
+ </div>
+</div>
+
+<div id="trip-loader">
+  <% @featuring_stories.each do |i| %>
+    <%= image_tag i.cover %>
+  <% end %>
+</div>
+
+<% end %>
+
+
+
+
 
 <script src="https://checkout.stripe.com/v2/checkout.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
@@ -216,6 +256,7 @@
     mixpanel.register({ 'Plan': "Fancy Fishin" });
   });
 </script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <% end %>
 
 
