@@ -33,7 +33,7 @@
 					<%= image_tag "plain-fish.png", style: "margin-top:10px;" %>
 					<h6 class="white serif option-detail"><em>Pick 1 storyteller</em></h6>
 					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
-          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 12 %>
+          			<a href="#" class= "expand disabled radius small button" >Coming Soon!</a>
 				</div>
 				<ul class="side-nav subheader"><em>
 					<li class="cross">3+ storytellers compete</li>
@@ -158,6 +158,31 @@
 		</div>
 	</div>
 
+<% unless @featuring_stories.blank? %>
+<div id="featuring" class="break">
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <h3 class="text-center serif subheader black"><em>Trips other travelers have planned with OutTrippin.</em></h3>
+    </div>
+  </div>
+  <div id="detail-loader" >
+    <%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan %>
+  </div>
+  <div class="row">
+    <div class="large-12 small-12 columns navigate">
+      <!-- adds jquery navigation -->
+    </div>
+  </div>
+</div>
+
+<div id="trip-loader">
+  <% @featuring_stories.each do |i| %>
+    <%= image_tag i.cover %>
+  <% end %>
+</div>
+
+<% end %>
+
 
 
 
@@ -218,4 +243,8 @@
     mixpanel.register({ 'Plan': "Fancy Fishin" });
   });
 </script>
+<% end %>
+
+<%= content_for :head do %>
+<%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
 <% end %>
