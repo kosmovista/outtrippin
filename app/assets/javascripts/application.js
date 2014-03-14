@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require experts
 //= require home
+//= require ft_stories
 //= require sidebar
 
 $(function(){ $(document).foundation(); });
