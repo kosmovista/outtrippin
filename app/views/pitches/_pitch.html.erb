@@ -24,6 +24,7 @@
       </div>
       <% end %>
       <p><%= pitch.summary %></p>
+      <% if ( current_user && !current_user.is?("expert") ) || ( pitch.won_by?(current_user) ) || ( pitch.written_by?(current_user) ) %>
       <div class="written-by">
         <hr>
         <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
@@ -42,6 +43,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
