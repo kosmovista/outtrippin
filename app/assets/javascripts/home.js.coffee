@@ -145,7 +145,6 @@ $(window).load ->
   $("#header").show()
   $("#sub-header").show()
   $("#contestbtn").show()
-  $("#loading").hide()
   $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
   setBg()
   $('#featuring').css("height", $(window).height())

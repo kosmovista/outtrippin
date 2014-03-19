@@ -26,6 +26,10 @@ div#destinations {
   background-size: cover !important;
   background-color:#4c4c4c;
   transition: background 40ms ease-in;
+  -webkit-transition: background 40ms ease-in;
+  -moz-transition: background 40ms ease-in;
+  -o-transition: background 40ms ease-in;
+  -ms-transition: background 40ms ease-in;
   h1 { color: white; font-size:2em; font-weight: normal; margin-top:0px; padding-top: 60px; }
   h3 {margin-bottom: 1em;}
   @media only screen and (min-width: 640px) {
