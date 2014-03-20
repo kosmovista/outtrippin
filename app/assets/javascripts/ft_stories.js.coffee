@@ -61,7 +61,8 @@ window.nextTrip = ->
 $(window).resize ->
 $('#featuring').css("height", $(window).height())
 
-$(window).load ->
+$(window).ready ->
   $('#featuring').css("height", $(window).height())
   changeTrip()
-  return false
+  $("#loading").hide()
+  $("#detail-loader").show()
