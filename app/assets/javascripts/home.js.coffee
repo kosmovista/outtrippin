@@ -73,8 +73,8 @@ window.scrollUp = ->
 
 $(window).on "scroll", ->
   $('.top-logo').css( "display", "none" ).fadeIn(200);
-  $('.top-ot').css( "display", "none" ).fadeIn(200);
-  $('#guide').css( "display", "none" ).fadeIn(200);
+  $('.top-ot').css( "display", "none" ).delay(2000).fadeIn(200);
+  $('#guide').css( "display", "none" ).delay(2000).fadeIn(200);
   return false
 
 $("#scroll-down").on "click", ->
