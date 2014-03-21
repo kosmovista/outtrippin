@@ -191,27 +191,72 @@ div.container { position: relative; }
 
 @media only screen and (min-width: 1200px) {  .header {top: 100px; height:240px;}  }
 
+.tab-dropdown {
+  display: none;
+  @media (max-width: 940px) {
+    display: block !important;
+    margin-right: .7em;
+    font-size: 0.750em;
+    padding-bottom: 0.5em;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+    color:#fff !important;
+    border-bottom: 1px #fff solid;
+    &:after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color:  rgba(255, 255, 255, 1) transparent transparent transparent;
+      border-left-style: solid;
+      margin-right: 15px;
+      margin-top: -4.5px;
+      position: absolute;
+      top: 50%;
+      right: 10px; }
+  }
+}
+
+.inline-list.cover-tabs {
+ @media (min-width: 940px) { 
+  margin: 0 !important; 
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+  }
+ @media (max-width: 940px) {
+  @include dropdown-container;
+  margin-top: 7px;
+  overflow: visible !important;
+  li {@include dropdown-style; width: 100%;} 
+  }
+}
 .inline-list.cover-tabs > li a {
-  margin-right: .7em;
-  font-size: 0.750em;
-  padding-bottom: 0.5em;
-  letter-spacing: 0.1em;
-  color: rgba(255,255,255,0.70);
-  font-weight: bold;
-  -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
-  &:hover {color: #fff;}
+  @media (min-width: 940px) { 
+    margin-right: .7em;
+    font-size: 0.750em;
+    padding-bottom: 0.5em;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.70);
+    font-weight: bold;
+    -webkit-transition: color 0.25s ease-in-out;
+    -moz-transition: color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
+    &:hover {color: #fff;}
+  }
 }
 
 
 .active-tab {
-  color:#fff !important;
-  border-bottom: 1px #fff solid;
-   -webkit-transition: color 0.25s ease-in-out;
-  -moz-transition: color 0.25s ease-in-out;
-  transition: color 0.25s ease-in-out;
+  @media (min-width: 940px) { 
+    color:#fff !important;
+    border-bottom: 1px #fff solid;
+     -webkit-transition: color 0.25s ease-in-out;
+    -moz-transition: color 0.25s ease-in-out;
+    transition: color 0.25s ease-in-out;
   }
+}
 
 // SUMMARY
 .summary {background-color:#f3f3f3; padding-top:30px; padding-bottom:30px;}
@@ -258,6 +303,7 @@ div.container { position: relative; }
   height: 90px;
   width: 90px;
   margin: 0 25px 40px 0;
+  @media only screen and (max-width:768px) { float: right; margin: 0 0 20px 20px;}
 }
 
 .share {
