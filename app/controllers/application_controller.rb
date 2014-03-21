@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def store_location
+    session[:original_uri] = request.url
+  end
+  
   def authorize_user
     unless current_user
       session[:original_uri] = request.url

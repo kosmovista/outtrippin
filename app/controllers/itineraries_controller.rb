@@ -4,6 +4,7 @@ class ItinerariesController < ApplicationController
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles_personalities, only: [:details, :finalize, :update, :publish]
   before_action :authorize_user, only: [:index] # TODO some more actions should be here
+  before_action :store_location
 
   def index
     @itineraries = current_user.itineraries unless current_user.is?("expert")
