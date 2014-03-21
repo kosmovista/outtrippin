@@ -12,7 +12,7 @@
   <div class="small-12 small-centered columns">
      <%= render 'expertsteps', expert_step: 'Submit a pitch', disable: %w() %>
     <div class="large-8 large-centered small-12 columns">
-      <h2 style="margin-top:20px;" class="white">Submit a pitch <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+      <h2 style="margin-top:20px;" class="white">Submit a pitch <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>
     </div>
     <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
       <h5>Hi there! Congrats on being selected to pitch this story!</h5>
@@ -27,9 +27,10 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">REQUEST & COMMENTS</a></li>
           <% if current_user.is?("admin") %>
           <li><a href="#" id="slide1">ALL PITCHES</a></li>
@@ -53,7 +54,7 @@
   </div>
 </div>
 <% if current_user.is?("admin") %>
-  <div id="slide1-content"> 
+  <div id="slide1-content">
     <%= render @pitches %>
   </div>
 <% end %>
@@ -98,7 +99,7 @@
   <div class="small-12 small-centered columns">
      <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
     <div class="large-8 large-centered small-12 columns">
-      <h2 style="margin-top:20px;" class="white"><%= image_tag 'trophy.png', style: "height:1em; margin:-10px 15px 0 -55px;" %>You've won! <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a> </h2>  
+      <h2 style="margin-top:20px;" class="white"><%= image_tag 'trophy.png', style: "height:1em; margin:-10px 15px 0 -55px;" %>You've won! <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a> </h2>
     </div>
     <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
       <h5>Woohoo! You've been chosen to write this story!</h5>
@@ -123,9 +124,10 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
          <li><a href="#" id="slide0" class="active-tab">MY PITCH</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <% if current_user.is?("admin") %>
@@ -156,7 +158,7 @@
   </div>
 </div>
 <% if current_user.is?("admin") %>
-  <div id="slide2-content"> 
+  <div id="slide2-content">
     <%= render @pitches %>
   </div>
 <% end %>
@@ -178,7 +180,7 @@
 <% end %>
 
 
-<% elsif @itinerary.has_winner_pitch? %>
+<% elsif @itinerary.has_winner_pitch? && !@pitch.blank? %>
 <% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
 <% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <style>
@@ -191,7 +193,7 @@
   <div class="small-12 small-centered columns">
      <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
     <div class="large-8 large-centered small-12 columns">
-      <h2 style="margin-top:20px;" class="white">This story request is closed. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+      <h2 style="margin-top:20px;" class="white">A winner has been chosen. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>
     </div>
     <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
       <h5>The traveler has picked their favorite expert.</h5>
@@ -206,9 +208,90 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
+          <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
+          <li><a href="#" id="slide1" >MY PITCH</a></li>
+          <li><a href="#" id="slide2" >REQUEST & COMMENTS</a></li>
+          <% if current_user.is?("admin") %>
+          <li><a href="#" id="slide3">ALL PITCHES</a></li>
+          <% end %>
+        </ul>
+        <hr style="border-color:white; margin-top:0;">
+      </div>
+    </div>
+  </div>
+</div>
+<div id="slide0-content">
+    <%= render @itinerary.winner_pitch %>
+</div>
+
+<div id="slide1-content">
+  <%= render @pitch %>
+</div>
+
+<div class="row" id="slide2-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+<% if current_user.is?("admin") %>
+  <div id="slide3-content">
+    <%= render @pitches %>
+  </div>
+<% end %>
+<div class="share break">
+  <h4 class="serif subheader"><em><%= link_to "Browse other stories", itineraries_path, class: "sharethis" %></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+<%= content_for :body do %>
+  <script>
+    mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Lost the contest"});
+    mixpanel.track_links(".sharethis", "Browse Other Stories");
+  </script>
+<% end %>
+
+<% elsif @itinerary.has_winner_pitch? %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
+<% set_page_desc( @itinerary.winner_pitch.summary ) %>
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:240px;}
+</style>
+<div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'expertsteps', expert_step: 'Winner writes the story', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">This story request is closed. <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+      <h5>The traveler has picked their favorite expert.</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      The traveler has chosen their favorite expert and they are now working on building their personalized travel story. The winning pitch is featured below.</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">WINNING PITCH</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <% if current_user.is?("admin") %>
@@ -238,7 +321,7 @@
   </div>
 </div>
 <% if current_user.is?("admin") %>
-  <div id="slide2-content"> 
+  <div id="slide2-content">
     <%= render @pitches %>
   </div>
 <% end %>
@@ -267,7 +350,7 @@
   <div class="small-12 small-centered columns">
      <%= render 'expertsteps', expert_step: 'The requestor picks a winner', disable: %w() %>
     <div class="large-8 large-centered small-12 columns">
-      <h2 style="margin-top:20px;" class="white">Success! Your pitch is in. <a href="#" data-dropdown="submitted-pitch-d" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+      <h2 style="margin-top:20px;" class="white">Success! Your pitch is in. <a href="#" data-dropdown="submitted-pitch-d" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>
     </div>
     <div id="submitted-pitch-d" class="f-dropdown medium content" data-dropdown-content>
       <h5>And now we wait...</h5>
@@ -285,9 +368,10 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
           <li><a href="#" id="slide1" >MY PITCH</a></li>
           <li><a href="#" id="slide2" >REQUEST & COMMENTS</a></li>
@@ -317,7 +401,7 @@
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>In the meantime</h5>
-      <p>If you have a travel brainwave in the meantime you can come back and edit your pitch by clicking the <%= image_tag "edit-circle.png", style: "width:25px" %> next to your pitch. You can also pitch on other open stories from your <%= link_to "Storyteller Dashboard", itineraries_path %>. 
+      <p>If you have a travel brainwave in the meantime you can come back and edit your pitch by clicking the <%= image_tag "edit-circle.png", style: "width:25px" %> next to your pitch. You can also pitch on other open stories from your <%= link_to "Storyteller Dashboard", itineraries_path %>.
       </p>
     </div>
   </div>
@@ -345,7 +429,7 @@
   </div>
 </div>
 <% if current_user.is?("admin") %>
-  <div id="slide3-content"> 
+  <div id="slide3-content">
     <%= render @pitches %>
   </div>
 <% end %>
