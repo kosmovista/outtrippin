@@ -4,9 +4,11 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   $scope.plan = Plan.query();
   $scope.days = $scope.plan.days;
   $scope.tips_tricks = $scope.plan.tips_tricks;
+  $scope.bookings = $scope.plan.bookings;
 
   $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save."};
   $scope.tip_trick = {"title": "", "body": ""};
+  $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": ""};
 
   // ADD DAY
   $scope.save_day = function() {
@@ -84,6 +86,32 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
         alert("error while deleting");
       });
   }
+
+  // ADD BOOKING
+  $scope.save_booking = function() {
+    $http.put('plan/booking.json', {"title": $scope.booking.title, "body": $scope.booking.body, "price": $scope.booking.price, "location": $scope.booking.location, "link": $scope.booking.link }).
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+        $scope.add_booking = false;
+        $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": ""};
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while creating");
+      });
+  }
+
+  // UPDATE TIP_TRICK
+  $scope.update_booking = function(id, title, body, link, loc, price) {
+    $http.post('plan/booking/' + id + '.json', {"title": title, "body": body, "link": link, "price": price, "location": loc}).
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while deleting");
+      });
+  }
+
+
 
   // UPLOAD PICTURE
   $scope.onFileSelect = function($files, cover, day) {

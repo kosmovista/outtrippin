@@ -1,5 +1,5 @@
 object @plan
-attributes :days, :tips_tricks, :cover
+attributes :days, :tips_tricks, :cover, :bookings
 
 child :pictures do
   attributes :id
