@@ -100,7 +100,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
       });
   }
 
-  // UPDATE TIP_TRICK
+  // UPDATE BOOKING
   $scope.update_booking = function(id, title, body, link, loc, price) {
     $http.post('plan/booking/' + id + '.json', {"title": title, "body": body, "link": link, "price": price, "location": loc}).
       success(function(data, status, headers, config) {
@@ -111,7 +111,16 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
       });
   }
 
-
+  // DELETE BOOKING
+  $scope.delete_booking = function(id) {
+    $http.delete('plan/booking/' + id + '.json').
+      success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while deleting");
+      });
+  }
 
   // UPLOAD PICTURE
   $scope.onFileSelect = function($files, cover, day) {
