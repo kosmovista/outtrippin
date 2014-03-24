@@ -110,6 +110,44 @@ class PlansController < ApplicationController
     end
   end
 
+  # BOOKING ##########
+  def add_booking
+    booking = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join, price: params[:price], location: params[:location], link: params[:link] }
+    @plan.bookings << booking
+    @plan.save!
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.json { render json: @plan }
+    end
+  end
+
+  def update_booking
+    @plan.bookings.each do |bk|
+      if bk[:id] == params[:booking_id]
+        bk[:title] = params[:title]
+        bk[:body] = params[:body]
+        bk[:price] = params[:price]
+        bk[:location] = params[:location]
+        bk[:link] = params[:link]
+      end
+    end
+    @plan.save!
+    respond_to do |format|
+      format.json { render json: @plan }
+    end
+  end
+
+  def delete_booking
+    @plan.bookings.delete_if { |bk| bk[:id] == params[:booking_id] }
+    @plan.save!
+
+    respond_to do |format|
+      format.html { render 'edit' }
+      format.json { render json: @plan }
+    end
+  end
+
+
   private
     def set_itinerary
       @itinerary = Itinerary.find(params[:itinerary_id])

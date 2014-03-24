@@ -8,6 +8,7 @@ class Plan < ActiveRecord::Base
 
   serialize :tips_tricks, Array
   serialize :days, Array
+  serialize :bookings, Array
 
   def cover
     begin
