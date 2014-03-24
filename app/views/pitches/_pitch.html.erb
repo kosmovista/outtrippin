@@ -27,7 +27,7 @@
         </ul>
       </div>
       <% end %>
-      <p><%= pitch.summary %></p>
+      <p><%= simple_format(pitch.summary) %></p>
       <% if ( current_user && !current_user.is?("expert") ) || ( pitch.won_by?(current_user) ) || ( pitch.written_by?(current_user) ) %>
       <div class="written-by">
         <hr>
