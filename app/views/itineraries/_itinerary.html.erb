@@ -14,7 +14,7 @@
       </div>
       <div class="large-2 small-12 text-center columns">
         <%= link_to "Details", itinerary_path(itinerary), class: "story-request secondary expand tiny radius button" %>
-        <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "submit-pitch button tiny expand right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !itinerary.has_winner_pitch? %>
+        <%= link_to "Submit pitch", new_itinerary_pitch_path(itinerary), target: "_blank", class: "submit-pitch button tiny expand right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !itinerary.has_winner_pitch? %>
       </div>
 
       <hr style="border:1px #e6e6e6 solid;">
