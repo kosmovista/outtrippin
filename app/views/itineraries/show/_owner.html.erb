@@ -16,9 +16,10 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLER</a></li>
           <li><a href="#" id="slide1" > REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -47,8 +48,8 @@
   </div>
 </div>
 <div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" id="sharebutton" class="sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Share your story.</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
   <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
@@ -110,9 +111,10 @@
 </div class="header">
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLERS</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -153,8 +155,8 @@
 </div>
 
 <div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
   <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
@@ -208,9 +210,10 @@
 
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
           <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -222,6 +225,15 @@
 </div>
 
 <div class="row" id="slide0-content">
+  <% unless @itinerary.paid %>
+  <div class="large-8 large-centered small-12 columns">
+    <div data-alert class="alert-box secondary radius text-center">
+      <h4>Get the best storytellers!</h4>
+      <p>A guaranteed reward attracts more storytellers to your trip and remember, OutTrippin offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
+        <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
+    </div>
+  </div>
+  <% end %>
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>Today:</h5>
@@ -235,21 +247,12 @@
     </div>
   </div>
 
-  <% unless @itinerary.paid %>
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>And then?</h5>
-      <p> It's time to pick your favourite storyteller and pay the trip planning fee. The fun really starts as you work with them to design your special travel story. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
+      <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
     </div>
   </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Get the best storytellers!</h5>
-      <p>A guaranteed reward attracts more storytellers to your trip and remember, OutTrippin offers a money back guarantee if you're not 100% happy with the advice you've received.</p>
-        <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
-    </div>
-  </div>
-  <% end %>
 </div>
 <div class="row" id="slide1-content">
   <div class="large-12 large-centered small-12 columns">
@@ -277,8 +280,8 @@
 </div>
 
 <div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Invite a friend.</a></em></h4>
+  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
   <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
@@ -334,9 +337,10 @@
   </div class="header">
   <div class="tabs">
     <div class="row">
-      <div class="large-12 large-centered text-center small-12 columns">
-        <div class="large-8 large-centered text-center small-12 columns">
-          <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
             <li><a href="#" id="slide0" class="active-tab" >REQUEST & COMMENTS</a></li>
           </ul>
           <hr style="border-color:white; margin-top:0;">
@@ -350,8 +354,8 @@
     </div>
   </div>
   <div class="share">
-    <h4 class="serif subheader"><em><a href="/login" id="login-bottom" class="sharethis">Login to comment or submit a pitch.</a></em></h4>
-    <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+    <h4 class="serif subheader"><em><a href="/login" id="login-bottom" class="button subheader small serif sharethis">Login to comment or submit a pitch.</a></em></h4>
+    <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
   </div>
 <div id="login-modal" class="reveal-modal small text-center">
   <h3>Login to get the full story.</h3>

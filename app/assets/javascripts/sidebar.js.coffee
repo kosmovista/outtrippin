@@ -20,12 +20,16 @@ window.tabbs = $("#cover-tabs").children()
 window.tabbs.each (i) ->
   $('#slide' + i + '-content').hide()
   $('#slide' + window.act_tab + '-content').show()
+  linkText = $('#slide' + window.act_tab).text()
+  $(".tab-dropdown").html(linkText)
 
   $('#slide' + i).on "click", ->
     $('#slide' + window.act_tab).removeClass("active-tab")
     $('#slide' + window.act_tab + '-content').toggle()
     # Goto to selected slide
     window.act_tab = i
+    linkText = $('#slide' + window.act_tab).text()
+    $(".tab-dropdown").html(linkText)
     $('#slide' + window.act_tab).addClass("active-tab")
     $('#slide' + window.act_tab + '-content').toggle()
     return false
