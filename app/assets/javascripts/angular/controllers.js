@@ -128,23 +128,32 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
     for (var i = 0; i < $files.length; i++) {
       var file = $files[i];
       $scope.upload = $upload.upload({
-        url: 'plan/picture.json', //upload.php script, node.js route, or servlet url
+        url: 'plan/picture.json',
         method: "PUT",
-        // headers: {'headerKey': 'headerValue'}, withCredential: true,
         data: { myObj: $scope.myModelObj, cover: cover, day: day },
-        file: file,
-        // file: $files, //upload multiple files, this feature only works in HTML5 FromData browsers
-        /* set file formData name for 'Content-Desposition' header. Default: 'file' */
-        //fileFormDataName: myFile,
-        /* customize how data is added to formData. See #40#issuecomment-28612000 for example */
-        //formDataAppender: function(formData, key, val){}
+        file: file
       }).progress(function(evt) {
         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
       }).success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
       });
-      //.error(...)
-      //.then(success, error, progress);
+    }
+  };
+
+  // UPLOAD PICTURE TO BOOKING
+  $scope.onFileSelectBooking = function($files, booking) {
+    for (var i = 0; i < $files.length; i++) {
+      var file = $files[i];
+      $scope.upload = $upload.upload({
+        url: 'plan/booking/' + booking + '.json',
+        method: "PUT",
+        data: { myObj: $scope.myModelObj, booking: booking },
+        file: file
+      }).progress(function(evt) {
+        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+      }).success(function(data, status, headers, config) {
+        $scope.plan = Plan.query();
+      });
     }
   };
 

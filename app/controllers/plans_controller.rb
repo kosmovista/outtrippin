@@ -147,6 +147,22 @@ class PlansController < ApplicationController
     end
   end
 
+  def add_picture_booking
+    picture = Picture.create
+    picture.source = params[:file]
+
+    # IS IT A DAY PIC?
+    booking = @plan.bookings.select {|bk| bk[:id] == params[:booking]}
+    unless booking.first.nil?
+      booking.first[:picture] = picture.source.url.to_s
+    end
+
+    @plan.save!
+    respond_to do |format|
+      format.json { render json: @plan }
+    end
+  end
+
 
   private
     def set_itinerary
