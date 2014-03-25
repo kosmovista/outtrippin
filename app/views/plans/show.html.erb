@@ -3,108 +3,154 @@
 </style>
 <div ng-cloak>
 <% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin Story Builder") %>
-<div class="cover" style="background-image:url({{plan.cover}})"></div>
-<div id="overlay"></div>
-<div class="header">
-  <div class="row">
-    <div class="large-12 small-12 text-center columns">
-      <h2 class="white text-center"><%= @itinerary.winner_pitch.title %></h2>
-      <div class="large-1 hide-for-small large-centered columns">
-        <hr style="border-color:white;">
-      </div>
-      <h5 class="white serif subheader text-center">
-      <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
-      <em>By <%= @plan.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
-    </h5>
-    </div>
-  </div>
-</div>
-<div class="tabs">
-  <div class="large-1 small-2 text-center large-centered small-centered columns">
-    <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-     <label class="file-input story-cover text-center">
-       <%= image_tag "edit-circle.png", id: "image-cover", style: "width:30px;", title: "Change Cover Picture" %>
-       <input type="file" ng-file-select="onFileSelect($files, true, 0)">
-     </label>
-    <% end %>
-  </div>
-</div>
-<div class="summary">
+  <div class="cover" style="background-image:url({{plan.cover}})"></div>
+  <div id="overlay"></div>
+  <div class="header">
     <div class="row">
-      <div class="large-11 large-centered small-12 columns">
-        <h5 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
-        <h5 class="serif black text-right subheader" style="margin-top:20px;">
-          <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %>
-          <em>- <%= @plan.user.personal_info[:name] %> <br>
-            OutTrippin Storyteller</em>
-
+      <div class="large-12 small-12 text-center columns">
+        <h2 class="white text-center"><%= @itinerary.winner_pitch.title %></h2>
+        <div class="large-1 hide-for-small large-centered columns">
+          <hr style="border-color:white;">
+        </div>
+        <h5 class="white serif subheader text-center">
+        <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
+        <em>By <%= @plan.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
         </h5>
+        <div class="large-1 small-2 text-center large-centered small-centered columns">
+        <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+         <label class="file-input story-cover text-center">
+           <%= image_tag "edit-circle.png", id: "image-cover", style: "width:30px;", title: "Change Cover Picture" %>
+           <input type="file" ng-file-select="onFileSelect($files, true, 0)">
+         </label>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-<ul class="days small-block-grid-1 break">
-  <li  ng-if="plan.days < 1">
+  <div class="tabs">
     <div class="row">
-      <div class="large-8 large-centered small-12 columns">
-        <h4 class="subheader black serif text-center"><em>Welcome to the OutTrippin Story Builder.</em></h4>
-
-        <h5 class="subheader serif text-center"><em> <a href="" id="take-tour" onclick="$(document).foundation('joyride', 'start');">Take a tour</a>, or to get started, click on "Add Day."</em></h5>
-      </div>
-    </div>
-  </li>
-  <li ng-repeat="day in plan.days" id="{{day.id}}">
-    <!-- DISPLAY TITLE, PARAGRAPH AND EDIT BUTTON -->
-    <div ng-show="!editing" class="read">
-      <div class="row">
-        <div class="large-11 large-centered small-12 columns">
-          <div class="large-2 small-6 columns">
-            <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
-          </div>
-          <div id="edit-day" class="large-2 small-6 right columns text-right">
-            <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-            <a href="" id="editday" class="circle-button"  ng-click="editing=true;" title="Edit Day">
-              <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
-            </a>
+      <div class="large-12 large-centered small-centered small-12 columns">
+        <div class="large-8 large-centered small-centered small-12 columns">
+          <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+          <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
+            <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+            <% if current_user  && current_user.admin? %>
+            <li><a href="#" id="slide1" >BOOKING</a></li>
             <% end %>
-          </div>
-          <div class="large-8 large-centered small-12 columns">
-            <h3 style="margin-top:0;">{{day.title}}</h3>
-
-            <div class="desc">
-              <label id="image-day" class="file-input perday">
-                <span ng-if="!day.picture"><%= image_tag "image.png", style:"width:300px; opacity:0.2;" %></span>
-                <img ng-if="day.picture" ng-src="{{day.picture}}" class="day-photo"></img>
-                <input type="file" ng-file-select="onFileSelect($files, false, day.id)">
-              </label>
-              <p ng-bind-html="day.body"></p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="large-1 small-12 large-centered columns">
-          <hr>
+          </ul>
+          <hr style="border-color:white; margin-top:0;">
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- WHILE EDITING -->
-    <div ng-show="editing" class="edit">
-      <div class="row">
-        <div class="large-11 large-centered small-12 columns">
+  <div id="slide0-content">
+    <div class="summary">
+        <div class="row">
+          <div class="large-11 large-centered small-12 columns">
+            <h5 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
+            <h5 class="serif black text-right subheader" style="margin-top:20px;">
+              <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %>
+              <em>- <%= @plan.user.personal_info[:name] %> <br>
+                OutTrippin Storyteller</em>
+
+            </h5>
+          </div>
+        </div>
+      </div>
+    <ul class="days small-block-grid-1 break">
+      <li  ng-if="plan.days < 1">
+        <div class="row">
+          <div class="large-8 large-centered small-12 columns">
+            <h4 class="subheader black serif text-center"><em>Welcome to the OutTrippin Story Builder.</em></h4>
+
+            <h5 class="subheader serif text-center"><em> <a href="" id="take-tour" onclick="$(document).foundation('joyride', 'start');">Take a tour</a>, or to get started, click on "Add Day."</em></h5>
+          </div>
+        </div>
+      </li>
+      <li ng-repeat="day in plan.days" id="{{day.id}}">
+        <!-- DISPLAY TITLE, PARAGRAPH AND EDIT BUTTON -->
+        <div ng-show="!editing" class="read">
           <div class="row">
-            <form ng-submit="editing = false" style="margin:0;">
+            <div class="large-11 large-centered small-12 columns">
               <div class="large-2 small-6 columns">
                 <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
               </div>
-              <div class="large-2 right small-6 columns text-right">
-                <a href="" class="circle-button" title="Save Changes" id="Save-day" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
-                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
-                <a href="" class="circle-button" title="Delete Day" id="delete-day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
+              <div id="edit-day" class="large-2 small-6 right columns text-right">
+                <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+                <a href="" id="editday" class="circle-button"  ng-click="editing=true;" title="Edit Day">
+                  <%= image_tag "edit-circle.png", style: "width:30px", class: "circle-button" %>
+                </a>
+                <% end %>
               </div>
-              <div class="large-8 small-12 columns">
-                <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
-                <div class="desc" text-angular ng-model="day.body"></div>
+              <div class="large-8 large-centered small-12 columns">
+                <h3 style="margin-top:0;">{{day.title}}</h3>
+
+                <div class="desc">
+                  <label id="image-day" class="file-input perday">
+                    <span ng-if="!day.picture"><%= image_tag "image.png", style:"width:300px; opacity:0.2;" %></span>
+                    <img ng-if="day.picture" ng-src="{{day.picture}}" class="day-photo"></img>
+                    <input type="file" ng-file-select="onFileSelect($files, false, day.id)">
+                  </label>
+                  <p ng-bind-html="day.body"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="large-1 small-12 large-centered columns">
+              <hr>
+            </div>
+          </div>
+        </div>
+
+        <!-- WHILE EDITING -->
+        <div ng-show="editing" class="edit">
+          <div class="row">
+            <div class="large-11 large-centered small-12 columns">
+              <div class="row">
+                <form ng-submit="editing = false" style="margin:0;">
+                  <div class="large-2 small-6 columns">
+                    <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
+                  </div>
+                  <div class="large-2 right small-6 columns text-right">
+                    <a href="" class="circle-button" title="Save Changes" id="Save-day" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                    <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                    <a href="" class="circle-button" title="Delete Day" id="delete-day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
+                  </div>
+                  <div class="large-8 small-12 columns">
+                    <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
+                    <div class="desc" text-angular ng-model="day.body"></div>
+                  </div>
+                </form>
+              </div>
+              <div class="row">
+                <div class="large-1 small-12 large-centered columns">
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- ADD NEW DAY -->
+      <li>
+        <div id="adding-day" ng-show="add_day" class="edit">
+          <div class="row">
+            <form ng-submit="add_day = false" style="margin:0;">
+              <div class="large-11 large-centered small-12 columns">
+                <div class="large-2 small-6 columns">
+                  <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
+                </div>
+                <div id="menu-day" class="large-2 right small-6 columns text-right">
+                  <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_day=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                  <a href="" class="circle-button" title="Save Day" id="save-day" ng-click="save_day()"><%= image_tag "save.png", style: "width:26px" %></a>
+                </div>
+                <div class="large-8 small-12 columns">
+                  <h3><input id="title-day" type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
+                  <div id="desc-day" class="desc" text-angular ng-model="day.body"></div>
+                </div>
               </div>
             </form>
           </div>
@@ -114,232 +160,217 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </li>
+      </li>
 
-  <!-- ADD NEW DAY -->
-  <li>
-    <div id="adding-day" ng-show="add_day" class="edit">
-      <div class="row">
-        <form ng-submit="add_day = false" style="margin:0;">
-          <div class="large-11 large-centered small-12 columns">
-            <div class="large-2 small-6 columns">
-              <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
-            </div>
-            <div id="menu-day" class="large-2 right small-6 columns text-right">
-              <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_day=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-              <a href="" class="circle-button" title="Save Day" id="save-day" ng-click="save_day()"><%= image_tag "save.png", style: "width:26px" %></a>
-            </div>
-            <div class="large-8 small-12 columns">
-              <h3><input id="title-day" type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
-              <div id="desc-day" class="desc" text-angular ng-model="day.body"></div>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="row">
-        <div class="large-1 small-12 large-centered columns">
-          <hr>
-        </div>
-      </div>
-    </div>
-  </li>
-
-  <li ng-repeat="tt in plan.tips_tricks" id="{{tt.id}}">
-    <!-- DISPLAY TITLE, TIP AND EDIT BUTTON -->
-    <div ng-show="!editing_tt">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-              <a href="" id="edittip" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
-            <% end %>
-          </div>
-          <div class="large-8 large-centered columns">
-            <div class="tips">
-              <h4 class="subheader black serif"><em><span style="font-size:120%;">{{tt.title}}</span> {{tt.body}}</em></h4>
-              <h6 class="subheader serif" style="padding-top:.8em;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar" %><em><%= @plan.user.personal_info[:name] %></em></h6>
+      <li ng-repeat="tt in plan.tips_tricks" id="{{tt.id}}">
+        <!-- DISPLAY TITLE, TIP AND EDIT BUTTON -->
+        <div ng-show="!editing_tt">
+          <div class="row">
+            <div class="large-11 large-centered columns">
+              <div class="large-2 right columns text-right">
+                <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+                  <a href="" id="edittip" class="circle-button" ng-click="editing_tt=true" title="Edit Tip"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
+                <% end %>
+              </div>
+              <div class="large-8 large-centered columns">
+                <div class="tips">
+                  <h4 class="subheader black serif"><em><span style="font-size:120%;">{{tt.title}}</span> {{tt.body}}</em></h4>
+                  <h6 class="subheader serif" style="padding-top:.8em;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded text-right tip-avatar" %><em><%= @plan.user.personal_info[:name] %></em></h6>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
-    <!-- WHILE EDITING TIP & TRICK -->
-    <div ng-show="editing_tt" class="edit">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><%= image_tag "save.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_tt=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Delete Tip Trick" id="delete-tip" ng-click="delete_tip_trick(tt.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
-          </div>
-          <div class="large-8 large-centered columns">
-            <div class="tips">
-              <h4 class="subheader black serif" ><span style="font-size:120%;"><input type="text" style="font-style:italic;" autofocus="true" ng-model="tt.title" /></span></h4>
-              <h4 class="subheader black serif" ><textarea ng-model="tt.body" style="font-style:italic;"></textarea></h4>
+        <!-- WHILE EDITING TIP & TRICK -->
+        <div ng-show="editing_tt" class="edit">
+          <div class="row">
+            <div class="large-11 large-centered columns">
+              <div class="large-2 right columns text-right">
+                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_tip_trick(tt.id, tt.title, tt.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_tt=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Delete Tip Trick" id="delete-tip" ng-click="delete_tip_trick(tt.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
+              </div>
+              <div class="large-8 large-centered columns">
+                <div class="tips">
+                  <h4 class="subheader black serif" ><span style="font-size:120%;"><input type="text" style="font-style:italic;" autofocus="true" ng-model="tt.title" /></span></h4>
+                  <h4 class="subheader black serif" ><textarea ng-model="tt.body" style="font-style:italic;"></textarea></h4>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </li>
+      </li>
 
-  <!-- ADD NEW TIP TRICK -->
-  <li>
-    <div id="adding-tip" ng-show="add_tip_trick" class="edit">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-            <a href="" class="circle-button" title="Save Tip" id="Save-tip" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
-          </div>
-          <div class="large-8 large-centered columns">
-            <div class="tips">
-              <form ng-submit="add_tip_trick = false" style="margin:0;">
-                <h4 class="subheader black serif" >
-                  <span style="font-size:120%;">
-                    <input type="text" autofocus="true" style="font-style:italic;" ng-model="tip_trick.title" placeholder="A title for the tip"/>
-                  </span>
-                </h4>
-                <h4 class="subheader black serif" >
-                  <textarea style="font-style:italic;" ng-model="tip_trick.body" placeholder="Write a short description of the tip or trick."/></textarea>
-                </h4>
-              </form>
+      <!-- ADD NEW TIP TRICK -->
+      <li>
+        <div id="adding-tip" ng-show="add_tip_trick" class="edit">
+          <div class="row">
+            <div class="large-11 large-centered columns">
+              <div class="large-2 right columns text-right">
+                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_tip_trick=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                <a href="" class="circle-button" title="Save Tip" id="Save-tip" ng-click="save_tip_trick()"><%= image_tag "save.png", style: "width:26px" %></a>
+              </div>
+              <div class="large-8 large-centered columns">
+                <div class="tips">
+                  <form ng-submit="add_tip_trick = false" style="margin:0;">
+                    <h4 class="subheader black serif" >
+                      <span style="font-size:120%;">
+                        <input type="text" autofocus="true" style="font-style:italic;" ng-model="tip_trick.title" placeholder="A title for the tip"/>
+                      </span>
+                    </h4>
+                    <h4 class="subheader black serif" >
+                      <textarea style="font-style:italic;" ng-model="tip_trick.body" placeholder="Write a short description of the tip or trick."/></textarea>
+                    </h4>
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </li>
+      </li>
 
-  <!-- TODO: SHOW BOOKING -->
-  <li ng-repeat="bk in plan.bookings" id="{{bk.id}}">
-    <!-- DISPLAY TITLE, TIP AND EDIT BUTTON -->
-    <div ng-show="!editing_bk">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-              <a href="" id="editbooking" class="circle-button" ng-click="editing_bk=true" title="Edit Booking"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
-            <% end %>
+     
+
+      <!-- ADD NEW DAY/TIPS&TRICKS BUTTONS -->
+      <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+      <li>
+        <div class="row">
+          <div class="large-12 text-center columns">
+            <a id="add-day-btn" href="#adding-day " ng-click="add_day=true" class="button radius" >&#43; Add Day</a>
+            <a id="add-tip-btn" href="#adding-tip" class="button radius" style="margin-left:10px;" ng-click="add_tip_trick=true">&#43; Add Tip</a>
           </div>
-          <div class="large-8 large-centered columns">
-            <div class="bookings">
-              <h4 class="subheader black serif"><em><span style="font-size:120%;">{{bk.title}}</span> <small>{{bk.location}}, {{bk.price}}</small></em></h4>
-              <a href="{{bk.link}}">{{bk.link}}</a>
-              <p>{{bk.body}}</p>
+        </div>
+      </li>
+      <% end %>
+      <li>
+        <div class="row written-by">
+      <div class="large-12 large-centered small-12 columns">
+        <div class="large-8 small-12 large-centered columns"><hr>
+          <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
+              <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+                <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank' unless @plan.user.facebook.blank? %>
+                <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank' unless @plan.user.pinterest.blank? %>
+                <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank' unless @plan.user.twitter.blank? %>
+                <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank' unless @plan.user.instagram.blank? %></h5>
+              <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small></h5>
+            </div>
+            <div id="interestd" class="f-dropdown medium content" data-dropdown-content>
+              <h5 class="subheader serif"><em>My travel interests:</em></h5>
+              <p>
+             <% unless @plan.user.expert_info[:style].blank? %>
+              <ul class="sans skill-list">
+                <% @plan.user.expert_info[:style].each do |s| %>
+                <li><%= s %></li>
+                <% end %>
+              </ul></p>
+              <% end %>
+              <em><%= link_to "...See my full profile", user_path(@plan.user), target: "_blank", title: "Storyteller's Profile" %></em>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <div ng-show="editing_bk" class="edit">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price)"><%= image_tag "save.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_bk=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
-            <a href="" class="circle-button" title="Delete Booking" id="delete-booking" ng-click="delete_booking(bk.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
-          </div>
-          <div class="large-8 large-centered columns">
-            <div class="bookings">
-              <form ng-submit="add_booking = false" style="margin:0;">
-                <h4 class="subheader black serif" >
-                  <span style="font-size:120%;"><input type="text" autofocus="true" style="font-style:italic;" ng-model="bk.title" placeholder="Name of the booking"/></span>
-                  <input type="text" style="font-style:italic;" ng-model="bk.link" placeholder="Link for the booking" />
-                  <input type="text" style="font-style:italic;" ng-model="bk.price" placeholder="Price for the booking" />
-                  <input type="text" style="font-style:italic;" ng-model="bk.location" placeholder="Location of the booking" />
-                </h4>
-                  <textarea style="font-style:italic;" ng-model="bk.body" placeholder="Write a short description of the booking."/></textarea>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </li>
-  <!-- -->
-
-
-  <!-- ADD NEW BOOKING -->
-  <li>
-    <div id="adding-booking" ng-show="add_booking" class="edit">
-      <div class="row">
-        <div class="large-11 large-centered columns">
-          <div class="large-2 right columns text-right">
-            <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_booking=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
-            <a href="" class="circle-button" title="Save Booking" id="save-booking" ng-click="save_booking()"><%= image_tag "save.png", style: "width:26px" %></a>
-          </div>
-          <div class="large-8 large-centered columns">
-            <div class="bookings">
-              <form ng-submit="add_booking = false" style="margin:0;">
-                <h4 class="subheader black serif" >
-                  <span style="font-size:120%;"><input type="text" autofocus="true" style="font-style:italic;" ng-model="booking.title" placeholder="Name of the booking"/></span>
-                  <input type="text" style="font-style:italic;" ng-model="booking.link" placeholder="Link for the booking" />
-                  <input type="text" style="font-style:italic;" ng-model="booking.price" placeholder="Price for the booking" />
-                  <input type="text" style="font-style:italic;" ng-model="booking.location" placeholder="Location of the booking" />
-                </h4>
-                <h4 class="subheader black serif" >
-                  <textarea style="font-style:italic;" ng-model="booking.body" placeholder="Write a short description of the booking."/></textarea>
-                </h4>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </li>
-
-
-  <!-- ADD NEW DAY/TIPS&TRICKS BUTTONS -->
-  <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-  <li>
-    <div class="row">
-      <div class="large-12 text-center columns">
-        <a id="add-day-btn" href="#adding-day " ng-click="add_day=true" class="button radius" >&#43; Add Day</a>
-        <a id="add-tip-btn" href="#adding-tip" class="button radius" style="margin-left:10px;" ng-click="add_tip_trick=true">&#43; Add Tip</a>
-        <a id="add-booking-btn" href="#adding-booking" class="button radius" style="margin-left:10px;" ng-click="add_booking=true">&#43; Add Booking</a>
-      </div>
-    </div>
-  </li>
-  <% end %>
-  <li>
-    <div class="row written-by">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="large-8 small-12 large-centered columns"><hr>
-      <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
-      <div class="row">
-        <div class="large-12 small-12 columns">
-          <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
-          <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
-            <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank' unless @plan.user.facebook.blank? %>
-            <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank' unless @plan.user.pinterest.blank? %>
-            <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank' unless @plan.user.twitter.blank? %>
-            <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank' unless @plan.user.instagram.blank? %></h5>
-          <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small></h5>
-        </div>
-        <div id="interestd" class="f-dropdown medium content" data-dropdown-content>
-          <h5 class="subheader serif"><em>My travel interests:</em></h5>
-          <p>
-         <% unless @plan.user.expert_info[:style].blank? %>
-          <ul class="sans skill-list">
-            <% @plan.user.expert_info[:style].each do |s| %>
-            <li><%= s %></li>
-            <% end %>
-          </ul></p>
-          <% end %>
-          <em><%= link_to "...See my full profile", user_path(@plan.user), target: "_blank", title: "Storyteller's Profile" %></em>
-        </div>
-      </div>
-    </div>
+    </li>
+    </ul>
   </div>
-</div>
-</li>
-</ul>
+
+  <% if current_user && current_user.admin? %>
+  <div class="booking" id="slide1-content">
+    <ul class="days small-block-grid-1 break">
+
+       <!-- SHOW BOOKING -->
+      <li ng-repeat="bk in plan.bookings" id="{{bk.id}}">
+        <div class="row" ng-show="!editing_bk">
+          <div class="row">
+            <div class="large-12 small-12 large-centered columns">
+              <div class="large-3 small-12 columns">
+                <%= image_tag "hotel.jpeg", class: "booking-img" %>
+              </div>
+              <div class="large-7 small-12 columns">
+                <h3 style="margin-bottom:0px;">{{bk.title}}</h3>
+                <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a href="#">{{bk.location}}</a></em></p>
+                 <p>{{bk.body}}</p>
+              </div>
+              <div class="large-2 small-12 text-center columns">
+                <span class="radius price small white label" >{{bk.price}}</span>
+                <a href="{{bk.link}}" class="button pricethis expand secondary small text-center serif" style="margin-top:-3px">Book now</a>
+                <a href="" id="editbooking" class="circle-button" ng-click="editing_bk=true" title="Edit Booking"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
+              </div>
+            </div>
+          </div>
+          <hr style="border:1px #e6e6e6 solid">
+        </div>
+
+        <!-- EDIT BOOKING -->           
+        <div ng-show="editing_bk" class="edit">
+          <div class="row booking">
+            <div class="large-12 large-centered columns">
+              <div class="large-2 right columns text-right">
+                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_bk=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Delete Booking" id="delete-booking" ng-click="delete_booking(bk.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
+              </div>
+              <div class="large-8 large-centered columns">
+                <div class="bookings">
+                  <form ng-submit="add_booking = false" style="margin:0;">
+                    <h4 class="subheader black serif" >
+                      <span style="font-size:120%;"><input type="text" autofocus="true" style="font-style:italic;" ng-model="bk.title" placeholder="Name of the booking"/></span>
+                      <input type="text" style="font-style:italic;" ng-model="bk.link" placeholder="Link for the booking" />
+                      <input type="text" style="font-style:italic;" ng-model="bk.price" placeholder="Price for the booking" />
+                      <input type="text" style="font-style:italic;" ng-model="bk.location" placeholder="Location of the booking" />
+                    </h4>
+                      <textarea style="font-style:italic;" ng-model="bk.body" placeholder="Write a short description of the booking."/></textarea>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <!-- -->
+
+      <!-- ADD NEW BOOKING -->
+      <li>
+        <div id="adding-booking" ng-show="add_booking" class="edit">
+          <div class="row">
+            <div class="large-11 large-centered columns">
+              <div class="large-2 right columns text-right">
+                <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="add_booking=false"><%= image_tag "cancel.png", style: "width:25px" %></a>
+                <a href="" class="circle-button" title="Save Booking" id="save-booking" ng-click="save_booking()"><%= image_tag "save.png", style: "width:26px" %></a>
+              </div>
+              <div class="large-8 large-centered columns">
+                <div class="bookings">
+                  <form ng-submit="add_booking = false" style="margin:0;">
+                    <h4 class="subheader black serif" >
+                      <span style="font-size:120%;"><input type="text" autofocus="true" style="font-style:italic;" ng-model="booking.title" placeholder="Name of the booking"/></span>
+                      <input type="text" style="font-style:italic;" ng-model="booking.link" placeholder="Link for the booking" />
+                      <input type="text" style="font-style:italic;" ng-model="booking.price" placeholder="Price for the booking" />
+                      <input type="text" style="font-style:italic;" ng-model="booking.location" placeholder="Location of the booking" />
+                    </h4>
+                    <h4 class="subheader black serif" >
+                      <textarea style="font-style:italic;" ng-model="booking.body" placeholder="Write a short description of the booking."/></textarea>
+                    </h4>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="row">
+          <div class="large-12 text-center columns">
+           <a id="add-booking-btn" href="#adding-booking" class="button radius" style="margin-left:10px;" ng-click="add_booking=true">&#43; Add Booking</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <% end %>
 </div>
 
 <%= content_for :body do %>
