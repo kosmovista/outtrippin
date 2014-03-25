@@ -75,6 +75,12 @@ class ItinerariesController < ApplicationController
 
   def checkout
     @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
+
+    if !current_user
+      flash[:notice] = "You have to login before getting to the checkout page."
+      session[:original_uri] = checkout_itinerary_path(@itinerary)
+      redirect_to login_path
+    end
   end
 
   def purchase

@@ -4,9 +4,14 @@ class PlansController < ApplicationController
   before_action :set_plan
 
   def show
+    begin
     if @plan.nil?
-      @plan = @itinerary.plans.create(user: current_user)
+      @plan = @itinerary.plans.create(user: @itinerary.winner_pitch.user)
     end
+  rescue
+    flash[:notice] = "This itinerary doesn't have a winner yet."
+    redirect_to itinerary_path(@itinerary)
+  end
   end
 
   def add_day
