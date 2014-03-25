@@ -150,6 +150,7 @@ class PlansController < ApplicationController
   def add_picture_booking
     picture = Picture.create
     picture.source = params[:file]
+    picture.save
 
     # IS IT A DAY PIC?
     booking = @plan.bookings.select {|bk| bk[:id] == params[:booking]}
