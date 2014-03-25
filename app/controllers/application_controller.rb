@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   def store_location
     session[:original_uri] = request.url
   end
-  
+
   def authorize_user
     unless current_user
       session[:original_uri] = request.url
@@ -48,6 +48,9 @@ class ApplicationController < ActionController::Base
     authorize_user
   end
 
+  def authorize_owner
+    redirect_to root_path unless current_user == @user || (current_user && current_user.admin?)
+  end
 
   def authorize_admin
     redirect_to root_path unless current_user && current_user.admin?
