@@ -225,6 +225,15 @@
 </div>
 
 <div class="row" id="slide0-content">
+  <% unless @itinerary.paid %>
+  <div class="large-8 large-centered small-12 columns">
+    <div data-alert class="alert-box secondary radius text-center">
+      <h4>Get the best storytellers!</h4>
+      <p>A guaranteed reward attracts more storytellers to your trip and remember, Plan My Trip offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
+        <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
+    </div>
+  </div>
+  <% end %>
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>Today:</h5>
@@ -238,21 +247,12 @@
     </div>
   </div>
 
-  <% unless @itinerary.paid %>
   <div class="large-8 large-centered small-12 columns">
     <div data-alert class="alert-box secondary radius text-center">
       <h5>And then?</h5>
-      <p> It's time to pick your favourite storyteller and pay the trip planning fee. The fun really starts as you work with them to design your special travel story. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
+      <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
     </div>
   </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Get the best storytellers!</h5>
-      <p>A guaranteed reward attracts more storytellers to your trip and remember, Plan My Trip offers a money back guarantee if you're not 100% happy with the advice you've received.</p>
-        <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
-    </div>
-  </div>
-  <% end %>
 </div>
 <div class="row" id="slide1-content">
   <div class="large-12 large-centered small-12 columns">
