@@ -90,6 +90,11 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
@@ -185,6 +190,11 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
@@ -309,6 +319,11 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
