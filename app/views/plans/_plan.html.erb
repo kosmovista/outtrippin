@@ -133,26 +133,37 @@
 <% end %>
 
 <div class="row short-break" id="slide2-content">
+  <% if @plan.bookings.blank? %>
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>We're sorry, there are no booking links for this story... for now.</em></p>
+      <h5 class="serif subheader" style="margin-bottom:100px;"><em>But we do love you lots, so <a href="#" id="request-booking" data-reveal-id="confirmed">give us a shout</a>, and our booking superhero will have you setup and ready to go in no time.</em></h5>
+    </div>
+    <div id="confirmed" class="reveal-modal small text-center">
+      <%= image_tag "save.png", style:"width:80px; margin-bottom:30px;" %>
+      <h3>Message Received, Cap'n!</h3>
+      <h4 class="serif subheader"><em>We've heard you loud and clear and one of our booking superheroes will be in touch with you shortly to get you booked up and ready to roll.</em></h4>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  <% else %>
   <% @plan.bookings.each do |bk| %>
-
-  <div class="row booking">
-    <div class="large-12 small-12 large-centered columns">
-      <div class="large-3 small-12 columns">
-        <%= image_tag bk[:picture], class: "booking-img" %>
-      </div>
-      <div class="large-7 small-12 columns">
-        <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
-        <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
-        <p><%= bk[:body] %></p>
-      </div>
-      <div class="large-2 small-12 text-center columns">
-        <span class="radius price small white label" ><%= bk[:price] %></span>
-        <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+    <div class="row booking">
+      <div class="large-12 small-12 large-centered columns">
+        <div class="large-3 small-12 columns">
+          <%= image_tag bk[:picture], class: "booking-img" %>
+        </div>
+        <div class="large-7 small-12 columns">
+          <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
+          <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
+          <p><%= bk[:body] %></p>
+        </div>
+        <div class="large-2 small-12 text-center columns">
+          <span class="radius price small white label" ><%= bk[:price] %></span>
+          <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+        </div>
       </div>
     </div>
-  </div>
-  <hr style="border:1px #e6e6e6 solid">
-
+    <hr style="border:1px #e6e6e6 solid">
+  <% end %>
   <% end %>
 
 </div>
@@ -206,6 +217,9 @@
   mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
   });
+  mixpanel.track_links("#slide2-content a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+  });
   mixpanel.track_links("#facebook-share", "Facebook Share", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
     "Stage": "Final Story"
@@ -215,8 +229,21 @@
     "Stage": "Final Story"
   });
   mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
+    'Feature': 'Maps'
   });
+  mixpanel.track_links("#request-booking", "Requested Booking");
+  <% if current_user %>
+    $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
+    $("#request-booking").click(function() {
+      mixpanel.people.set({
+        "Requested Booking": "<%= @itinerary.winner_pitch.title %>"
+      });
+    });
+  <% end %>
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button", {
       "Story_id": "<%= @itinerary.winner_pitch.title %>",
