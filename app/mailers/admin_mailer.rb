@@ -9,6 +9,7 @@ class AdminMailer < ActionMailer::Base
 
   def new_itinerary_email(itinerary)
     @itinerary = itinerary
+    @user = @itinerary.user
     mail to: ADMINS, subject: "[PlanMyTrip] new itinerary submitted"
   end
 
