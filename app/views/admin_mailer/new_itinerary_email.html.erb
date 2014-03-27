@@ -4,6 +4,7 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
+  <%= content_tag(:p, (@user.email).html_safe) unless @user.email.blank? %>
   <%= content_tag(:h5, (@itinerary.extra_info[:name].blank? ? "Trip Overview" : @itinerary.extra_info[:name])) %>
   <%= content_tag(:p, ("<strong>Destination:</strong> " + @itinerary.destination).html_safe) unless @itinerary.destination.blank? %>
   <%= content_tag(:p, ("<strong>Travelers:</strong> " + @itinerary.extra_info[:travelers]).html_safe) unless @itinerary.extra_info[:travelers].blank? %>
