@@ -170,14 +170,6 @@
   <h3>Saved! We'll keep you updated on when this feature is released.</h3>
 </div>
 
-<div id="login-modal" class="reveal-modal hide-on-print small text-center">
-  <h3>Login to get the full story.</h3>
-  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other OutTrippin power features by logging in.</em></h5>
-  <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
-  <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
-  <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
-</div>
-
 <div class="share hide-on-print">
   <h4 class="serif subheader"><em><a href="#" id="sharebutton" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
   <hr class="hide-for-small" style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
@@ -205,13 +197,6 @@
 </div>
 
 <%= content_for :body do %>
-  // <script>
-  //   $(document).ready(function() {
-  //     setTimeout(function(){
-  //       $("#login-modal").foundation('reveal', 'open');
-  //     }, 4000);
-  //   });
-  // </script>
   <script>
   mixpanel.track("Page Loaded", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",

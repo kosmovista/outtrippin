@@ -189,7 +189,6 @@
     mixpanel.track("Share Button");
   });
   $("#Pick-Winner").click(function() {
-    // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
   });
 </script>
@@ -314,7 +313,6 @@
     mixpanel.track("Share Button");
   });
   $("#Pick-Winner").click(function() {
-    // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
   });
 </script>
@@ -324,6 +322,22 @@
 <% else # no current_user %>
   <% if @plan && @plan.published %>
     <%= render @plan %>
+    <div id="login-modal" class="reveal-modal small text-center">
+      <h3>Login to get the full story.</h3>
+      <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other OutTrippin power features by logging in.</em></h5>
+      <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
+      <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
+      <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
+    </div>
+    <%= content_for :body do %>
+      <script>
+        $(document).ready(function() {
+          setTimeout(function(){
+            $("#login-modal").foundation('reveal', 'open');
+          }, 4000);
+        });
+      </script>
+    <% end %>
   <% else %>
   <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
   <div class="row">
