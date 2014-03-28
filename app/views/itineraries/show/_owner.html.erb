@@ -67,7 +67,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:200px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -179,7 +179,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -308,7 +308,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>

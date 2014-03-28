@@ -46,7 +46,7 @@ class UserMailer < ActionMailer::Base
     @message = message
     @itinerary = itinerary
     @user = @itinerary.user
-    mail to: @destination, subject: "Check out my tailored trip plan on OutTrippin"
+    mail to: @destination, subject: "Help me plan my next trip on OutTrippin"
   end
 
   def new_pitch_email(pitch)
