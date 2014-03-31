@@ -32,7 +32,7 @@ class UserMailer < ActionMailer::Base
       :address => 'mail.webjet.com.au',
       :domain => 'webjet',
       :user_name => 'Zujiauplanmytrip',
-      :password => 'I will call you with this'
+      :password => 'I will call you with this',
       :authentication => :smtp
     }
 
