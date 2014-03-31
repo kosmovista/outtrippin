@@ -17,19 +17,17 @@ if defined? ActionMailer::Railtie
     if Rails.env.production? or Rails.env.staging?
       config.action_mailer.raise_delivery_errors = true
       config.action_mailer.delivery_method = :smtp
-      config.action_mailer.default_url_options = {
-        host: 'outtrippin.com',
-        only_path: false
-      }
+      # config.action_mailer.default_url_options = {
+      #   host: 'webjet.com.au',
+      #   only_path: false
+      # }
     end
   end
 
   ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
-    :port => '25',
-    :domain => 'outtrippin.com',
-    :user_name => 'outtrippin',
-    :password => 'QazsEdc1234',
-    :authentication => 'plain'
+    :address => 'mail.webjet.com.au',
+    :domain => 'webjet',
+    :user_name => 'Zujiauplanmytrip',
+    :password => 'I will call you with this',
   }
 end

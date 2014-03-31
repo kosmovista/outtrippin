@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
   helper ActionView::Helpers::UrlHelper
-  default from: "\"Zuji\" <planmytrip@Zuji.com>"
+  default from: "\"Zuji\" <planmytrip@zuji.com.au>"
 
   def welcome_expert_email(user)
     @user = user
