@@ -7,9 +7,10 @@ class UserMailer < ActionMailer::Base
     mail to: @user.email, subject: "Welcome to OutTrippin!"
   end
 
-  def welcome_user_email(user, password)
+  def welcome_user_email(user, password, itinerary)
     @user = user
     @password = password
+    @itinerary = itinerary
     if @itinerary.extra_info.has_key?([:source])
       mail to: @user.email, subject: "Welcome to Zuji!", from: "\"Zuji\" <planmytrip@zuji.com.au>", delivery_method_options: zuji_smtp_settings
     else
