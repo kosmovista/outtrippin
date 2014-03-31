@@ -32,16 +32,9 @@ class UserMailer < ActionMailer::Base
 
   def password_reset_instructions_email(user)
     @user = user
-    if @itinerary.extra_info.has_key?([:source])
-      @reset_url = "http://planmytrip.zuji.com.au/password_resets/#{@user.perishable_token}/edit"
-      mail to: @user.email, subject: "Zuji Password Reset Instructions", from: "\"Zuji\" <planmytrip@zuji.com.au>", delivery_method_options: zuji_smtp_settings
-    else
-      @reset_url = "http://outtrippin.com/password_resets/#{@user.perishable_token}/edit"
-      mail to: @user.email, subject: "OutTrippin Password Reset Instructions"
-    end
-
+    @reset_url = "http://outtrippin.com/password_resets/#{@user.perishable_token}/edit"
+    mail to: @user.email, subject: "OutTrippin Password Reset Instructions"
   end
-
 
   def new_pitch_expert_email(pitch)
     @pitch = pitch
