@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
       :domain => 'webjet',
       :user_name => 'Zujiauplanmytrip',
       :password => 'I will call you with this',
-      :authentication => :ntlm
+      :authentication => :smtp
     }
 
     @user = user
@@ -32,8 +32,8 @@ class UserMailer < ActionMailer::Base
       :address => 'mail.webjet.com.au',
       :domain => 'webjet',
       :user_name => 'Zujiauplanmytrip',
-      :password => 'I will call you with this',
-      :authentication => :ntlm
+      :password => 'I will call you with this'
+      :authentication => :smtp
     }
 
     @user = user
@@ -81,7 +81,7 @@ class UserMailer < ActionMailer::Base
       :domain => 'webjet',
       :user_name => 'Zujiauplanmytrip',
       :password => 'I will call you with this',
-      :authentication => :ntlm
+      :authentication => :smtp
     }
 
     @pitch = pitch
