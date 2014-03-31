@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @password = password
     @itinerary = itinerary
-    if @itinerary.extra_info.has_key?([:source])
+    if @itinerary.extra_info.has_key?(:source)
       mail to: @user.email, subject: "Welcome to Zuji!", from: "\"Zuji\" <planmytrip@zuji.com.au>", delivery_method_options: zuji_smtp_settings
     else
       mail to: @user.email, subject: "Welcome to OutTrippin!"
@@ -22,7 +22,7 @@ class UserMailer < ActionMailer::Base
   def payment_received_email(user, itinerary)
     @user = user
     @itinerary = itinerary
-    if @itinerary.extra_info.has_key?([:source])
+    if @itinerary.extra_info.has_key?(:source)
       mail to: @user.email, subject: "Thanks for submitting your Zuji trip and payment.", from: "\"Zuji\" <planmytrip@zuji.com.au>", delivery_method_options: zuji_smtp_settings
     else
       mail to: @user.email, subject: "Thanks for submitting your OutTrippin trip and payment."
@@ -64,7 +64,7 @@ class UserMailer < ActionMailer::Base
     @itinerary = @pitch.itinerary
     @user = @itinerary.user
 
-    if @itinerary.extra_info.has_key?([:source])
+    if @itinerary.extra_info.has_key?(:source)
       mail to: @user.email, subject: "New Zuji Pitch Received!", from: "\"Zuji\" <planmytrip@zuji.com.au>", delivery_method_options: zuji_smtp_settings
     else
       mail to: @user.email, subject: "New OutTrippin Pitch Received!"
