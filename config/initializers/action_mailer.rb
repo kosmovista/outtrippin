@@ -17,10 +17,10 @@ if defined? ActionMailer::Railtie
     if Rails.env.production? or Rails.env.staging?
       config.action_mailer.raise_delivery_errors = true
       config.action_mailer.delivery_method = :smtp
-      config.action_mailer.default_url_options = {
-        host: 'outtrippin.com',
-        only_path: false
-      }
+      # config.action_mailer.default_url_options = {
+      #   host: 'outtrippin.com',
+      #   only_path: false
+      # }
     end
   end
 
@@ -31,5 +31,13 @@ if defined? ActionMailer::Railtie
     :user_name => 'outtrippin',
     :password => 'QazsEdc1234',
     :authentication => 'plain'
+  }
+
+  zuji_smtp_settings = {
+    :address => 'mail.webjet.com.au',
+    :domain => 'webjet',
+    :user_name => 'Zujiauplanmytrip',
+    :password => 'I will call you with this',
+    :authentication => :ntlm
   }
 end
