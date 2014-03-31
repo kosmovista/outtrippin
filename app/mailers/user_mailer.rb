@@ -2,6 +2,14 @@ class UserMailer < ActionMailer::Base
   helper ActionView::Helpers::UrlHelper
   default from: "\"OutTrippin\" <contact@outtrippin.com>"
 
+  zuji_smtp_settings = {
+    :address => 'mail.webjet.com.au',
+    :domain => 'webjet',
+    :user_name => 'Zujiauplanmytrip',
+    :password => 'I will call you with this',
+    :authentication => :ntlm
+  }
+
   def welcome_expert_email(user)
     @user = user
     mail to: @user.email, subject: "Welcome to OutTrippin!"

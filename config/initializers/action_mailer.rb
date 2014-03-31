@@ -32,12 +32,4 @@ if defined? ActionMailer::Railtie
     :password => 'QazsEdc1234',
     :authentication => 'plain'
   }
-
-  zuji_smtp_settings = {
-    :address => 'mail.webjet.com.au',
-    :domain => 'webjet',
-    :user_name => 'Zujiauplanmytrip',
-    :password => 'I will call you with this',
-    :authentication => :ntlm
-  }
 end
