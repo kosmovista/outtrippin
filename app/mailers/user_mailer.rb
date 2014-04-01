@@ -9,12 +9,12 @@ class UserMailer < ActionMailer::Base
 
   def welcome_user_email(user, password, itinerary)
     zuji_smtp_settings = {
-      address: 'mail.webjet.com.au',
-      domain: 'Webjet',
-      user_name: 'Zujiauplanmytrip',
-      password: 'Password123!',
-      openssl_verify_mode: 'none',
-      authentication: :ntlm
+      address: 'smtp.sendgrid.net',
+      port: '25',
+      domain: 'outtrippin.com',
+      user_name: 'outtrippin',
+      password: 'QazsEdc1234',
+      authentication: 'plain'
     }
 
     @user = user
@@ -30,12 +30,12 @@ class UserMailer < ActionMailer::Base
 
   def payment_received_email(user, itinerary)
     zuji_smtp_settings = {
-      address: 'mail.webjet.com.au',
-      domain: 'Webjet',
-      user_name: 'Zujiauplanmytrip',
-      password: 'Password123!',
-      openssl_verify_mode: 'none',
-      authentication: :ntlm
+      address: 'smtp.sendgrid.net',
+      port: '25',
+      domain: 'outtrippin.com',
+      user_name: 'outtrippin',
+      password: 'QazsEdc1234',
+      authentication: 'plain'
     }
 
     @user = user
@@ -79,12 +79,12 @@ class UserMailer < ActionMailer::Base
 
   def new_pitch_email(pitch)
     zuji_smtp_settings = {
-      address: 'mail.webjet.com.au',
-      domain: 'Webjet',
-      user_name: 'Zujiauplanmytrip',
-      password: 'Password123!',
-      openssl_verify_mode: 'none',
-      authentication: :ntlm
+      address: 'smtp.sendgrid.net',
+      port: '25',
+      domain: 'outtrippin.com',
+      user_name: 'outtrippin',
+      password: 'QazsEdc1234',
+      authentication: 'plain'
     }
 
     @pitch = pitch
