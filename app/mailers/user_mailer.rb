@@ -59,6 +59,6 @@ class UserMailer < ActionMailer::Base
     @message = message
     @itinerary = itinerary
     @user = @itinerary.user
-    mail to: @destination, subject: "Your friend is asking for an opinion"
+    mail to: @destination, subject: "Help me plan my next trip on Zuji"
   end
 end
