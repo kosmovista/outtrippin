@@ -10,9 +10,9 @@ class UserMailer < ActionMailer::Base
   def welcome_user_email(user, password, itinerary)
     zuji_smtp_settings = {
       address: 'mail.webjet.com.au',
-      domain: 'webjet',
+      domain: 'Webjet',
       user_name: 'Zujiauplanmytrip',
-      password: 'I will call you with this',
+      password: 'Password123!',
       openssl_verify_mode: 'none',
       authentication: :ntlm
     }
@@ -31,9 +31,9 @@ class UserMailer < ActionMailer::Base
   def payment_received_email(user, itinerary)
     zuji_smtp_settings = {
       address: 'mail.webjet.com.au',
-      domain: 'webjet',
+      domain: 'Webjet',
       user_name: 'Zujiauplanmytrip',
-      password: 'I will call you with this',
+      password: 'Password123!',
       openssl_verify_mode: 'none',
       authentication: :ntlm
     }
@@ -80,9 +80,9 @@ class UserMailer < ActionMailer::Base
   def new_pitch_email(pitch)
     zuji_smtp_settings = {
       address: 'mail.webjet.com.au',
-      domain: 'webjet',
+      domain: 'Webjet',
       user_name: 'Zujiauplanmytrip',
-      password: 'I will call you with this',
+      password: 'Password123!',
       openssl_verify_mode: 'none',
       authentication: :ntlm
     }
