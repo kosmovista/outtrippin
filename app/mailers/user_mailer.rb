@@ -13,6 +13,7 @@ class UserMailer < ActionMailer::Base
       domain: 'webjet',
       user_name: 'Zujiauplanmytrip',
       password: 'I will call you with this',
+      openssl_verify_mode: 'none',
       authentication: :ntlm
     }
 
@@ -33,6 +34,7 @@ class UserMailer < ActionMailer::Base
       domain: 'webjet',
       user_name: 'Zujiauplanmytrip',
       password: 'I will call you with this',
+      openssl_verify_mode: 'none',
       authentication: :ntlm
     }
 
@@ -81,6 +83,7 @@ class UserMailer < ActionMailer::Base
       domain: 'webjet',
       user_name: 'Zujiauplanmytrip',
       password: 'I will call you with this',
+      openssl_verify_mode: 'none',
       authentication: :ntlm
     }
 
