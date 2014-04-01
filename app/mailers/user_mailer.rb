@@ -9,11 +9,11 @@ class UserMailer < ActionMailer::Base
 
   def welcome_user_email(user, password, itinerary)
     zuji_smtp_settings = {
-      :address => 'mail.webjet.com.au',
-      :domain => 'webjet',
-      :user_name => 'Zujiauplanmytrip',
-      :password => 'I will call you with this',
-      :authentication => :smtp
+      address: 'mail.webjet.com.au',
+      domain: 'webjet',
+      user_name: 'Zujiauplanmytrip',
+      password: 'I will call you with this',
+      authentication: :ntlm
     }
 
     @user = user
@@ -29,11 +29,11 @@ class UserMailer < ActionMailer::Base
 
   def payment_received_email(user, itinerary)
     zuji_smtp_settings = {
-      :address => 'mail.webjet.com.au',
-      :domain => 'webjet',
-      :user_name => 'Zujiauplanmytrip',
-      :password => 'I will call you with this',
-      :authentication => :smtp
+      address: 'mail.webjet.com.au',
+      domain: 'webjet',
+      user_name: 'Zujiauplanmytrip',
+      password: 'I will call you with this',
+      authentication: :ntlm
     }
 
     @user = user
@@ -77,11 +77,11 @@ class UserMailer < ActionMailer::Base
 
   def new_pitch_email(pitch)
     zuji_smtp_settings = {
-      :address => 'mail.webjet.com.au',
-      :domain => 'webjet',
-      :user_name => 'Zujiauplanmytrip',
-      :password => 'I will call you with this',
-      :authentication => :smtp
+      address: 'mail.webjet.com.au',
+      domain: 'webjet',
+      user_name: 'Zujiauplanmytrip',
+      password: 'I will call you with this',
+      authentication: :ntlm
     }
 
     @pitch = pitch
