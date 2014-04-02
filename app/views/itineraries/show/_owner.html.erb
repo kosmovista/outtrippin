@@ -2,7 +2,7 @@
 <% if @plan && @plan.published %>
   <%= render @plan %>
 <% elsif @itinerary.has_winner_pitch? %>
-<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.winner_pitch.title + " - Zuji") %>
+<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.winner_pitch.title + " - ZUJI") %>
 <% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
@@ -58,7 +58,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -67,7 +67,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -102,7 +102,7 @@
 </script>
 <% end %>
 <% elsif !@pitches.blank? %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
@@ -170,7 +170,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with Zuji" : "I'm planning " + @itinerary.extra_info[:name] + " - Zuji") + "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with ZUJI" : "I'm planning " + @itinerary.extra_info[:name] + " - ZUJI") + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -179,7 +179,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -205,7 +205,7 @@
 <% end %>
 
 <% else %>
-<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>
 <div class="row">
   <div class="small-12 small-centered columns">
     <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
@@ -299,7 +299,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-     <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with Zuji" : "I'm planning " + @itinerary.extra_info[:name] + " - Zuji") + "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+     <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with ZUJI" : "I'm planning " + @itinerary.extra_info[:name] + " - ZUJI") + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -308,7 +308,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -354,7 +354,7 @@
       </script>
     <% end %>
   <% else %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - Zuji" : @itinerary.extra_info[:name] + " - Zuji") %>
+  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>
   <div class="row">
     <div class="large-12 text-center small-12 columns">
       <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>

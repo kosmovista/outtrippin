@@ -4,7 +4,7 @@ default:
   placeholder: "Where would you like to go?"
   submit: "Send me ideas!"
   process:
-    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from a Zuji expert."
+    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from a ZUJI expert."
     step1:
       title: "How does it work?"
       text: "Describe your travel personality, and the trip you have in mind and our experts will pitch you travel ideas."
@@ -16,7 +16,7 @@ default:
       text: "A day-by-day trip plan, tailored to your personality full of tips, tricks and advice from a travel expert."
     step4:
       title: "Ready to book?"
-      text: "Zuji helps make your unique holiday plan a reality with quick and easy bookings."
+      text: "ZUJI helps make your unique holiday plan a reality with quick and easy bookings."
   pics:
     nz:
       title: "Lake Matheson, New Zealand"

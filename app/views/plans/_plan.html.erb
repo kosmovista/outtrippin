@@ -1,4 +1,4 @@
-<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - Zuji") %>
+<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - ZUJI") %>
 <% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <% set_page_pic( @plan.cover ) %>
 <%= content_for :head do %>
@@ -46,7 +46,7 @@
     <div class="row">
       <div class="large-11 large-centered small-12 columns">
         <h5 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
-        <h5 class="serif black text-right subheader" style="margin-top:20px;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %><em>- <%= @plan.user.personal_info[:name] %> <br>Zuji Storyteller</em></h5>
+        <h5 class="serif black text-right subheader" style="margin-top:20px;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %><em>- <%= @plan.user.personal_info[:name] %> <br>ZUJI Storyteller</em></h5>
       </div>
     </div>
   </div>
@@ -192,7 +192,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "Zuji" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -201,7 +201,7 @@
   <h3>Send via email</h3>
    <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on Zuji.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", id: "email-share", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
     <% end %>
