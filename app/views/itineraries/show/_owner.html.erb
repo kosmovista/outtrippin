@@ -19,7 +19,7 @@
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLER</a></li>
           <li><a href="#" id="slide1" > REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -66,8 +66,8 @@
 <div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:200px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -119,7 +119,7 @@
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORYTELLERS</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -178,8 +178,8 @@
 <div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -222,7 +222,7 @@
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
           <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
           <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
@@ -307,8 +307,8 @@
 <div id="email-share" class="reveal-modal small text-center">
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on ZUJI.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -369,7 +369,7 @@
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
             <li><a href="#" id="slide0" class="active-tab" >REQUEST & COMMENTS</a></li>
           </ul>
           <hr style="border-color:white; margin-top:0;">
