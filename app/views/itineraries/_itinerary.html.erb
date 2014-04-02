@@ -6,10 +6,11 @@
           <%= link_to (itinerary.extra_info[:name].blank? ? "Trip to " + itinerary.destination : itinerary.extra_info[:name]), itinerary_path(itinerary), style: "margin-top:10px;", class: "story-title black" %><%= link_to (current_user.voted_for?(itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned", class: "unbookmark") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign", class: "bookmark")), toggle_star_itinerary_path(itinerary), method: :post if current_user.is?("expert") %>
         </h4>
         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a><%= itinerary.destination %></a> for <%= itinerary.duration %> days in <%= itinerary.departure %><br>
+          <% unless itinerary.has_winner_pitch? %>
           <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
-          <span class="subheader">Submitted <%= time_ago_in_words itinerary.created_at %> ago.
-           <%= pitches_so_far itinerary %>
+          <span class="subheader"><%= ("Closes on " + itinerary.extra_info[:countdown] + ". ") unless itinerary.extra_info[:countdown].blank? %><%= pitches_so_far itinerary %>
           </span>
+          <% end %>
         </em></p>
       </div>
       <div class="large-2 small-12 text-center columns">
