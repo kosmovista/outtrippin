@@ -24,16 +24,16 @@
 
 <div class="tabs">
   <div class="row">
-    <div class="large-12 large-centered text-center small-12 columns">
-      <div class="large-8 large-centered text-center small-12 columns">
-        <ul id="cover-tabs" class="inline-list cover-tabs text-center no-margin sans">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
           <% if current_user %>
           <li><a href="#" id="slide1" >THE REQUEST</a></li>
           <% end %>
           <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
-          <li><a href="#" data-reveal-id="update-modal">BOOKING</a></li>
-          <!-- <li><a href="#" id="slide2" >BOOKING</a></li> -->
+          <li><a href="#" id="slide2" >BOOKING</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -103,11 +103,12 @@
         <div class="row">
           <div class="large-12 small-12 columns">
             <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
-            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
-              <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank' unless @plan.user.facebook.blank? %>
-              <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank' unless @plan.user.pinterest.blank? %>
-              <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank' unless @plan.user.twitter.blank? %>
-              <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank' unless @plan.user.instagram.blank? %></h5>
+            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', class:"hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+              <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank', class:"hide-for-small" unless @plan.user.facebook.blank? %>
+              <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank', class:"hide-for-small" unless @plan.user.pinterest.blank? %>
+              <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank', class:"hide-for-small" unless @plan.user.twitter.blank? %>
+              <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank', class:"hide-for-small" unless @plan.user.instagram.blank? %></h5>
+              <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(plan.user.website),  expert_info_website_url(plan.user.website), target: '_blank' unless plan.user.website.blank? %></em></p>
             <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small></h5>
           </div>
         </div>
@@ -130,46 +131,41 @@
     </div>
   </div>
 <% end %>
+
 <div class="row short-break" id="slide2-content">
-  <div class="row booking">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-3 small-12 columns">
-        <%= image_tag "hotel.jpeg", class: "booking-img" %>
-      </div>
-      <div class="large-7 small-12 columns">
-        <h3 style="margin-bottom:0px;">The Pierre New York Hotel
-          <%= image_tag "star.png", class: "stars" %>
-        <%= image_tag "star.png", class: "stars" %>
-      <%= image_tag "star.png", class: "stars" %>
-    <%= image_tag "star.png", class: "stars" %>
-  <%= image_tag "star.png", class: "stars" %></h3>
-         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a>Central Park, Manhattan, New York</a></em></p>
-         <p>Known for its gracious service, the iconic Fifth Avenue hotel overlooking the emerald expanse of Central Park has re-opened as of June 1st, 2009 following a meticulous 100 million renovation to create new guestroom and bath interiors...<p>
-       </div>
-       <div class="large-2 small-12 text-center columns">
-        <span class="radius price small white label" >~ $700 per night *</span>
-        <a class="button pricethis expand secondary small text-center serif" style="margin-top:-3px">Book now</a>
+  <% if @plan.bookings.blank? %>
+    <div class="small-12 break large-8 large-centered text-center columns">
+      <h4 class="serif subheader black"><em>We're sorry, there are no booking links for this story... for now.</em></p>
+      <h5 class="serif subheader" style="margin-bottom:100px;"><em>But we do love you lots, so <a href="#" id="request-booking" data-reveal-id="confirmed">give us a shout</a>, and our booking superhero will have you setup and ready to go in no time.</em></h5>
+    </div>
+    <div id="confirmed" class="reveal-modal small text-center">
+      <%= image_tag "save.png", style:"width:80px; margin-bottom:30px;" %>
+      <h3>Message Received, Cap'n!</h3>
+      <h4 class="serif subheader"><em>We've heard you loud and clear and one of our booking superheroes will be in touch with you shortly to get you booked up and ready to roll.</em></h4>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+  <% else %>
+  <% @plan.bookings.each do |bk| %>
+    <div class="row booking">
+      <div class="large-12 small-12 large-centered columns">
+        <div class="large-3 small-12 columns">
+          <%= image_tag bk[:picture], class: "booking-img" %>
+        </div>
+        <div class="large-7 small-12 columns">
+          <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
+          <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
+          <p><%= bk[:body] %></p>
+        </div>
+        <div class="large-2 small-12 text-center columns">
+          <span class="radius price small white label" ><%= bk[:price] %></span>
+          <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+        </div>
       </div>
     </div>
-  </div>
-  <hr style="border:1px #e6e6e6 solid">
-  <div class="row booking">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-3 columns">
-        <%= image_tag "hotel.jpeg", class: "booking-img" %>
-      </div>
-      <div class="large-7 columns">
-        <h3 style="margin-bottom:0px;">The Pierre New York Hotel</h3>
-         <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><a>Central Park, Manhattan, New York</a></em></p>
-         <p>Known for its gracious service, the iconic Fifth Avenue hotel overlooking the emerald expanse of Central Park has re-opened as of June 1st, 2009 following a meticulous 100 million renovation to create new guestroom and bath interiors...<p>
-       </div>
-       <div class="large-2 text-center columns">
-        <span class="radius price small white label" >~ $700 per night *</span>
-        <a class="button pricethis expand secondary small text-center serif" style="margin-top:-3px">Book now</a>
-      </div>
-    </div>
-  </div>
-  <hr style="border:1px #e6e6e6 solid">
+    <hr style="border:1px #e6e6e6 solid">
+  <% end %>
+  <% end %>
+
 </div>
 
 
@@ -187,7 +183,7 @@
 
 <div class="share hide-on-print">
   <h4 class="serif subheader"><em><a href="#" id="sharebutton" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+  <hr class="hide-for-small" style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
 <div id="share-modal" class="reveal-modal medium text-center">
   <h3>Share this with a friend.</h3>
@@ -221,6 +217,9 @@
   mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
   });
+  mixpanel.track_links("#slide2-content a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+  });
   mixpanel.track_links("#facebook-share", "Facebook Share", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
     "Stage": "Final Story"
@@ -230,8 +229,21 @@
     "Stage": "Final Story"
   });
   mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
+    'Feature': 'Maps'
   });
+  mixpanel.track_links("#request-booking", "Requested Booking");
+  <% if current_user %>
+    $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
+    $("#request-booking").click(function() {
+      mixpanel.people.set({
+        "Requested Booking": "<%= @itinerary.winner_pitch.title %>"
+      });
+    });
+  <% end %>
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button", {
       "Story_id": "<%= @itinerary.winner_pitch.title %>",

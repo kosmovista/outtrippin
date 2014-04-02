@@ -10,7 +10,7 @@
   <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
 <% end %>
 <style>
-.cover { background-image: url('/assets/ocean.jpg') !important; margin-bottom:0; background-position: 50% 0%; opacity:.8; height:450px;}
+.cover { background-image: url(<%= asset_path 'ocean.jpg' %>) !important; margin-bottom:0; background-position: 50% 0%; opacity:.8; height:450px;}
 .header {overflow: visible; top:50px;height:0; }
 .tabs {height:0;}
 #overlay {height:450px;}
@@ -29,11 +29,11 @@
 			<div class="large-4 small-12  columns">
 				<div class="panel text-center pricing" >
 					<H5 class="option-title">CATCH OF THE DAY</H5>
-					<h3 class="serif price">$<span class="larger">12</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (12) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $12 per travel day )</span></h3>
 					<%= image_tag "plain-fish.png", style: "margin-top:20px;" %>
 					<h6 class="white serif option-detail"><em>Pick 1 storyteller</em></h6>
 					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
-          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 12 %>
+          			<a href="#" class= "expand disabled radius small button" >Coming Soon!</a>
 				</div>
 				<ul class="side-nav subheader"><em>
 					<li class="cross">3+ storytellers compete</li>
@@ -67,7 +67,7 @@
 						<h5 class="no-margin">POPULAR</h5>
 					</div>
 					<H5 class="option-title">PLENTY O' FISH</H5>
-					<h3 class="serif price">$<span class="larger">14</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (14) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $14 per travel day )</span></h3>
 					<%= image_tag "comp-fish.png", style: "margin-top:25px;" %>
 					<h6 class="white serif option-detail"><em>3+ storytellers compete</em></h6>
 					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
@@ -102,7 +102,7 @@
 			<div class="large-4 small-12 columns">
 				<div class="panel text-center pricing" >
 					<H5 class="option-title">FANCY FISHIN'</h5>
-					<h3 class="serif price">$<span class="larger">18</span><span style="vertical-align:bottom; font-size:50%; line-height:.3em;"> p/day</h3>
+					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (18) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $18 per travel day )</span></h3>
 					<%= image_tag "fancy-fish.png", style: "margin-top:20px;" %>
 					<h6 class="white serif option-detail"><em>3+ storytellers premium</em></h6>
 					<h6 class="white option-text serif subheader"><em>with cool extras on top of your tailored travel story</span></em></h6>
@@ -157,6 +157,44 @@
 			</ul>
 		</div>
 	</div>
+
+
+<% unless @featuring_stories.blank? %>
+<div id="featuring" class="break">
+  <div class="row">
+    <div class="large-12 small-12 columns">
+      <h3 class="text-center serif subheader black"><em>Trips other travelers have planned with Plan My Trip.</em></h3>
+    </div>
+  </div>
+  <div id="detail-loader" >
+    <%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan %>
+  </div>
+  <div class="row">
+    <div class="large-12 small-12 columns navigate">
+      <!-- adds jquery navigation -->
+    </div>
+  </div>
+</div>
+
+<div class="row top" style="margin-top: 50px;margin-bottom: 150px;">
+ <div class="large-12 text-center small-12 columns">
+   <h2 class="serif subheader black">
+     <em>Have a better vacation, or your money back!</em>
+   </h2>
+   <a class="large button radius" id="scrollup" href="#scroll-up" style="margin-top:50px;">Hook me up!</a>
+   <p>
+   	<%= link_to "Get ideas first & pay later >>", itinerary_path, style: "font-style: italic; font-size:.8em;" %>
+   </p>
+ </div>
+</div>
+
+<div id="trip-loader">
+  <% @featuring_stories.each do |i| %>
+    <%= image_tag i.cover %>
+  <% end %>
+</div>
+
+<% end %>
 
 
 
@@ -218,4 +256,10 @@
     mixpanel.register({ 'Plan': "Fancy Fishin" });
   });
 </script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<% end %>
+
+
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
 <% end %>

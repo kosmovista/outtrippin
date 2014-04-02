@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :authorize_admin, only: [:destroy]
   before_action :set_user
+  before_action :authorize_owner, only: [:update, :edit]
   before_action :load_styles, only: [:edit, :update]
-
 
   def show
   end

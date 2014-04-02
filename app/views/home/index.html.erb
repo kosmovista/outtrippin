@@ -15,6 +15,8 @@
         <%= form_for @itinerary, html: { class: 'custom' } do |f| %>
         <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
           <%= f.select :destination, options_for_select(@cities), prompt: "Pick a city" %>
+          <%= f.hidden_field :source, value: "zuji" %>
+
           <%= errors_for(@itinerary, :destination) %>
         </div>
         <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
@@ -146,8 +148,7 @@
 </div>
 
 <%= content_for :head do %>
-<%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
-
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
 <% end %>
 
 <%= content_for :body do %>

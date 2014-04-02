@@ -45,7 +45,7 @@ class ItineraryFinalize
     return false unless valid?
     send_user_email = true if @user.new_record?
     if create_objects
-      UserMailer.delay.welcome_user_email(user, @password) if send_user_email
+      UserMailer.delay.welcome_user_email(user, @password, @itinerary) if send_user_email
       AdminMailer.delay.new_itinerary_email(@itinerary)
       true
     else
@@ -57,7 +57,7 @@ class ItineraryFinalize
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { activity_budget: activity_budget, accommodation_budget: accommodation_budget, details: details, must: must, avoid: avoid, style: @itinerary.extra_info[:style], personality: personality, name: @itinerary.name, travelers: @itinerary.travelers }
+      extra_info = { activity_budget: activity_budget, accommodation_budget: accommodation_budget, details: details, must: must, avoid: avoid, style: @itinerary.extra_info[:style], personality: personality, name: @itinerary.name, travelers: @itinerary.travelers, source: @itinerary.extra_info[:source] }
       user.save!
       @itinerary.update_attributes(extra_info: extra_info, user: user)
       @itinerary.save!

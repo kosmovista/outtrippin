@@ -33,6 +33,12 @@ Outtrippin::Application.routes.draw do
         post 'tip_trick/:tip_trick_id', action: 'update_tip_trick'
         delete 'tip_trick/:tip_trick_id', action: 'delete_tip_trick'
 
+        put 'booking', action: 'add_booking'
+        put 'booking/:booking_id', action: 'add_picture_booking'
+        post 'booking/:booking_id', action: 'update_booking'
+        delete 'booking/:booking_id', action: 'delete_booking'
+
+
         put 'picture', action: 'add_picture'
         delete 'picture/:picture_id', action: 'delete_picture'
       end

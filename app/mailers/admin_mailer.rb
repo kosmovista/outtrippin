@@ -1,5 +1,5 @@
 class AdminMailer < ActionMailer::Base
-  default from: "\"OutTrippin\" <contact@outtrippin.com>"
+  default from: "\"Zuji\" <planmytrip@zuji.com.au>"
   ADMINS = %w(joao@outtrippin.com, indi@outtrippin.com, kunal@outtrippin.com)
 
   def new_expert_email(user)
@@ -9,6 +9,7 @@ class AdminMailer < ActionMailer::Base
 
   def new_itinerary_email(itinerary)
     @itinerary = itinerary
+    @user = @itinerary.user
     mail to: ADMINS, subject: "[PlanMyTrip] new itinerary submitted"
   end
 

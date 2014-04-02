@@ -4,6 +4,7 @@ class ItinerariesController < ApplicationController
   before_action :set_itinerary, except: [:index, :create]
   before_action :load_styles_personalities, only: [:details, :finalize, :update, :publish]
   before_action :authorize_user, only: [:index] # TODO some more actions should be here
+  before_action :store_location
 
   def index
     @itineraries = current_user.itineraries unless current_user.is?("expert")
@@ -14,7 +15,13 @@ class ItinerariesController < ApplicationController
   end
 
   def create
+    source = itinerary_params[:source]
     @itinerary = Itinerary.new(itinerary_params)
+
+    if !source.nil?
+      @itinerary.extra_info[:source] = source
+    end
+
     if @itinerary.save
       redirect_to details_itinerary_path(@itinerary)
     else
@@ -74,7 +81,13 @@ class ItinerariesController < ApplicationController
   end
 
   def checkout
+    @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
 
+    if !current_user
+      flash[:notice] = "You have to login before getting to the checkout page."
+      session[:original_uri] = checkout_itinerary_path(@itinerary)
+      redirect_to login_path
+    end
   end
 
   def purchase
@@ -113,7 +126,7 @@ class ItinerariesController < ApplicationController
   end
 
   def itinerary_params
-    params.require(:itinerary).permit(:destination)
+    params.require(:itinerary).permit(:destination, :source)
   end
 
   # TODO REFACTOR THIS
