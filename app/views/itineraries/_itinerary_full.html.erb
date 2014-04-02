@@ -16,6 +16,7 @@
       <p><em><%= image_tag "plane.png", style:"width:17px; opacity:0.7; margin:-6px 4px 0;" %><%= @itinerary.extra_info[:travelers] %> to <a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
       <%= image_tag "dollar.png", style: "width:12px; opacity:0.7; margin:-6px 5px 0;" %> With a budget of <%= @itinerary.extra_info[:accommodation_budget] %> for accommodation and <%= @itinerary.extra_info[:activity_budget] %> for activities, per person, per day.
        <% if current_user && !@itinerary.has_winner_pitch? %>
+       <br>
           <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
           <%= ("Closes on " + @itinerary.extra_info[:countdown] + ". ") unless @itinerary.extra_info[:countdown].blank? %><%= pitches_so_far @itinerary %>
           
