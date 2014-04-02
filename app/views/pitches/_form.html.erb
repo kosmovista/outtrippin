@@ -17,7 +17,7 @@
     <em>Your brief (but exciting) description of the trip you have in mind: *</em>
     <a href="#" data-dropdown="description-d" data-options="is_hover:true"><%= image_tag 'question.png', style: "width:15px; margin:-4px 0 0 5px; opacity:0.7;" %></a>
   </h5>
-  <%= f.text_area :summary, class: 'medium-textarea', placeholder: "A brief description (Maximum 1200 characters)..." %>
+  <%= f.text_area :summary, class: 'medium-textarea', placeholder: "A brief description (Maximum 1400 characters)...", :maxlength => "1400" %>
   <%= errors_for(pitch, :summary) %>
   <div id="description-d" class="f-dropdown large content" data-dropdown-content>
     <h5 class="subheader serif"><em>Let your personality shine and inspire a journey. Here's an example:</em></h5>
@@ -50,7 +50,7 @@
     <em>You should pick ME to design your travel story because...</em>*
     <a href="#" data-dropdown="aboutme-d" data-options="is_hover:true"><%= image_tag 'question.png', style: "width:15px; margin:-4px 0 0 5px; opacity:0.7;" %></a>
   </h5>
-  <%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "Here's a chance to explain why you'd be the perfect person to write this story." %>
+  <%= f.text_area :why_me, value: current_user.expert_info[:bio], class: 'medium-textarea', placeholder: "Here's a chance to explain why you'd be the perfect person to write this story (Maximum 500 characters)...", :maxlength => "500" %>
   <%= errors_for(pitch, :why_me) %>
   <div id="aboutme-d" class="f-dropdown large content" data-dropdown-content>
     <h5 class="subheader serif"><em>Share your travel chops. Been there? Done that? Share it! Here's an example:</em></h5>
