@@ -20,6 +20,7 @@ class Admin::ItinerariesController < ApplicationController
     @itinerary = Itinerary.find(params[:id])
     @itinerary.extra_info[:details] = params[:itinerary][:details]
     @itinerary.extra_info[:reward] = params[:itinerary][:reward]
+    @itinerary.extra_info[:countdown] = params[:itinerary][:countdown]
     @itinerary.save!
     redirect_to @itinerary
   end

@@ -6,6 +6,7 @@
       <%= form_for [:admin, @itinerary], method: :put do |f| %>
       <%= f.text_area :details, value: @itinerary.extra_info[:details], class: "medium-textarea" %>
       <%= f.text_field :reward, value: @itinerary.extra_info[:reward],  placeholder: "Reward - Insert Numbers Only" %>
+      <%= f.text_field :countdown, value: @itinerary.extra_info[:countdown],  placeholder: "Closing on - dd/mm/yyyy" %>
       <%= f.submit "Update Itinerary", class: "button" %>
       <% end %>
   </div>

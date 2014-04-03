@@ -67,7 +67,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:200px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -90,6 +90,11 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
@@ -174,7 +179,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -185,11 +190,15 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
   $("#Pick-Winner").click(function() {
-    // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
   });
 </script>
@@ -299,7 +308,7 @@
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, "Hey there, just wanted to get your opinion on a new trip I'm planning on OutTrippin.com. Travel experts are pitching me ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!", { placeholder: "Write a message...", style: "height:150px;" } %>
+    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
     <%= submit_tag "Send", class: "expand button radius" %>
     <a class="close-reveal-modal">&#215;</a>
   <% end %>
@@ -310,11 +319,15 @@
   mixpanel.track_links("#power-feature", "Request Feature Update", {
     'Feature': 'Add Traveler'
   });
+  $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
   $("#sharebutton").click(function() {
     mixpanel.track("Share Button");
   });
   $("#Pick-Winner").click(function() {
-    // This sends us an event every time a user clicks the button
     mixpanel.track("Picked a Winner");
   });
 </script>
@@ -324,6 +337,22 @@
 <% else # no current_user %>
   <% if @plan && @plan.published %>
     <%= render @plan %>
+    <div id="login-modal" class="reveal-modal small text-center">
+      <h3>Login to get the full story.</h3>
+      <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other OutTrippin power features by logging in.</em></h5>
+      <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
+      <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
+      <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
+    </div>
+    <%= content_for :body do %>
+      <script>
+        $(document).ready(function() {
+          setTimeout(function(){
+            $("#login-modal").foundation('reveal', 'open');
+          }, 4000);
+        });
+      </script>
+    <% end %>
   <% else %>
   <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
   <div class="row">
