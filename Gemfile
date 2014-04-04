@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
-
+gem 'ruby-ntlm'
 # CORS
 gem 'rack-cors', require: 'rack/cors'
 
