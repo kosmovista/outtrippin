@@ -12,6 +12,9 @@ class ExpertEdit
 
   def initialize(options = {})
     attributes = options[:attributes]
+    attributes[:facebook] = attributes[:facebook].gsub!(/.*?(?=facebook)/im, "") unless attributes.nil?
+    attributes[:website] = attributes[:website].sub!(/^https?\:\/\//, '') unless attributes.nil?
+
     @user = options[:user]
     raise ArgumentError, "You need to be an expert" if !@user.is?("expert")
 
