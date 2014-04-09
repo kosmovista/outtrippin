@@ -26,16 +26,18 @@
   <div class="row">
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
+        <hr style="border-color:white; margin-top:0; margin-bottom:0px; opacity:0.3;">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
         <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >BOOKING</a></li>
           <% if current_user %>
-          <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
+          <li><a href="#" id="slide2" >MY TRIP</a></li>
+          <li><a href="#" id="slide3" >COMMENTS</a></li>
           <% end %>
           <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
-          <li><a href="#" id="slide2" >BOOKING</a></li>
+          
         </ul>
-        <hr style="border-color:white; margin-top:0;">
       </div>
     </div>
   </div>
@@ -120,21 +122,25 @@
 </div>
 
 <% if current_user %>
-  <div class="row" id="slide1-content">
+  <div class="row short-break" id="slide2-content">
     <div class="large-12 large-centered small-12 columns">
         <%= render 'itineraries/itinerary_full' %>
     </div>
-    <div class="written-by">
+  </div>
+  <div class="row medium-break" id="slide3-content">
+    <div class="large-12 large-centered small-12 columns">
+        <div class="written-by">
       <div class="large-12 large-centered small-12 columns">
         <div class="large-8 large-centered small-12 columns">
           <%= render 'itineraries/show/comments' %>
         </div>
       </div>
     </div>
+    </div>
   </div>
 <% end %>
 
-<div class="row short-break" id="slide2-content">
+<div class="row short-break" id="slide1-content">
   <% if @plan.bookings.blank? %>
     <div class="small-12 break large-8 large-centered text-center columns">
       <h4 class="serif subheader black"><em>We're sorry, there are no booking links for this story... for now.</em></p>

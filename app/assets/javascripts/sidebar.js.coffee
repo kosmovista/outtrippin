@@ -25,13 +25,13 @@ window.tabbs.each (i) ->
 
   $('#slide' + i).on "click", ->
     $('#slide' + window.act_tab).removeClass("active-tab")
-    $('#slide' + window.act_tab + '-content').toggle()
+    $('#slide' + window.act_tab + '-content').fadeOut(200)
     # Goto to selected slide
     window.act_tab = i
     linkText = $('#slide' + window.act_tab).text()
     $(".tab-dropdown").html(linkText)
     $('#slide' + window.act_tab).addClass("active-tab")
-    $('#slide' + window.act_tab + '-content').toggle()
+    $('#slide' + window.act_tab + '-content').delay(200).fadeIn(200)
     return false
 
 
