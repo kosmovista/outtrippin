@@ -17,16 +17,15 @@ if defined? ActionMailer::Railtie
     if Rails.env.production? or Rails.env.staging?
       config.action_mailer.raise_delivery_errors = true
       config.action_mailer.delivery_method = :smtp
-      # config.action_mailer.default_url_options = {
-      #   host: 'outtrippin.com',
-      #   only_path: false
-      # }
+      config.action_mailer.default_url_options = {
+        host: 'outtrippin.com',
+        only_path: false
+      }
     end
   end
 
   ActionMailer::Base.smtp_settings = {
     address:        'smtp.sendgrid.net',
-    host:           'outtrippin.com',
     port:           '25',
     domain:         'outtrippin.com',
     user_name:      'outtrippin',
