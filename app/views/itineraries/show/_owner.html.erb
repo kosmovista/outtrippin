@@ -138,6 +138,11 @@
 <% end %>
 <% elsif !@pitches.blank? %>
   <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+
+<style>
+.cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>); }
+</style>
+
 <div class="row">
   <div class="large-12 text-center small-12 columns">
     <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
