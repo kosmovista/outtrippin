@@ -25,11 +25,12 @@ if defined? ActionMailer::Railtie
   end
 
   ActionMailer::Base.smtp_settings = {
-    :address => 'smtp.sendgrid.net',
-    :port => '25',
-    :domain => 'outtrippin.com',
-    :user_name => 'outtrippin',
-    :password => 'QazsEdc1234',
-    :authentication => 'plain'
+    address:        'smtp.sendgrid.net',
+    host:           'outtrippin.com',
+    port:           '25',
+    domain:         'outtrippin.com',
+    user_name:      'outtrippin',
+    password:       'QazsEdc1234',
+    authentication: 'plain'
   }
 end

@@ -10,6 +10,7 @@ class UserMailer < ActionMailer::Base
   def welcome_user_email(user, password, itinerary)
     zuji_smtp_settings = {
       address: 'smtp.sendgrid.net',
+      host: 'planmytrip.zuji.com.au',
       port: '25',
       domain: 'outtrippin.com',
       user_name: 'outtrippin',
