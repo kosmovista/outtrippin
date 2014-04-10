@@ -299,7 +299,7 @@
     <ul class="days small-block-grid-1 break">
 
        <!-- SHOW BOOKING -->
-      <li ng-repeat="bk in plan.bookings" id="{{bk.id}}">
+      <li ng-repeat="bk in plan.bookings | orderBy: 'type'" id="{{bk.id}}">
         <div class="row" ng-show="!editing_bk">
           <div class="row">
             <div class="large-12 small-12 large-centered columns">
@@ -330,7 +330,7 @@
           <div class="row booking">
             <div class="large-12 large-centered columns">
               <div class="large-2 right columns text-right">
-                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price, bk.type)"><%= image_tag "save.png", style:"width:25px" %></a>
                 <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_bk=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
                 <a href="" class="circle-button" title="Delete Booking" id="delete-booking" ng-click="delete_booking(bk.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
               </div>
@@ -343,6 +343,10 @@
                       <input type="text" style="font-style:italic;" ng-model="bk.price" placeholder="Price for the booking" />
                       <input type="text" style="font-style:italic;" ng-model="bk.location" placeholder="Location of the booking" />
                     </h4>
+                    <select
+                      ng-model="bk.type"
+                      ng-options="bt.id as bt.name for bt in booking_types">
+                    </select>
                       <textarea style="font-style:italic;" ng-model="bk.body" placeholder="Write a short description of the booking."/></textarea>
                   </form>
                 </div>
@@ -371,6 +375,10 @@
                       <input type="text" style="font-style:italic;" ng-model="booking.price" placeholder="Price for the booking" />
                       <input type="text" style="font-style:italic;" ng-model="booking.location" placeholder="Location of the booking" />
                     </h4>
+                      <select
+                        ng-model="booking.type"
+                        ng-options="bt.id as bt.name for bt in booking_types">
+                      </select>
                     <h4 class="subheader black serif" >
                       <textarea style="font-style:italic;" ng-model="booking.body" placeholder="Write a short description of the booking."/></textarea>
                     </h4>
