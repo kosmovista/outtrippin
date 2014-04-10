@@ -37,6 +37,7 @@ IntercomRails.config do |config|
   # user object, or a Proc which will be passed the current user.
   #
   config.user.custom_data = {
+    "Source" => Proc.new { 'Zuji' },
     "Roles" => Proc.new { |user| user.roles.join(', ') },
     "Places" => Proc.new { |user| user.geo_expertise },
     "Website" => Proc.new { |user| user.website }
