@@ -59,29 +59,4 @@ class ApplicationController < ActionController::Base
   def set_white_topbar
     @white_topbar = true
   end
-
-  def set_cities
-    @cities = ["London",
-    "New York",
-    "Singapore",
-    "Amsterdam",
-    "Paris",
-    "Los Angeles",
-    "Hong Kong",
-    "Bangkok",
-    "Dubai",
-    "Denpasar",
-    "Beijing",
-    "Guangzhou",
-    "Shanghai",
-    "Nadi",
-    "Seoul",
-    "Manila",
-    "Kuala Lumpar",
-    "Jakarta",
-    "Phuket",
-    "Tokyo",
-    "Melbourne",
-    "Sydney"]
-  end
 end

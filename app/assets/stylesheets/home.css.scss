@@ -143,10 +143,13 @@ form#new_itinerary.custom .custom.dropdown .current {
 
 @media only screen and (min-width: 768px) { form#new_itinerary input[type="text"] { font-size:1.2em; } }
 
+form#new_itinerary input[type="text"] {
+  height: 57px !important;
+}
+
 form#new_itinerary input[type="text"]:hover {
   border-color: #003e74;
 }
-
 
 div#start-contest { padding: 1.2em 0; background-color: whitesmoke; }
 
