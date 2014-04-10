@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" style="padding-top:50px;">
   <div class="large-10 large-centered columns">
     <%= form_for object, url: url, method: method, html: { class: 'custom' } do |f| %>
 
@@ -51,21 +51,32 @@
     </div>
 
     <div class="row">
-      <div class="large-6 columns">
+      <div class="large-12 columns">
         <%= f.label :website, "Your Website *" %>
-        <%= f.text_field :website, placeholder: "indianajune.com" %>
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Enter URL without 'http://'' and/or 'www.'">
+        <%= f.text_field :website, placeholder: "indianajune.com" %></span>
+        <%= errors_for(object, :website) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :google, "Google+" %>
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Yes, we know no one uses google+, but Google Search being sneaky will only show you as author on stories if you connect your google+ account here. Enter URL without 'http://'' and/or 'www.'">
+        <%= f.text_field :google, placeholder: "google.com/+IndianaJune" %></span>
         <%= errors_for(object, :website) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>
-        <%= f.text_field :instagram, placeholder: "indiana_june" %>
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Just your instagram handle, no url! :)'">
+        <%= f.text_field :instagram, placeholder: "indiana_june" %></span>
       </div>
     </div>
 
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :facebook, "Facebook Page" %>
-        <%= f.text_field :facebook, placeholder: "www.facebook.com/followindianajune" %>
+        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Enter the page URL without 'http://'' and/or 'www.'">
+        <%= f.text_field :facebook, placeholder: "facebook.com/followindianajune" %></span>
 
       </div>
       <div class="large-6 columns">

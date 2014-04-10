@@ -26,16 +26,18 @@
   <div class="row">
     <div class="large-12 large-centered small-centered small-12 columns">
       <div class="large-8 large-centered small-centered small-12 columns">
+        <hr class="tab-border">
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
         <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >BOOKING</a></li>
           <% if current_user %>
-          <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
+          <li><a href="#" id="slide2" >MY TRIP</a></li>
+          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide3" >COMMENTS</a></li>
           <% end %>
           <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
-          <li><a href="#" id="slide2" >BOOKING</a></li>
+          
         </ul>
-        <hr style="border-color:white; margin-top:0;">
       </div>
     </div>
   </div>
@@ -103,11 +105,13 @@
         <div class="row">
           <div class="large-12 small-12 columns">
             <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
-            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> <a href="" data-dropdown="interestd" data-options="is_hover:true"><%= image_tag 'info.png', class:"hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
-              <%= link_to (image_tag "facebook.png", class: "right", style: "width:25px"),  expert_info_website_url(@plan.user.facebook), target: '_blank', class:"hide-for-small" unless @plan.user.facebook.blank? %>
+            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> 
+              <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:20px; margin:2px;"),  expert_info_website_url(@plan.user.facebook), target: '_blank', class:"hide-for-small" unless @plan.user.facebook.blank? %>
               <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank', class:"hide-for-small" unless @plan.user.pinterest.blank? %>
-              <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank', class:"hide-for-small" unless @plan.user.twitter.blank? %>
-              <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank', class:"hide-for-small" unless @plan.user.instagram.blank? %></h5>
+              <%= link_to (image_tag "twitter_40.png", class: "right", style: "width:20px; margin:2px;"), expert_info_twitter_url(@plan.user.twitter), target: '_blank', class:"hide-for-small" unless @plan.user.twitter.blank? %>
+              <%= link_to (image_tag "google.png", class: "right", style: "width:20px; margin:2px;"),  expert_info_google_url(@plan.user.google), target: '_blank', class:"hide-for-small" unless @plan.user.google.blank? %>
+              <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank', class:"hide-for-small" unless @plan.user.instagram.blank? %>
+            </h5>
               <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(plan.user.website),  expert_info_website_url(plan.user.website), target: '_blank' unless plan.user.website.blank? %></em></p>
             <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small></h5>
           </div>
@@ -118,21 +122,25 @@
 </div>
 
 <% if current_user %>
-  <div class="row" id="slide1-content">
+  <div class="row short-break" id="slide2-content">
     <div class="large-12 large-centered small-12 columns">
         <%= render 'itineraries/itinerary_full' %>
     </div>
-    <div class="written-by">
+  </div>
+  <div class="row medium-break" id="slide3-content">
+    <div class="large-12 large-centered small-12 columns">
+        <div class="written-by">
       <div class="large-12 large-centered small-12 columns">
         <div class="large-8 large-centered small-12 columns">
           <%= render 'itineraries/show/comments' %>
         </div>
       </div>
     </div>
+    </div>
   </div>
 <% end %>
 
-<div class="row short-break" id="slide2-content">
+<div class="row short-break" id="slide1-content">
   <% if @plan.bookings.blank? %>
     <div class="small-12 break large-8 large-centered text-center columns">
       <h4 class="serif subheader black"><em>We're sorry, there are no booking links for this story... for now.</em></p>

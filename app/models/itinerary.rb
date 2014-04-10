@@ -24,6 +24,14 @@ class Itinerary < ActiveRecord::Base
     plan * self.duration.to_i * 100
   end
 
+  def user_source
+    if self.extra_info.has_key?(:source)
+      "Zuji"
+    else
+      "OutTrippin"
+    end
+  end
+
   def process_payment(token, plan)
     if self.valid?
       self.charge(token, plan)

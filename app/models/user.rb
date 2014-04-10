@@ -9,7 +9,10 @@ class User < ActiveRecord::Base
   serialize :expert_info, Hash
 
   # Authlogic configuration
-  acts_as_authentic
+  acts_as_authentic do |user|
+    user.perishable_token_valid_for = 24.hours
+  end
+
 
   # Kaminari (pagination)
   paginates_per 50
@@ -79,6 +82,10 @@ class User < ActiveRecord::Base
 
   def instagram
     self.expert_info[:instagram]
+  end
+
+  def google
+    self.expert_info[:google]
   end
 
   def pinterest
