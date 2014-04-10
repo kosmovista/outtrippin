@@ -15,7 +15,7 @@ class PlansController < ApplicationController
   end
 
   def add_day
-    day = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join }
+    day = { title: params[:title], body: params[:body], cost: params[:cost], reccomendation: params[:reccomendation], id: (0...8).map { (65 + rand(26)).chr }.join }
     @plan.days << day
     @plan.save!
     respond_to do |format|
@@ -29,6 +29,8 @@ class PlansController < ApplicationController
       if d[:id] == params[:day_id]
         d[:title] = params[:title]
         d[:body] = params[:body]
+        d[:cost] = params[:cost]
+        d[:reccomendation] = params[:reccomendation]
       end
     end
     @plan.save!

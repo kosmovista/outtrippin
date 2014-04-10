@@ -94,6 +94,10 @@
                   </label>
                   <p ng-bind-html="day.body"></p>
                 </div>
+                <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+                  <h6><em>Approx cost p/ day:</em> {{day.cost}}</h6>
+                  <h6><em>Booking recommendations:</em> {{day.reccomendation}}</h6>
+                <% end %>
               </div>
             </div>
           </div>
@@ -114,13 +118,23 @@
                     <h5 class="subheader serif"><em>Day {{$index+1}}</em></h5>
                   </div>
                   <div class="large-2 right small-6 columns text-right">
-                    <a href="" class="circle-button" title="Save Changes" id="Save-day" ng-click="update_day(day.id, day.title, day.body)"><%= image_tag "save.png", style:"width:25px" %></a>
+                    <a href="" class="circle-button" title="Save Changes" id="Save-day" ng-click="update_day(day.id, day.title, day.body, day.cost, day.reccomendation)"><%= image_tag "save.png", style:"width:25px" %></a>
                     <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing=false; cancel()"><%= image_tag "cancel.png", style: "width:25px" %></a>
                     <a href="" class="circle-button" title="Delete Day" id="delete-day" ng-click="delete_day(day.id)"><%= image_tag "delete-circle.png", style: "width:25px" %></a>
                   </div>
                   <div class="large-8 small-12 columns">
                     <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
                     <div class="desc" text-angular ng-model="day.body"></div>
+                    <div class="row">
+                      <div class="large-6 columns">
+                        <h4><input type="text" autofocus="true" ng-model="day.cost" placeholder="Estimate day cost"></h4>
+
+                      </div>
+                      <div class="large-6 columns">
+                        <h4><input type="text" autofocus="true" ng-model="day.reccomendation" placeholder="Booking recommendations"></h4>
+                      </div>
+                    </div>
+
                   </div>
                 </form>
               </div>
@@ -150,6 +164,15 @@
                 <div class="large-8 small-12 columns">
                   <h3><input id="title-day" type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
                   <div id="desc-day" class="desc" text-angular ng-model="day.body"></div>
+                  <div class="row">
+                    <div class="large-4 columns">
+                      <h4><input id="cost-day" type="text" autofocus="true" placeholder="Estimate day cost" ng-model="day.cost"></h4>
+
+                    </div>
+                    <div class="large-8 columns">
+                      <h4><input id="reccomendation-day" type="text" autofocus="true" ng-model="day.reccomendation"></h4>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>

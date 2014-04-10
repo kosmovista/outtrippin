@@ -6,17 +6,17 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   $scope.tips_tricks = $scope.plan.tips_tricks;
   $scope.bookings = $scope.plan.bookings;
 
-  $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save."};
+  $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save.", "cost": "", "reccomendation": ""};
   $scope.tip_trick = {"title": "", "body": ""};
   $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": ""};
 
   // ADD DAY
   $scope.save_day = function() {
-    $http.put('plan/day.json', {"title": $scope.day.title, "body": $scope.day.body }).
+    $http.put('plan/day.json', {"title": $scope.day.title, "body": $scope.day.body, "cost": $scope.day.cost, "reccomendation": $scope.day.reccomendation }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
         $scope.add_day = false;
-        $scope.day = {"title": "", "body": "This is some text"};
+        $scope.day = {"title": "", "body": "This is some text" , "cost": "", "reccomendation": "" };
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");
@@ -24,8 +24,8 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   }
 
   // UPDATE DAY
-  $scope.update_day = function(id, title, body) {
-    $http.post('plan/day/' + id + '.json', {"title": title, "body": body }).
+  $scope.update_day = function(id, title, body, cost, reccomendation) {
+    $http.post('plan/day/' + id + '.json', {"title": title, "body": body, "cost": cost, "reccomendation": reccomendation }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
       }).
