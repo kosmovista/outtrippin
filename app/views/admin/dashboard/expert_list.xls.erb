@@ -11,6 +11,8 @@
         <Cell><Data ss:Type="String">Name</Data></Cell>
         <Cell><Data ss:Type="String">Email</Data></Cell>
         <Cell><Data ss:Type="String">Website</Data></Cell>
+        <Cell><Data ss:Type="String">Current Location</Data></Cell>
+        <Cell><Data ss:Type="String">Hometown</Data></Cell>
         <Cell><Data ss:Type="String">Countries</Data></Cell>
         <Cell><Data ss:Type="String">Cities</Data></Cell>
       </Row>
@@ -20,6 +22,8 @@
         <Cell><Data ss:Type="String"><%= expert.name %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.email %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.expert_info[:website] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= expert.expert_info[:current_location] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= expert.expert_info[:hometown] %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.expert_info[:countries] %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.expert_info[:cities] %></Data></Cell>
       </Row>

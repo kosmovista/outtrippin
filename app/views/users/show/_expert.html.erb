@@ -13,9 +13,10 @@
   <em><%= link_to @user.website, "http://" + @user.website, target: "_blank" unless @user.website.blank? %></em>
   <hr style="border:2px solid #4a4a4a; width:60px; margin:25px auto 20px auto" />
   <h5 class="subheader serif text-center" style="margin-bottom:20px"><em><%= @user.expert_info[:bio] %></em></h5>
-  <%= link_to (image_tag "facebook.png", style: "width:40px"), "http://" + @user.facebook, title: "Facebook",  target: '_blank' unless @user.facebook.blank? %>
-  <%= link_to (image_tag "twitter.png", style: "width:40px"), "http://twitter.com/" + @user.twitter, title: "Twitter", target: '_blank' unless @user.twitter.blank? %>
+  <%= link_to (image_tag "facebook_40.png", style: "width:35px; margin:5px;"), "http://" + @user.facebook, title: "Facebook",  target: '_blank' unless @user.facebook.blank? %>
+  <%= link_to (image_tag "twitter_40.png", style: "width:35px; margin:5px;"), "http://twitter.com/" + @user.twitter, title: "Twitter", target: '_blank' unless @user.twitter.blank? %>
   <%= link_to (image_tag "instagram.png", style: "width:40px"), "http://instagram.com/" + @user.instagram, title: "Instagram", target: '_blank' unless @user.instagram.blank? %>
+  <%= link_to (image_tag "google.png", style: "width:35px; margin:5px;"), "http://" + @user.google, title: "Instagram", target: '_blank' unless @user.google.blank? %>
   <%= link_to (image_tag "edit-circle.png", style: "width:30px;", class: "circle-button"), edit_user_path,  title: "Edit Profile" %>
   <hr class="divider">
 </div>

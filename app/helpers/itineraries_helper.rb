@@ -76,6 +76,10 @@ module ItinerariesHelper
     "http://instagram.com/" + handle
   end
 
+  def expert_info_google_url(handle)
+    "http://" + handle + "?rel=author"
+  end
+
   def pitches_so_far(itinerary)
     return "No pitches in so far" if itinerary.pitches.nil?
     itinerary.pitches.count == 1 ? "1 pitch in so far." : "#{itinerary.pitches.count} pitches in so far."
