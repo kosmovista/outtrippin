@@ -166,7 +166,15 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
       error(function(data, status, headers, config) {
         alert("error while deleting picutre");
       });
+  };
+
+  $scope.ready_for_review = function(id) {
+    $http.post('plan/ready.json').
+      success(function(data, status, headers, config) {
+        alert("success");
+      }).
+      error(function(data, status, headers, config) {
+        alert("error while processing your request");
+      });
   }
-
-
 }]);

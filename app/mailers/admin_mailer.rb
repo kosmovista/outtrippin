@@ -32,4 +32,10 @@ class AdminMailer < ActionMailer::Base
     @user = @itinerary.user
     mail to: ADMINS, subject: "[outtrippin.com] An Expert was Picked!"
   end
+
+  def plan_is_ready_email(plan)
+    @plan = plan
+    @itinerary = @plan.itinerary
+    mail to: ADMINS, subject: "[outtrippin.com] A Story is ready for the customer!"
+  end
 end

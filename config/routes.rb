@@ -41,6 +41,8 @@ Outtrippin::Application.routes.draw do
 
         put 'picture', action: 'add_picture'
         delete 'picture/:picture_id', action: 'delete_picture'
+
+        post 'ready', action: 'ready_for_review'
       end
     end
   end

@@ -169,6 +169,13 @@ class PlansController < ApplicationController
     end
   end
 
+  def ready_for_review
+    AdminMailer.delay.plan_is_ready_email(@plan)
+    respond_to do |format|
+      format.json { render json: @plan }
+    end
+  end
+
 
   private
     def set_itinerary
