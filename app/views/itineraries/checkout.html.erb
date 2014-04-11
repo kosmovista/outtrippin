@@ -26,7 +26,45 @@
 	</div>
 	<div class="row medium-break">
 		<div class="large-10 large-centered small-12 columns">
-			<div class="large-4 small-12  columns">
+			<div class="large-4 push-4 columns">
+				<div class="panel text-center pricing pop" >
+					<div class="popular">
+						<h5 class="no-margin">POPULAR</h5>
+					</div>
+					<H5 class="option-title">PLENTY O' FISH</H5>
+					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (14) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $14 per travel day )</h3>
+					<%= image_tag "comp-fish.png", style: "margin-top:15px;" %>
+					<h6 class="white serif option-detail"><em>3+ storytellers compete</em></h6>
+					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
+          			<%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 14 %>
+				</div>
+				<ul class="side-nav subheader"><em>
+					<li class="check">3+ storytellers compete</li>
+					<li class="divider"></li>
+					<li class="check">Receive multiple story concepts</li>
+					<li class="divider"></li>
+					<li class="check">Choose your storyteller</li>
+					<li class="divider"></li>
+					<li class="check">Day-by-day tailored plan</li>
+					<li class="divider"></li>
+					<li class="check">Activity recommendations</li>
+					<li class="divider"></li>
+					<li class="check">Dining/nightlife suggestions</li>
+					<li class="divider"></li>
+					<li class="check">Accommodation ideas</li>
+					<li class="divider"></li>
+					<li class="check">Handy Tips & Tricks</li>
+					<li class="divider"></li>
+					<li class="check">Easy Booking</li>
+					<li class="divider"></li>
+					<li class="cross">30 minute skype consultation</li>
+					<li class="divider"></li>
+					<li class="cross">Printed & bound Trip Script</li>
+					<li class="divider"></li>
+					<li class="cross">Printed City Map</li></em>
+				</ul>
+			</div>
+			<div class="large-4 pull-4 columns">
 				<div class="panel text-center pricing" >
 					<H5 class="option-title">CATCH OF THE DAY</H5>
 					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (12) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br> ($ 12 per travel day)</h3>
@@ -61,45 +99,8 @@
 					<li class="cross">Printed City Map</li></em>
 				</ul>
 			</div>
-			<div class="large-4 small-12  columns">
-				<div class="panel text-center pricing pop" >
-					<div class="popular">
-						<h5 class="no-margin">POPULAR</h5>
-					</div>
-					<H5 class="option-title">PLENTY O' FISH</H5>
-					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (14) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $14 per travel day )</h3>
-					<%= image_tag "comp-fish.png", style: "margin-top:15px;" %>
-					<h6 class="white serif option-detail"><em>3+ storytellers compete</em></h6>
-					<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
-          <%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: 14 %>
-				</div>
-				<ul class="side-nav subheader"><em>
-					<li class="check">3+ storytellers compete</li>
-					<li class="divider"></li>
-					<li class="check">Receive multiple story concepts</li>
-					<li class="divider"></li>
-					<li class="check">Choose your storyteller</li>
-					<li class="divider"></li>
-					<li class="check">Day-by-day tailored plan</li>
-					<li class="divider"></li>
-					<li class="check">Activity recommendations</li>
-					<li class="divider"></li>
-					<li class="check">Dining/nightlife suggestions</li>
-					<li class="divider"></li>
-					<li class="check">Accommodation ideas</li>
-					<li class="divider"></li>
-					<li class="check">Handy Tips & Tricks</li>
-					<li class="divider"></li>
-					<li class="check">Easy Booking</li>
-					<li class="divider"></li>
-					<li class="cross">30 minute skype consultation</li>
-					<li class="divider"></li>
-					<li class="cross">Printed & bound Trip Script</li>
-					<li class="divider"></li>
-					<li class="cross">Printed City Map</li></em>
-				</ul>
-			</div>
-			<div class="large-4 small-12 columns">
+			
+			<div class="large-4 right columns">
 				<div class="panel text-center pricing" >
 					<H5 class="option-title">FANCY FISHIN'</h5>
 					<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (18) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $18 per travel day )</h3>
