@@ -1,6 +1,6 @@
 class ItinerariesController < ApplicationController
   before_action :set_homepage_type, only: [:create]
-  before_action :set_itinerary, except: [:index, :create]
+  before_action :set_itinerary, except: [:index, :create, :browse]
   before_action :load_styles_personalities, only: [:details, :finalize, :update, :publish]
   before_action :authorize_user, only: [:index] # TODO some more actions should be here
   before_action :store_location
@@ -81,6 +81,11 @@ class ItinerariesController < ApplicationController
       session[:original_uri] = checkout_itinerary_path(@itinerary)
       redirect_to login_path
     end
+  end
+
+  def browse
+    @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
+    @itinerary = Itinerary.new
   end
 
   def purchase
