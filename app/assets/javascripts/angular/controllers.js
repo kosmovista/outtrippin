@@ -179,7 +179,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
   $scope.ready_for_review = function(id) {
     $http.post('plan/ready.json').
       success(function(data, status, headers, config) {
-        alert("success");
+        $('#done-modal').foundation('reveal', 'open');
       }).
       error(function(data, status, headers, config) {
         alert("error while processing your request");
