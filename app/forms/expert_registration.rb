@@ -19,7 +19,6 @@ class ExpertRegistration
     send("cities=", parsed_cities)
     send("style=", parsed_styles)
     send("facebook=", facebook.gsub!(/.*?(?=facebook)/im, "")) unless facebook.nil?
-    send("website=", website.sub!(/^https?\:\/\//, '')) unless website.nil?
   end
 
   # VALIDATIONS
