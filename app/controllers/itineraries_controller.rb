@@ -89,6 +89,11 @@ class ItinerariesController < ApplicationController
     end
   end
 
+  def browse
+    @featuring_stories = Plan.where(published: true)
+    @itinerary = Itinerary.new
+  end
+
   def purchase
     token = params[:stripeToken]
     plan = params[:plan].to_i
