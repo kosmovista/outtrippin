@@ -1,19 +1,19 @@
 default:
   header: "<strong>A travel experience like no other.</STRONG>"
-  subheader: "Let travel experts craft a unique holiday plan, just for you."
+  subheader: "Let travel experts help you plan your perfect trip."
   placeholder: "Where would you like to go?"
   submit: "Send me ideas!"
   process:
-    text: "Have a better holiday and save hours of time researching.<br>Get a tailored travel plan from a ZUJI expert."
+    text: "The world's best travel writers unite to save you time, money and send you on a holiday as unique as you are."
     step1:
       title: "How does it work?"
-      text: "Describe your travel personality and the trip you have in mind and our experts will pitch you travel ideas."
+      text: "Start a trip and experts will pitch you travel ideas. Work together with your favorite expert to plan a trip that's perfect just for you. "
     step2:
       title: "Who are the experts?"
-      text: "Pro travel bloggers and writers who have been there, care and are ready to share their best experiences."
+      text: "Pro travel bloggers and writers who have been there, care and are ready to share their best experiences and insider secrets with you."
     step3:
       title: "What do I get?"
-      text: "A day-by-day trip plan, tailored to your personality full of tips, tricks and advice from a travel expert."
+      text: "A day-by-day plan full of tips, tricks, and recommendations you'll love, from someone who has been there and done it."
     step4:
       title: "Ready to book?"
       text: "ZUJI helps make your unique holiday plan a reality with quick and easy bookings."
