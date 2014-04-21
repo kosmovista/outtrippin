@@ -1,0 +1,75 @@
+<% set_page_title( "Browse trips around the world, planned on OutTrippin" ) %>
+<style>
+.cover { background-image: none; margin-bottom:0; background-color: #fdfdfd; height:450px;}
+.header {height:450px;}
+.tabs {display:none;}
+</style>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "browse", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+<div class="cover"></div>
+<div class="header">
+  <div class="row">
+    <div class="large-8 large-centered small-12 text-center columns">
+      <div class="hide-for-small">
+      <%= image_tag 'o-color.png', style: "width: 70px; margin-bottom:30px; border-radius: 1000px;"%>
+      </div>
+      <h3 class=" text-center">PLANNED HERE, ENJOYED EVERYWHERE.</h3>
+      <h5 class="serif subheader text-center" style="margin-bottom:50px">
+        <em>At OutTrippin, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on OutTrippin and enjoyed around the world.</em>
+      </h5>
+      <a href="#" data-reveal-id="trip-modal" class= "button pickthis radius secondary small text-center serif" >Ready to plan your perfect trip?</a>
+    </div>
+  </div>
+</div class="header">
+
+<% unless @featuring_stories.blank? %>
+<div class="big-break">
+  <ul class="large-block-grid-3 small-block-grid-1 no-margin no-padding">
+    <% @featuring_stories.each do |i| %>
+      <li class="trip no-margin no-padding" style="background-image:url(<%= i.cover %>) !important;">
+      <%= link_to "", itinerary_path(i.itinerary), class: "overlay", title: ('Trip to ' + i.itinerary.destination ) %>
+      <div class="large-12 detail small-12 columns">
+        <h3 class="white"><%= link_to i.itinerary.winner_pitch.title, itinerary_path(i.itinerary), class: "white", title: "Read the story" %></h3>
+      </div>
+      <div class="large-12 text-center small-12 columns author">
+        <%= link_to (image_tag i.user.avatar.url(:thumb), class: "rounded text-right tip-avatar"), user_path(i.user), title: "Storyteller's profile" %>
+        <h6 class="white serif subheader text-center">
+          <em>Recommended by <%= link_to i.user.name, user_path(i.user), class: "white", title: "Storyteller's profile" %></em>
+        </h5>
+      </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="share hide-on-print" style="margin-top:0 !important">
+  <h4 class="serif subheader"><em><a href="#" id="sharebutton" data-reveal-id="trip-modal" class="sharethis">Ready to start your own adventure?</a></em></h4>
+  <hr class="hide-for-small" style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
+</div>
+
+<div id="trip-modal" class="reveal-modal medium text-center">
+  <h3>Ready to make your next trip your best ever?</h3>
+  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>Thought so! Okay, do you have a general idea of where you'd like to go?</em></h5>
+  <div class="large-10 small-12 columns large-centered">
+    <%= form_for @itinerary do |f| %>
+      <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet...", :autofocus => true %>
+      <%= f.submit "Let's get started!", class: "button radius expand" %>
+    <% end %>
+  </div>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
+
+<%= content_for :head do %>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+<% end %>
+
+<%= content_for :body do %>
+  <script>
+  $(window).load(function() {
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  });
+  </script>
+<% end %>

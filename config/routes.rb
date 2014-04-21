@@ -51,6 +51,7 @@ Outtrippin::Application.routes.draw do
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
+  get     'browse'    => 'itineraries#browse'
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
