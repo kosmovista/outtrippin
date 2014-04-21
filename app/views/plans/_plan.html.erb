@@ -36,7 +36,7 @@
           <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide3" >COMMENTS</a></li>
           <% end %>
           <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
-          
+
         </ul>
       </div>
     </div>
@@ -166,7 +166,7 @@
         </div>
         <div class="large-2 small-12 text-center columns">
           <span class="radius price small white label" ><%= bk[:price] %></span>
-          <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+          <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px", target: "_blank" %>
         </div>
       </div>
     </div>
