@@ -6,6 +6,8 @@ class Plan < ActiveRecord::Base
 
   default_scope { order('created_at DESC') }
 
+  TYPES = %w(hotel activity other)
+
   serialize :tips_tricks, Array
   serialize :days, Array
   serialize :bookings, Array
