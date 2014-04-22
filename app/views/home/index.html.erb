@@ -155,5 +155,8 @@
   <% end %>
   mixpanel.track("Page Loaded", {"page": "landing page"});
   mixpanel.track_forms("#new_itinerary", "Started Contest");
+  mixpanel.register_once({
+    "Source": "OutTrippin"
+  });
 </script>
 <% end %>

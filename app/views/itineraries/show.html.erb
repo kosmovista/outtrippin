@@ -11,6 +11,9 @@
         "Roles": "<%= current_user.roles.join(', ') %>",
         "$email": "<%= current_user.email %>"
     });
+  mixpanel.register_once({
+    "Source": "OutTrippin"
+  });
   <% end %>
 </script>
 <% end %>

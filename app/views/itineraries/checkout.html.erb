@@ -246,21 +246,41 @@
     mixpanel.people.set({
         "Name": "<%= current_user.personal_info[:name] %>",
         "Roles": "<%= current_user.roles.join(', ') %>",
-        "$email": "<%= current_user.email %>"
+        "$email": "<%= current_user.email %>",
+        "Source": "OutTrippin"
     });
   <% end %>
   mixpanel.track("Page Loaded", {"page": "Checkout Page"});
   $("#12").click(function() {
     mixpanel.track("Clicked Checkout");
     mixpanel.register({ 'Plan': "Catch of the Day" });
+    mixpanel.people.set({
+      "Plan": "Catch of the Day"
+    });
   });
   $("#14").click(function() {
     mixpanel.track("Clicked Checkout");
     mixpanel.register({ 'Plan': "Plenty of Fish" });
+    mixpanel.people.set({
+      "Plan": "Plenty of Fish"
+    });
   });
   $("#18").click(function() {
     mixpanel.track("Clicked Checkout");
     mixpanel.register({ 'Plan': "Fancy Fishin" });
+    mixpanel.people.set({
+      "Plan": "Fancy Fishin"
+    });
+  });
+  $("#free-trial").click(function() {
+    mixpanel.track("Free-Trial");
+    mixpanel.register({ 'Plan': "Free Trial" });
+    mixpanel.people.set({
+      "Plan": "Free Trial"
+    });
+  });
+  mixpanel.register_once({
+    "Source": "OutTrippin"
   });
 </script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
