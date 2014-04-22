@@ -264,11 +264,7 @@
             <a id="add-tip-btn" href="#adding-tip" class="button radius" style="margin-left:10px;" ng-click="add_tip_trick=true">&#43; Add Tip</a>
           </div>
         </div>
-        <div class="row">
-          <div class="large-4 large-centered text-center columns">
-            <a class="button expand radius" ng-click="ready_for_review()">Done!</a>
-          </div>
-        </div>
+        <a class="button submit radius" ng-click="ready_for_review()">Submit Story</a>
       </li>
       <% end %>
       <li>
@@ -461,8 +457,9 @@
 </div>
 
 
-<div id="done-modal" class="reveal-modal" data-reveal>
-  <h4>We've got it!</h4>
-  <p>The OutTrippin crew got notified that you are done and will review the itinerary.</p>
+<div id="done-modal" class="reveal-modal small text-center" data-reveal>
+  <%= image_tag "save.png", style:"width:80px; margin-bottom:30px;" %>
+  <h3>Message Received, Cap'n!</h3>
+  <h4 class="serif subheader"><em>The OutTrippin crew got notified that you are done and will review the story and pass the good news to the customer.</em></h4>
   <a class="close-reveal-modal">&#215;</a>
 </div>

@@ -202,3 +202,11 @@
 #cost-day,#reccomendation-day {
   font-size: 0.8em;
 }
+
+.submit {
+  position: absolute;
+  top:10px;
+  right: 70px;
+  height:49px;
+  z-index:1000;
+}
