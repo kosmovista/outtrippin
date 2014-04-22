@@ -146,7 +146,7 @@
     </div>
   <% else %>
   <% @plan.bookings.each do |bk| %>
-    <div class="row booking">
+    <div class="row booking <%= bk[:type].nil? ? "" : Plan::TYPES[bk[:type]] %>">
       <div class="large-12 small-12 large-centered columns">
         <div class="large-3 small-12 columns">
           <%= image_tag bk[:picture], class: "booking-img" %>
