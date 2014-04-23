@@ -189,6 +189,8 @@ div.container { position: relative; }
   a {line-height: 1em;}
 }
 
+.tab-border {  border-color:white; margin-top:0; margin-bottom:0px; opacity:0.2; }
+
 @media only screen and (min-width: 1200px) {  .header {top: 100px; height:240px;}  }
 
 .tab-dropdown {
@@ -251,10 +253,21 @@ div.container { position: relative; }
 .active-tab {
   @media (min-width: 940px) {
     color:#fff !important;
-    border-bottom: 1px #fff solid;
-     -webkit-transition: color 0.25s ease-in-out;
-    -moz-transition: color 0.25s ease-in-out;
-    transition: color 0.25s ease-in-out;
+    border-top: 1px #fff solid;
+    margin-top: -1px;
+     -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    &:after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      border: inset 5px;
+      border-color: transparent transparent #fdfdfd transparent;
+      border-left-style: solid;
+      margin: -8px auto;
+    }
   }
 }
 
