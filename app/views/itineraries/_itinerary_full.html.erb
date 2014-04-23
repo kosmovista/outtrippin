@@ -1,14 +1,7 @@
 <div class="break">
-  <div class="large-8 large-centered columns">
-    <div class="row">
-      <div class="large-12 columns">
-        <%= link_to "Submit a pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "submit-pitch button small right radius" if current_user && current_user.is?("expert") && @pitch.blank? && !@itinerary.has_winner_pitch? %>
-        <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : 
-        @itinerary.extra_info[:name] %><%= link_to (current_user.voted_for?(@itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(@itinerary), method: :post if current_user && current_user.is?("expert") %></h3>
-      </div>
-
-        
-    </div>
+  <div class="large-8 small-12 large-centered columns">
+      <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : 
+      @itinerary.extra_info[:name] %><%= link_to (current_user.voted_for?(@itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(@itinerary), method: :post if current_user && current_user.is?("expert") %></h3>      
       <p><em><%= image_tag "plane.png", style:"width:17px; opacity:0.7; margin:-6px 4px 0;" %><%= @itinerary.extra_info[:travelers] %> to <a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
       <%= image_tag "dollar.png", style: "width:12px; opacity:0.7; margin:-6px 5px 0;" %> With a budget of <%= @itinerary.extra_info[:accommodation_budget] %> for accommodation and <%= @itinerary.extra_info[:activity_budget] %> for activities, per person, per day</em></p>
     </ul>
@@ -31,7 +24,7 @@
       </ul>
     <% end %>
 
-     <% unless @itinerary.extra_info[:must].blank? %>
+    <% unless @itinerary.extra_info[:must].blank? %>
       <h5 class="subheader serif"><em>Things I absolutely must see/do:</em></h5>
       <p style="margin-bottom:70px;"><%= @itinerary.extra_info[:must] %></p>
     <% end %>

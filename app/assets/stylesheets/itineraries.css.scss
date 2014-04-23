@@ -265,9 +265,9 @@ div.container { position: relative; }
     color:#fff !important;
     border-top: 1px #fff solid;
     margin-top: -1px;
-     -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    transition: all 0.5s ease-in-out;
+     -webkit-transition: color 0.5s ease-in-out;
+    -moz-transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
     &:after {
       content: "";
       display: block;

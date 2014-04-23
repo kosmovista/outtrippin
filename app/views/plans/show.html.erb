@@ -20,24 +20,26 @@
   </div>
 </div>
 <div class="tabs">
-  <div class="large-1 small-2 text-center large-centered small-centered columns">
-    <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
-     <label class="file-input story-cover text-center">
-       <%= image_tag "edit-circle.png", id: "image-cover", style: "width:30px;", title: "Change Cover Picture" %>
-       <input type="file" ng-file-select="onFileSelect($files, true, 0)">
-     </label>
-    <% end %>
-  </div>
-  <div class="large-12 large-centered small-centered small-12 columns">
-    <div class="large-8 large-centered small-centered small-12 columns">
-      <hr class="tab-border">
-      <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-      <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-        <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
-        <% if current_user  && current_user.admin? %>
-        <li><a href="#" id="slide1" >BOOKING</a></li>
-        <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-1 small-2 text-center large-centered small-centered columns">
+      <% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+       <label class="file-input story-cover text-center">
+         <%= image_tag "edit-circle.png", id: "image-cover", style: "width:30px;", title: "Change Cover Picture" %>
+         <input type="file" ng-file-select="onFileSelect($files, true, 0)">
+       </label>
+      <% end %>
+    </div>
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <hr class="tab-border">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
+          <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <% if current_user  && current_user.admin? %>
+          <li><a href="#" id="slide1" >BOOKING</a></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
