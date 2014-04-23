@@ -35,7 +35,7 @@
           <li><a href="#" id="slide2" >MY TRIP</a></li>
           <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide3" >COMMENTS</a></li>
           <% end %>
-          <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
+          <li><a href="#" id="maps" data-reveal-id="update-modal">MAPS</a></li>
 
         </ul>
       </div>
@@ -225,8 +225,17 @@
   mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
   });
-  mixpanel.track_links("#slide1-content a", "Clicked Booking Link", {
+  mixpanel.track_links("#slide1-content .hotel a", "Clicked Booking Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Hotel",
+  });
+  mixpanel.track_links("#slide1-content .activity a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Activity",
+  });
+  mixpanel.track_links("#slide1-content .other a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Other",
   });
   mixpanel.track_links("#facebook-share", "Facebook Share", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
@@ -256,6 +265,36 @@
     mixpanel.track("Share Button", {
       "Story_id": "<%= @itinerary.winner_pitch.title %>",
       "Stage": "Final Story"
+    });
+  });
+  $("#slide1").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Booking"
+    });
+  });
+  $("#slide0").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Story"
+    });
+  });
+  $("#slide2").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Trip Details"
+    });
+  });
+  $("#slide3").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Comments"
+    });
+  });
+  $("#maps").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Maps"
     });
   });
   $("#email-share").click(function() {
