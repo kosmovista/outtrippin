@@ -29,11 +29,11 @@
         <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
         <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
           <li><a href="#" id="slide0" class="active-tab">THE STORY</a></li>
+          <li><a href="#" id="slide1" >BOOKING</a></li>
           <% if current_user %>
-          <li><a href="#" id="slide1" >THE REQUEST</a></li>
+          <li><a href="#" id="slide2" >MY TRIP</a></li>
           <% end %>
-          <li><a href="#" data-reveal-id="update-modal">MAPS</a></li>
-          <li><a href="#" id="slide2" >BOOKING</a></li>
+          <li><a href="#" id="maps" data-reveal-id="update-modal">MAPS</a></li>
         </ul>
         <hr style="border-color:white; margin-top:0;">
       </div>
@@ -118,7 +118,7 @@
 </div>
 
 <% if current_user %>
-  <div class="row" id="slide1-content">
+  <div class="row" id="slide2-content">
     <div class="large-12 large-centered small-12 columns">
         <%= render 'itineraries/itinerary_full' %>
     </div>
@@ -132,7 +132,7 @@
   </div>
 <% end %>
 
-<div class="row short-break" id="slide2-content">
+<div class="row short-break" id="slide1-content">
   <% if @plan.bookings.blank? %>
     <div class="small-12 break large-8 large-centered text-center columns">
       <h4 class="serif subheader black"><em>We're sorry, there are no booking links for this story... for now.</em></p>
@@ -208,7 +208,7 @@
 </div>
 
 <%= content_for :body do %>
-  <script>
+<script>
   mixpanel.track("Page Loaded", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
     "Author": "<%= @plan.user.personal_info[:name] %>",
@@ -217,8 +217,17 @@
   mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
   });
-  mixpanel.track_links("#slide2-content a", "Clicked Booking Link", {
+  mixpanel.track_links("#slide1-content .hotel a", "Clicked Booking Link", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Hotel",
+  });
+  mixpanel.track_links("#slide1-content .activity a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Activity",
+  });
+  mixpanel.track_links("#slide1-content .other a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Other",
   });
   mixpanel.track_links("#facebook-share", "Facebook Share", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
@@ -250,11 +259,35 @@
       "Stage": "Final Story"
     });
   });
+  $("#slide1").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Booking"
+    });
+  });
+  $("#slide0").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Story"
+    });
+  });
+  $("#slide2").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Trip Details"
+    });
+  });
+  $("#maps").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Maps"
+    });
+  });
   $("#email-share").click(function() {
     mixpanel.track("Email Share", {
       "Story_id": "<%= @itinerary.winner_pitch.title %>",
       "Stage": "Final Story"
     });
   });
-  </script>
+</script>
 <% end %>
