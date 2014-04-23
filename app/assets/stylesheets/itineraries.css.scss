@@ -185,7 +185,7 @@ div.container { position: relative; }
   background-color: rgba(0, 0, 0, 1)
 }
 .header {top: 80px; position:absolute; height:260px; width:100%; overflow: hidden;}
-.tabs {height:60px; width:100%; position:absolute; top: 340px;
+.tabs {height:50px; width:100%; position:absolute; top: 350px;
   a {line-height: 1em;}
 }
 
@@ -197,13 +197,13 @@ div.container { position: relative; }
   display: none;
   @media (max-width: 940px) {
     display: block !important;
-    margin-right: .7em;
+    padding-top:15px;
     font-size: 0.750em;
     padding-bottom: 0.5em;
     letter-spacing: 0.1em;
     font-weight: bold;
     color:#fff !important;
-    border-bottom: 1px #fff solid;
+    border-top: 1px #fff solid;
     &:after {
       content: "";
       display: block;
@@ -215,43 +215,53 @@ div.container { position: relative; }
       margin-right: 15px;
       margin-top: -4.5px;
       position: absolute;
-      top: 50%;
+      top: 60%;
       right: 10px; }
   }
 }
 
 .inline-list.cover-tabs {
- @media (min-width: 940px) {
-  margin: 0 !important;
+ @media (min-width: 940px) { 
+  margin: 0 !important; 
   position: relative !important;
   top: 0 !important;
   left: 0 !important;
+  overflow: visible;
+  line-height: 50px;
   }
  @media (max-width: 940px) {
   @include dropdown-container;
   margin-top: 7px;
   overflow: visible !important;
-  li {@include dropdown-style; width: 100%;}
+  li {@include dropdown-style; width: 100%;} 
   }
 }
 .inline-list.cover-tabs > li a {
-  @media (min-width: 940px) {
-    margin-right: .7em;
+  @media (min-width: 940px) { 
+    margin-right: 1em;
     font-size: 0.750em;
-    padding-bottom: 0.5em;
-    letter-spacing: 0.1em;
+    line-height:47px;
+    letter-spacing: 0.12em;
     color: rgba(255,255,255,0.70);
     font-weight: bold;
-    -webkit-transition: color 0.25s ease-in-out;
-    -moz-transition: color 0.25s ease-in-out;
-    transition: color 0.25s ease-in-out;
+    -webkit-transition: color 0.5s ease-in-out;
+    -moz-transition: color 0.5s ease-in-out;
+    transition: color 0.5s ease-in-out;
+    line-height: 47px;
     &:hover {color: #fff;}
   }
 }
 
+.inline-list.cover-tabs > li { 
+  .comments {
+    background: image-url('comments.png') no-repeat right 19px;
+    padding-right: 22px;
+    background-size: 16px;
+  }
+}
 
 .active-tab {
-  @media (min-width: 940px) {
+  @media (min-width: 940px) { 
     color:#fff !important;
     border-top: 1px #fff solid;
     margin-top: -1px;
