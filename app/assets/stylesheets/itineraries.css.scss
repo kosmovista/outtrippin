@@ -423,7 +423,7 @@ div.container { position: relative; }
 
 //BOOKING
 .pricethis {
-  border: 2px #00bccf solid !important;
+  border: 2px #003e74 solid !important;
   border-top: 0px;
   border-radius:0 0 4px 4px !important;
   padding-top: 0.4em !important;
@@ -435,8 +435,8 @@ div.container { position: relative; }
   color: #4c4c4c !important;
   transition:all 200ms linear;
   &:hover {
-    border: 2px #00bccf solid;
-    background-color: #00bccf !important;
+    border: 2px #003e74 solid;
+    background-color: #003e74 !important;
     color: white !important;
   }
 }
