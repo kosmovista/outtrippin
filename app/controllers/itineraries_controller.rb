@@ -84,7 +84,7 @@ class ItinerariesController < ApplicationController
   end
 
   def browse
-    @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
+    @featuring_stories = Plan.where(published: true)
     @itinerary = Itinerary.new
   end
 
