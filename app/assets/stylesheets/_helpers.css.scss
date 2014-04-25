@@ -78,8 +78,8 @@
   position:absolute;
   top:10px;
   left:10px;
-  height:49px;
-  width:49px;
+  height:45px;
+  width:45px;
   padding: 6px 3px 7px 5px;
   border-radius: 4px;
   background-color: #00bccf;
@@ -89,9 +89,9 @@
 .top-ot {
   position:absolute;
   top:10px;
-  left: 51px;
-  height: 49px;
-  padding: 14px 12px 10px 12px;
+  left: 46px;
+  height: 45px;
+  padding: 12px 9px 10px 10px;
   border-radius: 4px;
   background-color: #00bccf;
   z-index: 999 !important;
@@ -103,12 +103,12 @@
   display: block;
   width: 0;
   height: 0;
-  border: outset 6px;
+  border: outset 5px;
   border-color: transparent transparent transparent #00bccf;
   border-bottom-style: solid;
   position: absolute;
-  top: 30px;
-  left: 69px;
+  top: 29px;
+  left: 64px;
   z-index: 99;
 }
 
@@ -127,7 +127,7 @@
 
   .top-bar-section li a:not(.button) {
     border-radius: 4px;
-    line-height: 49px;
+    line-height: 45px;
   }
 
   .top-bar-section .dropdown li a {
@@ -149,7 +149,7 @@
   }
 
   .top-bar-section .user-menu.has-dropdown > a {
-   padding: 0 12px !important;
+   padding: 0 10px !important;
   }
 
   .top-bar-section .user-menu.has-dropdown > a:after {
