@@ -354,7 +354,7 @@
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
-<div id="email-share" class="reveal-modal small text-center">
+<div id="email-share" data-animation="fade" class="reveal-modal small text-center">
   <h3>Send via email</h3>
   <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
@@ -387,21 +387,57 @@
 <% else # no current_user %>
   <% if @plan && @plan.published %>
     <%= render @plan %>
-    <div id="login-modal" class="reveal-modal small text-center">
-      <h3>Login to get the full story.</h3>
-      <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other Plan My Trip power features by logging in.</em></h5>
-      <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
-      <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
-      <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
+    <div id="login-modal" data-animation="fade" class="reveal-modal medium text-center">
+      <h3>Planning a trip to <%= @itinerary.destination %>?</h3>
+      <h4 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>Let travel experts like <%= @plan.user.personal_info[:name] %> help you plan your perfect trip.</em></h4>
+      <div class="row">
+        <div class="large-11 large-centered small-12 columns">
+          <%= form_for(Itinerary.new) do |f| %>
+            <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet..." %>
+            <%= f.submit "Blow My Mind!", class: "button serif radius pickthis in-input" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row text-center medium-break">
+        <p class="sans">
+      <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
+      <a class="sans otherClose" style="font-size:.9em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
+      <a class="close-reveal-modal" >&#215;</a>
     </div>
     <%= content_for :body do %>
       <script>
-        $(document).ready(function() {
-          setTimeout(function(){
-            $("#login-modal").foundation('reveal', 'open');
-          }, 4000);
+      function getScrollTop(){
+        if(typeof pageYOffset!= 'undefined'){
+          return pageYOffset;
+        }
+        else{
+          var b = document.body; //IE 'quirks'
+          var d = document.documentElement; //IE with doctype
+          d = (d.clientHeight)? d : b;
+          return d.scrollTop;
+        }
+      }    
+      $(window).on("scroll", function(){
+        if(getScrollTop() >= 3000){
+          $(window).off("scroll");
+          $("#login-modal").foundation('reveal', 'open');
+          document.getElementById('itinerary_destination').value= '<%= @itinerary.destination %>'; 
+        }
+      });
+      </script>
+      <script>
+        $(window).load(function() {
+          autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
         });
       </script>
+      <script>
+        mixpanel.track_forms("#new_itinerary", "Started Contest", {
+          'From': 'Story'
+        });
+      </script>
+    <% end %>
+    <%= content_for :head do %>
+      <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
     <% end %>
   <% else %>
   <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>

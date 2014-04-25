@@ -187,7 +187,7 @@
   <h4 class="serif subheader"><em><a href="#" id="sharebutton" data-reveal-id="share-modal" class="sharethis">Share this story.</a></em></h4>
   <hr class="hide-for-small" style="border: 1px #cccccc solid;margin-top: -30px;z-index: 9;">
 </div>
-<div id="share-modal" class="reveal-modal medium text-center">
+<div id="share-modal" data-animation="fade" class="reveal-modal medium text-center">
   <h3>Share this with a friend.</h3>
   <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>If you like what you see or know someone who'll love this, share it with them. :)</em></h5>
   <div class="large-7 small-12 columns large-centered">
@@ -199,7 +199,7 @@
   </div>
   <a class="close-reveal-modal">&#215;</a>
 </div>
-<div id="email-share" class="reveal-modal small text-center">
+<div id="email-share" data-animation="fade" class="reveal-modal small text-center">
   <h3>Send via email</h3>
    <%= form_tag email_sharer_itinerary_path, method: :put do %>
     <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
