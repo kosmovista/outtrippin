@@ -1,4 +1,4 @@
-<% set_page_title( "Browse trips around the world, planned on OutTrippin" ) %>
+<% set_page_title( "Browse trips around the world, planned on ZUJI's Plan My Trip" ) %>
 <style>
 .cover { background-image: none; margin-bottom:0; background-color: #fdfdfd; height:450px;}
 .header {height:450px;}
@@ -16,7 +16,7 @@
       </div>
       <h3 class=" text-center">PLANNED HERE, ENJOYED EVERYWHERE.</h3>
       <h5 class="serif subheader text-center" style="margin-bottom:50px">
-        <em>At Zuji, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on Zuji and enjoyed around the world.</em>
+        <em>At ZUJI, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on ZUJI and enjoyed around the world.</em>
       </h5>
       <a href="#" data-reveal-id="trip-modal" class= "button pickthis radius secondary small text-center serif" >Ready to plan your perfect trip?</a>
     </div>
@@ -70,6 +70,29 @@
   <script>
   $(window).load(function() {
     autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  });
+  </script>
+<% end %>
+
+<%= content_for :body do %>
+  <script>
+    <% if current_user %>
+    mixpanel.alias("<%= current_user.email %>");
+    mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+    });
+  <% end %>
+  mixpanel.track("Page Loaded", {"page": "Browse"});
+  mixpanel.track_forms("#new_itinerary", "Started Contest", {
+    'From': 'Browse'
+  });
+  mixpanel.track_links(".trip", "Browsed Trip", {
+    'page': 'Browse'
+  });
+  mixpanel.register_once({
+    "Source": "Zuji"
   });
   </script>
 <% end %>

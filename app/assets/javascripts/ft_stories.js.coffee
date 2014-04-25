@@ -59,7 +59,7 @@ window.nextTrip = ->
 # AFTER WINDOW LOADS #
 ######################
 $(window).resize ->
-$('#featuring').css("height", $(window).height())
+  $('#featuring').css("height", $(window).height())
 
 $(window).ready ->
   $('#featuring').css("height", $(window).height())
