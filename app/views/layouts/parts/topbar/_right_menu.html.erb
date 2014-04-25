@@ -1,4 +1,14 @@
 <ul class="right">
+  <% if (!@itinerary.nil? && @itinerary.new_record?) || !current_user %>
+    <%= content_tag(:li, link_to("Browse Trips", browse_path, id: "browse")) %>
+    <%= content_for :body do %>
+      <script>
+        mixpanel.track_links("#browse", "Clicked Browse Trips", {
+          'location': 'Navbar'
+        });
+      </script>
+    <% end %>
+  <% end %>
   <% if current_user %>
   <li class="user-menu has-dropdown"><a href="#" ><%= image_tag 'user-menu.png', style: "width:27px;" %><div class="hide-for-medium-up">Me</div></a>
     <ul class="dropdown">

@@ -282,6 +282,9 @@
   mixpanel.register_once({
     "Source": "OutTrippin"
   });
+   mixpanel.track_links(".trip", "Browsed Featured Trip", {
+    'page': 'Checkout'
+  });
 </script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <% end %>

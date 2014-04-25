@@ -212,25 +212,26 @@ div#featuring {
 
 .inline-list.browse-bullets {
   position: relative;
-  padding-top: 20px;
+  margin-top: -60px;
   padding-left: 1px;
   text-align: center;
+  z-index: 10 !important;
   @media only screen and (max-width: 940px) { padding-top:10px !important; }
 }
 .inline-list.browse-bullets > li {
   float:none;
   display: inline-block;
-  margin-right: 20px !important
+  padding-right: 15px !important;
 }
   
 .inline-list.browse-bullets > li a {
   margin-right: 0 !important;
   -webkit-border-radius: 1000px;
   border-radius: 1000px;
-  background-color: #4a4a4a;
-  width: 11px;
-  height: 11px;
-  opacity: 0.4;
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  opacity: 0.6;
   transition: opacity 250ms ease-out;
   &:hover {
     opacity:0.8;
@@ -240,5 +241,28 @@ div#featuring {
 }
 
 .act1 {
-  opacity:.8 !important;
+  opacity:1 !important;
+  width: 11px !important;
+  height: 11px !important;
+  margin-top: -1px !important;
+  margin-left:-1px !important;
   }
+
+.pickthis {
+  border: 2px #aeaeae solid !important;
+  background-color: rgba(0,0,0,0) !important;
+  border-top: 0px;
+  padding-top: 0.2em !important;
+  padding-bottom: 0.3em !important;
+  transition: all 200ms linear;
+  font-weight: normal;
+  font-size: 1.1em !important;
+  font-style: italic;
+  color: #4a4a4a !important;
+  transition:all 200ms linear;
+  &:hover {
+    border: 2px #00bccf solid !important;
+    background-color: #00bccf !important;
+    color: white !important;
+  }
+}
