@@ -475,6 +475,33 @@ div.container { position: relative; }
   z-index:1000;
 }
 
+form#new_itinerary input[type="text"] {
+  height:50px;
+  font-style:italic;
+  margin:0 1em 1em 0;
+  border: 0 solid #00bccf;
+  border-bottom: 2px solid #00bccf;
+  border-radius: 0px;
+  box-shadow: none !important;
+  background: rgba(0,0,0,0) image-url('marker.png') no-repeat left;
+  background-size: 40px;
+  padding-left: 40px;
+}
+
+@media only screen and (min-width: 1250px) {  
+  form#new_itinerary input[type="text"] {
+    padding-right: 200px;
+  }
+  .in-input {
+    position: absolute; 
+    margin-top:-65px; 
+    right:15px; 
+    padding-top:0.1em !important; 
+    padding-bottom:0.2em !important;
+  }
+}
+@media only screen and (max-width: 1249px) {  .in-input { width: 100%; } }
+
 // ENTER TRIP DETAILS PAGE
 
 .trip-details {
