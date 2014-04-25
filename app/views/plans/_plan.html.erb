@@ -176,6 +176,9 @@
 
 </div>
 
+<% if (current_user && @plan.user == current_user) || (current_user && current_user.admin?) %>
+<%= link_to "Edit Story", itinerary_plan_path(@itinerary), id: "Start-Story", class: "top-cta button radius" %> 
+<% end %>
 
 <div id="update-modal" class="reveal-modal medium text-center">
   <h2>This power feature is coming soon!</h3>

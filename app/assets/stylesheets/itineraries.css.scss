@@ -465,6 +465,16 @@ div.container { position: relative; }
   width:100%;
   margin-top:15px;
 }
+
+.top-cta {
+  position: absolute;
+  font-size:0.9375em;
+  top:10px;
+  right: 65px;
+  height:45px;
+  z-index:1000;
+}
+
 // ENTER TRIP DETAILS PAGE
 
 .trip-details {
