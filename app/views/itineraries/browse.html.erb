@@ -24,7 +24,7 @@
 </div class="header">
 
 <% unless @featuring_stories.blank? %>
-<div class="big-break">
+<div class="big-break alltrips">
   <ul class="large-block-grid-3 small-block-grid-1 no-margin no-padding">
     <% @featuring_stories.each do |i| %>
       <li class="trip no-margin no-padding" style="background-image:url(<%= i.cover %>) !important;">
@@ -88,7 +88,7 @@
   mixpanel.track_forms("#new_itinerary", "Started Contest", {
     'From': 'Browse'
   });
-  mixpanel.track_links(".trip", "Browsed Trip", {
+  mixpanel.track_links(".alltrips a", "Browsed Trip", {
     'page': 'Browse'
   });
   mixpanel.register_once({
