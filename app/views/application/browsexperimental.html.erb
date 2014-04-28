@@ -1,0 +1,24 @@
+<ul id="plans-container">
+</ul>
+<%= image_tag "loading.gif" %>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script>
+  $.get("/api/v1/plans")
+    // after receiving the data (plan headers)
+    .done(function(data) {
+      // will iterate and display each one of them
+      var container = $("#plans-container");
+      $.each(data, function(i, item) {
+        // append the newly loaded plan to the list
+        container.append('<li style="display:none"><img id="loading-image" src="' + item.cover + '"></li>');
+        var image = $("#loading-image");
+        image.load(function() {
+          image.parent().show();
+          image.removeAttr('id');
+          console.log("loaded image :)");
+        });
+
+        console.log(image);
+      });
+    });
+</script>
