@@ -1,5 +1,5 @@
 // LOADING GIF
-#image-loader, #trip-loader { display: none; }
+#image-loader, #trip-loader, #browse-link { display: none; }
 #loading { 
   position: absolute;
   height: 100%;
@@ -136,6 +136,16 @@ form#new_itinerary input[type="text"]:hover {
 
 
 div#start-contest { padding: 1.2em 0; background-color: whitesmoke; }
+
+#browse-link { 
+  font-size:.935em; 
+  margin-top:-30px;
+   @media only screen and (min-width: 768px) { margin-top:-40px; }
+  a {transition: all 200ms linear;}
+  a:hover { border-bottom: 1px white solid; }
+}
+
+
 
 // STEPS
 div#steps {

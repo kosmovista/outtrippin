@@ -94,6 +94,7 @@ $(window).load ->
   $("#header").show()
   $("#sub-header").show()
   $("#contestbtn").show()
+  $("#browse-link").show()
   $("#scroll-down").delay(100).fadeIn(100, 'easeOutQuad')
   setBg()
 

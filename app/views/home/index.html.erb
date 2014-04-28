@@ -21,6 +21,15 @@
         <% end %>
       </div>
     </div>
+    <div class="large-12 left no-margin no-padding small-12 columns">
+      <p class="serif"><em></em></p>
+    </div>
+
+    <div class="row">
+      <div class="large-12 small-12 columns">
+        <p id="browse-link" ><em><%= link_to "Just window shopping? Try these trips on for size.", browse_path, class: "white" %></em></p>
+      </div>
+    </div>
 
     <div class="navig hide-for-small">
       <div id="expert-loader">
@@ -168,6 +177,9 @@
   });
     mixpanel.track_links("#browse1", "Clicked Browse Trips", {
       'location': 'Featured Trips Section'
+    });
+    mixpanel.track_links("#browse-link", "Clicked Browse Trips", {
+      'location': 'Cover'
     });
 </script>
 <% end %>
