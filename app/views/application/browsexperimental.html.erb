@@ -1,3 +1,8 @@
+<style>
+img {
+  width: 300px;
+}
+</style>
 <ul id="plans-container">
 </ul>
 <%= image_tag "loading.gif" %>
@@ -10,7 +15,7 @@
       var container = $("#plans-container");
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
-        container.append('<li style="display:none"><img id="loading-image" src="' + item.cover + '"></li>');
+        container.append('<li><img src="' + item.cover + '"></li>');
         $('img').load(function() {
           $('img').parent().show();
           $('img').removeAttr('id');
