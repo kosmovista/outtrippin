@@ -50,6 +50,7 @@ Outtrippin::Application.routes.draw do
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
   get     'browse'    => 'itineraries#browse'
+  get     'browsexperimental'    => 'application#browsexperimental'
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
@@ -70,7 +71,8 @@ Outtrippin::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :stories
-      resource :user_sessions, only: :create
+#      resource :user_sessions, only: :create
+      resources :plans, only: [:index]
     end
   end
   #################################################################
