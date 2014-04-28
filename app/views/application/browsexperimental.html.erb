@@ -11,14 +11,12 @@
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
         container.append('<li style="display:none"><img id="loading-image" src="' + item.cover + '"></li>');
-        var image = $("#loading-image");
-        image.load(function() {
-          image.parent().show();
-          image.removeAttr('id');
+        $('img').load(function() {
+          $('img').parent().show();
+          $('img').removeAttr('id');
           console.log("loaded image :)");
         });
 
-        console.log(image);
       });
     });
 </script>
