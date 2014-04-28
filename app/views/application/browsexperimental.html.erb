@@ -1,27 +1,8 @@
-<head>
 <style>
-li img {
-  height: 200px;
-  opacity: 0;
-  -webkit-transition: opacity 1000ms;
-  -moz-transition: opacity 1000ms;
-  -ms-transition: opacity 1000ms;
-  transition: opacity 1000ms;
+img {
+  width: 300px;
 }
-
-li.loaded img { opacity: 1; }
 </style>
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-function imgLoaded(img) {
-  var $img = $(img);
-  $img.parent().addClass('loaded');
-};
-</script>
-</head>
-
-<body>
 <ul id="plans-container">
 </ul>
 
@@ -34,7 +15,7 @@ function imgLoaded(img) {
       var container = $("#plans-container");
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
-        container.append('<li style="display:none"><img id="loading-image" src="' + item.cover + '"></li>');
+        container.append('<li><img src="' + item.cover + '"></li>');
         $('img').load(function() {
           $('img').parent().show();
           $('img').removeAttr('id');
