@@ -29,7 +29,7 @@
 
     <div class="row">
       <div class="large-12 small-12 columns">
-        <p id="browse-link" ><em><%= link_to "Just window shopping? Try these trips on for size.", browse_path, class: "white" %></em></p>
+        <p id="browse-link" ><em><%= link_to "Just window shopping? Try these trips on for size.", browse_path, id:"browselink", class: "white" %></em></p>
       </div>
     </div>
 
@@ -175,11 +175,11 @@
     mixpanel.track_links(".trip", "Browsed Featured Trip", {
     'page': 'landing page'
   });
-    mixpanel.track_links("#browse1", "Clicked Browse Trips", {
-      'location': 'Featured Trips Section'
-    });
-    mixpanel.track_links("#browse-link", "Clicked Browse Trips", {
-      'location': 'Cover'
-    });
+  mixpanel.track_links("#browse1", "Clicked Browse Trips", {
+    'location': 'Featured Trips Section'
+  });
+  mixpanel.track_links("#browselink", "Clicked Browse Trips", {
+    'location': 'Cover'
+  });
 </script>
 <% end %>
