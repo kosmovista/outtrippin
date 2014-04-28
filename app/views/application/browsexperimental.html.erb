@@ -34,7 +34,13 @@ function imgLoaded(img) {
       var container = $("#plans-container");
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
-        container.append('<li><img src="' + item.cover + '" onload="imgLoaded(this)"></li>');
+        container.append('<li style="display:none"><img id="loading-image" src="' + item.cover + '"></li>');
+        $('img').load(function() {
+          $('img').parent().show();
+          $('img').removeAttr('id');
+          console.log("loaded image :)");
+        });
+
       });
     });
 </script>
