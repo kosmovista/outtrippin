@@ -19,20 +19,53 @@ ul {
 }
 
 li  {
+  position: relative;
   display: inline-block;
-  height: 300px;
+  height: 400px;
   width: 33.3%;
+}
+
+p.title {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+  color: white;
+  font-size: 2em;
+}
+
+a.author {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+a.author img {
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+
 }
 
 li img {
   opacity: 0;
-  -webkit-transition: opacity 2000ms;
-  -moz-transition: opacity 2000ms;
-  -ms-transition: opacity 2000ms;
-  transition: opacity 2000ms;
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  transition: opacity 1000ms;
 }
 
 li.loaded img { opacity: 1; }
+a.loaded img { opacity: 1; }
+
 </style>
 
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -55,7 +88,7 @@ function imgLoaded(img) {
       var container = $("#plans-container");
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
-        container.append('<li><img src="' + item.cover + '" onload="imgLoaded(this)"></li>');
+        container.append('<li><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="#"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">'+ item.author.name + '</p></a></li>');
       });
     });
 </script>
