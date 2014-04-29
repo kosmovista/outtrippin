@@ -8,7 +8,7 @@
   }
 @media only screen and (min-width: 780px) {
   .large-block-grid-3 > li.trip {
-    padding-bottom: 33.33333% !important;
+    padding-bottom: 28.33333% !important;
   }
 }
 @media only screen and (max-width: 780px) {
@@ -30,19 +30,9 @@
       z-index: 97;
       width: 100%;
       text-align: center;
-      @media only screen and (min-width: 780px) {margin-top: 30%;}
-      @media only screen and (max-width: 780px) {margin-top: 15%;}
-    }
-    .author {
-      position:absolute;
-      bottom:10px;
-      z-index: 97;
-      .tip-avatar{
-        width:40px; 
-        height:40px; 
-        @media only screen and (min-width: 780px) {margin-bottom:15px;}
-        @media only screen and (max-width: 780px) {margin-bottom:5px;}
-      }
+      @media only screen and (min-width: 780px) {margin-top: 25%;}
+      @media only screen and (min-width: 1280px) {margin-top: 28%;}
+      @media only screen and (max-width: 780px) {margin-top: 32%;}
     }
   }
   .overlay { 
