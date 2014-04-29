@@ -1,13 +1,40 @@
+
+<head>
+
 <style>
-img {
-  width: 300px;
+
+img {width: 30%;}
+
+ul {
+  list-style-type: none;
+}
+
+li  {
+  display: inline;
+}
+
+li img {
+  opacity: 0;
+  -webkit-transition: opacity 2000ms;
+  -moz-transition: opacity 2000ms;
+  -ms-transition: opacity 2000ms;
+  transition: opacity 2000ms;
 }
 </style>
-<ul id="plans-container">
-</ul>
 
-<%= image_tag "loading.gif" %>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
+function imgLoaded(img) {
+  var $img = $(img);
+  $img.parent().addClass('loaded');
+};
+</script>
+</head>
+
+<body>
+  <ul id="plans-container">
+  </ul>
+  <script>
   $.get("/api/v1/plans")
     // after receiving the data (plan headers)
     .done(function(data) {
@@ -15,12 +42,8 @@ img {
       var container = $("#plans-container");
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
-        container.append('<li style="display:none"><img src="' + item.cover + '"></li>');
-      });
-      $('img').load(function() {
-        $('img').parent().show();
-        $('img').removeAttr('id');
-        console.log("loaded image :)");
+
+        container.append('<li><img src="' + item.cover + '" onload="imgLoaded(this)"></li>');
       });
     });
 </script>
