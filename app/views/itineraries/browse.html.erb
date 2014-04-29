@@ -31,12 +31,10 @@
       <%= link_to "", itinerary_path(i.itinerary), class: "overlay", title: ('Trip to ' + i.itinerary.destination ) %>
       <div class="large-12 detail small-12 columns">
         <h3 class="white"><%= link_to i.itinerary.winner_pitch.title, itinerary_path(i.itinerary), class: "white", title: "Read the story" %></h3>
-      </div>
-      <div class="large-12 text-center small-12 columns author">
-        <%= link_to (image_tag i.user.avatar.url(:thumb), class: "rounded text-right tip-avatar"), user_path(i.user), title: "Storyteller's profile" %>
         <h6 class="white serif subheader text-center">
-          <em>Recommended by <%= link_to i.user.name, user_path(i.user), class: "white", title: "Storyteller's profile" %></em>
-        </h5>
+        <%= link_to (image_tag i.user.avatar.url(:thumb), class: "rounded text-right tip-avatar"), user_path(i.user), title: "Storyteller's profile" %> 
+          <em><span class="hide-for-medium-down">Recommended </span>by <%= link_to i.user.name, user_path(i.user), class: "white", title: "Storyteller's profile" %></em>
+        </h6>
       </div>
       </li>
     <% end %>
