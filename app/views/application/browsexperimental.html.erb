@@ -35,6 +35,7 @@ function imgLoaded(img) {
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
         container.append('<li><img src="' + item.cover + '" onload="imgLoaded(this)"></li>');
+
       });
     });
 </script>

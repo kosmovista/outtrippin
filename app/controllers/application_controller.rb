@@ -22,15 +22,6 @@ class ApplicationController < ActionController::Base
   # detects if default or honeymoon should be presented
   ##
   def set_homepage_type
-    begin
-      s = request.original_url.to_s.sub(/^https?\:\/\//, '').sub(/^www./,'').sub(/\/$/, '').split(".")
-      if s.include?("honeymoon") || s.include("honeymoons")
-        @homepage_type = "honeymoon"
-      else
-        @homepage_type = "default"
-      end
-    end
-  rescue
     @homepage_type = "default"
   end
 
