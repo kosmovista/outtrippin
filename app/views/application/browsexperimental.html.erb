@@ -1,12 +1,23 @@
 <head>
+
 <style>
+
+img {width: 30%;}
+
+ul {
+  list-style-type: none;
+}
+
+li  {
+  display: inline;
+}
+
 li img {
-  height: 200px;
   opacity: 0;
-  -webkit-transition: opacity 1000ms;
-  -moz-transition: opacity 1000ms;
-  -ms-transition: opacity 1000ms;
-  transition: opacity 1000ms;
+  -webkit-transition: opacity 2000ms;
+  -moz-transition: opacity 2000ms;
+  -ms-transition: opacity 2000ms;
+  transition: opacity 2000ms;
 }
 
 li.loaded img { opacity: 1; }
@@ -22,11 +33,9 @@ function imgLoaded(img) {
 </head>
 
 <body>
-<ul id="plans-container">
-</ul>
-
-<%= image_tag "loading.gif" %>
-<script>
+  <ul id="plans-container">
+  </ul>
+  <script>
   $.get("/api/v1/plans")
     // after receiving the data (plan headers)
     .done(function(data) {
@@ -35,7 +44,6 @@ function imgLoaded(img) {
       $.each(data, function(i, item) {
         // append the newly loaded plan to the list
         container.append('<li><img src="' + item.cover + '" onload="imgLoaded(this)"></li>');
-
       });
     });
 </script>
