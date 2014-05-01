@@ -1025,10 +1025,10 @@ $reveal-box-shadow: 0;
 
 // We use these to style the reveal close button
 
-// $reveal-close-font-size: em-calc(22);
-// $reveal-close-top: em-calc(8);
-// $reveal-close-side: em-calc(11);
-// $reveal-close-color: #aaa;
+$reveal-close-font-size: em-calc(32);
+$reveal-close-top: em-calc(0);
+$reveal-close-side: em-calc(0);
+$reveal-close-color: $primary-color;
 // $reveal-close-weight: bold;
 
 // We use these to control the modal border
