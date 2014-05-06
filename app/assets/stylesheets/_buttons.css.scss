@@ -1,0 +1,17 @@
+$button-font-family: $sans-font-family;
+$button-border-width: 0;
+$button-font-med: 0.95em;
+$button-med: 0.9em;
+
+
+@import "foundation/components/buttons";
+
+.button {
+  @include button;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  margin: 0;
+  &:hover {
+    background-color: lighten($primary-color, 5%) !important;
+  }
+}
