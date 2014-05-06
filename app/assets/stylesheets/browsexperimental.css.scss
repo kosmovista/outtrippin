@@ -1,0 +1,79 @@
+div#header {
+  padding: 30px;
+
+  #description {
+    font-style: italic;
+    font-size: 1.25em;
+    line-height: 1.3em;
+    color: rgb(126, 126, 126);
+    padding: 0 120px;
+  }
+  .button {
+    margin: 50px;
+  }
+}
+
+ul#plans-container img {
+  width: 100%;
+  height: 100%;
+}
+
+ul#plans-container {
+  background-color: rgba(0,0,0,0.4);
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style-type: none;
+}
+
+ul#plans-container li  {
+  position: relative;
+  display: inline-block;
+  height: 400px;
+  width: 33.3%;
+}
+
+p.title {
+  position: absolute;
+  top: 20%;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 2;
+  color: white;
+  font-size: 2em;
+}
+
+a.author {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+a.author img {
+  width: 40px !important;
+  height: 40px !important;
+  opacity: 0;
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+
+}
+
+ul#plans-container li img {
+  opacity: 0;
+  -webkit-transition: opacity 1000ms;
+  -moz-transition: opacity 1000ms;
+  -ms-transition: opacity 1000ms;
+  transition: opacity 1000ms;
+}
+
+ul#plans-container li.loaded img { opacity: 0.8; }
+a.loaded img { opacity: 1; }
+
+@media only screen and (min-device-width: 768px) {
+
+}

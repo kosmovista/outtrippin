@@ -1,95 +1,14 @@
-<head>
+<%= content_for :css do %>
+  <%= stylesheet_link_tag "browsexperimental", media: "all" %>
+<% end %>
 
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-img {
-  width: 100%;
-  height: 100%;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  list-style-type: none;
-}
-
-li  {
-  position: relative;
-  display: inline-block;
-  height: 400px;
-  width: 33.3%;
-}
-
-p.title {
-  position: absolute;
-  top: 20%;
-  left: 0;
-  right: 0;
-  text-align: center;
-  z-index: 2;
-  color: white;
-  font-size: 2em;
-}
-
-a.author {
-  position: absolute;
-  bottom: 10%;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-a.author img {
-  width: 40px;
-  height: 40px;
-  opacity: 0;
-  -webkit-transition: opacity 1000ms;
-  -moz-transition: opacity 1000ms;
-  -ms-transition: opacity 1000ms;
-  transition: opacity 1000ms;
-
-}
-
-li img {
-  opacity: 0;
-  -webkit-transition: opacity 1000ms;
-  -moz-transition: opacity 1000ms;
-  -ms-transition: opacity 1000ms;
-  transition: opacity 1000ms;
-}
-
-li.loaded img { opacity: 1; }
-a.loaded img { opacity: 1; }
-
-</style>
-
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script>
-function imgLoaded(img) {
-  var $img = $(img);
-  $img.parent().addClass('loaded');
-};
-</script>
-</head>
-
-<body>
-  <ul id="plans-container">
-  </ul>
-  <script>
-  $.get("/api/v1/plans")
-    // after receiving the data (plan headers)
-    .done(function(data) {
-      // will iterate and display each one of them
-      var container = $("#plans-container");
-      $.each(data, function(i, item) {
-        // append the newly loaded plan to the list
-        container.append('<li><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="#"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">'+ item.author.name + '</p></a></li>');
-      });
-    });
-</script>
-</body>
+<div class="row">
+  <div id="header" class="large-12 columns text-center">
+    <%= image_tag 'o-color.png', id: 'browse-logo' %>
+    <h1 class="sans">PLANNED HERE, ENJOYED EVERYWHERE.</h1>
+    <p id="description">At OutTrippin, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on OutTrippin and enjoyed around the world.</p>
+    <%= link_to "Ready to plan your perfect trip?", root_url, class: "button" %>
+  </div>
+</div>
+<ul id="plans-container">
+</ul>

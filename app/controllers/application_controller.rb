@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def browsexperimental
-    render layout: false
+    render layout: 'new_application'
   end
 
   def current_user
