@@ -27,6 +27,8 @@
   <meta name="twitter:image" content="<%= content_for?(:pic) ? yield(:pic) : "http://b8556536e41a83f2856c-9d3af255cebd1b18b21184d2df8a2f53.r11.cf1.rackcdn.com/frontpage/01_rio.jpg" %>">
   <!-- End Twitter Tags -->
 
+
+
   <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "vendor/custom.modernizr" %>
   <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
@@ -61,5 +63,8 @@
 
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= yield :body %>
+  <!-- Spinnakr -->
+  <script>var _spinnakr_site_id='988569334';(function(d,t,a){var g=d.createElement(t), s=d.getElementsByTagName(t)[0];g[a]=a;g.src='//s5.spn.ee/js/so.js'; s.parentNode.insertBefore(g,s)}(document,'script','async'));</script>
+  <!-- End Spinnakr -->
 </body>
 </html>
