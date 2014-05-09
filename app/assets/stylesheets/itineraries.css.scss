@@ -8,6 +8,7 @@
 @import "sidebar";
 
 div.container { position: relative; }
+@media print { a, a:visited {font-style:italic} }
 
 .hold {
   display: none;
@@ -174,7 +175,8 @@ div.container { position: relative; }
   margin-bottom: 30px;
   background-image: image-url('passport.jpg');
   background-size: cover !important;
-  background-position: 50% 50%;
+  background-position: 50% 50% !important;
+  @media only print {-webkit-print-color-adjust: exact;}
 }
 #overlay {
   top: 0;
@@ -182,9 +184,10 @@ div.container { position: relative; }
   width: 100%;
   z-index: -9 !important;
   position: absolute;
-  background-color: rgba(0, 0, 0, 1)
+  background-color: rgba(0, 0, 0, 1) !important;
+  @media only print {-webkit-print-color-adjust: exact;}
 }
-.header {top: 80px; position:absolute; height:260px; width:100%; overflow: hidden;}
+.header {top: 80px; position:absolute; height:260px; width:100%; overflow: hidden; @media print {top: 130px;}}
 .tabs {height:50px; width:100%; position:absolute; top: 350px;
   a {line-height: 1em;}
 }
@@ -305,6 +308,15 @@ div.container { position: relative; }
     margin: 15px -35% 30px 40px;
   }
 }
+@media only print {
+  .day-photo-C img {
+    float: right;
+    max-height: 300px;
+    max-width: 350px;
+    float: right;
+    margin: 15px 0 30px 40px;
+  }
+}
 @media only screen and (max-width:999px) {
   .day-photo-C {text-align: center;}
   .day-photo-C img {
@@ -327,6 +339,7 @@ div.container { position: relative; }
   width: 90px;
   margin: 0 25px 40px 0;
   @media only screen and (max-width:768px) { float: right; margin: 0 0 20px 20px;}
+  @media print { float: right; margin: 0 0 20px 20px;}
 }
 
 .share {
