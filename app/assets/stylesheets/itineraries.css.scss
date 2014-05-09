@@ -8,7 +8,11 @@
 @import "sidebar";
 
 div.container { position: relative; }
-@media print { a, a:visited {font-style:italic} }
+@media print { 
+  a, a:visited {font-style:italic}  
+  h4, h5, h6, li {font-size: 70% !important;}
+  }
+
 
 .hold {
   display: none;
@@ -358,9 +362,9 @@ div.container { position: relative; }
   .day-photo-C img {
     float: right;
     max-height: 300px;
-    max-width: 350px;
+    max-width: 300px;
     float: right;
-    margin: 15px 0 30px 40px;
+    margin: 15px 0 15px 15px;
   }
 }
 @media only screen and (max-width:999px) {
