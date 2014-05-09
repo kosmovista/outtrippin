@@ -23,11 +23,11 @@ nav {
     width: 180px;
     height: 46px;
     background-color: $primary-color;
-    background-image: url("logo_new_full.png");
+    background-image: image-url("logo_new_full.png");
     border-radius: 4px;
 
     @media screen and (max-width: 900px) {
-      background-image: url("logo_new_small.png");
+      background-image: image-url("logo_new_small.png");
       width: 60px;
     }
 
