@@ -2,10 +2,6 @@
   <%= stylesheet_link_tag "browsexperimental", media: "all" %>
 <% end %>
 
-<%= content_for :head_js do %>
-  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
-<% end %>
-
 <div class="row">
   <div id="header" class="large-12 columns text-center">
     <%= image_tag 'o-color.png', id: 'browse-logo' %>
@@ -35,6 +31,7 @@
 <% end %>
 
 <%= content_for :body_js do %>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
   <script>
     $(window).load(function() {
       autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
