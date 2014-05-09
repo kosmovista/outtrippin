@@ -17,10 +17,9 @@
 <ul id="plans-container">
 </ul>
 
-<div class="row">
-  <div class="large-12 columns">
-
-  </div>
+<div class="browse-footer">
+  <hr />
+  <%= link_to "Ready to plan your own adventure?", "#", class: "secondary-button large", "data-reveal-id" => "trip-request-modal" %>
 </div>
 
 <%= content_for :body_html do %>
@@ -37,9 +36,9 @@
 
 <%= content_for :body_js do %>
   <script>
-    // $(window).load(function() {
-    //   autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
-    // });
+    $(window).load(function() {
+      autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+    });
 
     <% if current_user %>
       mixpanel.alias("<%= current_user.email %>");

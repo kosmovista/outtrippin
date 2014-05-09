@@ -86,3 +86,24 @@ ul#plans-container li img {
 
 ul#plans-container li.loaded img { opacity: 0.8; }
 a.loaded img { opacity: 1; }
+
+.browse-footer {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  background-color: #f3f3f3;
+
+  hr {
+    border: 1px #cccccc solid;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    @media screen and (max-width: 900px) { display: none; }
+  }
+
+  a {
+    margin-top: 70px;
+  }
+}
