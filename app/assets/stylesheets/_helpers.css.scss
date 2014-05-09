@@ -1,6 +1,6 @@
 // COLORS
 .primary { color: $primary-color; }
-.white { color: #fff !important; }
+.white { color: #fff !important; @media only print {-webkit-print-color-adjust: exact;} }
 .black {color: #4a4a4a !important;}
 
 // TYPE
@@ -8,7 +8,7 @@
 .serif { font-family: $serif-font-family; }
 .hide { display: none !important; }
 .top { padding-top: 100px; }
-.break {margin-top:50px !important;}
+.break {margin-top:50px !important; @media only print {margin-top:0px !important;}}
 .medium-break {margin-top:35px !important;}
 .short-break {margin-top:20px !important;}
 .big-break {margin-top:80px !important;}
@@ -16,7 +16,7 @@
 .medium-textarea { min-height: 200px !important; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
-.rounded { border-radius:1000px; }
+.rounded { border-radius:1000px !important; }
 .alerts {position:absolute !important; top:10%; z-index:9999;
 @media only screen and (min-width: 768px) {left:33.33333%;}
 }
