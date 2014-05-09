@@ -1,11 +1,11 @@
-//= require foundation
-
+//= require foundation/foundation.js
+//= require foundation/foundation.reveal.js
 
 $(document).foundation();
 
 function imgLoaded(img) {
   var $img = $(img);
-  $img.parent().addClass('loaded');
+  $img.parent().parent().addClass('loaded');
 };
 
 $.get("/api/v1/plans")
@@ -15,6 +15,6 @@ $.get("/api/v1/plans")
     var container = $("#plans-container");
     $.each(data, function(i, item) {
       // append the newly loaded plan to the list
-      container.append('<li><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="#"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">Recommended by '+ item.author.name + '</p></a></li>');
+      container.append('<li><a class="go-to-itinerary" href="/itineraries/' + item.id + ' "><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="/users/' + item.author.id + '"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">Recommended by '+ item.author.name + '</p></a></a></li>');
     });
   });

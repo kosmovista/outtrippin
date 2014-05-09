@@ -32,7 +32,7 @@
 
 <%= content_for :body_js do %>
   <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
-  <script>
+  <script async>
     $(window).load(function() {
       autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
     });
