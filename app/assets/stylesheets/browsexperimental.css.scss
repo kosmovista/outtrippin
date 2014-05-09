@@ -21,7 +21,6 @@ ul#plans-container img {
 }
 
 ul#plans-container {
-  background-color: rgba(0,0,0,0.4);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -29,6 +28,7 @@ ul#plans-container {
 }
 
 ul#plans-container li  {
+  background-color: #000;
   position: relative;
   display: inline-block;
   height: 400px;
@@ -52,6 +52,8 @@ p.title {
   z-index: 2;
   color: white;
   font-size: 2em;
+  font-family: "calluna-sans", helvetica, sans-serif;
+
 }
 
 a.author {
@@ -90,7 +92,7 @@ ul#plans-container li img {
   transition: opacity 1000ms;
 }
 
-ul#plans-container li.loaded img { opacity: 0.8; }
+ul#plans-container li.loaded img { opacity: 0.7; }
 a.loaded img { opacity: 1; }
 
 .browse-footer {
