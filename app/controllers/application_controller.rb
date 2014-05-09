@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def browsexperimental
+    @itinerary = Itinerary.new
     render layout: 'new_application'
   end
 

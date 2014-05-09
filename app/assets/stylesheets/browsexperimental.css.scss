@@ -7,6 +7,8 @@ div#header {
     line-height: 1.3em;
     color: rgb(126, 126, 126);
     padding: 0 120px;
+
+    @media screen and (max-width: 900px) { padding: 0; }
   }
   .button {
     margin: 50px;
@@ -31,6 +33,8 @@ ul#plans-container li  {
   display: inline-block;
   height: 400px;
   width: 33.3%;
+  @media screen and (max-width: 900px) { width: 50%; }
+  @media screen and (max-width: 650px) { width: 100%; }
 }
 
 p.title {
@@ -46,13 +50,22 @@ p.title {
 
 a.author {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 0;
   right: 0;
   text-align: center;
+  text-decoration: none;
+
+  p {
+    color: white;
+    font-family: "ff-tisa-web-pro", georgia, serif;
+    font-style: italic;
+    font-size: 1.2em;
+  }
 }
 
 a.author img {
+  border-radius: 20px;
   width: 40px !important;
   height: 40px !important;
   opacity: 0;
@@ -73,7 +86,3 @@ ul#plans-container li img {
 
 ul#plans-container li.loaded img { opacity: 0.8; }
 a.loaded img { opacity: 1; }
-
-@media only screen and (min-device-width: 768px) {
-
-}
