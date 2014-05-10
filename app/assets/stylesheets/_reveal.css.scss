@@ -1,0 +1,50 @@
+$reveal-overlay-bg: rgba(#fff, .45);
+$reveal-overlay-bg-old: #fff;
+
+/* We use these to control the style of the modal itself. */
+$reveal-position-top: 50px;
+$reveal-default-width: 60%;
+$reveal-modal-padding: rem-calc(20);
+$reveal-box-shadow: 0;
+
+/* We use these to style the reveal close button */
+$reveal-close-font-size: rem-calc(22);
+$reveal-close-color: #aaa;
+$reveal-close-weight: bold;
+
+$reveal-border-style: none;
+
+$reveal-modal-class: "reveal-modal";
+$close-reveal-modal-class: "close-reveal-modal";
+
+
+@import "foundation/components/reveal";
+
+.lead {
+  font-style: italic;
+  font-size: 1.25em;
+  line-height: 1.3em;
+  color: rgb(126, 126, 126);
+  margin: 30px;
+}
+
+// FORMS INSIDE MODAL
+.reveal-modal {
+  input[type=text] {
+    font-family: $body-font-family;
+    font-style: italic;
+    font-size: 1.2em;
+    border: none;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 10px 10px 10px 50px;
+    display: block;
+    width: 70%;
+    border-bottom: 2px solid $primary-color;
+    outline: none;
+    background-image: image-url('marker.png');
+    background-repeat: no-repeat;
+    background-position: left top;
+    background-size: 40px;
+  }
+}

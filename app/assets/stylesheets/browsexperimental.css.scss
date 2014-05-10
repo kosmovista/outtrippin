@@ -7,6 +7,8 @@ div#header {
     line-height: 1.3em;
     color: rgb(126, 126, 126);
     padding: 0 120px;
+
+    @media screen and (max-width: 900px) { padding: 0; }
   }
   .button {
     margin: 50px;
@@ -19,7 +21,6 @@ ul#plans-container img {
 }
 
 ul#plans-container {
-  background-color: rgba(0,0,0,0.4);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -27,10 +28,19 @@ ul#plans-container {
 }
 
 ul#plans-container li  {
+  background-color: #000;
   position: relative;
   display: inline-block;
   height: 400px;
   width: 33.3%;
+  @media screen and (max-width: 900px) { width: 50%; }
+  @media screen and (max-width: 650px) { width: 100%; }
+
+  a.go-to-itinerary {
+    width: 100%;
+    height: 100%;
+  }
+
 }
 
 p.title {
@@ -42,17 +52,28 @@ p.title {
   z-index: 2;
   color: white;
   font-size: 2em;
+  font-family: "calluna-sans", helvetica, sans-serif;
+
 }
 
 a.author {
   position: absolute;
-  bottom: 10%;
+  bottom: 5%;
   left: 0;
   right: 0;
   text-align: center;
+  text-decoration: none;
+
+  p {
+    color: white;
+    font-family: "ff-tisa-web-pro", georgia, serif;
+    font-style: italic;
+    font-size: 1.2em;
+  }
 }
 
 a.author img {
+  border-radius: 20px;
   width: 40px !important;
   height: 40px !important;
   opacity: 0;
@@ -71,9 +92,26 @@ ul#plans-container li img {
   transition: opacity 1000ms;
 }
 
-ul#plans-container li.loaded img { opacity: 0.8; }
+ul#plans-container li.loaded img { opacity: 0.7; }
 a.loaded img { opacity: 1; }
 
-@media only screen and (min-device-width: 768px) {
+.browse-footer {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  height: 200px;
+  background-color: #f3f3f3;
 
+  hr {
+    border: 1px #cccccc solid;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    @media screen and (max-width: 900px) { display: none; }
+  }
+
+  a {
+    margin-top: 70px;
+  }
 }

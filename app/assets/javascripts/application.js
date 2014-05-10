@@ -19,4 +19,5 @@
 //= require ft_stories
 //= require sidebar
 
-$(function(){ $(document).foundation(); });
+$(document).foundation();
+
