@@ -1,6 +1,6 @@
 var planApp = angular.module('planApp', ['planServices', 'angularFileUpload', 'textAngular']);
 
-planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($scope, $http, Plan, $upload) {
+planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize', function($scope, $http, Plan, $upload, $sanitize) {
   $scope.plan = Plan.query();
   $scope.days = $scope.plan.days;
   $scope.tips_tricks = $scope.plan.tips_tricks;
@@ -24,7 +24,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
         $scope.add_day = false;
-        $scope.day = {"title": "", "body": "This is some text" , "cost": "", "reccomendation": "" };
+        $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save." , "cost": "", "reccomendation": "" };
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");
@@ -33,7 +33,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
 
   // UPDATE DAY
   $scope.update_day = function(id, title, body, cost, reccomendation) {
-    $http.post('plan/day/' + id + '.json', {"title": title, "body": body, "cost": cost, "reccomendation": reccomendation }).
+    $http.post('plan/day/' + id + '.json', {"title": title, "body": $sanitize(body), "cost": cost, "reccomendation": reccomendation }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
       }).
@@ -49,7 +49,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
         $scope.plan = Plan.query();
       }).
       error(function(data, status, headers, config) {
-        alert("error while deleting");
+        alert("An error occurred while deleting this day. Please try again.");
       });
   }
 
@@ -69,7 +69,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', function($
 
       }).
       error(function(data, status, headers, config) {
-        alert("error while creating");
+        alert("An error occurred while adding this day. Please try again.");
       });
   }
 
