@@ -444,25 +444,26 @@ div.container { position: relative; }
   border-top: 0px;
   border-radius:0 0 4px 4px !important;
   padding-top: 0.4em !important;
-  background-color: #fdfdfd !important;
+  background-color: #00bccf !important;
   transition: all 200ms linear;
   font-weight: normal;
   font-size: 1.1em !important;
   font-style: italic;
-  color: #4c4c4c !important;
+  color: #fff !important;
   transition:all 200ms linear;
   &:hover {
-    border: 2px #00bccf solid;
-    background-color: #00bccf !important;
-    color: white !important;
+    border: 2px #008390 solid !important;
+    background-color: #008390 !important;
+    color: #fff !important;
   }
 }
 
 .price.label {
-  padding-top:.5em;
-  padding-bottom:.5em;
+  padding:.5em 0 !important;
   margin-top: .85em;
   width: 100%;
+  background-color: #fdfdfd;
+  border: 2px #00bccf solid !important;
 }
 
 .booking {
