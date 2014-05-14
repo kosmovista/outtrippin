@@ -1,4 +1,4 @@
-$reveal-overlay-bg: rgba(#fff, .45);
+$reveal-overlay-bg: rgba(253,253,253, 0.94);
 $reveal-overlay-bg-old: #fff;
 
 /* We use these to control the style of the modal itself. */
@@ -11,7 +11,7 @@ $reveal-box-shadow: 0;
 $reveal-close-font-size: rem-calc(22);
 $reveal-close-color: #aaa;
 $reveal-close-weight: bold;
-
+$reveal-modal-bg: rgba(253,253,253, 0);
 $reveal-border-style: none;
 
 $reveal-modal-class: "reveal-modal";
@@ -36,15 +36,16 @@ $close-reveal-modal-class: "close-reveal-modal";
     font-size: 1.2em;
     border: none;
     margin: 0 auto;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     padding: 10px 10px 10px 50px;
     display: block;
     width: 70%;
     border-bottom: 2px solid $primary-color;
     outline: none;
+    background:rgba(255,255,255,0);
     background-image: image-url('marker.png');
     background-repeat: no-repeat;
-    background-position: left top;
+    background-position: left 5px;
     background-size: 40px;
   }
 }

@@ -18,18 +18,33 @@ $button-med: 0.9em;
 
 .secondary-button {
   @include button;
-  font-family: $serif-font-family;
   color: #4c4c4c;
+  font-family: $serif-font-family;
+  font-weight: normal;
   font-style: italic;
   box-shadow: none !important;
   background-color: #f3f3f3;
   border: 2px solid #cccccc;
   border-radius: 20px !important;
+  transition:all 200ms linear;
   &:hover {
     background-color: $primary-color;
     border: 2px solid $primary-color;
     color: #fff;
   }
+}
+
+.tertiary-button {
+  @include button;
+  border-radius: 4px !important;
+  font-weight: normal;
+  font-style: italic;
+  padding: 0.25em .9em 0.4em !important;
+  font-size: 1.2em !important;
+  font-family: $serif-font-family;
+  border: 2px solid #00bccf;
+  transition:all 200ms linear;
+  &:hover { background-color:#fdfdfd; color: #4c4c4c; }
 }
 
 // NOT WELL PROGRAMMED: COUPLED TO THE BROWSE BUTTON
@@ -41,3 +56,4 @@ $button-med: 0.9em;
   border-radius: 40px !important;
   font-size: 1.5em;
 }
+

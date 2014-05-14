@@ -37,7 +37,10 @@ $global-radius: 10px;
 @import "buttons";
 @import "reveal";
 
+body {background:#fdfdfd;}
+
 #browse-logo {
-  width: 55px;
-  height: 55px;
+  width: 70px;
+  height: 70px;
+  margin-bottom:30px;
 }
