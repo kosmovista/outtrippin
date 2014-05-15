@@ -1,26 +1,23 @@
 require 'rake'
 namespace :itineraries do
+  desc "Export all itineraries"
   task :all_to_csv => :environment do
     puts "exporting all tasks"
     f = File.new("itineraries.csv", 'w+')
+    column_names = Itinerary.column_names
+
+    column_names.each do |attribute|
+      f << "#{attribute};"
+    end
+
+    f << "\n"
+
     Itinerary.all.each do |i|
-      if i.user.blank?
-        f << "nil;"
-      else
-        f << "#{i.user.email};"
+      column_names.each do |attribute|
+        value = i.read_attribute(attribute)
+        value.blank? ? f << "nil;" : f << "#{value};"
       end
-
-      if i.duration.blank?
-        f << "nil;"
-      else
-        f << "#{i.duration};"
-      end
-
-      if i.departure.blank?
-        f << "nil;\n"
-      else
-        f << "#{i.departure};\n"
-      end
+      f << "\n"
     end
     f.close
   end
