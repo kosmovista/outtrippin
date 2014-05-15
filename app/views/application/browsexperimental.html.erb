@@ -7,7 +7,7 @@
     <%= image_tag 'o-color.png', id: 'browse-logo' %>
     <h1 class="sans">PLANNED HERE, ENJOYED EVERYWHERE.</h1>
     <p id="description">At OutTrippin, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on OutTrippin and enjoyed around the world.</p>
-    <%= link_to "Ready to plan your perfect trip?", "#", class: "button", "data-reveal-id" => "trip-request-modal" %>
+    <%= link_to "Ready to plan your perfect trip?", "#", class: "tertiary-button radius", "data-reveal-id" => "trip-request-modal" %>
   </div>
 </div>
 <ul id="plans-container">
@@ -21,11 +21,11 @@
 <%= content_for :body_html do %>
 <div id="trip-request-modal" class="reveal-modal text-center" data-reveal>
   <a class="close-reveal-modal">&#215;</a>
-  <h1>Ready to make your next trip your best ever?</h1>
+  <h1 class="sans">Ready to make your next trip your best ever?</h1>
   <p class="lead">Thought so! Okay, do you have a general idea of where you'd like to go?</p>
   <%= form_for @itinerary do |f| %>
     <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet...", :autofocus => true %>
-    <%= f.submit "Let's get started!", class: "button radius" %>
+    <%= f.submit "Let's get started!", class: "tertiary-button radius" %>
   <% end %>
 </div>
 <% end %>
@@ -47,7 +47,7 @@
     <% end %>
     mixpanel.track("Page Loaded", {"page": "Browse"});
     mixpanel.track_forms("#new_itinerary", "Started Contest", { 'From': 'Browse' });
-    mixpanel.track_links(".alltrips a", "Browsed Trip", { 'page': 'Browse' });
+    mixpanel.track_links("#plans-container a", "Browsed Trip", { 'page': 'Browse' });
     mixpanel.register_once({ "Source": "OutTrippin" });
   </script>
 <% end %>
