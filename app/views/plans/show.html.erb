@@ -126,12 +126,12 @@
                     <h3><input type="text" autofocus="true" ng-model="day.title"></h3>
                     <div class="desc" text-angular ng-model="day.body"></div>
                     <div class="row">
-                      <div class="large-6 columns">
-                        <h4><input type="text" autofocus="true" ng-model="day.cost" placeholder="Estimate day cost"></h4>
+                      <div class="large-5 small-12 columns">
+                        <h6><input type="text" ng-model="day.cost" placeholder="Estimated cost of the day"></h6>
 
                       </div>
-                      <div class="large-6 columns">
-                        <h4><input type="text" autofocus="true" ng-model="day.reccomendation" placeholder="Booking recommendations"></h4>
+                      <div class="large-7 small-12 columns">
+                        <h6><input type="text" ng-model="day.reccomendation" placeholder="Any Accommodation Recommendations?"></h6>
                       </div>
                     </div>
 
@@ -165,12 +165,12 @@
                   <h3><input id="title-day" type="text" autofocus="true" ng-model="day.title" placeholder="A title for the day"/></h3>
                   <div id="desc-day" class="desc" text-angular ng-model="day.body"></div>
                   <div class="row">
-                    <div class="large-4 columns">
-                      <h4><input id="cost-day" type="text" autofocus="true" placeholder="Estimate day cost" ng-model="day.cost"></h4>
+                    <div class="large-5 small-12 columns">
+                      <h6><input id="cost-day" type="text" placeholder="Estimated cost of the day" ng-model="day.cost"></h6>
 
                     </div>
-                    <div class="large-8 columns">
-                      <h4><input id="reccomendation-day" type="text" autofocus="true" ng-model="day.reccomendation"></h4>
+                    <div class="large-7 small-12 columns">
+                      <h6><input id="reccomendation-day" type="text" placeholder="Accommodation recommendations?" ng-model="day.reccomendation"></h6>
                     </div>
                   </div>
                 </div>
@@ -312,7 +312,7 @@
                  <p>{{bk.body}}</p>
               </div>
               <div class="large-2 small-12 text-center columns">
-                <span class="radius price small white label" >{{bk.price}}</span>
+                <span class="radius price small text-center label" >{{bk.price}}</span>
                 <a href="{{bk.link}}" class="button pricethis expand secondary small text-center serif" style="margin-top:-3px" target="_blank">Book now</a>
                 <a href="" id="editbooking" class="circle-button" ng-click="editing_bk=true" title="Edit Booking"><%= image_tag "edit-circle.png", style: "width:30px;", class: "circle-button" %></a>
               </div>

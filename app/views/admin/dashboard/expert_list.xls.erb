@@ -15,6 +15,9 @@
         <Cell><Data ss:Type="String">Hometown</Data></Cell>
         <Cell><Data ss:Type="String">Countries</Data></Cell>
         <Cell><Data ss:Type="String">Cities</Data></Cell>
+        <Cell><Data ss:Type="String">Facebook</Data></Cell>
+        <Cell><Data ss:Type="String">Instagram</Data></Cell>
+        <Cell><Data ss:Type="String">Twitter</Data></Cell>
       </Row>
     <% @experts.each do |expert| %>
       <Row>
@@ -26,6 +29,9 @@
         <Cell><Data ss:Type="String"><%= expert.expert_info[:hometown] %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.expert_info[:countries] %></Data></Cell>
         <Cell><Data ss:Type="String"><%= expert.expert_info[:cities] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= expert.expert_info[:facebook] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= expert.expert_info[:instagram] %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= expert.expert_info[:twitter] %></Data></Cell>
       </Row>
     <% end %>
     </Table>

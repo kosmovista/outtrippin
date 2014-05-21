@@ -16,7 +16,7 @@
       </div>
       <h3 class=" text-center">PLANNED HERE, ENJOYED EVERYWHERE.</h3>
       <h5 class="serif subheader text-center" style="margin-bottom:50px">
-        <em>At OutTrippin, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on OutTrippin and enjoyed around the world.</em>
+        <em>At OutTrippin, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travellers have planned on OutTrippin and enjoyed around the world.</em>
       </h5>
       <a href="#" data-reveal-id="trip-modal" class= "button pickthis radius secondary small text-center serif" >Ready to plan your perfect trip?</a>
     </div>
@@ -31,12 +31,10 @@
       <%= link_to "", itinerary_path(i.itinerary), class: "overlay", title: ('Trip to ' + i.itinerary.destination ) %>
       <div class="large-12 detail small-12 columns">
         <h3 class="white"><%= link_to i.itinerary.winner_pitch.title, itinerary_path(i.itinerary), class: "white", title: "Read the story" %></h3>
-      </div>
-      <div class="large-12 text-center small-12 columns author">
-        <%= link_to (image_tag i.user.avatar.url(:thumb), class: "rounded text-right tip-avatar"), user_path(i.user), title: "Storyteller's profile" %>
         <h6 class="white serif subheader text-center">
-          <em>Recommended by <%= link_to i.user.name, user_path(i.user), class: "white", title: "Storyteller's profile" %></em>
-        </h5>
+        <%= link_to (image_tag i.user.avatar.url(:thumb), class: "rounded text-right tip-avatar"), user_path(i.user), title: "Storyteller's profile" %> 
+          <em><span class="hide-for-medium-down">Recommended </span>by <%= link_to i.user.name, user_path(i.user), class: "white", title: "Storyteller's profile" %></em>
+        </h6>
       </div>
       </li>
     <% end %>
