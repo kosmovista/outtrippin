@@ -245,7 +245,7 @@ div.container { position: relative; }
 }
 .inline-list.cover-tabs > li a {
   @media (min-width: 940px) { 
-    margin-right: 1em;
+    padding: 0 5px;
     font-size: 0.750em;
     line-height:47px;
     letter-spacing: 0.12em;
@@ -259,7 +259,7 @@ div.container { position: relative; }
   }
 }
 
-.inline-list.cover-tabs > li { 
+.inline-list.cover-tabs > li {  
   .comments {
     background: image-url('comments.png') no-repeat right 19px;
     padding-right: 22px;
