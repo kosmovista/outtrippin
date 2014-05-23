@@ -20,7 +20,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
 
   // ADD DAY
   $scope.save_day = function() {
-    $http.put('plan/day.json', {"title": $scope.day.title, "body": $scope.day.body, "cost": $scope.day.cost, "reccomendation": $scope.day.reccomendation }).
+    $http.put('plan/day.json', {"title": $scope.day.title, "body": $sanitize($scope.day.body), "cost": $scope.day.cost, "reccomendation": $scope.day.reccomendation }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
         $scope.add_day = false;

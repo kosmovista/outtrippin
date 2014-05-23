@@ -160,17 +160,17 @@
   border-top: 0px;
   border-radius:0 0 4px 4px !important;
   padding-top: 0.4em !important;
-  background-color: #fdfdfd !important;
+  background-color: #00bccf !important;
   transition: all 200ms linear;
   font-weight: normal;
   font-size: 1.1em !important;
   font-style: italic;
-  color: #4c4c4c !important;
+  color: #fff !important;
   transition:all 200ms linear;
   &:hover {
-    border: 2px #00bccf solid;
-    background-color: #00bccf !important;
-    color: white !important;
+    border: 2px #008390 solid !important;
+    background-color: #008390 !important;
+    color: #fff !important;
   }
 }
 
