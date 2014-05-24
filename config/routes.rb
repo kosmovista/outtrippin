@@ -49,7 +49,7 @@ Outtrippin::Application.routes.draw do
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
-  get     'browse'    => 'itineraries#browse'
+  get     'browse'    => 'application#browse'
   get     'browsexperimental'    => 'application#browsexperimental'
 
   namespace :admin do
