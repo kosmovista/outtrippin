@@ -79,4 +79,19 @@
   mixpanel.track("Page Loaded", {"page": "Expert Profile"});
   mixpanel.track_links(".expert-details a", "Clicked Expert Links");
 </script>
+<script>
+$(function(){ 
+  var apiKey = '8f003eeae634f12fcad8ec03797d1e97';
+  destination = '<%= @user.location %>'
+  var replaced = destination.split(' ').join('+') 
+  var replaced1 = replaced.split(',').join('') 
+  $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=8f003eeae634f12fcad8ec03797d1e97&text=' + replaced1 + '&min_upload_date=1274832000&license=4%2C5%2C6%2C7&sort=relevance&group_id=41425956%40N00&per_page=10&page=1&format=json&jsoncallback=?',
+    function(data) {
+      item = $(data.photos.photo).get(0);
+      photoURL = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_b.jpg';
+      $('.expert-cover').css('background-image', 'url(' + photoURL + ')');
+    }
+  )
+});
+</script>
 <% end %>
