@@ -8,7 +8,7 @@
     <% end %>
   <% end %>
 </div>
-<div class="large-6 small-12 small-centered text-center large-centered columns">
+<div class="large-6 expert-details small-12 small-centered text-center large-centered columns">
   <h1 style="margin-bottom:0; margin-top:20px"><%= @user.name %></h1>
   <em><%= link_to @user.website, "http://" + @user.website, target: "_blank" unless @user.website.blank? %></em>
   <hr style="border:2px solid #4a4a4a; width:60px; margin:25px auto 20px auto" />
@@ -69,4 +69,11 @@
 
 <%= content_for :head do %>
   <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
+<%= content_for :body do %>
+  <script>
+  mixpanel.track("Page Loaded", {"page": "Expert Profile"});
+  mixpanel.track_links(".expert-details a", "Clicked Expert Links");
+</script>
 <% end %>
