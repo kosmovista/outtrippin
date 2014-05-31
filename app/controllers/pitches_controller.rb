@@ -33,7 +33,7 @@ class PitchesController < ApplicationController
   end
 
   def winner
-    if current_user == @itinerary.user
+    if current_user == @itinerary.user || current_user.is?("admin")
       @pitch.winner = true
       @pitch.save
       UserMailer.delay.winner_expert_email(@pitch)
