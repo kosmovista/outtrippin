@@ -14,6 +14,7 @@
       <thead>
         <tr>
           <th>User</th>
+          <th>ID</th>
           <th>Destination</th>
           <th>Created</th>
           <th>Paid?</th>
@@ -28,6 +29,7 @@
         <% unless i.user.blank? %>
         <tr>
           <td><%= link_to (i.user.name || i.user.email), user_path(i.user) %></td>
+          <td><%= i[:id].to_s %></td>
           <td><%= link_to i.destination, itinerary_path(i) %> </td>
           <td><%= time_ago_in_words i.created_at %></td>
           <td><%= i.paid %></td>
