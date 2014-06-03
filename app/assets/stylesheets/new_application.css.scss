@@ -14,7 +14,7 @@ $body-font-color: #4c4c4c;
 }
 
 // COLORS /////////////////////////////////////////////////////////////////////
-$primary-color: #00bccf;
+$primary-color: #003e74;
 
 $global-radius: 10px;
 
@@ -36,8 +36,3 @@ $global-radius: 10px;
 // must be included after the global
 @import "buttons";
 @import "reveal";
-
-#browse-logo {
-  width: 55px;
-  height: 55px;
-}

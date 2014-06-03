@@ -10,11 +10,11 @@ $button-med: 0.9em;
   @include button;
   box-shadow: none !important;
   border-radius: 4px !important;
-  border: 2px solid #00bccf !important;
+  border: 2px solid #003e74 !important;
   transition: all 200ms linear !important;
-  &:hover { 
-    background-color: #fdfdfd !important; 
-    color: #4c4c4c !important; 
+  &:hover {
+    background-color: #fdfdfd !important;
+    color: #4c4c4c !important;
   }
 }
 
@@ -34,8 +34,6 @@ $button-med: 0.9em;
   }
 }
 
-<<<<<<< HEAD
-=======
 .tertiary.button {
   font-weight: normal;
   font-style: italic;
@@ -44,7 +42,6 @@ $button-med: 0.9em;
   font-family: $serif-font-family;
 }
 
->>>>>>> 8f6671d... final updates to browse page.
 // NOT WELL PROGRAMMED: COUPLED TO THE BROWSE BUTTON
 .large {
   margin: 0;
