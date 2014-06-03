@@ -1,0 +1,53 @@
+<%= content_for :body_css do %>
+  <%= stylesheet_link_tag "browsexperimental", media: "all" %>
+<% end %>
+
+<div class="row">
+  <div id="header" class="large-12 small-12 columns text-center">
+    <%= image_tag 'o-color.png', id: 'browse-logo' %>
+    <h1 class="sans">PLANNED HERE, ENJOYED EVERYWHERE.</h1>
+    <p id="description">At Zuji, we believe that travel is about making stories that last a lifetime. These are some of the stories that that travelers have planned on Zuji and enjoyed around the world.</p>
+    <%= link_to "Ready to plan your perfect trip?", "#", class: "tertiary button radius", "data-reveal-id" => "trip-request-modal" %>
+  </div>
+</div>
+<ul id="plans-container">
+</ul>
+
+<div class="browse-footer">
+  <hr />
+  <%= link_to "Ready to plan your own adventure?", "#", class: "secondary-button large", "data-reveal-id" => "trip-request-modal" %>
+</div>
+
+<%= content_for :body_html do %>
+<div id="trip-request-modal" class="reveal-modal text-center" data-reveal>
+  <a class="close-reveal-modal">&#215;</a>
+  <h1>Ready to make your next trip your best ever?</h1>
+  <p class="lead">Thought so! Okay, do you have a general idea of where you'd like to go?</p>
+  <%= form_for @itinerary do |f| %>
+    <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet...", :autofocus => true %>
+    <%= f.submit "Let's get started!", class: "tertiary button radius" %>
+  <% end %>
+</div>
+<% end %>
+
+<%= content_for :body_js do %>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+  <script async>
+    $(window).load(function() {
+      autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+    });
+
+    <% if current_user %>
+      mixpanel.alias("<%= current_user.email %>");
+      mixpanel.people.set({
+        "Name": "<%= current_user.personal_info[:name] %>",
+        "Roles": "<%= current_user.roles.join(', ') %>",
+        "$email": "<%= current_user.email %>"
+      });
+    <% end %>
+    mixpanel.track("Page Loaded", {"page": "Browse"});
+    mixpanel.track_forms("#new_itinerary", "Started Contest", { 'From': 'Browse' });
+    mixpanel.track_links(".alltrips a", "Browsed Trip", { 'page': 'Browse' });
+    mixpanel.register_once({ "Source": "OutTrippin" });
+  </script>
+<% end %>

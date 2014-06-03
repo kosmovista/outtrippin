@@ -49,7 +49,8 @@ Outtrippin::Application.routes.draw do
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
-  get     'browse'    => 'itineraries#browse'
+  get     'browse'    => 'application#browsexperimental'
+  get     'browsexperimental'    => 'application#browsexperimental'
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'
@@ -70,7 +71,8 @@ Outtrippin::Application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :stories
-      resource :user_sessions, only: :create
+#      resource :user_sessions, only: :create
+      resources :plans, only: [:index]
     end
   end
   #################################################################

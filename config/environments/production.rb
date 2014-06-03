@@ -59,7 +59,7 @@ Outtrippin::Application.configure do
 
   # Precompile additional assets.
   # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
-  config.assets.precompile += %w( experts_registration.css experts.css home.css itineraries.css white_topbar.css itinerary_builder.js itinerary_builder.css browse.css angular/controllers.js angular/services.js angular-file-upload-shim.min.js angular.min.js angular-file-upload.min.js textAngular.js angular-resource.min.js)
+  config.assets.precompile += %w( experts_registration.css experts.css home.css itineraries.css white_topbar.css itinerary_builder.js itinerary_builder.css browse.css angular/controllers.js angular/services.js angular-file-upload-shim.min.js angular.min.js angular-file-upload.min.js textAngular.js angular-resource.min.js browsexperimental.css new_application.css new_application.js)
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

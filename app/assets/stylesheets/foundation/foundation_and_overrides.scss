@@ -52,10 +52,10 @@ $em-base: 16px !default;
   @return $pxWidth / $em-base * 1em;
 }
 
-// Maybe you want to create rems with pixels
-// $rem-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
-// @function rem-calc($pxWidth) {
-//   @return $pxWidth / $rem-base * 1rem;
+// Maybe you want to create ems with pixels
+// $em-base: 0.625 !default; //Set the value corresponding to body font size. In this case, you should set as: body {font-size: 62.5%;}
+// @function em-calc($pxWidth) {
+//   @return $pxWidth / $em-base * 1rem;
 // }
 
 // Change whether or not you include browser prefixes
