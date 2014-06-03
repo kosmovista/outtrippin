@@ -156,8 +156,12 @@
     autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
   });
   </script>
-
-
+  <script type="text/javascript">
+    function getURLParameter(name) {
+    return decodeURIComponent(
+    (location.search.match(RegExp("[?|&]"+name+'=(.+?)(&|$)'))||[,""])[1]
+    );}
+  </script>
   <script>
   <% if current_user %>
     mixpanel.alias("<%= current_user.email %>");
@@ -167,8 +171,15 @@
         "$email": "<%= current_user.email %>"
     });
   <% end %>
-  mixpanel.track("Page Loaded", {"page": "landing page"});
+  mixpanel.track("Page Loaded", {
+    "page": "landing page",
+    "Affiliate": getURLParameter("refblog")
+  });
   mixpanel.track_forms("#new_itinerary", "Started Contest");
+  mixpanel.people.set_once({
+    "Affiliate": getURLParameter("refblog")
+  });
+
   mixpanel.register_once({
     "Source": "OutTrippin"
   });
