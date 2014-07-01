@@ -18,6 +18,13 @@ class Admin::ItinerariesController < ApplicationController
 
   def update
     @itinerary = Itinerary.find(params[:id])
+    @itinerary.destination = params[:itinerary][:destination]
+    @itinerary.departure = params[:itinerary][:departure]
+    @itinerary.duration = params[:itinerary][:duration]
+    @itinerary.extra_info[:name] = params[:itinerary][:name]
+    @itinerary.extra_info[:travelers] = params[:itinerary][:travelers]
+    @itinerary.extra_info[:must] = params[:itinerary][:must]
+    @itinerary.extra_info[:avoid] = params[:itinerary][:avoid]
     @itinerary.extra_info[:details] = params[:itinerary][:details]
     @itinerary.extra_info[:reward] = params[:itinerary][:reward]
     @itinerary.extra_info[:countdown] = params[:itinerary][:countdown]

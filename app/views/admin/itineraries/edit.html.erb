@@ -1,13 +1,111 @@
-<br />
-<br />
-<br />
 <div class="row">
   <div class="large-12 columns">
-      <%= form_for [:admin, @itinerary], method: :put do |f| %>
-      <%= f.text_area :details, value: @itinerary.extra_info[:details], class: "medium-textarea" %>
-      <%= f.text_field :reward, value: @itinerary.extra_info[:reward],  placeholder: "Reward - Insert Numbers Only" %>
-      <%= f.text_field :countdown, value: @itinerary.extra_info[:countdown],  placeholder: "Closing on - dd/mm/yyyy" %>
-      <%= f.submit "Update Itinerary", class: "button" %>
+  	<%= form_for [:admin, @itinerary], method: :put, html: { class: 'custom' } do |f| %>
+  	<div class="row big-break">
+     <div class="large-6 columns">
+        <%= f.label :destination, "Destination" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_field :destination, value: @itinerary.destination, placeholder: "Going to..", :autofocus => true %>
+      </div>
+    </div>
+    <div class="row">
+     <div class="large-6 columns">
+        <%= f.label :name, "Give your trip a spectacular name" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_field :name, value: @itinerary.extra_info[:name], placeholder: "Our amazing adventure to Costa Rica!", :autofocus => true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :travelers, "Who's traveling?" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_field :travelers, value: @itinerary.extra_info[:travelers], placeholder: "Nadia & Thomas" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 small-12 columns">
+        <%= f.label :departure, " When are you going?" %>
+      </div>
+      <div class="large-6 small-12 columns">
+        <%= f.select :departure,  options_for_select(get_date_options(12), @itinerary.extra_info[:departure]) %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 small-12 columns">
+        <%= f.label :duration, "For how many days? " %>
+      </div>
+      <div class="large-6 small-12 columns">
+        <%= f.select :duration, options_for_select(("3".."15").to_a, @itinerary.extra_info[:duration]) %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :must, "Things I absolutely must see/do:" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_area :must, value: @itinerary.extra_info[:must], placeholder: "I want to visit a volcano, I've heard La Paz Waterfall gardens are amazing and I'd love to eat as much street food as possible.", class: "medium-textarea" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :avoid, "Stuff I'd really like to avoid:" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_area :avoid, value: @itinerary.extra_info[:avoid], placeholder: "We want our accommodation to be with local people or small hotels, we're not resort people. Nothing super touristy.", class: "medium-textarea" %>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :details, "Any extra details or ideas?" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_area :details, value: @itinerary.extra_info[:details], placeholder: "eg: My husband loves adventure so would like to hear your ideas for activities we can do. I love hiking and I'm a vegetarian.", class: "medium-textarea" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :reward, "Reward?" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_field :reward, value: @itinerary.extra_info[:reward], placeholder: "Reward - Insert Numbers Only" %>
+      </div>
+    </div>
+
+     <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :countdown, "Closing on" %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.text_field :countdown, value: @itinerary.extra_info[:countdown], placeholder: "Closing on - dd/mm/yyyy" %>
+      </div>
+    </div>
+
+
+    <%= f.submit "Update Itinerary", class: "button" %>
       <% end %>
   </div>
 </div>
+
+<%= content_for :body do %>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(window).load(function() {
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+  });
+  </script>
+  <% end %>
+
+  <%= content_for :head do %>
+<script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
+<% end %>
