@@ -31,7 +31,7 @@
         <%= f.label :departure, " When are you going?" %>
       </div>
       <div class="large-6 small-12 columns">
-        <%= f.select :departure,  options_for_select(get_date_options(12), @itinerary.extra_info[:departure]) %>
+        <%= f.select :departure,  options_for_select(get_date_options(12), @itinerary.departure) %>
       </div>
     </div>
 
@@ -40,10 +40,9 @@
         <%= f.label :duration, "For how many days? " %>
       </div>
       <div class="large-6 small-12 columns">
-        <%= f.select :duration, options_for_select(("3".."15").to_a, @itinerary.extra_info[:duration]) %>
+        <%= f.select :duration, options_for_select(("3".."15").to_a, @itinerary.duration) %>
       </div>
     </div>
-
 
     <div class="row">
       <div class="large-6 columns">
