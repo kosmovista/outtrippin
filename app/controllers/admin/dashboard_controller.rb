@@ -4,7 +4,7 @@ class Admin::DashboardController < ApplicationController
 
   def index
     if params[:filter] == "experts"
-      @users = User.experts.page(params[:page] || 0)
+      @users = User.experts.page(params[:page] || 0).per(300)
     elsif params[:filter] == "customers"
       @users = User.customers.page(params[:page] || 0)
     elsif params[:filter] == "admins"

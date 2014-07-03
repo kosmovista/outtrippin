@@ -19,6 +19,7 @@
     <p><strong>Accom. Budget:</strong> <%= @itinerary.extra_info[:accommodation_budget] %> per person, per day.</p>
     <%= content_tag(:p, ("<strong>Interested in:</strong> " + @itinerary.extra_info[:style].join(', ')).html_safe) unless @itinerary.extra_info[:style].blank? %>
     <%= content_tag(:p, ("<strong>Travel personality:</strong> " + @itinerary.extra_info[:personality].join(', ')).html_safe) unless @itinerary.extra_info[:personality].blank? %>
+    <%= content_tag(:p, ("<strong>Travel booked:</strong> " + @itinerary.extra_info[:booked].join(', ')).html_safe) unless @itinerary.extra_info[:booked].blank? %>
     <%= content_tag(:p, ("<strong>Must see:</strong> " + @itinerary.extra_info[:must]).html_safe) unless @itinerary.extra_info[:must].blank? %>
     <%= content_tag(:p, ("<strong>Must avoid:</strong> " + @itinerary.extra_info[:avoid]).html_safe) unless @itinerary.extra_info[:avoid].blank? %>
     <%= content_tag(:p, ("<strong>Additional details:</strong> " + @itinerary.extra_info[:details]).html_safe) unless @itinerary.extra_info[:details].blank? %>

@@ -9,7 +9,7 @@
   </section>
 </nav>
 
-<% if !@itinerary.nil? && @itinerary.new_record? %>
+<% if @itinerary.nil? || ( !@itinerary.nil? && @itinerary.new_record? ) %>
   <div class="top-logo">
     <a href="/" title="OutTrippin Home">
     <%= image_tag 'o-white.png', style: "height:30px;" %></a>

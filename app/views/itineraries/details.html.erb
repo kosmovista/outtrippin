@@ -63,6 +63,19 @@
 
     <div class="row">
       <div class="large-12 small-12 columns">
+        <%= f.label :booked, "Booked anything yet?" %>
+        <%= f.fields_for :booked do |booked| %>
+        <ul class="small-block-grid-1 large-block-grid-3">
+          <% @booked.each do |k,v| %>
+          <li><%= booked.check_box k, checked: (@itinerary_details.booked.blank? ? false : (@itinerary_details.booked.include?(k) ? true : false)) %><%= booked.label k, class: "cbox" %></li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="large-12 small-12 columns">
         <% if @itinerary_details.errors[:style].empty? %>
         <%= f.label :style, "What is your style of travel? *" %>
         <% else %>

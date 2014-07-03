@@ -46,6 +46,9 @@ class PitchesController < ApplicationController
       @pitch.save
       UserMailer.delay.winner_expert_email(@pitch)
       AdminMailer.delay.winner_expert_email(@pitch)
+      @itinerary = Itinerary.find(params[:itinerary_id])
+      @itinerary.published = !@itinerary.published
+      @itinerary.save
     end
     redirect_to itinerary_path(@itinerary)
   end

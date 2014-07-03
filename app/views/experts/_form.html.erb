@@ -51,23 +51,27 @@
     </div>
 
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-6 columns">
         <%= f.label :website, "Your Website *" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Enter URL without 'http://'' and/or 'www.'">
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="Enter URL without 'http://'' and/or 'www.'">
         <%= f.text_field :website, placeholder: "indianajune.com" %></span>
         <%= errors_for(object, :website) %>
+      </div>
+      <div class="large-6 columns">
+        <%= f.label :paypal, "Your Paypal Email" %>
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="Paypal to pay you for your stories!">
+        <%= f.text_field :paypal, placeholder: "indi@outtrippin.com" %></span>
       </div>
     </div>
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :google, "Google+" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Yes, we know no one uses google+, but Google Search being sneaky will only show you as author on stories if you connect your google+ account here. Enter URL without 'http://'' and/or 'www.'">
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="Yes, we know no one uses google+, but Google Search being sneaky will only show you as author on stories if you connect your google+ account here. Enter URL without 'http://'' and/or 'www.'">
         <%= f.text_field :google, placeholder: "google.com/+IndiJune" %></span>
-        <%= errors_for(object, :website) %>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Just your instagram handle, no url! :)'">
+        <span data-tooltip data-options="disable-for-touch:true"  data-width="425px" class="has-tip tip-top" title="Just your instagram handle, no url! :)'">
         <%= f.text_field :instagram, placeholder: "indiana_june" %></span>
       </div>
     </div>
@@ -75,13 +79,13 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :facebook, "Facebook Page" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Enter the page URL without 'http://'' and/or 'www.'">
+        <span data-tooltip data-options="disable-for-touch:true"  data-width="425px" class="has-tip tip-top" title="Enter the page URL without 'http://''tooltip and/or 'www.'">
         <%= f.text_field :facebook, placeholder: "facebook.com/followindianajune" %></span>
 
       </div>
       <div class="large-6 columns">
         <%= f.label :twitter, "Twitter Handle" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="Only type in your twitter handle. Without the '@'.">
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="Only type in your twitter handle. Without the '@'.">
         <%= f.text_field :twitter, placeholder: "indiana_june" %></span>
       </div>
     </div>
@@ -89,7 +93,7 @@
     <div class="row">
       <div class="large-6 columns">
         <%= f.label :countries, "List your specialty countries *" %>
-        <span data-tooltip data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
         <%= f.text_field :countries, placeholder: "Start typing the name of a country..", value: "", class: "location-autocomplete add-to-list" %></span>
         <%= errors_for(object, :countries) %>
         <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_countries">
@@ -102,7 +106,7 @@
       </div>
       <div class="large-6 columns">
         <%= f.label :cities, "List your speciality cities *" %>
-         <span data-tooltip data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
+         <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="For best results, select individual destination tags from the appearing dropdown list. The tags will appear below.">
         <%= f.text_field :cities, placeholder: "Start typing the name of a city..", value: "", class: "location-autocomplete add-to-list" %></span>
         <%= errors_for(object, :cities) %>
         <ul class="inline-list sans expert_<%= edit ? "edit" : "registration" %>_cities">

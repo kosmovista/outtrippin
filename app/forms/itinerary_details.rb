@@ -5,7 +5,7 @@ class ItineraryDetails
     false
   end
 
-  ATTRIBUTES = [:name, :travelers, :departure, :duration, :style]
+  ATTRIBUTES = [:name, :travelers, :departure, :duration, :style, :booked]
 
   attr_accessor *ATTRIBUTES
 
@@ -20,6 +20,7 @@ class ItineraryDetails
       end
 
       send("style=", parsed_styles)
+      send("booked=", parsed_booked)
     end
   end
 
@@ -40,7 +41,7 @@ class ItineraryDetails
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { style: style, name: name, travelers: travelers }
+      extra_info = { style: style, name: name, travelers: travelers, booked: booked }
       @itinerary.update_attributes(departure: departure, duration: duration, extra_info: extra_info)
       @itinerary.save!
     end
@@ -54,5 +55,12 @@ class ItineraryDetails
     _style = []
     style.each { |k, v| _style << k if v != "0" }
     _style
+  end
+
+  def parsed_booked
+    return nil if booked.nil?
+    _booked = []
+    booked.each { |k, v| _booked << k if v != "0" }
+    _booked
   end
 end

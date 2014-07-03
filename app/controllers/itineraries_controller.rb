@@ -131,5 +131,6 @@ class ItinerariesController < ApplicationController
   def load_styles_personalities
     @styles = YAML.load_file(File.join(Rails.root.to_s, 'config', 'styles.yml'))
     @personalities = YAML.load_file(File.join(Rails.root.to_s, 'config', 'personalities.yml'))
+    @booked = YAML.load_file(File.join(Rails.root.to_s, 'config', 'booked.yml'))
   end
 end
