@@ -3,16 +3,22 @@ namespace :places do
   desc "Create new places based on the existing pitches"
   task :create => :environment do
     Pitch.all.each do |p|
-      destination = p.itinerary.destination
-      unless destination.nil?
-        destination.downcase!.strip!
+      unless p.itinerary.nil?
+        destination = p.itinerary.destination
 
-        place = Place.find_by_name(destination)
-        if place.nil?
-          place = Place.create(name: destination)
+        unless destination.nil?
+          sanitized_destination = destination.downcase.strip
+
+          place = Place.find_by_name(sanitized_destination)
+          if place.nil?
+            puts "\nCREATED\n"
+            place = Place.create(name: sanitized_destination)
+          else
+            puts "\nFOUND\n"
+          end
+          p.place_id = place.id
+          p.save!
         end
-        p.place_id = place.id
-        p.save!
       end
     end
   end
