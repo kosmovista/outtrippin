@@ -56,13 +56,21 @@ class ItinerariesController < ApplicationController
 
   def publish
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
+    place = Place.find_by_name(@itinerary.destination)
     if @itinerary_finalize.save
       if !current_user
         flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
         session[:original_uri] = checkout_itinerary_path(@itinerary)
         redirect_to login_path
       else
-        redirect_to checkout_itinerary_path(@itinerary)
+        # check if we already have piches to add!
+        if place.nil?
+          redirect_to checkout_itinerary_path(@itinerary)
+        else
+          @itinerary.pitches = place.pitches.dup
+          @itinerary.save
+          redirect_to itinerary_path(@itinerary)
+        end
       end
     else
       render 'finalize'
