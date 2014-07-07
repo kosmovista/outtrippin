@@ -51,7 +51,7 @@ Outtrippin::Application.routes.draw do
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
-  get     'browse'    => 'itineraries#browse'
+  get     'browse'    => 'application#browsexperimental'
   get     'browsexperimental'    => 'application#browsexperimental'
 
   namespace :admin do
@@ -60,6 +60,8 @@ Outtrippin::Application.routes.draw do
     resources 'itineraries' do
       post 'toggle_published'
     end
+
+    resources 'places'
 
     resources 'plans' do
       post 'toggle_published'

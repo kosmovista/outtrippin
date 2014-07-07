@@ -7,15 +7,23 @@ class PitchesController < ApplicationController
   before_action :set_pitch, only: [:edit, :update, :winner]
 
   def new
-    @pitch_new = PitchNew.new(itinerary: @itinerary, user: current_user)
+    unless @itinerary.pitches.map { |p| p.user }.include?(current_user)
+      @pitch_new = PitchNew.new(itinerary: @itinerary, user: current_user)
+    else
+      redirect_to itinerary_path(@itinerary), notice: "You can only submit one pitch per itinerary. If you want, you can edit the pitch you have already submitted on the 'My Pitch' tab."
+    end
   end
 
   def create
-    @pitch_new = PitchNew.new(itinerary: @itinerary, user: current_user, attributes: params[:pitch_new])
-    if @pitch_new.save
-      redirect_to itinerary_path(@itinerary)
+    unless @itinerary.pitches.map { |p| p.user }.include?(current_user)
+      @pitch_new = PitchNew.new(itinerary: @itinerary, user: current_user, attributes: params[:pitch_new])
+      if @pitch_new.save
+        redirect_to itinerary_path(@itinerary)
+      else
+        render 'new'
+      end
     else
-      render 'new'
+      redirect_to itinerary_path(@itinerary), notice: "You can only submit one pitch per itinerary. If you want, you can edit the pitch you have already submitted on the 'My Pitch' tab."
     end
   end
 
