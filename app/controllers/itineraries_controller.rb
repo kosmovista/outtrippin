@@ -56,7 +56,7 @@ class ItinerariesController < ApplicationController
 
   def publish
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
-    place = Place.find_by_name(@itinerary.destination)
+    place = Place.find_by_name(@itinerary.destination.downcase.strip)
     if @itinerary_finalize.save
       if !current_user
         flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
@@ -67,8 +67,9 @@ class ItinerariesController < ApplicationController
         if place.nil?
           redirect_to checkout_itinerary_path(@itinerary)
         else
-          @itinerary.pitches = place.pitches.dup
-          @itinerary.save
+          # will copy the pitches that exist for this place
+          # into the current itinerary (and reset the winners)
+          @itinerary.get_pitches_from_place(place)
           redirect_to itinerary_path(@itinerary)
         end
       end

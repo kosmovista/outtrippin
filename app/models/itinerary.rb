@@ -50,6 +50,17 @@ class Itinerary < ActiveRecord::Base
     self.pitches.where(winner: true).first
   end
 
+  def get_pitches_from_place(place)
+    puts "\n\nWILL COPY PITCHES"
+    self.pitches = place.pitches.dup
+
+    self.save
+    self.pitches.each do |p|
+      p.winner = false
+      p.save
+    end
+  end
+
   # PLANS
   def get_plan_from(user)
     self.plans.where(user: user).first
