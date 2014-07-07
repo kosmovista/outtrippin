@@ -1,7 +1,5 @@
 <% set_page_title( "OutTrippin") %>
 
-<%# set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin") %>
-<% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <% set_page_pic( @plan.cover ) %>
 <%= content_for :head do %>
   <meta name="twitter:creator" content="<%= "@" +  @plan.user.twitter unless @plan.user.twitter.blank? %>">
@@ -11,7 +9,6 @@
 </style>
 <div class="row">
   <div class="large-12 small-12 text-center columns">
-    <h2 class="white text-center"><%= @itinerary.winner_pitch.title %></h2>
     <div class="large-1 hide-for-small large-centered columns">
           <hr style="border-color:white;">
       </div>
@@ -49,7 +46,6 @@
   <div class="summary">
     <div class="row">
       <div class="large-9 large-centered small-12 columns">
-        <h6 class="subheader text-center serif" style="line-height:1.8em;"><em>"<%= @itinerary.winner_pitch.summary %>"</em></h6>
         <h5 class="serif black text-right subheader" style="margin-top:20px;"><%= image_tag @plan.user.avatar.url(:thumb), class: "rounded right tip-avatar", style:"width:2.5em; height:2.5em; margin-top:5px; margin-left:20px;" %><em>- <%= @plan.user.personal_info[:name] %> <br>OutTrippin Storyteller</em></h5>
       </div>
     </div>
@@ -115,7 +111,6 @@
               <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank', class:"hide-for-small" unless @plan.user.instagram.blank? %>
             </h5>
               <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(plan.user.website),  expert_info_website_url(plan.user.website), target: '_blank' unless plan.user.website.blank? %></em></p>
-            <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small></h5>
           </div>
         </div>
       </div>
@@ -205,7 +200,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -219,94 +214,3 @@
     <a class="close-reveal-modal">&#215;</a>
     <% end %>
 </div>
-
-<%= content_for :body do %>
-  <script>
-  mixpanel.track("Page Loaded", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Author": "<%= @plan.user.personal_info[:name] %>",
-    "Stage": "Final Story"
-  });
-  mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-  });
-  mixpanel.track_links("#slide1-content .hotel a", "Clicked Booking Link", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Booking Type": "Hotel",
-  });
-  mixpanel.track_links("#slide1-content .activity a", "Clicked Booking Link", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Booking Type": "Activity",
-  });
-  mixpanel.track_links("#slide1-content .other a", "Clicked Booking Link", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Booking Type": "Other",
-  });
-  mixpanel.track_links("#facebook-share", "Facebook Share", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Stage": "Final Story"
-  });
-  mixpanel.track_links("#twitter-share", "Twitter Share", {
-    "Story_id": "<%= @itinerary.winner_pitch.title %>",
-    "Stage": "Final Story"
-  });
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Maps'
-  });
-  mixpanel.track_links("#request-booking", "Requested Booking");
-  <% if current_user %>
-    $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-    $("#request-booking").click(function() {
-      mixpanel.people.set({
-        "Requested Booking": "<%= @itinerary.winner_pitch.title %>"
-      });
-    });
-  <% end %>
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Stage": "Final Story"
-    });
-  });
-  $("#slide1").click(function() {
-    mixpanel.track("Clicked Tab", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Tab": "Booking"
-    });
-  });
-  $("#slide0").click(function() {
-    mixpanel.track("Clicked Tab", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Tab": "Story"
-    });
-  });
-  $("#slide2").click(function() {
-    mixpanel.track("Clicked Tab", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Tab": "Trip Details"
-    });
-  });
-  $("#slide3").click(function() {
-    mixpanel.track("Clicked Tab", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Tab": "Comments"
-    });
-  });
-  $("#maps").click(function() {
-    mixpanel.track("Clicked Tab", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Tab": "Maps"
-    });
-  });
-  $("#email-share").click(function() {
-    mixpanel.track("Email Share", {
-      "Story_id": "<%= @itinerary.winner_pitch.title %>",
-      "Stage": "Final Story"
-    });
-  });
-  </script>
-<% end %>
