@@ -87,6 +87,10 @@
   <script>
   mixpanel.track("Page Loaded", {"page": "Expert Profile"});
   mixpanel.track_links(".expert-details a", "Clicked Expert Links");
+  mixpanel.track_links("#plans-container a", "Browsed Trip", { 
+    "page": "Expert Profile", 
+    "expert": "<%= @user.name %>" 
+  });
 </script>
 <script>
 $(function(){ 
