@@ -67,8 +67,20 @@
   </div>
 </div>
 
+<div id="stories" class="break">
+  <h3 class="text-center serif subheader black" style="margin-bottom:50px;"><em>My stories on OutTrippin</em></h3>
+<ul id="plans-container">
+</ul>
+</div>
+
+<%= content_for :body do %>
+  <%= stylesheet_link_tag "browsexperimental", media: "all" %>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<% end %>
+
 <%= content_for :head do %>
   <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "new_application", media: "all" %>
 <% end %>
 
 <%= content_for :body do %>
@@ -90,5 +102,26 @@ $(function(){
     }
   )
 });
+
+function imgLoaded(img) {
+  var $img = $(img);
+  $img.parent().parent().addClass('loaded');
+};
+
+$.get("/api/v1/plans")
+// after receiving the data (plan headers)
+  .done(function(data) {
+    // will iterate and display each one of them
+    var container = $("#plans-container");
+    var pCounter = 0;
+    $.each(data, function(i, item) {
+      if (item.author.id == <%= @user.id %>) {
+      // append the newly loaded plan to the list
+      container.append('<li><a class="go-to-itinerary" href="/itineraries/' + item.itinerary_id + ' "><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="/users/' + item.author.id + '"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">Recommended by '+ item.author.name + '</p></a></a></li>');
+      pCounter++;
+     }
+    });
+  });
+
 </script>
 <% end %>
