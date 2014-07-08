@@ -59,13 +59,10 @@ class Itinerary < ActiveRecord::Base
   end
 
   def get_pitches_from_place(place)
-    puts "\n\nWILL COPY PITCHES"
-    self.pitches = place.pitches.dup
-
-    self.save
-    self.pitches.each do |p|
-      p.winner = false
-      p.save
+    place.pitches.each do |p|
+      copy_pitch = p.dup
+      copy_pitch.winner = false
+      self.pitches << copy_pitch
     end
   end
 
