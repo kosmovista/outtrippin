@@ -67,11 +67,9 @@
   </div>
 </div>
 
-<div id="stories" class="break">
-  <h3 class="text-center serif subheader black" style="margin-bottom:50px;"><em>My stories on OutTrippin</em></h3>
-<ul id="plans-container">
+<div id="stories" class="break"></div>
+<ul id="plans-container" style="background:#f3f3f3;">
 </ul>
-</div>
 
 <%= content_for :body do %>
   <%= stylesheet_link_tag "browsexperimental", media: "all" %>
@@ -117,6 +115,7 @@ $.get("/api/v1/plans")
   .done(function(data) {
     // will iterate and display each one of them
     var container = $("#plans-container");
+    var storyContainer = $("#stories");
     var pCounter = 0;
     $.each(data, function(i, item) {
       if (item.author.id == <%= @user.id %>) {
@@ -125,6 +124,9 @@ $.get("/api/v1/plans")
       pCounter++;
      }
     });
+    if (pCounter > 0) {
+      storyContainer.append('<h3 class="text-center serif subheader black" style="padding:50px 0; margin:0;"><em>My stories on OutTrippin</em></h3>');
+     }
   });
 
 </script>
