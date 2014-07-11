@@ -67,14 +67,17 @@ window.scrollUp = ->
   }, 2000, 'easeOutQuart')
 
 
+
 ######################
 # AFTER WINDOW LOADS #
 ######################
 
 $(window).on "scroll", ->
-  $('.top-logo').css( "display", "none" ).fadeIn(200);
-  $('.top-ot').css( "display", "none" ).delay(2000).fadeIn(200);
   $('#guide').css( "display", "none" ).delay(2000).fadeIn(200);
+  if(!$(window).scrollTop()) 
+    $('.top-ot').delay(1000).fadeIn(200);
+  else
+    $('.top-ot').css( "display", "none" );
   return false
 
 $("#scroll-down").on "click", ->
