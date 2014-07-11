@@ -1,13 +1,13 @@
-<div class="break">
+<div class="short-break">
   <% if current_user && current_user.is?("expert") && @pitch.blank? && !@itinerary.has_winner_pitch? %>
     <div class="large-2 small-12 text-center right columns">
       <span class="radius price small text-center label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
-      <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), target: "_blank", class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+      <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" unless current_page?(new_itinerary_pitch_path(@itinerary)) %>
     </div>
   <% end %>
   <% if current_user && current_user.is?("expert") && !@pitch.blank? %>
     <div class="large-2 small-12 text-center right columns">
-     <span class="radius price small white label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
+     <span class="radius price small label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
     </div>
   <% end %> 
   <div class="large-8 small-12 large-centered columns">

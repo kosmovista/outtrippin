@@ -1,5 +1,5 @@
 
-<div class="row big-break">
+<div class="row break">
   <div class="large-12 large-centered small-12 columns">
     <div class="large-2 small-3 left columns">
       <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
@@ -66,7 +66,7 @@
   <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile" %></em>
 </div>
 <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
-  <hr style="border:1px #e6e6e6 solid">
+  <hr style="border:1px #e6e6e6 solid; margin-bottom:80px;">
 <% end %>
 
 <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
