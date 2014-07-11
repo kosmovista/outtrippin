@@ -202,7 +202,7 @@
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
@@ -218,6 +218,11 @@
     <% end %>
 </div>
 
+<ul class="no-bullet no-margin share-fixed">
+  <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:35px;", class: "circle-button" %></a></li>
+  <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:35px; margin:10px 0 0 0;", class: "circle-button" %></a></li>
+  <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:35px; margin:10px 0 0 0;" %></a></li>
+</ul>
 <%= content_for :body do %>
   <script>
   mixpanel.track("Page Loaded", {
