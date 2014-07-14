@@ -12,6 +12,8 @@ class Itinerary < ActiveRecord::Base
   serialize :extra_info, Hash
   validates_presence_of :destination
 
+  after_create :update_places
+
   def price
     10 * self.duration.to_i
   end
@@ -59,7 +61,11 @@ class Itinerary < ActiveRecord::Base
   def get_pitches_from_place(place)
     place.pitches.each do |p|
       copy_pitch = p.dup
+      copy_pitch.auto = true
       copy_pitch.winner = false
+      copy_pitch.place_id = nil
+      copy_pitch.pictures = p.pictures
+      copy_pitch.save
       self.pitches << copy_pitch
     end
   end
@@ -85,4 +91,12 @@ class Itinerary < ActiveRecord::Base
     self.extra_info[:travelers]
   end
 
+  def update_places
+    sanitized_destination = self.destination.downcase.strip
+    place = Place.find_by_name(sanitized_destination)
+    if place.nil?
+      place = Place.create(name: sanitized_destination)
+    else
+    end
+  end
 end
