@@ -29,6 +29,11 @@ class Admin::ItinerariesController < ApplicationController
     @itinerary.extra_info[:reward] = params[:itinerary][:reward]
     @itinerary.extra_info[:countdown] = params[:itinerary][:countdown]
     @itinerary.save!
+    place = Place.find_by_name(@itinerary.destination.downcase.strip)
+    unless place.nil?
+      @itinerary.get_pitches_from_place(place)
+    end
+
     redirect_to @itinerary
   end
 
