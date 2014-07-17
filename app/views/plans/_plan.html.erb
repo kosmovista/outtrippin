@@ -1,5 +1,5 @@
-<% set_page_title( "OutTrippin") %>
-
+<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin") %>
+<% set_page_desc( @itinerary.winner_pitch.summary ) %>
 <% set_page_pic( @plan.cover ) %>
 <%= content_for :head do %>
   <meta name="twitter:creator" content="<%= "@" +  @plan.user.twitter unless @plan.user.twitter.blank? %>">
@@ -113,6 +113,7 @@
               <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(@plan.user.instagram), target: '_blank', class:"hide-for-small" unless @plan.user.instagram.blank? %>
             </h5>
               <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(plan.user.website),  expert_info_website_url(plan.user.website), target: '_blank' unless plan.user.website.blank? %></em></p>
+              <h5 class="subheader serif" style="line-height:1em;"><em><small><%= @itinerary.winner_pitch.why_me %></em></small>
           </div>
         </div>
       </div>
