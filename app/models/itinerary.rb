@@ -58,6 +58,14 @@ class Itinerary < ActiveRecord::Base
     self.pitches.where(winner: true).first
   end
 
+  def has_personalized_pitches?
+    !self.pitches.where(auto: false).first.nil?
+  end
+
+  def has_auto_pitches?
+    !self.pitches.where(auto: true).first.nil?
+  end
+
   def get_pitches_from_place(place)
     place.pitches.each do |p|
       copy_pitch = p.dup

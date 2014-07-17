@@ -1,86 +1,174 @@
-
-<div class="row big-break">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="large-2 small-3 left columns">
-      <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
-        <h4 class="no-margin serif subheader pitch-number"><em><%= pitch_counter + 1 %></em></h4>
-      <% end %>
-    </div>
-    <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
-    <div class="large-2 small-9 text-center right columns">
-      <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Pick Me!</a>
-    </div>
-    <% end %>
-  
-    <div class="large-8 large-centered small-12 columns">
-      <%= link_to (image_tag "edit-circle.png"), edit_itinerary_pitch_path(pitch.itinerary, pitch), class: "right", id: "Edit-Pitch", title: "Edit Pitch", style: "width:25px;" if (current_user.is?("expert") && !pitch.winner) || current_user.is?("admin")  %>
-      <%= link_to "Start writing...", itinerary_plan_path(pitch.itinerary), id: "Start-Story", class: "small button radius right" if pitch.won_by?(current_user) %>
-      <%= button_to "Pick Me!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "button pickthis radius right serif" if current_user.is?("admin") && !pitch.itinerary.has_winner_pitch? %>
-      <h3><%= pitch.title %> </h3>
-      <% unless pitch.pictures.empty? %>
-      <div class="pitch-imgs">
-        <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
-          <% pitch.pictures.each do |pic| %>
-          <li>
-            <%= image_tag pic.source %>
-          </li>
-          <% end %>
-        </ul>
+<% if !pitch.auto %>
+  <div class="row big-break">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-2 small-3 left columns">
+        <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
+          <h4 class="no-margin serif subheader pitch-number"><em><%= pitch_counter + 1 %></em></h4>
+        <% end %>
+      </div>
+      <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
+      <div class="large-2 small-9 text-center right columns">
+        <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Pick Me!</a>
       </div>
       <% end %>
-      <p><%= simple_format(pitch.summary) %></p>
-      <% if ( current_user && !current_user.is?("expert") ) || ( pitch.won_by?(current_user) ) || ( pitch.written_by?(current_user) || ( current_user && current_user.is?("admin") )) %>
-      <div class="written-by">
-        <hr>
-        <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
-        <div class="row">
-          <div class="large-12 small-12 columns">
-            <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
-            <h5 class="no-margin no-padding">
-              <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd"  data-options="is_hover:true"><%= image_tag 'info.png', class: "hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
-              <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_website_url(pitch.user.facebook), target: '_blank', class: "hide-for-small" unless pitch.user.facebook.blank? %>
-              <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(pitch.user.pinterest), target: '_blank', class: "hide-for-small" unless pitch.user.pinterest.blank? %>
-              <%= link_to (image_tag "twitter_40.png", class: "right", style: "width:21px; margin:2px;"), expert_info_twitter_url(pitch.user.twitter), target: '_blank', class: "hide-for-small" unless pitch.user.twitter.blank? %>
-              <%= link_to (image_tag "google.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_google_url(pitch.user.google), target: '_blank', class: "hide-for-small" unless pitch.user.google.blank? %>
-              <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(pitch.user.instagram), target: '_blank', class: "hide-for-small" unless pitch.user.instagram.blank? %>
-            </h5>
-            <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(pitch.user.website),  expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></p>
-            <p style="font-size:90%;" class="subheader serif" style="line-height:1em;"><em><%= pitch.why_me %></em></p>
+    
+      <div class="large-8 large-centered small-12 columns">
+        <%= link_to (image_tag "edit-circle.png"), edit_itinerary_pitch_path(pitch.itinerary, pitch), class: "right", id: "Edit-Pitch", title: "Edit Pitch", style: "width:25px;" if (current_user.is?("expert") && !pitch.winner) || current_user.is?("admin")  %>
+        <%= link_to "Start writing...", itinerary_plan_path(pitch.itinerary), id: "Start-Story", class: "small button radius right" if pitch.won_by?(current_user) %>
+        <%= button_to "Pick Me!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "button pickthis radius right serif" if current_user.is?("admin") && !pitch.itinerary.has_winner_pitch? %>
+        <h3><%= pitch.title %> </h3>
+        <% unless pitch.pictures.empty? %>
+        <div class="pitch-imgs">
+          <ul data-orbit data-options="bullets:true; navigation_arrows:false; slide_number:false; " >
+            <% pitch.pictures.each do |pic| %>
+            <li>
+              <%= image_tag pic.source %>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+        <% end %>
+        <p><%= simple_format(pitch.summary) %></p>
+        <% if ( current_user && !current_user.is?("expert") ) || ( pitch.won_by?(current_user) ) || ( pitch.written_by?(current_user) || ( current_user && current_user.is?("admin") )) %>
+        <div class="written-by">
+          <hr>
+          <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
+          <div class="row">
+            <div class="large-12 small-12 columns">
+              <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
+              <h5 class="no-margin no-padding">
+                <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd"  data-options="is_hover:true"><%= image_tag 'info.png', class: "hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+                <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_website_url(pitch.user.facebook), target: '_blank', class: "hide-for-small" unless pitch.user.facebook.blank? %>
+                <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(pitch.user.pinterest), target: '_blank', class: "hide-for-small" unless pitch.user.pinterest.blank? %>
+                <%= link_to (image_tag "twitter_40.png", class: "right", style: "width:21px; margin:2px;"), expert_info_twitter_url(pitch.user.twitter), target: '_blank', class: "hide-for-small" unless pitch.user.twitter.blank? %>
+                <%= link_to (image_tag "google.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_google_url(pitch.user.google), target: '_blank', class: "hide-for-small" unless pitch.user.google.blank? %>
+                <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(pitch.user.instagram), target: '_blank', class: "hide-for-small" unless pitch.user.instagram.blank? %>
+              </h5>
+              <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(pitch.user.website),  expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></p>
+              <p style="font-size:90%;" class="subheader serif" style="line-height:1em;"><em><%= pitch.why_me %></em></p>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div id="interestd" class="f-dropdown medium content" data-dropdown-content>
+    <h5 class="subheader serif"><em>My travel interests:</em></h5>
+    <p>
+   <% unless pitch.user.expert_info[:style].blank? %>
+    <ul class="sans skill-list">
+      <% pitch.user.expert_info[:style].each do |s| %>
+      <li><%= s %></li>
+      <% end %>
+    </ul></p>
+    <% end %>
+    <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile" %></em>
+  </div>
+  
+  <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
+    <hr style="border:1px #e6e6e6 solid">
+  <% end %>
+
+  <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && !@itinerary.paid? %>
+  <div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal xlarge">
+    <div class="row break">
+      <div class="large-8 small-12 text-center columns">
+        <h3>Connect with <%= pitch.user.personal_info[:name] %></h3>
+        <h4 class="serif subheader" style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>Upgrade your account to connect with <%= pitch.user.personal_info[:name] %> one-on-one and get personalized recommendations and advice for your trip to <%= @itinerary.destination %>.</em></h4>
+         <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 14 %>
+      </div>
+      <div class="large-4 small-12 right columns">
+        <div class="panel text-center pricing" >
+          <H5 class="option-title">PLENTY O' FISH</H5>
+          <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (14) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $14 per travel day )</h3>
+          <%= image_tag pitch.user.avatar.url(:thumb), style: "margin-top:5px;", class: "rounded" %>
+          <h6 class="white serif option-detail"><em>Multiple storytellers compete</em></h6>
+          <h6 class="white option-text serif subheader"><em>to help you plan day-by-day tailored travel story</span></em></h6>
+        </div>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+<% end %>
+<% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && @itinerary.paid? %>
+  <div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
+    <h3 class="text-center">Ready & Set?</h3>
+    <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the pitch you're selecting as your favorite:</em></h5>
+    <div class="row">
+      <div class="large-12 small-12 columns">
+        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
+        <h4><%= pitch.title %> </h4>
+        <h6 class="serif subheader"><em>By <%= pitch.user.personal_info[:name] %></em></h6>
+      </div>
+    </div>
+    <%= button_to "Lock it in!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "expand button radius", style:"margin-top:30px;", id: "Pick-Winner"  %>
+    <a class="close-reveal-modal">&#215;</a>
+  </div>
+<% end %>
+<% else %>
+   <div class="row big-break">
+    <div class="large-11 large-centered small-12 columns">
+      <div class="large-2 small-3 left columns">
+        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "rounded"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
+      </div>
+        <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
+        <div class="large-2 small-9 right columns">
+          <a href="#" data-reveal-id="a-confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Connect</a>
+        </div>
+        <% end %>
+        <div class="large-2 hide-for-small right columns">
+          <%= link_to "Profile", user_path(pitch.user), target: "_blank", class: "button alt-button expand radius secondary small text-center serif", title: "User Profile" %> 
+        </div>
+        
+        <div class="large-6 small-12 columns">
+        <h3 >
+          <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %> 
+        </h3>
+      </div>
+        
+        <div class="large-10 right small-12 columns">
+          <div class="panel pitch-auto">
+            <p class="subheader serif" ><em><%= pitch.why_me %></em></p>
           </div>
         </div>
       </div>
-      <% end %>
     </div>
-  </div>
-</div>
-<div id="interestd" class="f-dropdown medium content" data-dropdown-content>
-  <h5 class="subheader serif"><em>My travel interests:</em></h5>
-  <p>
- <% unless pitch.user.expert_info[:style].blank? %>
-  <ul class="sans skill-list">
-    <% pitch.user.expert_info[:style].each do |s| %>
-    <li><%= s %></li>
-    <% end %>
-  </ul></p>
-  <% end %>
-  <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile" %></em>
-</div>
-<% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
-  <hr style="border:1px #e6e6e6 solid">
-<% end %>
+    <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && !@itinerary.paid? %>
+      <div id="a-confirm-<%= pitch_counter + 1 %>" class="reveal-modal xlarge">
+        <div class="row break">
+          <div class="large-8 small-12 text-center columns">
+            <h3>Connect with <%= pitch.user.personal_info[:name] %></h3>
+            <h4 class="serif subheader" style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>Upgrade your account to connect with <%= pitch.user.personal_info[:name] %> one-on-one and get personalized recommendations and advice for your trip to <%= @itinerary.destination %>.</em></h4>
+             <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 12 %>
+          </div>
+          <div class="large-4 small-12 right columns">
+            <div class="panel text-center pricing" >
+              <H5 class="option-title">CATCH OF THE DAY</H5>
+              <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (12) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br> ($ 12 per travel day)</h3>
+              <%= image_tag pitch.user.avatar.url(:thumb), style: "margin-top:5px;", class: "rounded" %>
+              <h6 class="white serif option-detail"><em>Pick 1 storyteller</em></h6>
+              <h6 class="white option-text serif subheader"><em>to help you plan your day-by-day tailored travel story</span></em></h6>
+            </div>
+          </div>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
 
-<% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
-<div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
-  <h3 class="text-center">Ready & Set?</h3>
-  <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the pitch you're selecting as your favorite:</em></h5>
-  <div class="row">
-  <div class="large-12 small-12 columns">
-    <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
-    <h4><%= pitch.title %> </h4>
-    <h6 class="serif subheader"><em>By <%= pitch.user.personal_info[:name] %></em></h6>
-  </div>
-</div>
-  <%= button_to "Lock it in!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "expand button radius", style:"margin-top:30px;", id: "Pick-Winner"  %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+    <% end %>
+    <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && @itinerary.paid? %>
+      <div id="a-confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
+        <h3 class="text-center">Ready & Set?</h3>
+        <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the expert you're selecting as your favorite:</em></h5>
+        <div class="row">
+          <div class="large-12 small-12 columns">
+            <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
+            <h3><%= pitch.user.personal_info[:name] %></h3>
+          </div>
+        </div>
+        <%= button_to "Lock it in!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "expand button radius", style:"margin-top:30px;", id: "Pick-Winner"  %>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    <% end %>
 <% end %>

@@ -28,6 +28,14 @@ class Pitch < ActiveRecord::Base
     pitches
   end
 
+  def self.personalized
+    pitches = Pitch.where(auto: false)
+  end
+
+  def self.auto
+    pitches = Pitch.where(auto: true)
+  end
+
   def add_to_places
     # if auto pitch -> SKIP
     unless self.auto?

@@ -33,6 +33,7 @@ class PitchesController < ApplicationController
 
   def update
     @pitch_edit = PitchEdit.new(itinerary: @itinerary, user: current_user, pitch: @pitch, attributes: params[:pitch_edit])
+    @pitch.auto = false
     if @pitch_edit.save
       redirect_to itinerary_path(@itinerary)
     else
