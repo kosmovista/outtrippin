@@ -15,7 +15,7 @@ class Itinerary < ActiveRecord::Base
   after_create :update_places
 
   def price
-    10 * self.duration.to_i
+    self.plan * self.duration.to_i
   end
 
   def self.published
@@ -35,6 +35,7 @@ class Itinerary < ActiveRecord::Base
   end
 
   def process_payment(token, plan)
+    self.plan = plan
     if self.valid?
       self.charge(token, plan)
       self.paid = true
