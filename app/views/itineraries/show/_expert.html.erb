@@ -1,6 +1,6 @@
 <% if @plan && @plan.published %>
   <%= render @plan %>
-<% elsif ( @pitch.blank? && !@itinerary.has_winner_pitch? ) || ( @pitch.auto? && !@itinerary.has_winner_pitch? ) %>
+<% elsif ( @pitch.blank? && !@itinerary.has_winner_pitch? ) || ( !@pitch.blank? && @pitch.auto? && !@itinerary.has_winner_pitch? ) %>
 <% set_page_title(@itinerary.extra_info[:name].blank? ? "Submit a pitch for a trip to " + @itinerary.destination + " - OutTrippin" : "Submit a pitch for '" + @itinerary.extra_info[:name] + "' - OutTrippin") %>
 <style>
 .cover { background-image: none; height:300px; }
