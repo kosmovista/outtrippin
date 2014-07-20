@@ -203,7 +203,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + (" by @" + @plan.user.twitter) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
