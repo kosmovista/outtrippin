@@ -2,7 +2,7 @@
 .cover {margin-bottom:0; }
 </style>
 <div ng-cloak>
-<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.user.personal_info[:name] + " - OutTrippin Story Builder") %>
+<% set_page_title( @itinerary.winner_pitch.title + " by " + @plan.author_name + " - OutTrippin Story Builder") %>
   <div class="cover" style="background-image:url({{plan.cover}})"></div>
   <div id="overlay"></div>
   <div class="header">
@@ -326,7 +326,7 @@
           <div class="row booking">
             <div class="large-12 large-centered columns">
               <div class="large-2 right columns text-right">
-                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price, bk.type)"><%= image_tag "save.png", style:"width:25px" %></a>
+                <a href="" class="circle-button" title="Save Changes" id="save-tip" ng-click="update_booking(bk.id, bk.title, bk.body, bk.link, bk.location, bk.price, bk.type, bk.zuji)"><%= image_tag "save.png", style:"width:25px" %></a>
                 <a href="" class="circle-button" title="Cancel" id="cancel-changes" ng-click="editing_bk=false;cancel();"><%= image_tag "cancel.png", style:"width:25px" %></a>
                 <a href="" class="circle-button" title="Delete Booking" id="delete-booking" ng-click="delete_booking(bk.id)"><%= image_tag "delete-circle.png", style:"width:25px" %></a>
               </div>
@@ -344,6 +344,7 @@
                       ng-options="bt.id as bt.name for bt in booking_types">
                     </select>
                       <textarea style="font-style:italic;" ng-model="bk.body" placeholder="Write a short description of the booking."/></textarea>
+                      <input type="checkbox" ng-model="bk.zuji" ng-false-value=false ng-true-value=true>Zuji?
                   </form>
                 </div>
               </div>
@@ -377,6 +378,7 @@
                       </select>
                     <h4 class="subheader black serif" >
                       <textarea style="font-style:italic;" ng-model="booking.body" placeholder="Write a short description of the booking."/></textarea>
+                      <input type="checkbox" ng-model="booking.zuji" ng-false-value=false ng-true-value=true>Zuji?
                     </h4>
                   </form>
                 </div>
