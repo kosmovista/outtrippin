@@ -28,4 +28,9 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  def author_name
+    return self.user.personal_info[:name] || ""
+
+  end
+
 end
