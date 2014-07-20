@@ -104,7 +104,7 @@
         <div class="row">
           <div class="large-12 small-12 columns">
             <%= image_tag @plan.user.avatar.url(:thumb), class: "rounded avatar-footer" %>
-            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %> 
+            <h5 class="no-margin no-padding"> <%= link_to @plan.user.personal_info[:name], user_path(@plan.user), target: "_blank", class: "black", title: "User Profile" %>
               <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:20px; margin:2px;"),  expert_info_website_url(@plan.user.facebook), target: '_blank', class:"hide-for-small" unless @plan.user.facebook.blank? %>
               <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(@plan.user.pinterest), target: '_blank', class:"hide-for-small" unless @plan.user.pinterest.blank? %>
               <%= link_to (image_tag "twitter.png", class: "right", style: "width:25px"), expert_info_twitter_url(@plan.user.twitter), target: '_blank', class:"hide-for-small" unless @plan.user.twitter.blank? %>
@@ -147,25 +147,27 @@
       <a class="close-reveal-modal">&#215;</a>
     </div>
   <% else %>
-  <% @plan.bookings.each do |bk| %>
-    <div class="row booking <%= bk[:type].nil? ? "" : Plan::TYPES[bk[:type]] %>">
-      <div class="large-12 small-12 large-centered columns">
-        <div class="large-3 small-12 columns">
-          <%= image_tag bk[:picture], class: "booking-img" %>
-        </div>
-        <div class="large-7 small-12 columns">
-          <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
-          <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
-          <p><%= bk[:body] %></p>
-        </div>
-        <div class="large-2 small-12 text-center columns">
-          <span class="radius price small white label" ><%= bk[:price] %></span>
-          <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px", target: "_blank" %>
+    <% @plan.bookings.each do |bk| %>
+      <% if bk[:zuji].eql?("true") %>
+      <div class="row booking <%= bk[:type].nil? ? "" : Plan::TYPES[bk[:type]] %>">
+        <div class="large-12 small-12 large-centered columns">
+          <div class="large-3 small-12 columns">
+            <%= image_tag bk[:picture], class: "booking-img" %>
+          </div>
+          <div class="large-7 small-12 columns">
+            <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
+            <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
+            <p><%= bk[:body] %></p>
+          </div>
+          <div class="large-2 small-12 text-center columns">
+            <span class="radius price small white label" ><%= bk[:price] %></span>
+            <%= link_to "Book now", bk[:link], class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px", target: "_blank" %>
+          </div>
         </div>
       </div>
-    </div>
-    <hr style="border:1px #e6e6e6 solid">
-  <% end %>
+      <hr style="border:1px #e6e6e6 solid">
+      <% end %>
+    <% end %>
   <% end %>
 
 </div>
@@ -194,7 +196,7 @@
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
       <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + " by @" + @plan.user.twitter + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
