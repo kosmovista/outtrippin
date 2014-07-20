@@ -16,7 +16,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
 
   $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save.", "cost": "", "reccomendation": ""};
   $scope.tip_trick = {"title": "", "body": ""};
-  $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": true};
+  $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": "true"};
 
   // ADD DAY
   $scope.save_day = function() {
@@ -101,7 +101,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
         $scope.add_booking = false;
-        $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": true };
+        $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": "true" };
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");
