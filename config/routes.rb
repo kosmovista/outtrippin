@@ -61,7 +61,9 @@ Outtrippin::Application.routes.draw do
       post 'toggle_published'
     end
 
-    resources 'places'
+    resources 'places' do
+      post 'remove_pitch'
+    end
 
     resources 'plans' do
       post 'toggle_published'
