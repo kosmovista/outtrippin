@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-10 large-offset-2 columns">
-    <h1>Places</h1>
+    <h1><%= @place.name %></h1>
   </div>
 </div>
 
@@ -14,14 +14,20 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Pitches Count</th>
+          <th>Summary</th>
+          <th>Why Me</th>
+          <th>Winner</th>
+          <th>Auto</th>
         </tr>
       </thead>
       <tbody>
-        <% @places.each do |p| %>
+        <% @place.pitches.each do |p| %>
         <tr>
-          <td><%= link_to p.name, admin_place_path(p) %></td>
-          <td><%= p.pitches.count %></td>
+          <td><%= p.title %></td>
+          <td><%= p.summary %></td>
+          <td><%= p.why_me %></td>
+          <td><%= p.winner %></td>
+          <td><%= p.auto %></td>
         </tr>
         <% end %>
       </tbody>
