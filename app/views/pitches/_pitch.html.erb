@@ -98,7 +98,6 @@
               <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_website_url(pitch.user.facebook), target: '_blank', class: "hide-for-small" unless pitch.user.facebook.blank? %>
               <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(pitch.user.pinterest), target: '_blank', class: "hide-for-small" unless pitch.user.pinterest.blank? %>
               <%= link_to (image_tag "twitter_40.png", class: "right", style: "width:21px; margin:2px;"), expert_info_twitter_url(pitch.user.twitter), target: '_blank', class: "hide-for-small" unless pitch.user.twitter.blank? %>
-              <%= link_to (image_tag "google.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_google_url(pitch.user.google), target: '_blank', class: "hide-for-small" unless pitch.user.google.blank? %>
               <%= link_to (image_tag "instagram.png", class: "right", style: "width:25px"),  expert_info_instagram_url(pitch.user.instagram), target: '_blank', class: "hide-for-small" unless pitch.user.instagram.blank? %>
             </h5>
             <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <%= link_to expert_info_website_url(pitch.user.website),  expert_info_website_url(pitch.user.website), target: '_blank' unless pitch.user.website.blank? %></em></p>
