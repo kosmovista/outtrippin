@@ -98,17 +98,11 @@
 }
 
 #guide {
-  content: "";
-  display: block;
-  width: 0;
-  height: 0;
-  border: outset 6px;
-  border-color: transparent transparent transparent #00bccf;
-  border-bottom-style: solid;
   position: absolute;
-  top: 30px;
-  left: 69px;
-  z-index: 99;
+  top: 25px;
+  left:  190px;
+  z-index: 999;
+  font-size: .85em;
 }
 
 @media only screen and (min-width: 940px) {

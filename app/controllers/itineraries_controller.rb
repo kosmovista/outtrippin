@@ -11,6 +11,7 @@ class ItinerariesController < ApplicationController
     @starred_itineraries = current_user.find_voted_items
     @pitched_itineraries = Pitch.find_by_user(current_user)
     @won_itineraries = Pitch.find_winner_expert_by_itinerary(current_user)
+    @itinerary = Itinerary.new
   end
 
   def create

@@ -9,15 +9,7 @@
   </section>
 </nav>
 
-<% if !@itinerary.nil? && @itinerary.new_record? %>
   <div class="top-logo">
     <a href="/" title="Plan My Trip Home">
-    <%= image_tag 'o-white.png', style: "height:35px;" %></a>
-  </div>
-  <% else %>
-  <div id="top-logo" class="top-logo has-tip" data-options="disable-for-touch:true" data-tooltip title="Click here to show or hide the traveler's request">
-    <a href="#" class="show-sidebar">
     <%= image_tag 'o-white.png', style: "height:34px;" %></a>
   </div>
-  <div id="guide"></div>
-<% end %>

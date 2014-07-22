@@ -53,7 +53,6 @@
 <body>
   <%= render 'layouts/parts/topbar' %>
   <%= render 'utils/errors', object: nil %>
-  <%= render 'itineraries/itinerary_left_col' unless @itinerary.nil? %>
 
   <div class="container">
     <%= yield %>
