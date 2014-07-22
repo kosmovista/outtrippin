@@ -154,6 +154,42 @@ div.container { position: relative; }
     color: #4c4c4c !important;
   }
 }
+
+.alt-button {
+  border: 2px #00bccf solid !important;
+  border-top: 0px;
+  padding-top: 0.2em !important;
+  padding-bottom: 0.3em !important;
+  background-color: #fdfdfd !important;
+  transition: all 200ms linear;
+  font-weight: normal;
+  font-size: 1.1em !important;
+  font-style: italic;
+  color: #4c4c4c !important;
+  transition:all 200ms linear;
+  &:hover {
+    border: 2px #00bccf solid;
+    background-color: #00bccf !important;
+    color: white !important;
+  }
+}
+
+.pitch-auto { 
+:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset 10px;
+  border-color: transparent transparent whitesmoke transparent;
+  border-bottom-style: solid;
+  position: absolute;
+  top: -20px;
+  left: 40px;
+  z-index: 99;
+}
+}
+
 .pitch-number {
   border: 2px #00bccf solid;
   width: 42px;
@@ -175,6 +211,16 @@ div.container { position: relative; }
   background-image: image-url('passport.jpg');
   background-size: cover !important;
   background-position: 50% 50%;
+}
+
+.cover-btn {
+  background: rgba(253, 253, 253,0.3);
+  padding: 0 6px 7px;
+  border-radius: 2px;
+  transition:all 200ms linear;
+  &:hover {
+    background: rgba(253, 253, 253,0.1);
+  }
 }
 #overlay {
   top: 0;

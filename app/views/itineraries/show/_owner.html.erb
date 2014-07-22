@@ -1,674 +1,634 @@
 <% if current_user %>
-<% if @plan && @plan.published %>
-  <%= render @plan %>
-<% elsif @itinerary.has_winner_pitch? %>
-<% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.winner_pitch.title + " - ZUJI") %>
-<% set_page_desc( @itinerary.winner_pitch.summary ) %>
-<% unless @itinerary.winner_pitch.pictures.empty? %>
-<style>
-.cover { background-image:url(<%= @itinerary.winner_pitch.pictures.first.source %>); }
-</style>
-<% end %>
-<div class="row">
-  <div class="large-12 text-center small-12 columns">
-    <h2 class="white text-center"><%= @itinerary.winner_pitch.title %></h2>
-   <div class="large-1 hide-for-small large-centered columns">
-        <hr style="border-color:white;">
-    </div>
-    <h5 class="white serif subheader text-center">
-      <%= image_tag @itinerary.winner_pitch.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
-      <em>By <%= @itinerary.winner_pitch.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
-    </h5>
-  </div>
-</div>
-</div class="header">
-<div class="tabs">
-  <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-          <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
-          <li><a href="#" id="slide1" >MY TRIP</a></li>
-          <li><a href="#" id="slide2" >MY EXPERT</a></li>
-          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide3" >COMMENTS</a></li>
-        </ul>
+  <% if @plan && @plan.published %>
+    <%= render @plan %>
+  <% elsif @itinerary.has_winner_pitch? %>
+    <% set_page_title(@itinerary.winner_pitch.title.blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.winner_pitch.title + " - OutTrippin") %>
+    <% set_page_desc( @itinerary.winner_pitch.summary ) %>
+    <% unless @itinerary.winner_pitch.pictures.empty? %>
+    <style>
+    .cover { background-image:url(<%= @itinerary.winner_pitch.pictures.first.source %>); }
+    </style>
+    <% end %>
+    <div class="row">
+      <div class="large-12 text-center small-12 columns">
+        <h2 class="white text-center"><%= @itinerary.winner_pitch.title %></h2>
+       <div class="large-1 hide-for-small large-centered columns">
+            <hr style="border-color:white;">
+        </div>
+        <h5 class="white serif subheader text-center">
+          <%= image_tag @itinerary.winner_pitch.user.avatar.url(:thumb), class: "rounded text-right tip-avatar", style:"width:30px; height:30px;" %>
+          <em>By <%= @itinerary.winner_pitch.user.personal_info[:name] %> &#8226; For <%= @itinerary.extra_info[:travelers] %>'s trip to <%= @itinerary.destination %></em>
+        </h5>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="row" id="slide0-content">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="large-8 large-centered small-12 columns">
-      <div data-alert class="alert-box secondary radius text-center">
-        <h4>You've picked your expert, now what? </h4>
-        <p style="font-size:105%">
-          1. Jog your memory and confirm trip details on the <span class="sans" style="font-size:0.750em;"><STRONG>MY TRIP</STRONG></span> and <span class="sans" style="font-size:0.750em;"><STRONG>MY EXPERT</STRONG></span> tabs above.<BR>
-          2. Start a conversation and share trip specifics with your expert on the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab.
-        </p>
-      </div>
-      <div data-alert class="alert-box secondary radius text-center">
-        <h4>What details should I share with the expert?</h4>
-        <p style="font-size:105%">
-        - Exact trip dates (or at least the general timing).<br>
-        - Details of any pre-booked flights/accommodation/activities.<br>
-        - Any new or relevant information that is not in your trip details.</p>
-        <p style="font-size:130%"><em>Your expert can't start planning until you start sharing, so hop to it!
-        </em></p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row" id="slide1-content">
-  <div class="large-12 large-centered small-12 columns">
-    <%= render 'itineraries/itinerary_full' %>
-  </div>
-</div>
-<div class="row" id="slide2-content">
-  <div class="large-12 large-centered small-12 columns">
-    <%= render @itinerary.winner_pitch %>
-  </div>
-</div>
-<div class="row" id="slide3-content">
-  <div class="large-12 large-centered small-12 columns">
-    <div class="written-by">
-      <div class="large-12 large-centered small-12 columns">
-        <div class="large-8 large-centered small-12 columns">
-          <%= render 'itineraries/show/comments' %>
+    </div class="header">
+    <div class="tabs">
+      <div class="row">
+        <div class="large-12 large-centered small-centered small-12 columns">
+          <div class="large-8 large-centered small-centered small-12 columns">
+            <hr class="tab-border">
+            <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+            <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+              <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
+              <li><a href="#" id="slide1" >MY TRIP</a></li>
+              <li><a href="#" id="slide2" >MY EXPERT</a></li>
+              <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide3" >COMMENTS</a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-<div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Share your story.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-</div>
-<div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
-  <div class="large-7 small-12 columns large-centered">
-    <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
-    </ul>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<div id="email-share" class="reveal-modal small text-center">
-  <h3>Send via email</h3>
-  <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
-    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:200px;" } %>
-    <%= submit_tag "Send", class: "expand button radius" %>
-    <a class="close-reveal-modal">&#215;</a>
-  <% end %>
-</div>
 
-<div id="traveler-modal" class="reveal-modal medium text-center">
-  <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The Plan My Trip team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
-  <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div id="recorded" class="reveal-modal medium text-center">
-  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<%= content_for :body do %>
-<script>
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
-  });
-  $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button");
-  });
-  mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Awaiting Story"});
-</script>
-<% end %>
-<% elsif !@pitches.blank? && @itinerary.has_personalized_pitches? %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
-
-<style>
-  .cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>);}
-</style>
-<div class="row">
-  <div class="large-12 text-center small-12 columns">
-    <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
-    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-    <div class="large-1 hide-for-small large-centered columns">
-     <hr style="border-color:white;">
-    </div>
-    <h5 class="white subheader serif"><em><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts have" : "expert has" %> offered to help plan your trip. Who's your favorite?</em><h5>
-  </div>
-</div>
-</div class="header">
-<div class="tabs">
-  <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-          <li><a href="#" id="slide0" class="active-tab">MY EXPERTS</a></li>
-          <li><a href="#" id="slide1" >MY TRIP</a></li>
-          <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
-          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
-        </ul>
+    <div class="row" id="slide0-content">
+      <div class="large-12 large-centered small-12 columns">
+        <div class="large-8 large-centered small-12 columns">
+          <div data-alert class="alert-box secondary radius text-center">
+            <h4>You've picked your expert, now what? </h4>
+            <p style="font-size:105%">
+              1. Jog your memory and confirm trip details on the <span class="sans" style="font-size:0.750em;"><STRONG>MY TRIP</STRONG></span> and <span class="sans" style="font-size:0.750em;"><STRONG>MY EXPERT</STRONG></span> tabs above.<BR>
+              2. Start a conversation and share trip specifics with your expert on the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab.
+            </p>
+          </div>
+          <div data-alert class="alert-box secondary radius text-center">
+            <h4>What details should I share with the expert?</h4> 
+            <p style="font-size:105%">
+            - Exact trip dates (or at least the general timing).<br>
+            - Details of any pre-booked flights/accommodation/activities.<br>
+            - Any new or relevant information that is not in your trip details.</p>
+            <p style="font-size:130%"><em>Your expert can't start planning until you start sharing, so hop to it!
+            </em></p>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-
-<div id="slide0-content">
-  <%= render @pitches.personalized %>
-  <% if @itinerary.has_auto_pitches? %>
-    <div class="written-by">
-      <hr>
-      <p class="sans subheader" style="margin-bottom:15px;"><small>OTHER <%= @itinerary.destination %> experts</small></p>
-      <%= render @pitches.auto %>
+    <div class="row" id="slide1-content">
+      <div class="large-12 large-centered small-12 columns">
+        <%= render 'itineraries/itinerary_full' %>
+      </div>
     </div>
+    <div class="row" id="slide2-content">
+      <div class="large-12 large-centered small-12 columns">
+        <%= render @itinerary.winner_pitch %>
+      </div>
+    </div>
+    <div class="row" id="slide3-content">
+      <div class="large-12 large-centered small-12 columns">
+        <div class="written-by">
+          <div class="large-12 large-centered small-12 columns">
+            <div class="large-8 large-centered small-12 columns">
+              <%= render 'itineraries/show/comments' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="share">
+      <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Share your story.</a></em></h4>
+      <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+    </div>
+    <div id="share-modal" class="reveal-modal medium text-center">
+      <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
+      <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+      <div class="large-7 small-12 columns large-centered">
+        <ul class="small-block-grid-3">
+          <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+          <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+          <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title +  "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+        </ul>
+      </div>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <div id="email-share" class="reveal-modal small text-center">
+      <h3>Send via email</h3>
+      <%= form_tag email_sharer_itinerary_path, method: :put do %>
+        <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+        <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:200px;" } %>
+        <%= submit_tag "Send", class: "expand button radius" %>
+        <a class="close-reveal-modal">&#215;</a>
+      <% end %>
+    </div>
+
+    <div id="traveler-modal" class="reveal-modal medium text-center">
+      <h2>This power feature is coming soon!</h3>
+      <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+      <h4 class="serif subheader black"><em></em></h4>
+      <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="recorded" class="reveal-modal medium text-center">
+      <h3>Saved! We'll keep you updated on when this feature is released.</h3>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+    <%= content_for :body do %>
+    <script>
+      mixpanel.track_links("#power-feature", "Request Feature Update", {
+        'Feature': 'Add Traveler'
+      });
+      $("#power-feature").click(function() {
+          mixpanel.people.set({
+            "Request Feature Update": "Yes"
+          });
+        });
+      $("#sharebutton").click(function() {
+        mixpanel.track("Share Button");
+      });
+      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Awaiting Story"});
+    </script>
     <% end %>
-</div>
+  <% elsif !@pitches.blank? && @itinerary.has_personalized_pitches? %>
+    <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
 
-<div class="row" id="slide1-content">
-  <div class="large-12 large-centered small-12 columns">
-      <%= render 'itineraries/itinerary_full' %>
-  </div>
-</div>
-<div class="row" id="slide2-content">
-  <div class="written-by">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-8 large-centered small-12 columns">
-        <%= render 'itineraries/show/comments' %>
+    <style>
+    .cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>); }
+    </style>
+
+    <div class="row">
+      <div class="large-12 text-center small-12 columns">
+        <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
+        <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+        <div class="large-1 hide-for-small large-centered columns">
+         <hr style="border-color:white;">
+        </div>
+        <h5 class="white subheader serif"><em>Pick an expert to connect with and get personalized advice and recommendations for your trip</em><h5>
       </div>
     </div>
-  </div>
-</div>
-<div id="traveler-modal" class="reveal-modal medium text-center">
-  <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
-  <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div id="recorded" class="reveal-modal medium text-center">
-  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-</div>
-<div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
-  <div class="large-7 small-12 columns large-centered">
-    <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
-    </ul>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<div id="email-share" class="reveal-modal small text-center">
-  <h3>Send via email</h3>
-  <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
-    <%= submit_tag "Send", class: "expand button radius" %>
-    <a class="close-reveal-modal">&#215;</a>
-  <% end %>
-</div>
-<%= content_for :body do %>
-<script>
-  mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
-  });
-  $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button");
-  });
-  $("#Pick-Winner").click(function() {
-    mixpanel.track("Picked a Winner");
-  });
-</script>
-<% end %>
-
-<% elsif !@pitches.blank? && !@itinerary.has_personalized_pitches? %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
-
-<style>
-.cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>); }
-</style>
-
-<div class="row">
-  <div class="large-12 text-center small-12 columns">
-    <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
-    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-    <div class="large-1 hide-for-small large-centered columns">
-     <hr style="border-color:white;">
+    </div class="header">
+    <div class="tabs">
+      <div class="row">
+        <div class="large-12 large-centered small-centered small-12 columns">
+          <div class="large-8 large-centered small-centered small-12 columns">
+            <hr class="tab-border">
+            <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+            <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+              <li><a href="#" id="slide0" class="active-tab">MY EXPERTS</a></li>
+              <li><a href="#" id="slide1" >MY TRIP</a></li>
+              <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
+              <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <h5 class="white subheader serif"><em><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts have" : "expert has" %> offered to help plan your trip. Who's your favorite?</em><h5>
-  </div>
-</div>
-</div class="header">
-<div class="tabs">
-  <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
-          <li><a href="#" id="slide0" class="active-tab">MY EXPERTS</a></li>
-          <li><a href="#" id="slide1" >MY TRIP</a></li>
-          <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
-          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
+
+    <div id="slide0-content">
+      <%= render @pitches.personalized %>
+      <% if @itinerary.has_auto_pitches? %>
+      <div class="row">
+        <div class="large-11 large-centered small-12 columns">
+          <p class="sans subheader" style="font-size: 0.8em; letter-spacing: 0.15em;"><strong>TOP OUTTRIPPIN EXPERTS FOR <%= @itinerary.destination.upcase %></strong></p> 
+        </div>
+      </div>
+          <%= render @pitches.auto %>
+       
+        <% end %>
+    </div>
+
+    <div class="row" id="slide1-content">
+      <div class="large-12 large-centered small-12 columns">
+          <%= render 'itineraries/itinerary_full' %>
+      </div>
+    </div>
+    <div class="row" id="slide2-content">
+      <div class="written-by">
+        <div class="large-12 large-centered small-12 columns">
+          <div class="large-8 large-centered small-12 columns">
+            <%= render 'itineraries/show/comments' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="traveler-modal" class="reveal-modal medium text-center">
+      <h2>This power feature is coming soon!</h3>
+      <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+      <h4 class="serif subheader black"><em></em></h4>
+      <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="recorded" class="reveal-modal medium text-center">
+      <h3>Saved! We'll keep you updated on when this feature is released.</h3>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div class="share">
+      <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
+      <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+    </div>
+    <div id="share-modal" class="reveal-modal medium text-center">
+      <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
+      <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+      <div class="large-7 small-12 columns large-centered">
+        <ul class="small-block-grid-3">
+          <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+          <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+          <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
         </ul>
       </div>
+      <a class="close-reveal-modal">&#215;</a>
     </div>
-  </div>
-</div>
+    <div id="email-share" class="reveal-modal small text-center">
+      <h3>Send via email</h3>
+      <%= form_tag email_sharer_itinerary_path, method: :put do %>
+        <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+        <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
+        <%= submit_tag "Send", class: "expand button radius" %>
+        <a class="close-reveal-modal">&#215;</a>
+      <% end %>
+    </div>
+    <%= content_for :body do %>
+    <script>
+      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
+      mixpanel.track_links("#power-feature", "Request Feature Update", {
+        'Feature': 'Add Traveler'
+      });
+      $("#power-feature").click(function() {
+          mixpanel.people.set({
+            "Request Feature Update": "Yes"
+          });
+        });
+      $("#sharebutton").click(function() {
+        mixpanel.track("Share Button");
+      });
+      $("#Pick-Winner").click(function() {
+        mixpanel.track("Picked a Winner");
+      });
+    </script>
+    <% end %>
+    <%= content_for :body do %>
+      <script src="https://checkout.stripe.com/v2/checkout.js"></script>
 
-<div id="slide0-content">
-  <% if @itinerary.paid? %>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Subscribe to comments:</h5>
-      <p>To be notified when you receive any new comments or messages from experts, please click the "Subscribe" button at the bottom of the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab. During the beta stage, automatic notifications are not turned on.</p>
-    </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Today:</h5>
-      <p>You will receive a confirmation email from us and we will begin matching your travel story request to our relevant storytellers.</p>
-    </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>This week:</h5>
-      <p>Storytellers will individually pitch you their travel story concept. Your story file will stay active for one week so you can compare submissions.</p>
-    </div>
-  </div>
+      <%= image_tag "logo128.png", style:"display:none" %>
 
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>And then?</h5>
-      <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
-    </div>
-  </div>
-  <% end %>
-  <%= render @pitches %>
-</div>
+      <script>
+        $('.checkout-btn').click(function() {
+          var plan = $(this).attr("id");
+          var duration = parseInt("<%= @itinerary.duration.to_i %>");
+          var token = function(res) {
+            $('div.hold').show();
+            var $input1 = $('<input type=hidden name=stripeToken />').val(res.id);
+            var $input2 = $('<input type=hidden name=plan />').val(plan);
+            $('form').append($input1, $input2).submit();
+          };
 
+          StripeCheckout.open({
+            key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
+            amount:      duration * plan * 100,
+            image:       '<%= asset_path('o-color.png') %>',
+            email:       '<%= current_user.email %>',
+            currency:    'usd',
+            name:        'OutTrippin',
+            description: '100% money back guarantee',
+            panelLabel:  'Checkout',
+            token:       token
+          });
 
-<div class="row" id="slide1-content">
-  <div class="large-12 large-centered small-12 columns">
-      <%= render 'itineraries/itinerary_full' %>
-  </div>
-</div>
-<div class="row" id="slide2-content">
-  <div class="written-by">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-8 large-centered small-12 columns">
-        <%= render 'itineraries/show/comments' %>
+          return false;
+        });
+      </script>
+    <% end %>
+  <% elsif !@pitches.blank? && !@itinerary.has_personalized_pitches? %>
+    <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+
+    <style>
+    .cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>); }
+    </style>
+
+    <div class="row">
+      <div class="large-12 text-center small-12 columns">
+        <h6 class="white subheader serif"><em>Step 3 of 4: Pick an expert</em></h6>
+        <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+        <div class="large-1 hide-for-small large-centered columns">
+         <hr style="border-color:white;">
+        </div>
+        <% if @itinerary.paid? %>
+          <h5 class="white serif subheader text-center"><em>Woo hoo! Your dream trip is one step closer. So, what happens next?</em></h5>
+        <% else %>
+          <h5 class="white subheader serif"><em>Connect with one of our top experts or <%= link_to "guarantee a reward", checkout_itinerary_path, class: "serif cover-btn white" %> to get personalized recommendations for your trip</em><h5>
+        <% end %>
       </div>
     </div>
-  </div>
-</div>
-<div id="traveler-modal" class="reveal-modal medium text-center">
-  <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
-  <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div id="recorded" class="reveal-modal medium text-center">
-  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-</div>
-<div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
-  <div class="large-7 small-12 columns large-centered">
-    <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
-    </ul>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<div id="email-share" class="reveal-modal small text-center">
-  <h3>Send via email</h3>
-  <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
-    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
-    <%= submit_tag "Send", class: "expand button radius" %>
-    <a class="close-reveal-modal">&#215;</a>
-  <% end %>
-</div>
-<%= content_for :body do %>
-<script>
-  mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
-  });
-  $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button");
-  });
-  $("#Pick-Winner").click(function() {
-    mixpanel.track("Picked a Winner");
-  });
-</script>
-<% end %>
-
-<% elsif !@pitches.blank? && !@itinerary.has_personalized_pitches? %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
-
-<style>
-.cover { background-image:url(<%= @itinerary.pitches.offset(rand(@itinerary.pitches.count)).first.pictures.first.source %>); }
-</style>
-
-<div class="row">
-  <div class="large-12 text-center small-12 columns">
-    <h6 class="white subheader serif"><em>Step 3 of 4: Pick your favorite expert</em></h6>
-    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-    <div class="large-1 hide-for-small large-centered columns">
-     <hr style="border-color:white;">
+    </div class="header">
+    <div class="tabs">
+      <div class="row">
+        <div class="large-12 large-centered small-centered small-12 columns">
+          <div class="large-8 large-centered small-centered small-12 columns">
+            <hr class="tab-border">
+            <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+            <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+              <li><a href="#" id="slide0" class="active-tab">TOP EXPERTS</a></li>
+              <li><a href="#" id="slide1" >MY TRIP</a></li>
+              <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
+              <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-    <h5 class="white subheader serif"><em><%= @itinerary.pitches.count %> <%= @itinerary.pitches.count > 1 ? "experts have" : "expert has" %> offered to help plan your trip. Who's your favorite?</em><h5>
-  </div>
-</div>
-</div class="header">
-<div class="tabs">
-  <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-          <li><a href="#" id="slide0" class="active-tab">MY EXPERTS</a></li>
-          <li><a href="#" id="slide1" >MY TRIP</a></li>
-          <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
-          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
+
+    <div id="slide0-content">
+      <% if @itinerary.paid? %>
+      <div class="row">
+        <div class="large-8 large-centered small-12 columns">
+          <div data-alert class="alert-box secondary radius text-center">
+            <h5>Subscribe to comments:</h5>
+            <p>To be notified when you receive any new comments or messages from experts, please click the "Subscribe" button at the bottom of the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab. During the beta stage, automatic notifications are not turned on.</p>
+          </div>
+        </div>
+        <div class="large-8 large-centered small-12 columns">
+          <div data-alert class="alert-box secondary radius text-center">
+            <h5>Today:</h5>
+            <p>You will receive a confirmation email from us and we will begin matching your travel story request to our relevant storytellers.</p>
+          </div>
+        </div>
+        <div class="large-8 large-centered small-12 columns">
+          <div data-alert class="alert-box secondary radius text-center">
+            <h5>This week:</h5>
+            <p>Storytellers will individually pitch you their travel story concept. Your story file will stay active for one week so you can compare submissions.</p>
+          </div>
+        </div>
+
+        <div class="large-8 large-centered small-12 columns">
+          <div data-alert class="alert-box secondary radius text-center">
+            <h5>And then?</h5>
+            <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
+          </div>
+        </div>
+      </div>
+      <hr style="border:1px #e6e6e6 solid">
+      <div class="row">
+        <div class="large-11 large-centered small-12 columns">
+          <p class="sans subheader" style="font-size: 0.8em; letter-spacing: 0.15em;"><strong>TOP OUTTRIPPIN EXPERTS FOR <%= @itinerary.destination.upcase %></strong></p> 
+        </div>
+      </div>
+      <% end %>
+      <%= render @pitches %>
+    </div>
+
+    <div class="row" id="slide1-content">
+      <div class="large-12 large-centered small-12 columns">
+          <%= render 'itineraries/itinerary_full' %>
+      </div>
+    </div>
+    <div class="row" id="slide2-content">
+      <div class="written-by">
+        <div class="large-12 large-centered small-12 columns">
+          <div class="large-8 large-centered small-12 columns">
+            <%= render 'itineraries/show/comments' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="traveler-modal" class="reveal-modal medium text-center">
+      <h2>This power feature is coming soon!</h3>
+      <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+      <h4 class="serif subheader black"><em></em></h4>
+      <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="recorded" class="reveal-modal medium text-center">
+      <h3>Saved! We'll keep you updated on when this feature is released.</h3>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <% if @itinerary.paid? %>
+      <div class="share">
+        <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
+        <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+      </div>
+      <div id="share-modal" class="reveal-modal medium text-center">
+        <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
+        <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+        <div class="large-7 small-12 columns large-centered">
+          <ul class="small-block-grid-3">
+            <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+            <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+            <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+          </ul>
+        </div>
+        <a class="close-reveal-modal">&#215;</a>
+      </div>
+    <% else %>
+      <div class="share">
+        <h4 class="serif subheader"><em><%= link_to "Need more ideas? Guarantee a reward to get more experts pitching in.", checkout_itinerary_path, class: "button subheader small serif sharethis" %></em></h4>
+        <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+      </div>
+    <% end %>
+    <div id="email-share" class="reveal-modal small text-center">
+      <h3>Send via email</h3>
+      <%= form_tag email_sharer_itinerary_path, method: :put do %>
+        <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+        <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
+        <%= submit_tag "Send", class: "expand button radius" %>
+        <a class="close-reveal-modal">&#215;</a>
+      <% end %>
+    </div>
+    <%= content_for :body do %>
+    <script>
+      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
+      mixpanel.track_links("#power-feature", "Request Feature Update", {
+        'Feature': 'Add Traveler'
+      });
+      $("#power-feature").click(function() {
+          mixpanel.people.set({
+            "Request Feature Update": "Yes"
+          });
+        });
+      $("#sharebutton").click(function() {
+        mixpanel.track("Share Button");
+      });
+      $("#Pick-Winner").click(function() {
+        mixpanel.track("Picked a Winner");
+      });
+    </script>
+    <% end %>
+
+    <%= content_for :body do %>
+      <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+
+      <%= image_tag "logo128.png", style:"display:none" %>
+
+      <script>
+        $('.checkout-btn').click(function() {
+          var plan = $(this).attr("id");
+          var duration = parseInt("<%= @itinerary.duration.to_i %>");
+          var token = function(res) {
+            $('div.hold').show();
+            var $input1 = $('<input type=hidden name=stripeToken />').val(res.id);
+            var $input2 = $('<input type=hidden name=plan />').val(plan);
+            $('form').append($input1, $input2).submit();
+          };
+
+          StripeCheckout.open({
+            key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
+            amount:      duration * plan * 100,
+            image:       '<%= asset_path('o-color.png') %>',
+            email:       '<%= current_user.email %>',
+            currency:    'usd',
+            name:        'OutTrippin',
+            description: '100% money back guarantee',
+            panelLabel:  'Checkout',
+            token:       token
+          });
+
+          return false;
+        });
+      </script>
+    <% end %>
+  <% else %>
+    <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+    <div class="row">
+      <div class="small-12 small-centered columns">
+        <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+        <div class="large-1 hide-for-small large-centered columns">
+            <hr style="border-color:white;">
+          </div>
+        <h5 class="white serif subheader text-center"><em>Woo hoo! Your dream trip is one step closer. So, what happens next?</em></h5>
+      </div>
+    </div>
+    </div class="header">
+
+    <div class="tabs">
+      <div class="row">
+        <div class="large-12 large-centered small-centered small-12 columns">
+          <div class="large-8 large-centered small-centered small-12 columns">
+            <hr class="tab-border">
+            <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+            <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+              <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
+              <li><a href="#" id="slide1" >MY TRIP</a></li>
+              <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
+              <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" id="slide0-content">
+      <% unless @itinerary.paid %>
+      <div class="large-8 large-centered small-12 columns">
+        <div data-alert class="alert-box secondary radius text-center">
+          <h4>Get the best storytellers!</h4>
+          <p>A guaranteed reward attracts more storytellers to your trip and remember, OutTrippin offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
+            <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
+        </div>
+      </div>
+      <% end %>
+      <div class="large-8 large-centered small-12 columns">
+        <div data-alert class="alert-box secondary radius text-center">
+          <h5>Subscribe to comments:</h5>
+          <p>To be notified when you receive any new comments or messages from experts, please click the "Subscribe" button at the bottom of the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab. During the beta stage, automatic notifications are not turned on.</p>
+        </div>
+      </div>
+      <div class="large-8 large-centered small-12 columns">
+        <div data-alert class="alert-box secondary radius text-center">
+          <h5>Today:</h5>
+          <p>You will receive a confirmation email from us and we will begin matching your travel story request to our relevant storytellers.</p>
+        </div>
+      </div>
+      <div class="large-8 large-centered small-12 columns">
+        <div data-alert class="alert-box secondary radius text-center">
+          <h5>This week:</h5>
+          <p>Storytellers will individually pitch you their travel story concept. Your story file will stay active for one week so you can compare submissions.</p>
+        </div>
+      </div>
+
+      <div class="large-8 large-centered small-12 columns">
+        <div data-alert class="alert-box secondary radius text-center">
+          <h5>And then?</h5>
+          <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="slide1-content">
+      <div class="large-12 large-centered small-12 columns">
+          <%= render 'itineraries/itinerary_full' %>
+      </div>
+    </div>
+    <div class="row" id="slide2-content">
+      <div class="written-by">
+        <div class="large-12 large-centered small-12 columns">
+          <div class="large-8 large-centered small-12 columns">
+            <%= render 'itineraries/show/comments' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="traveler-modal" class="reveal-modal medium text-center">
+      <h2>This power feature is coming soon!</h3>
+      <h4 style="margin-top:40px;" class="serif black subheader"><em>The OutTrippin team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
+      <h4 class="serif subheader black"><em></em></h4>
+      <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div id="recorded" class="reveal-modal medium text-center">
+      <h3>Saved! We'll keep you updated on when this feature is released.</h3>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
+
+    <div class="share">
+      <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Invite a friend.</a></em></h4>
+      <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+    </div>
+    <div id="share-modal" class="reveal-modal medium text-center">
+      <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
+      <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
+      <div class="large-7 small-12 columns large-centered">
+        <ul class="small-block-grid-3">
+          <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+          <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+         <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with OutTrippin" : "I'm planning " + @itinerary.extra_info[:name] + " - OutTrippin") + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
         </ul>
       </div>
+      <a class="close-reveal-modal">&#215;</a>
     </div>
-  </div>
-</div>
-
-<div id="slide0-content">
-  <% if @itinerary.paid? %>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Subscribe to comments:</h5>
-      <p>To be notified when you receive any new comments or messages from experts, please click the "Subscribe" button at the bottom of the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab. During the beta stage, automatic notifications are not turned on.</p>
+    <div id="email-share" data-animation="fade" class="reveal-modal small text-center">
+      <h3>Send via email</h3>
+      <%= form_tag email_sharer_itinerary_path, method: :put do %>
+        <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.waybe@hotmail.com.com..." %>
+        <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on OutTrippin.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
+        <%= submit_tag "Send", class: "expand button radius" %>
+        <a class="close-reveal-modal">&#215;</a>
+      <% end %>
     </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Today:</h5>
-      <p>You will receive a confirmation email from us and we will begin matching your travel story request to our relevant storytellers.</p>
-    </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>This week:</h5>
-      <p>Storytellers will individually pitch you their travel story concept. Your story file will stay active for one week so you can compare submissions.</p>
-    </div>
-  </div>
-
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>And then?</h5>
-      <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
-    </div>
-  </div>
+    <%= content_for :body do %>
+      <script>
+        $(function(){ 
+          var apiKey = '8f003eeae634f12fcad8ec03797d1e97';
+          destination = '<%= @itinerary.destination %>'
+          var replaced = destination.split(' ').join('+') 
+          var replaced1 = replaced.split(',').join('') 
+          $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=8f003eeae634f12fcad8ec03797d1e97&text=' + replaced1 + '&min_upload_date=1274832000&license=4%2C5%2C6%2C7&sort=relevance&group_id=41425956%40N00&per_page=10&page=1&format=json&jsoncallback=?',
+            function(data) {
+              item = $(data.photos.photo).get(0);
+              photoURL = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_b.jpg';
+              $('.cover').css('background-image', 'url(' + photoURL + ')');
+            }
+          )
+        });
+      </script>
+        <script>
+          mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Awaiting Pitches"});
+          mixpanel.track_links("#power-feature", "Request Feature Update", {
+            'Feature': 'Add Traveler'
+          });
+          $("#power-feature").click(function() {
+              mixpanel.people.set({
+                "Request Feature Update": "Yes"
+              });
+            });
+          $("#sharebutton").click(function() {
+            mixpanel.track("Share Button");
+          });
+          $("#Pick-Winner").click(function() {
+            mixpanel.track("Picked a Winner");
+          });
+        </script>
+      <% end %>
   <% end %>
-  <%= render @pitches %>
-</div>
-
-<div class="row" id="slide1-content">
-  <div class="large-12 large-centered small-12 columns">
-      <%= render 'itineraries/itinerary_full' %>
-  </div>
-</div>
-<div class="row" id="slide2-content">
-  <div class="written-by">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-8 large-centered small-12 columns">
-        <%= render 'itineraries/show/comments' %>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="traveler-modal" class="reveal-modal medium text-center">
-  <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The Plan My Trip team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
-  <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div id="recorded" class="reveal-modal medium text-center">
-  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Get a second opinion. Ask a friend to weigh in.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-</div>
-<div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
-  <div class="large-7 small-12 columns large-centered">
-    <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with ZUJI" : "I'm planning " + @itinerary.extra_info[:name] + " - ZUJI") + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
-    </ul>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<div id="email-share" class="reveal-modal small text-center">
-  <h3>Send via email</h3>
-  <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
-    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
-    <%= submit_tag "Send", class: "expand button radius" %>
-    <a class="close-reveal-modal">&#215;</a>
-  <% end %>
-</div>
-<%= content_for :body do %>
-<script>
-  mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
-  });
-  $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button");
-  });
-  $("#Pick-Winner").click(function() {
-    mixpanel.track("Picked a Winner");
-  });
-</script>
-<% end %>
-
-
-<% else %>
-<% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>
-<div class="row">
-  <div class="small-12 small-centered columns">
-    <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-    <div class="large-1 hide-for-small large-centered columns">
-        <hr style="border-color:white;">
-      </div>
-    <h5 class="white serif subheader text-center"><em>Woo hoo! Your dream trip is one step closer. So, what happens next?</em></h5>
-  </div>
-</div>
-</div class="header">
-
-<div class="tabs">
-  <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-          <li><a href="#" id="slide0" class="active-tab">WHAT'S NEXT</a></li>
-          <li><a href="#" id="slide1" >MY TRIP</a></li>
-          <li><a href="#" data-reveal-id="traveler-modal" >ADD A TRAVELER</a></li>
-          <li><a href="<%= "http://outtrippin.com/itineraries/" +  @itinerary[:id].to_s + "#disqus_thread" %>" class="comments" id="slide2" >COMMENTS</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row" id="slide0-content">
-  <% unless @itinerary.paid %>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h4>Get the best storytellers!</h4>
-      <p>A guaranteed reward attracts more storytellers to your trip and remember, Plan My Trip offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
-        <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
-    </div>
-  </div>
-  <% end %>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Subscribe to comments:</h5>
-      <p>To be notified when you receive any new comments or messages from experts, please click the "Subscribe" button at the bottom of the <span class="sans" style="font-size:0.750em;"><strong>COMMENTS</strong></span> tab. During the beta stage, automatic notifications are not turned on.</p>
-    </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>Today:</h5>
-      <p>You will receive a confirmation email from us and we will begin matching your travel story request to our relevant storytellers.</p>
-    </div>
-  </div>
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>This week:</h5>
-      <p>Storytellers will individually pitch you their travel story concept. Your story file will stay active for one week so you can compare submissions.</p>
-    </div>
-  </div>
-
-  <div class="large-8 large-centered small-12 columns">
-    <div data-alert class="alert-box secondary radius text-center">
-      <h5>And then?</h5>
-      <p> It's time to pick your favourite storyteller. The fun really starts as you work with them to design your tailored travel plan. The end result is a day-by-day Trip Script packed full of tips, tricks and personal advice, tailored to your personality.</p>
-    </div>
-  </div>
-</div>
-<div class="row" id="slide1-content">
-  <div class="large-12 large-centered small-12 columns">
-      <%= render 'itineraries/itinerary_full' %>
-  </div>
-</div>
-<div class="row" id="slide2-content">
-  <div class="written-by">
-    <div class="large-12 large-centered small-12 columns">
-      <div class="large-8 large-centered small-12 columns">
-        <%= render 'itineraries/show/comments' %>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="traveler-modal" class="reveal-modal medium text-center">
-  <h2>This power feature is coming soon!</h3>
-  <h4 style="margin-top:40px;" class="serif black subheader"><em>The PlanMyTrip team is working round-the-clock to bring you this awesomeness very soon! Sign up below to stay tuned for updates.</em></h4>
-  <h4 class="serif subheader black"><em></em></h4>
-  <a href="#" data-reveal-id="recorded" id="power-feature" class="radius button" style="margin-top:40px;">Send me updates!</a>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div id="recorded" class="reveal-modal medium text-center">
-  <h3>Saved! We'll keep you updated on when this feature is released.</h3>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<div class="share">
-  <h4 class="serif subheader"><em><a href="" data-reveal-id="share-modal" class="button subheader small serif sharethis">Invite a friend.</a></em></h4>
-  <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-</div>
-<div id="share-modal" class="reveal-modal medium text-center">
-  <h3>Need to add a fellow traveler? Want a friend to weigh in?</h3>
-  <h5 style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>No worries, we've got you covered!</em></h5>
-  <div class="large-7 small-12 columns large-centered">
-    <ul class="small-block-grid-3">
-      <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="blank"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-     <li><a href="<%= "https://www.twitter.com/share?text=" + (@itinerary.extra_info[:name].blank? ? "I'm planning a trip to " + @itinerary.destination + " with ZUJI" : "I'm planning " + @itinerary.extra_info[:name] + " - ZUJI") + "&via=" + "ZUJI" + "&url=http://planmytrip.zuji.com.au/itineraries/" + @itinerary[:id].to_s %>" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
-    </ul>
-  </div>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-<div id="email-share" data-animation="fade" class="reveal-modal small text-center">
-  <h3>Send via email</h3>
-  <%= form_tag email_sharer_itinerary_path, method: :put do %>
-    <%= text_field_tag :emails, nil, placeholder: "c.kent@gmail.com, t.stark@yahoo.com, b.wayne@hotmail.com.com..." %>
-    <%= text_area_tag :message, ("Hey there, I'm planning a trip to " + @itinerary.destination + " on Zuji.com.\n\nIn short, travel experts are pitching me cool ideas on what to do for my vacation, and I'd love get your opinion on which one to pick!"), { placeholder: "Write a message...", style: "height:150px;" } %>
-    <%= submit_tag "Send", class: "expand button radius" %>
-    <a class="close-reveal-modal">&#215;</a>
-  <% end %>
-</div>
-<%= content_for :body do %>
-<script>
-  mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Awaiting Pitches"});
-  mixpanel.track_links("#power-feature", "Request Feature Update", {
-    'Feature': 'Add Traveler'
-  });
-  $("#power-feature").click(function() {
-      mixpanel.people.set({
-        "Request Feature Update": "Yes"
-      });
-    });
-  $("#sharebutton").click(function() {
-    mixpanel.track("Share Button");
-  });
-  $("#Pick-Winner").click(function() {
-    mixpanel.track("Picked a Winner");
-  });
-</script>
-<% end %>
-<% end %>
 
 <% else # no current_user %>
   <% if @plan && @plan.published %>
@@ -686,13 +646,10 @@
       </div>
       <div class="row text-center medium-break">
         <p class="sans">
-          <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
-          <a class="sans otherClose" style="font-size:1em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
-          <a class="close-reveal-modal" >&#215;</a>
-        </p>
-      </div>
+      <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
+      <a class="sans otherClose" style="font-size:1em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
+      <a class="close-reveal-modal" >&#215;</a>
     </div>
-    
     <%= content_for :body do %>
       <script>
       function getScrollTop(){
@@ -705,7 +662,7 @@
           d = (d.clientHeight)? d : b;
           return d.scrollTop;
         }
-      }
+      }    
       $(window).on("scroll", function(){
         if(getScrollTop() >= 3000){
           $(window).off("scroll");
@@ -714,7 +671,7 @@
             animationSpeed: 500,
             closeOnBackgroundClick: true,
           });
-          document.getElementById('itinerary_destination').value= '<%= @itinerary.destination %>';
+          document.getElementById('itinerary_destination').value= '<%= @itinerary.destination %>'; 
         }
       });
       </script>
@@ -733,57 +690,76 @@
       <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
     <% end %>
   <% else %>
-  <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - ZUJI" : @itinerary.extra_info[:name] + " - ZUJI") %>
-  <div class="row">
-    <div class="large-12 text-center small-12 columns">
-      <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
-      <div class="large-1 hide-for-small large-centered columns">
-       <hr style="border-color:white;">
-      </div>
-    </div>
-  </div>
-  </div class="header">
-  <div class="tabs">
-    <div class="row">
-    <div class="large-12 large-centered small-centered small-12 columns">
-      <div class="large-8 large-centered small-centered small-12 columns">
-        <hr class="tab-border">
-        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
-        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">
-            <li><a href="#" id="slide0" class="active-tab" >THE TRIP</a></li>
-          </ul>
+    <% set_page_title(@itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination + " - OutTrippin" : @itinerary.extra_info[:name] + " - OutTrippin") %>
+    <style>
+    .cover {background-image: none;}
+    </style>
+      <div class="row">
+      <div class="large-12 text-center small-12 columns">
+        <h2 class="white text-center"><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : @itinerary.extra_info[:name] %></h2>
+        <div class="large-1 hide-for-small large-centered columns">
+         <hr style="border-color:white;">
         </div>
       </div>
     </div>
-  </div>
-  <div class="row" id="slide1-content">
-    <div class="large-12 large-centered small-12 columns">
-        <%= render 'itineraries/itinerary_full' %>
+    </div class="header">
+    <div class="tabs">
+      <div class="row">
+      <div class="large-12 large-centered small-centered small-12 columns">
+        <div class="large-8 large-centered small-centered small-12 columns">
+          <hr class="tab-border">
+          <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+          <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+              <li><a href="#" id="slide0" class="active-tab" >THE TRIP</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="share">
-    <h4 class="serif subheader"><em><a href="/login" id="login-bottom" class="button subheader small serif sharethis">Login to comment or submit a pitch.</a></em></h4>
-    <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
-  </div>
-<div id="login-modal" class="reveal-modal small text-center">
-  <h3>Login to get the full story.</h3>
-  <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other Plan My Trip power features by logging in.</em></h5>
-  <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
-  <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
-  <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
-</div>
-  <%= content_for :body do %>
-    <script>
-      $(document).ready(function() {
-        setTimeout(function(){
-          $("#login-modal").foundation('reveal', 'open');
-        }, 4000);
+    <div class="row" id="slide1-content">
+      <div class="large-12 large-centered small-12 columns">
+          <%= render 'itineraries/itinerary_full' %>
+      </div>
+      <div id="imagesf"></div>
+    </div>
+    <div class="share">
+      <h4 class="serif subheader"><em><a href="/login" id="login-bottom" class="button subheader small serif sharethis">Login to comment or submit a pitch.</a></em></h4>
+      <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
+    </div>
+    <div id="login-modal" class="reveal-modal small text-center">
+      <h3>Login to get the full story.</h3>
+      <h5 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>See comments, additional details, and access other OutTrippin power features by logging in.</em></h5>
+      <%= link_to "Continue to login", login_path, class: "radius text-center button" %>
+      <div class="row"><a class="close-reveal-modal" >&#215;</a></div>
+      <a class="sans otherClose text-center" style="font-size:.75em;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, continue without logging in</a>
+    </div>
+    <%= content_for :body do %>
+      <script>
+        $(document).ready(function() {
+          setTimeout(function(){
+            $("#login-modal").foundation('reveal', 'open');
+          }, 4000);
+        });
+      </script>
+      <script>
+        mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Not Logged In"});
+        mixpanel.track_links("#login-bottom", "Bottom Login");
+      </script>
+      <script>
+      $(function(){ 
+        var apiKey = '8f003eeae634f12fcad8ec03797d1e97';
+        destination = '<%= @itinerary.destination %>'
+        var replaced = destination.split(' ').join('+') 
+        var replaced1 = replaced.split(',').join('') 
+        $.getJSON('https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=8f003eeae634f12fcad8ec03797d1e97&text=' + replaced1 + '&min_upload_date=1274832000&license=4%2C5%2C6%2C7&sort=relevance&group_id=41425956%40N00&per_page=10&page=1&format=json&jsoncallback=?',
+          function(data) {
+            item = $(data.photos.photo).get(0);
+            photoURL = 'http://farm' + item.farm + '.static.flickr.com/' + item.server + '/' + item.id + '_' + item.secret + '_b.jpg';
+            $('.cover').css('background-image', 'url(' + photoURL + ')');
+          }
+        )
       });
-    </script>
-    <script>
-      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Not Logged In"});
-      mixpanel.track_links("#login-bottom", "Bottom Login");
-    </script>
+      </script>
     <% end %>
   <% end %>
 <% end %>

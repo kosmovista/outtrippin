@@ -5,7 +5,7 @@
       <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" unless current_page?(new_itinerary_pitch_path(@itinerary)) %>
     </div>
   <% end %>
-  <% if current_user && current_user.is?("expert") && @pitch.auto? && !@itinerary.has_winner_pitch? %>
+  <% if current_user && current_user.is?("expert") && !@pitch.blank? && @pitch.auto? && !@itinerary.has_winner_pitch? %>
     <div class="large-2 small-12 text-center right columns">
       <span class="radius price small text-center label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
       <%= link_to "Submit pitch", edit_itinerary_pitch_path(@itinerary, @pitch), target: "_blank", class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
