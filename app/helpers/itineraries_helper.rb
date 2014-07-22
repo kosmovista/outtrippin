@@ -72,6 +72,10 @@ module ItinerariesHelper
     "http://twitter.com/" + handle
   end
 
+  def expert_info_google_url(handle)
+    "http://" + handle + "?rel=author"
+  end
+  
   def expert_info_instagram_url(handle)
     "http://instagram.com/" + handle
   end
