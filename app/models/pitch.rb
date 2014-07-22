@@ -46,5 +46,5 @@ class Pitch < ActiveRecord::Base
       self.place_id = place.id
       self.save
     end
-    ends
+  end
 end
