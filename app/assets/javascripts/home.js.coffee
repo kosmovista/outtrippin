@@ -67,6 +67,7 @@ window.scrollUp = ->
   }, 2000, 'easeOutQuart')
 
 
+
 ######################
 # AFTER WINDOW LOADS #
 ######################
