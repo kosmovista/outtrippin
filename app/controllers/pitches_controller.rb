@@ -4,7 +4,7 @@ class PitchesController < ApplicationController
   # should guarantee an EXPERT!
   before_action :authorize_expert, except: [:winner]
   before_action :set_itinerary
-  before_action :set_pitch, only: [:edit, :update, :winner]
+  before_action :set_pitch, only: [:edit, :update, :winner, :remove]
 
   def new
     unless @itinerary.pitches.map { |p| p.user }.include?(current_user)
@@ -51,6 +51,14 @@ class PitchesController < ApplicationController
       @itinerary.published = !@itinerary.published
       @itinerary.save
     end
+    redirect_to itinerary_path(@itinerary)
+  end
+
+  def remove
+    @itinerary = Itinerary.find(params[:itinerary_id])
+    @pitch.itinerary_id = nil
+    @pitch.save
+
     redirect_to itinerary_path(@itinerary)
   end
 

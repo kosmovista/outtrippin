@@ -21,6 +21,7 @@ Outtrippin::Application.routes.draw do
     resources 'pitches' do
       member do
         put 'winner'
+        put 'remove'
       end
     end
     resource 'plan' do
