@@ -18,6 +18,8 @@ class Admin::ItinerariesController < ApplicationController
 
   def update
     @itinerary = Itinerary.find(params[:id])
+    prev_destination = @itinerary.destination.downcase.strip
+    new_destination = params[:itinerary][:destination].downcase.strip
     @itinerary.destination = params[:itinerary][:destination]
     @itinerary.departure = params[:itinerary][:departure]
     @itinerary.duration = params[:itinerary][:duration]
@@ -31,7 +33,12 @@ class Admin::ItinerariesController < ApplicationController
     @itinerary.save!
     place = Place.find_by_name(@itinerary.destination.downcase.strip)
     unless place.nil?
-      @itinerary.get_pitches_from_place(place)
+      if prev_destination != new_destination
+        @itinerary.get_pitches_from_place(place)
+      end
+    else
+      @itinerary.pitches = []
+      @itinerary.save
     end
 
     redirect_to @itinerary
