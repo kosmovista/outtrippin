@@ -51,10 +51,17 @@
     </div>
 
     <div class="row">
-      <div class="large-6 columns">
+      <div class="large-12 columns">
         <%= f.label :website, "Your Website *" %>
         <%= f.text_field :website, placeholder: "indianajune.com" %>
         <%= errors_for(object, :website) %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <%= f.label :rss, "Your RSS feed" %>
+        <span data-tooltip data-options="disable-for-touch:true" data-width="425px" class="has-tip tip-top" title="We can automatically add the latest stories from your blog to your profile.">
+        <%= f.text_field :rss, placeholder: "feeds.feedburner.com/indianajune" %></span>
       </div>
       <div class="large-6 columns">
         <%= f.label :instagram, "Instagram" %>

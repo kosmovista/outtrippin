@@ -67,9 +67,14 @@
   </div>
 </div>
 
-<div id="stories" class="break"></div>
+<div id="stories" class="break"><h2 class="text-center serif subheader black" style="padding-bottom:50px;"><em>My stories on OutTrippin</em></h2>
 <ul id="plans-container" style="background:#f3f3f3;">
 </ul>
+</div>
+
+<div id="content" class="large-6 large-centered break small-centered small-12 columns">
+</div>
+
 
 <%= content_for :body do %>
   <%= stylesheet_link_tag "browsexperimental", media: "all" %>
@@ -79,6 +84,45 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
   <%= stylesheet_link_tag "new_application", media: "all" %>
+  <script src="//www.google.com/jsapi?" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*
+    *  How to load a feed via the Feeds API.
+    */
+    
+    google.load("feeds", "1");
+    
+    // Our callback function, for when a feed is loaded.
+    function feedLoaded(result) {
+      if (!result.error) {
+        // Grab the container we will put the results into
+        var container = document.getElementById("content");
+        container.innerHTML = '';
+        var rssoutput="<p class='sans subheader' style='font-size: 0.8em; letter-spacing: 0.15em;'><strong>THE LATEST FROM MY BLOG:</strong></p><hr><ul class='no-bullet blog'>"
+    
+        // Loop through the feeds, putting the titles onto the page.
+        // Check out the result object for a list of properties returned in each entry.
+        // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+        for (var i = 0; i < result.feed.entries.length; i++) {
+          var entry = result.feed.entries[i];
+          rssoutput+="<li><h3><a class='black' href='" + entry.link + "'>" + entry.title + "</h3><h5 class='subheader serif'>" + entry.contentSnippet + "</h5></a><h6 class='subheader serif no-margin'><em>Written by " + entry.author + "</em></h6></li><hr>"
+        }
+        rssoutput+="</ul>"
+        container.innerHTML=rssoutput
+      }
+    }
+    
+    function OnLoad() {
+      // Create a feed instance that will grab Digg's feed.
+      var feed = new google.feeds.Feed("<%= @user.rss %>");
+    
+      // Calling load sends the request off.  It requires a callback function.
+      feed.load(feedLoaded);
+    }
+    
+    google.setOnLoadCallback(OnLoad);
+    </script>
+
 <% end %>
 
 <%= content_for :body do %>
@@ -125,9 +169,10 @@ $.get("/api/v1/plans")
      }
     });
     if (pCounter > 0) {
-      storyContainer.append('<h3 class="text-center serif subheader black" style="padding:50px 0; margin:0;"><em>My stories on OutTrippin</em></h3>');
+      storyContainer.show();
      }
   });
 
 </script>
+
 <% end %>
