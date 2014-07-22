@@ -86,6 +86,7 @@
 <div class="written-by">
         <hr>
         <div class="row">
+
           <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
     <div class="large-2 small-9 text-center right columns">
       <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Pick Me!</a>
@@ -106,18 +107,18 @@
         </div>
       </div>
       <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
-<div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
-  <h3 class="text-center">Ready & Set?</h3>
-  <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the pitch you're selecting as your favorite:</em></h5>
-  <div class="row">
-  <div class="large-12 small-12 columns">
-    <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
-    <h4><%= pitch.title %> </h4>
-    <h6 class="serif subheader"><em>By <%= pitch.user.personal_info[:name] %></em></h6>
-  </div>
-</div>
-  <%= button_to "Lock it in!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "expand button radius", style:"margin-top:30px;", id: "Pick-Winner"  %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+        <div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
+          <h3 class="text-center">Ready & Set?</h3>
+          <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the pitch you're selecting as your favorite:</em></h5>
+          <div class="row">
+          <div class="large-12 small-12 columns">
+            <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
+            <h4><%= pitch.title %> </h4>
+            <h6 class="serif subheader"><em>By <%= pitch.user.personal_info[:name] %></em></h6>
+          </div>
+        </div>
+          <%= button_to "Lock it in!", winner_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "expand button radius", style:"margin-top:30px;", id: "Pick-Winner"  %>
+          <a class="close-reveal-modal">&#215;</a>
+        </div>
+        <% end %>      
 <% end %>
-      <% end %>
