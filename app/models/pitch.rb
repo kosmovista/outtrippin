@@ -5,6 +5,8 @@ class Pitch < ActiveRecord::Base
 
   has_and_belongs_to_many :pictures
 
+  after_create :add_to_places
+
   def won_by?(user)
     return false if !self.winner
     return true if self.user == user
