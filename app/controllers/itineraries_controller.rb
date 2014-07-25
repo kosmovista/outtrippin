@@ -99,7 +99,6 @@ class ItinerariesController < ApplicationController
 
   def purchase
     token = params[:stripeToken]
-    plan = params[:plan].to_i
 
     if @itinerary.process_payment(token, plan)
       UserMailer.delay.payment_received_email(@itinerary.user, @itinerary)
