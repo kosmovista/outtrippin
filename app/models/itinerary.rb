@@ -38,7 +38,6 @@ class Itinerary < ActiveRecord::Base
     if self.valid?
       self.charge(token, plan)
       self.paid = true
-      self.plan = plan
       self.save
       return true
     else
