@@ -55,7 +55,7 @@
     </div>
   <% else %>
     <% @pitched_itineraries.each do |p| %>
-      <%= render p.itinerary %>
+      <%= render p.itinerary unless p.itinerary.nil? %>
     <% end %>
   <% end %>
 </div>

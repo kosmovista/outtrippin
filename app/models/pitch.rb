@@ -23,6 +23,11 @@ class Pitch < ActiveRecord::Base
     pitches
   end
 
+  def self.find_personalized_by_itinerary(user)
+    pitches = Pitch.where(user_id: user.id, auto: false)
+    pitches
+  end
+
   def self.find_winner_expert_by_itinerary(user)
     pitches = Pitch.where(user_id: user.id, winner: true).map { |p| p.itinerary }
     pitches
