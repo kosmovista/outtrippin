@@ -52,7 +52,7 @@
       </div>
     </div>
   </div>
-  <ul class="small-block-grid-1 break">
+  <ul class="no-bullet break">
     <% @plan.days.each_with_index do |d, i| %>
     <li>
       <div class="read">
@@ -220,9 +220,10 @@
 </div>
 
 <ul class="no-bullet no-margin share-fixed hide-on-print">
-  <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:35px;", class: "circle-button" %></a></li>
-  <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:35px; margin:10px 0 0 0;", class: "circle-button" %></a></li>
-  <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:35px; margin:10px 0 0 0;" %></a></li>
+  <li><a href="#" id="print" onClick="window.print()" title="Print or Save to PDF"><%= image_tag 'print.png', style: "width:31px;", class: "circle-button" %></a></li>
+  <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebookshare"><%= image_tag 'facebook-large.png', style: "width:30px; margin:7px 0 0 0;", class: "circle-button" %></a></li>
+  <li><a href="#" data-reveal-id="emailshare"><%= image_tag 'email-large.png', style: "width:30px; margin:7px 0 0 0;", class: "circle-button" %></a></li>
+  <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twittershare" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:30px; margin:7px 0 0 0;" %></a></li>
 </ul>
 <%= content_for :body do %>
   <script>
@@ -251,6 +252,14 @@
     "Stage": "Final Story"
   });
   mixpanel.track_links("#twitter-share", "Twitter Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#facebookshare", "Facebook Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#twittershare", "Twitter Share", {
     "Story_id": "<%= @itinerary.winner_pitch.title %>",
     "Stage": "Final Story"
   });
@@ -306,7 +315,19 @@
       "Tab": "Maps"
     });
   });
+  $("#print").click(function() {
+    mixpanel.track("Print/PDF", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
   $("#email-share").click(function() {
+    mixpanel.track("Email Share", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
+  $("#emailshare").click(function() {
     mixpanel.track("Email Share", {
       "Story_id": "<%= @itinerary.winner_pitch.title %>",
       "Stage": "Final Story"
