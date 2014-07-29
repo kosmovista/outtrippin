@@ -1,12 +1,60 @@
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:250px;}
+</style>
+<% set_page_title(@itinerary.extra_info[:name].blank? ? "You've pitched for a trip to " + @itinerary.destination + " - OutTrippin" : "You've pitched for '" + @itinerary.extra_info[:name] + "' - OutTrippin") %>
+<div class="cover"></div>
+<div id="overlay"></div>
+	<div class="header">
 <div class="row">
+  <div class="small-12 small-centered columns">
+     <%= render 'itineraries/expertsteps', expert_step: 'The requestor picks a winner', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">Edit your pitch</h2>  
+    </div>
+    
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <hr class="tab-border">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+          <li><a href="#" id="slide0" class="active-tab" >EDIT PITCH</a></li>
+          <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" id="slide0-content">
+<div class="large-12 small-12 columns">
   <div class="large-8 large-centered columns">
     <%= form_for @pitch_edit, url: itinerary_pitch_path(@itinerary, @pitch), method: :put, html: { class: 'custom' } do |f| %>
     <%= render 'form', f: f, pitch: @pitch_edit, submit_text: "Save" %>
     <% end %>
   </div>
 </div>
+</div>
 
-<% expanded_sidebar %>
+<div class="row" id="slide1-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <%= content_for :body do %>
   <script>

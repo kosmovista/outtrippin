@@ -71,7 +71,6 @@
   <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
     <hr style="border:1px #e6e6e6 solid">
   <% end %>
-
   <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && !@itinerary.paid? %>
   <div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal xlarge">
     <div class="row break">

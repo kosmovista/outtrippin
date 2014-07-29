@@ -1,12 +1,72 @@
+<style>
+.cover { background-image: none; height:300px; }
+#overlay {height:300px;}
+.header {top:80px; overflow: visible;}
+.tabs {top:250px;}
+</style>
+<div class="cover"></div>
+<div id="overlay"></div>
+	<div class="header">
 <div class="row">
-  <div class="large-8 large-centered columns">
-    <%= form_for @pitch_new, url: itinerary_pitches_path(@itinerary), html: { class: 'custom' } do |f| %>
-      <%= render 'form', f: f, pitch: @pitch_new, submit_text: "Submit!" %>
-    <% end %>
+  <div class="small-12 small-centered columns">
+     <%= render 'itineraries/expertsteps', expert_step: 'Submit a pitch', disable: %w() %>
+    <div class="large-8 large-centered small-12 columns">
+      <h2 style="margin-top:20px;" class="white">Submit a pitch <a href="#" data-dropdown="submitpitchd" data-options="is_hover:true"><%= image_tag 'question-w.png', style: "width:15px; margin-top:-30px;" %></a></h2>  
+    </div>
+    <div id="submitpitchd" class="f-dropdown medium content" data-dropdown-content>
+    <h5>Hi there! Congrats on being selected to pitch this story!</h5>
+      <p style="font-size:0.850em;"><strong>How it works:</strong>
+      First step is to put in a fantastic pitch. If the requestor picks you as their favorite, you'll have the opportunity to write the full story. Cool?  Hit the <%= image_tag 'submit-a-pitch.png', style: "height:1.5em; margin-top: -0.5em;" %> button below to get started!</p>
+      <hr>
+      <p>If you're ever have any issues or questions for us at OutTrippin, just hit the <%= image_tag 'question-box.png', style: "height:1.5em; margin-top:-.5em;" %> on the bottom right and we'll get back to you in a flash.</p>
+    </div>
+
+  </div>
+</div>
+</div class="header">
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-8 large-centered small-centered small-12 columns">
+        <hr class="tab-border">
+        <a href="#" data-dropdown="cover-tabs" data-options="is_hover:true" class="no-margin sans tab-dropdown">MENU</a>
+        <ul id="cover-tabs" data-dropdown-content  class="inline-list cover-tabs text-center sans">          
+          <li><a href="#" id="slide0" class="active-tab">MY PITCH</a></li>
+          <li><a href="#" id="slide1" >REQUEST & COMMENTS</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>
 
-<% expanded_sidebar %>
+<div class="row" id="slide0-content">
+	<div class="large-12 large-centered small-12 columns">
+	  <div class="large-8 large-centered columns">
+	    <%= form_for @pitch_new, url: itinerary_pitches_path(@itinerary), html: { class: 'custom' } do |f| %>
+	      <%= render 'form', f: f, pitch: @pitch_new, submit_text: "Submit!" %>
+	    <% end %>
+	  </div>
+	</div>
+</div>
+
+<div class="row" id="slide1-content">
+  <div class="large-12 large-centered small-12 columns">
+      <%= render 'itineraries/itinerary_full' %>
+  </div>
+  <div class="written-by">
+    <div class="large-12 large-centered small-12 columns">
+      <div class="large-8 large-centered small-12 columns">
+        <%= render 'itineraries/show/comments' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 
 <%= content_for :body do %>
   <script>

@@ -70,14 +70,72 @@
   </div>
 </div>
 
+<div id="stories" class="break"><h2 class="text-center serif subheader black" style="padding-bottom:50px;"><em>My stories on OutTrippin</em></h2>
+<ul id="plans-container" style="background:#f3f3f3;">
+</ul>
+</div>
+
+<div id="content" class="large-6 large-centered break small-centered small-12 columns">
+</div>
+
+
+<%= content_for :body do %>
+  <%= stylesheet_link_tag "browsexperimental", media: "all" %>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.0.min.js"><\/script>')</script>
+<% end %>
+
 <%= content_for :head do %>
   <%= stylesheet_link_tag "experts", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag "new_application", media: "all" %>
+  <script src="//www.google.com/jsapi?" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*
+    *  How to load a feed via the Feeds API.
+    */
+    
+    google.load("feeds", "1");
+    
+    // Our callback function, for when a feed is loaded.
+    function feedLoaded(result) {
+      if (!result.error) {
+        // Grab the container we will put the results into
+        var container = document.getElementById("content");
+        container.innerHTML = '';
+        var rssoutput="<p class='sans subheader' style='font-size: 0.8em; letter-spacing: 0.15em;'><strong>THE LATEST FROM MY BLOG:</strong></p><hr><ul class='no-bullet blog'>"
+    
+        // Loop through the feeds, putting the titles onto the page.
+        // Check out the result object for a list of properties returned in each entry.
+        // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+        for (var i = 0; i < result.feed.entries.length; i++) {
+          var entry = result.feed.entries[i];
+          rssoutput+="<li><h3><a class='black' href='" + entry.link + "'>" + entry.title + "</h3><h5 class='subheader serif'>" + entry.contentSnippet + "</h5></a><h6 class='subheader serif no-margin'><em>Written by " + entry.author + "</em></h6></li><hr>"
+        }
+        rssoutput+="</ul>"
+        container.innerHTML=rssoutput
+      }
+    }
+    
+    function OnLoad() {
+      // Create a feed instance that will grab Digg's feed.
+      var feed = new google.feeds.Feed("<%= @user.rss %>");
+    
+      // Calling load sends the request off.  It requires a callback function.
+      feed.load(feedLoaded);
+    }
+    
+    google.setOnLoadCallback(OnLoad);
+    </script>
+
 <% end %>
 
 <%= content_for :body do %>
   <script>
   mixpanel.track("Page Loaded", {"page": "Expert Profile"});
   mixpanel.track_links(".expert-details a", "Clicked Expert Links");
+  mixpanel.track_links("#plans-container a", "Browsed Trip", { 
+    "page": "Expert Profile", 
+    "expert": "<%= @user.name %>" 
+  });
 </script>
 <script>
 $(function(){ 
@@ -93,5 +151,31 @@ $(function(){
     }
   )
 });
+
+function imgLoaded(img) {
+  var $img = $(img);
+  $img.parent().parent().addClass('loaded');
+};
+
+$.get("/api/v1/plans")
+// after receiving the data (plan headers)
+  .done(function(data) {
+    // will iterate and display each one of them
+    var container = $("#plans-container");
+    var storyContainer = $("#stories");
+    var pCounter = 0;
+    $.each(data, function(i, item) {
+      if (item.author.id == <%= @user.id %>) {
+      // append the newly loaded plan to the list
+      container.append('<li><a class="go-to-itinerary" href="/itineraries/' + item.itinerary_id + ' "><p class="title">' + item.title + '</p><img src="' + item.cover + '" onload="imgLoaded(this)"><a class="author" href="/users/' + item.author.id + '"><img src="' + item.author.avatar + '" onload="imgLoaded(this)"><p class="author-name">Recommended by '+ item.author.name + '</p></a></a></li>');
+      pCounter++;
+     }
+    });
+    if (pCounter > 0) {
+      storyContainer.show();
+     }
+  });
+
 </script>
+
 <% end %>

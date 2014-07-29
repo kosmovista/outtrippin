@@ -646,10 +646,13 @@
       </div>
       <div class="row text-center medium-break">
         <p class="sans">
-      <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
-      <a class="sans otherClose" style="font-size:1em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
-      <a class="close-reveal-modal" >&#215;</a>
+          <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
+          <a class="sans otherClose" style="font-size:1em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
+          <a class="close-reveal-modal" >&#215;</a>
+        </p>
+      </div>
     </div>
+    
     <%= content_for :body do %>
       <script>
       function getScrollTop(){
