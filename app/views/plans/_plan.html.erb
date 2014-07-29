@@ -202,8 +202,9 @@
   <div class="large-7 small-12 columns large-centered">
     <ul class="small-block-grid-3">
       <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="#" data-reveal-id="email-share" id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
-      <li><a href="<%= "https://www.twitter.com/share?text=" + (" by @" + @plan.user.twitter) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
+
+      <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:100%;", class: "circle-button" %></a></li>
+      <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:100%;" %></a></li>
     </ul>
   </div>
   <a class="close-reveal-modal">&#215;</a>
@@ -217,3 +218,99 @@
     <a class="close-reveal-modal">&#215;</a>
     <% end %>
 </div>
+
+<ul class="no-bullet no-margin share-fixed">
+  <li><a href="<%= "https://www.facebook.com/sharer/sharer.php?u=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" target="_blank" id="facebook-share"><%= image_tag 'facebook-large.png', style: "width:35px;", class: "circle-button" %></a></li>
+  <li><a href="#" data-reveal-id="email-share"><%= image_tag 'email-large.png', style: "width:35px; margin:10px 0 0 0;", class: "circle-button" %></a></li>
+  <li><a href="<%= "https://www.twitter.com/share?text=" + @itinerary.winner_pitch.title + (" by @" + @plan.user.twitter unless @plan.user.twitter.blank?) + "&via=" + "OutTrippin" + "&url=http://outtrippin.com/itineraries/" + @itinerary[:id].to_s %>" id="twitter-share" target="_blank"><%= image_tag 'twitter-large.png', class: "circle-button", style: "width:35px; margin:10px 0 0 0;" %></a></li>
+</ul>
+<%= content_for :body do %>
+  <script>
+  mixpanel.track("Page Loaded", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Author": "<%= @plan.user.personal_info[:name] %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#slide0-content a", "Clicked Story Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+  });
+  mixpanel.track_links("#slide1-content .hotel a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Hotel",
+  });
+  mixpanel.track_links("#slide1-content .activity a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Activity",
+  });
+  mixpanel.track_links("#slide1-content .other a", "Clicked Booking Link", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Booking Type": "Other",
+  });
+  mixpanel.track_links("#facebook-share", "Facebook Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#twitter-share", "Twitter Share", {
+    "Story_id": "<%= @itinerary.winner_pitch.title %>",
+    "Stage": "Final Story"
+  });
+  mixpanel.track_links("#power-feature", "Request Feature Update", {
+    'Feature': 'Maps'
+  });
+  mixpanel.track_links("#request-booking", "Requested Booking");
+  <% if current_user %>
+    $("#power-feature").click(function() {
+      mixpanel.people.set({
+        "Request Feature Update": "Yes"
+      });
+    });
+    $("#request-booking").click(function() {
+      mixpanel.people.set({
+        "Requested Booking": "<%= @itinerary.winner_pitch.title %>"
+      });
+    });
+  <% end %>
+  $("#sharebutton").click(function() {
+    mixpanel.track("Share Button", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
+  $("#slide1").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Booking"
+    });
+  });
+  $("#slide0").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Story"
+    });
+  });
+  $("#slide2").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Trip Details"
+    });
+  });
+  $("#slide3").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Comments"
+    });
+  });
+  $("#maps").click(function() {
+    mixpanel.track("Clicked Tab", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Tab": "Maps"
+    });
+  });
+  $("#email-share").click(function() {
+    mixpanel.track("Email Share", {
+      "Story_id": "<%= @itinerary.winner_pitch.title %>",
+      "Stage": "Final Story"
+    });
+  });
+  </script>
+<% end %>
