@@ -1,6 +1,6 @@
 // COLORS
 .primary { color: $primary-color; }
-.white { color: #fff !important; }
+.white { color: #fff !important; @media only print {-webkit-print-color-adjust: exact;} }
 .black {color: #4a4a4a !important;}
 
 // TYPE
@@ -16,7 +16,7 @@
 .medium-textarea { min-height: 200px !important; }
 .no-margin { margin: 0 !important; }
 .no-padding { padding: 0 !important; }
-.rounded { border-radius:1000px; }
+.rounded { border-radius:1000px !important; }
 .alerts {position:absolute !important; top:10%; z-index:9999;
 @media only screen and (min-width: 768px) {left:33.33333%;}
 }
