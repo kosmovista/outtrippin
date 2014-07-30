@@ -108,7 +108,7 @@
         // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
         for (var i = 0; i < result.feed.entries.length; i++) {
           var entry = result.feed.entries[i];
-          rssoutput+="<li><h3><a class='black' href='" + entry.link + "'>" + entry.title + "</h3><h5 class='subheader serif'>" + entry.contentSnippet + "</h5></a><h6 class='subheader serif no-margin'><em>Written by " + entry.author + "</em></h6></li><hr>"
+          rssoutput+="<li><h3><a class='black' target='_blank' href='" + entry.link + "'>" + entry.title + "</h3><h5 class='subheader serif'>" + entry.contentSnippet + "</h5></a><h6 class='subheader serif no-margin'><em>Written by " + entry.author + "</em></h6></li><hr>"
         }
         rssoutput+="</ul>"
         container.innerHTML=rssoutput
