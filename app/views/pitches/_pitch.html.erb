@@ -77,12 +77,12 @@
       <div class="large-8 small-12 text-center columns">
         <h3>Connect with <%= pitch.user.personal_info[:name] %></h3>
         <h4 class="serif subheader" style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>Upgrade your account to connect with <%= pitch.user.personal_info[:name] %> one-on-one and get personalized recommendations and advice for your trip to <%= @itinerary.destination %>.</em></h4>
-         <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 14 %>
+         <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 6 %>
       </div>
       <div class="large-4 small-12 right columns">
         <div class="panel text-center pricing" >
           <H5 class="option-title">PLENTY O' FISH</H5>
-          <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (14) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $14 per travel day )</h3>
+          <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (6) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $6 per travel day )</h3>
           <%= image_tag pitch.user.avatar.url(:thumb), style: "margin-top:5px;", class: "rounded" %>
           <h6 class="white serif option-detail"><em>Multiple storytellers compete</em></h6>
           <h6 class="white option-text serif subheader"><em>to help you plan day-by-day tailored travel story</span></em></h6>
@@ -141,12 +141,12 @@
           <div class="large-8 small-12 text-center columns">
             <h3>Connect with <%= pitch.user.personal_info[:name] %></h3>
             <h4 class="serif subheader" style="margin-bottom:50px; margin-top:30px;" class="serif subheader"><em>Upgrade your account to connect with <%= pitch.user.personal_info[:name] %> one-on-one and get personalized recommendations and advice for your trip to <%= @itinerary.destination %>.</em></h4>
-             <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 12 %>
+             <%= button_to "Upgrade", purchase_itinerary_path, method: :put, class: "radius serif pickthis button checkout-btn", id: 5 %>
           </div>
           <div class="large-4 small-12 right columns">
             <div class="panel text-center pricing" >
               <H5 class="option-title">CATCH OF THE DAY</H5>
-              <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (12) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br> ($ 12 per travel day)</h3>
+              <h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (5) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br> ($ 5 per travel day)</h3>
               <%= image_tag pitch.user.avatar.url(:thumb), style: "margin-top:5px;", class: "rounded" %>
               <h6 class="white serif option-detail"><em>Pick 1 storyteller</em></h6>
               <h6 class="white option-text serif subheader"><em>to help you plan your day-by-day tailored travel story</span></em></h6>
