@@ -286,10 +286,10 @@
           StripeCheckout.open({
             key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
             amount:      duration * plan * 100,
-            image:       '<%= asset_path('o-color.png') %>',
+            image:       '<%= asset_path('logo128.png') %>',
             email:       '<%= current_user.email %>',
             currency:    'usd',
-            name:        'ZUJI',
+            name:        'ZUJI Plan My Trip',
             description: '100% money back guarantee',
             panelLabel:  'Checkout',
             token:       token
@@ -487,10 +487,10 @@
           StripeCheckout.open({
             key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
             amount:      duration * plan * 100,
-            image:       '<%= asset_path('o-color.png') %>',
+            image:       '<%= asset_path('logo128.png') %>',
             email:       '<%= current_user.email %>',
             currency:    'usd',
-            name:        'ZUJI',
+            name:        'ZUJI Plan My Trip',
             description: '100% money back guarantee',
             panelLabel:  'Checkout',
             token:       token
@@ -536,7 +536,7 @@
         <div data-alert class="alert-box secondary radius text-center">
           <h4>Get the best storytellers!</h4>
           <p>A guaranteed reward attracts more storytellers to your trip and remember, ZUJI offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
-            <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" id:"guarantee-no-pitch"  %>
+            <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button", id:"guarantee-no-pitch"  %>
 
         </div>
       </div>
