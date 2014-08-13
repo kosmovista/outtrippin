@@ -238,7 +238,7 @@
     </div>
     <%= content_for :body do %>
     <script>
-      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
+      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner", "Pitches": "Personalized"});
       mixpanel.track_links("#power-feature", "Request Feature Update", {
         'Feature': 'Add Traveler'
       });
@@ -252,6 +252,18 @@
       });
       $("#Pick-Winner").click(function() {
         mixpanel.track("Picked a Winner");
+      });
+      $(".auto-profile").click(function() {
+        mixpanel.track("Click Expert Profile", {"pitch": "auto"});
+      });
+      $(".auto-connect").click(function() {
+        mixpanel.track("Confirm Winner", {"pitch": "auto"});
+      });
+      $(".expert-profile").click(function() {
+        mixpanel.track("Click Expert Profile", {"pitch":"personalized"});
+      });
+      $(".expert-connect").click(function() {
+        mixpanel.track("Confirm Winner", {"pitch": "personalized"});
       });
     </script>
     <% end %>
@@ -304,7 +316,7 @@
         <% if @itinerary.paid? %>
           <h5 class="white serif subheader text-center"><em>Woo hoo! Your dream trip is one step closer. So, what happens next?</em></h5>
         <% else %>
-          <h5 class="white subheader serif"><em>Connect with one of our top experts or <%= link_to "guarantee a reward", checkout_itinerary_path, class: "serif cover-btn white" %> to get personalized recommendations for your trip</em><h5>
+          <h5 class="white subheader serif"><em>Connect with one of our top experts or <%= link_to "guarantee a reward", checkout_itinerary_path, class: "serif cover-btn white", id:"guarantee-top" %> to get personalized recommendations for your trip</em><h5>
         <% end %>
       </div>
     </div>
@@ -411,7 +423,7 @@
       </div>
     <% else %>
       <div class="share">
-        <h4 class="serif subheader"><em><%= link_to "Need more ideas? Guarantee a reward to get more experts pitching in.", checkout_itinerary_path, class: "button subheader small serif sharethis" %></em></h4>
+        <h4 class="serif subheader"><em><%= link_to "Need more ideas? Guarantee a reward to get more experts pitching in.", checkout_itinerary_path, class: "button subheader small serif sharethis", id:"guarantee-bottom" %></em></h4>
         <hr style="border: 1px #cccccc solid;margin-top: -67px;z-index: 9;" class="hide-for-small">
       </div>
     <% end %>
@@ -426,7 +438,7 @@
     </div>
     <%= content_for :body do %>
     <script>
-      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner"});
+      mixpanel.track("Page Loaded", {"page": "Story Page", "Stage": "Choose a Winner", "Pitches": "Auto"});
       mixpanel.track_links("#power-feature", "Request Feature Update", {
         'Feature': 'Add Traveler'
       });
@@ -441,6 +453,18 @@
       $("#Pick-Winner").click(function() {
         mixpanel.track("Picked a Winner");
       });
+      $(".auto-profile").click(function() {
+        mixpanel.track("Click Expert Profile", {"pitch": "auto"});
+      });
+      $(".auto-connect").click(function() {
+        mixpanel.track("Confirm Winner", {"pitch": "auto"});
+      });
+      $("#guarantee-top").click(function() {
+        mixpanel.track("To Checkout", {"button": "guarantee-top"});
+      });  
+      $("#guarantee-bottom").click(function() {
+        mixpanel.track("To Checkout", {"button": "guarantee-bottom"});
+      });  
     </script>
     <% end %>
 
@@ -512,7 +536,7 @@
         <div data-alert class="alert-box secondary radius text-center">
           <h4>Get the best storytellers!</h4>
           <p>A guaranteed reward attracts more storytellers to your trip and remember, OutTrippin offers <strong><em>"a better vacation, or your money back"</em></strong> guarantee if you're not 100% happy with the advice you've received.</p>
-            <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button" %>
+            <%= link_to "Guarantee Reward", checkout_itinerary_path, class: "radius button", id:"guarantee-no-pitch" %>
         </div>
       </div>
       <% end %>
@@ -626,6 +650,9 @@
           $("#Pick-Winner").click(function() {
             mixpanel.track("Picked a Winner");
           });
+          $("#guarantee-no-pitch").click(function() {
+            mixpanel.track("To Checkout", {"button": "guarantee-no-pitch"});
+          });  
         </script>
       <% end %>
   <% end %>

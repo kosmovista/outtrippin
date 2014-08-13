@@ -8,7 +8,7 @@
       </div>
       <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
       <div class="large-2 small-9 text-center right columns">
-        <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Pick Me!</a>
+        <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif expert-connect" >Pick Me!</a>
       </div>
       <% end %>
     
@@ -36,9 +36,9 @@
           <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
           <div class="row">
             <div class="large-12 small-12 columns">
-              <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
+              <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "expert-profile" %>
               <h5 class="no-margin no-padding">
-                <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %> <a href="#" data-dropdown="interestd"  data-options="is_hover:true"><%= image_tag 'info.png', class: "hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
+                <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black expert-profile", title: "User Profile" %> <a href="#" data-dropdown="interestd"  data-options="is_hover:true"><%= image_tag 'info.png', class: "hide-for-small", style: "opacity:0.5; margin:-4px 0 0 5px; width:25px;" %></a>
                 <%= link_to (image_tag "facebook_40.png", class: "right", style: "width:21px; margin:2px;"),  expert_info_website_url(pitch.user.facebook), target: '_blank', class: "hide-for-small" unless pitch.user.facebook.blank? %>
                 <%= link_to (image_tag "pinterest_40.png", class: "right", style: "width:18px"), expert_info_website_url(pitch.user.pinterest), target: '_blank', class: "hide-for-small" unless pitch.user.pinterest.blank? %>
                 <%= link_to (image_tag "twitter_40.png", class: "right", style: "width:21px; margin:2px;"), expert_info_twitter_url(pitch.user.twitter), target: '_blank', class: "hide-for-small" unless pitch.user.twitter.blank? %>
@@ -65,7 +65,7 @@
       <% end %>
     </ul></p>
     <% end %>
-    <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile" %></em>
+    <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile", class: "expert-profile" %></em>
   </div>
   
   <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
@@ -98,7 +98,7 @@
     <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the pitch you're selecting as your favorite:</em></h5>
     <div class="row">
       <div class="large-12 small-12 columns">
-        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
+        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small expert-profile" %>
         <h4><%= pitch.title %> </h4>
         <h6 class="serif subheader"><em>By <%= pitch.user.personal_info[:name] %></em></h6>
       </div>
@@ -111,20 +111,20 @@
    <div class="row big-break">
     <div class="large-11 large-centered small-12 columns">
       <div class="large-2 small-3 left columns">
-        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "rounded"), user_path(pitch.user), target: "_blank", title: "User Profile" %>
+        <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "auto-profile" %>
       </div>
         <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
         <div class="large-2 small-9 right columns">
-          <a href="#" data-reveal-id="a-confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif" >Connect</a>
+          <a href="#" data-reveal-id="a-confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif auto-connect" >Connect</a>
         </div>
         <% end %>
         <div class="large-2 hide-for-small right columns">
-          <%= link_to "Profile", user_path(pitch.user), target: "_blank", class: "button alt-button expand radius secondary small text-center serif", title: "User Profile" %> 
+          <%= link_to "Profile", user_path(pitch.user), target: "_blank", class: "button auto-profile alt-button expand radius secondary small text-center serif", title: "User Profile" %> 
         </div>
         <%= link_to (image_tag "delete-circle.png"), remove_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "right", id: "Edit-Pitch", title: "Delete Pitch", style: "position: absolute; right:-60px; width:25px;" if current_user.is?("admin")  %>
         <div class="large-6 small-12 columns">
         <h3 >
-          <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black", title: "User Profile" %> 
+          <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black auto-profile", title: "User Profile" %> 
         </h3>
       </div>
         
@@ -163,7 +163,7 @@
         <h5 class="serif subheader text-center" style="margin-bottom:30px; margin-top:30px;" class="serif subheader"><em>Let's get you going then! Just to confirm, this is the expert you're selecting as your favorite:</em></h5>
         <div class="row">
           <div class="large-12 small-12 columns">
-            <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "hide-for-small" %>
+            <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "avatar-footer rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "auto-profile hide-for-small" %>
             <h3><%= pitch.user.personal_info[:name] %></h3>
           </div>
         </div>
