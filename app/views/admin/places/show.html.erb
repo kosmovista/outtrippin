@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="large-10 large-offset-2 columns">
+    <h1><%= @place.name %></h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-2 columns">
+    <%= render 'layouts/parts/admin_menu' %>
+  </div>
+
+  <div class="large-10 columns">
+    <table style="width:100%">
+      <thead>
+        <tr>
+          <th>Author</th>
+          <th>Name</th>
+          <th>Summary</th>
+          <th>Why Me</th>
+          <th>Winner</th>
+          <th>Auto</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @place.pitches.each do |p| %>
+        <tr>
+          <td><%= p.user.personal_info[:name] %></td>
+          <td><%= p.title %></td>
+          <td><%= p.summary %></td>
+          <td><%= p.why_me %></td>
+          <td><%= p.winner %></td>
+          <td><%= p.auto %></td>
+          <td><%= button_to "Remove from place", admin_place_remove_pitch_path(@place, pitch_id: p.id) %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

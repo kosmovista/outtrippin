@@ -20,7 +20,7 @@
       <tbody>
         <% @places.each do |p| %>
         <tr>
-          <td><%= p.name %></td>
+          <td><%= link_to p.name, admin_place_path(p) %></td>
           <td><%= p.pitches.count %></td>
         </tr>
         <% end %>

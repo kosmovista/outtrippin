@@ -5,24 +5,30 @@
       <%= link_to "Submit pitch", new_itinerary_pitch_path(@itinerary), class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" unless current_page?(new_itinerary_pitch_path(@itinerary)) %>
     </div>
   <% end %>
-  <% if current_user && current_user.is?("expert") && !@pitch.blank? %>
+  <% if current_user && current_user.is?("expert") && !@pitch.blank? && @pitch.auto? && !@itinerary.has_winner_pitch? %>
+    <div class="large-2 small-12 text-center right columns">
+      <span class="radius price small text-center label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
+      <%= link_to "Submit pitch", edit_itinerary_pitch_path(@itinerary, @pitch), target: "_blank", class: "button pricethis expand secondary small text-center serif", style: "margin-top:-3px" %>
+    </div>
+  <% end %>
+  <% if current_user && current_user.is?("expert") && ( !@pitch.blank? && !@pitch.auto? ) %>
     <div class="large-2 small-12 text-center right columns">
      <span class="radius price small label" >Reward: USD $<span style="font-size: 115%"><%= @itinerary.extra_info[:reward].blank? ? 'tbc' : @itinerary.extra_info[:reward]  %></span> </span>
     </div>
-  <% end %> 
+  <% end %>
   <div class="large-8 small-12 large-centered columns">
-      <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination : 
-      @itinerary.extra_info[:name] %><%= link_to (current_user.voted_for?(@itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(@itinerary), method: :post if current_user && current_user.is?("expert") %></h3>      
+      <h3><%= @itinerary.extra_info[:name].blank? ? "Trip to " + @itinerary.destination :
+      @itinerary.extra_info[:name] %><%= link_to (current_user.voted_for?(@itinerary) ? (image_tag "bookmarked.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.8;", title: "Assigned") : (image_tag "bookmark.png", style:"height:.8em; margin-top:-5px; margin-left:10px; opacity:0.3;", title: "Assign")), toggle_star_itinerary_path(@itinerary), method: :post if current_user && current_user.is?("expert") %></h3>
       <p><em><%= image_tag "plane.png", style:"width:17px; opacity:0.7; margin:-6px 4px 0;" %><%= @itinerary.extra_info[:travelers] %> to <a><%= @itinerary.destination %></a> for <%= @itinerary.duration %> days in <%= @itinerary.departure %><br>
       <%= image_tag "dollar.png", style: "width:12px; opacity:0.7; margin:-6px 5px 0;" %> With a budget of <%= @itinerary.extra_info[:accommodation_budget] %> for accommodation and <%= @itinerary.extra_info[:activity_budget] %> for activities, per person, per day.
        <% if current_user && !@itinerary.has_winner_pitch? %>
        <br>
           <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
           <%= ("Closes on " + @itinerary.extra_info[:countdown] + ". ") unless @itinerary.extra_info[:countdown].blank? %><%= pitches_so_far @itinerary %>
-          
+
         <% end %>
     </em></p>
-    
+
 
     <% unless @itinerary.extra_info[:style].nil? %>
       <h5 class="subheader serif"><em>This trip, I'm on the hunt for some</em></h5>

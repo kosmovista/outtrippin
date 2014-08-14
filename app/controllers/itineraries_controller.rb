@@ -9,7 +9,7 @@ class ItinerariesController < ApplicationController
     @itineraries = current_user.itineraries unless current_user.is?("expert")
     @itineraries = Itinerary.published if current_user.is?("expert")
     @starred_itineraries = current_user.find_voted_items
-    @pitched_itineraries = Pitch.find_by_user(current_user)
+    @pitched_itineraries = Pitch.find_personalized_by_itinerary(current_user)
     @won_itineraries = Pitch.find_winner_expert_by_itinerary(current_user)
     @itinerary = Itinerary.new
   end
@@ -53,6 +53,9 @@ class ItinerariesController < ApplicationController
     @itinerary_finalize = ItineraryFinalize.new({attributes: params[:itinerary_finalize], itinerary: @itinerary})
     place = Place.find_by_name(@itinerary.destination.downcase.strip)
     if @itinerary_finalize.save
+          # will copy the pitches that exist for this place
+          # into the current itinerary (and reset the winners)
+      @itinerary.get_pitches_from_place(place)
       if !current_user
         flash[:notice] = "Looks like there's already an account with that email address. Please login to continue! :)"
         session[:original_uri] = checkout_itinerary_path(@itinerary)
@@ -62,9 +65,6 @@ class ItinerariesController < ApplicationController
         if place.nil?
           redirect_to checkout_itinerary_path(@itinerary)
         else
-          # will copy the pitches that exist for this place
-          # into the current itinerary (and reset the winners)
-          @itinerary.get_pitches_from_place(place)
           redirect_to itinerary_path(@itinerary)
         end
       end

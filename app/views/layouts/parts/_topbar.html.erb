@@ -19,7 +19,7 @@
   </div>
 
   <% if current_user && current_user.is?("admin") && ( @itinerary.nil? || ( !@itinerary.nil? && !@itinerary.new_record? ) ) %>
-    <div id="guide">
+    <div id="guide" class="hide-on-print">
       <strong><%= link_to "EDIT", edit_admin_itinerary_path(@itinerary), class: "sans"  %></strong>
     </div>
   <% end %>

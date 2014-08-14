@@ -59,11 +59,10 @@ class PitchNew
           pitch.pictures << p
         end
       end
-
-      pitch.user = @user
-      pitch.save!
       @itinerary.pitches << pitch
       @itinerary.save!
+      pitch.user = @user
+      pitch.save!
     end
   rescue
     false

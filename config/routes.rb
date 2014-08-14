@@ -21,6 +21,7 @@ Outtrippin::Application.routes.draw do
     resources 'pitches' do
       member do
         put 'winner'
+        put 'remove'
       end
     end
     resource 'plan' do
@@ -61,7 +62,9 @@ Outtrippin::Application.routes.draw do
       post 'toggle_published'
     end
 
-    resources 'places'
+    resources 'places' do
+      post 'remove_pitch'
+    end
 
     resources 'plans' do
       post 'toggle_published'

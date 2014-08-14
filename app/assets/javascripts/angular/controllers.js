@@ -16,7 +16,7 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
 
   $scope.day = {"title": "", "body": "Start typing a description of the day... To save, click the green button on your right. To cancel, click the yellow button. You can add pictures after you've hit save.", "cost": "", "reccomendation": ""};
   $scope.tip_trick = {"title": "", "body": ""};
-  $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other"};
+  $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": "true"};
 
   // ADD DAY
   $scope.save_day = function() {
@@ -97,11 +97,11 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
 
   // ADD BOOKING
   $scope.save_booking = function() {
-    $http.put('plan/booking.json', {"title": $scope.booking.title, "body": $scope.booking.body, "price": $scope.booking.price, "location": $scope.booking.location, "link": $scope.booking.link, "type": $scope.booking.type }).
+    $http.put('plan/booking.json', {"title": $scope.booking.title, "body": $scope.booking.body, "price": $scope.booking.price, "location": $scope.booking.location, "link": $scope.booking.link, "type": $scope.booking.type, "zuji": $scope.booking.zuji }).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
         $scope.add_booking = false;
-        $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other"};
+        $scope.booking = {"title": "", "body": "", "price": "", "location": "", "link": "", "type": "other", "zuji": "true" };
       }).
       error(function(data, status, headers, config) {
         alert("error while creating");
@@ -109,8 +109,8 @@ planApp.controller('PlanCtrl', ['$scope', '$http', 'Plan', '$upload', '$sanitize
   }
 
   // UPDATE BOOKING
-  $scope.update_booking = function(id, title, body, link, loc, price, type) {
-    $http.post('plan/booking/' + id + '.json', {"title": title, "body": body, "link": link, "price": price, "location": loc, "type": type}).
+  $scope.update_booking = function(id, title, body, link, loc, price, type, zuji) {
+    $http.post('plan/booking/' + id + '.json', {"title": title, "body": body, "link": link, "price": price, "location": loc, "type": type, "zuji": zuji}).
       success(function(data, status, headers, config) {
         $scope.plan = Plan.query();
       }).

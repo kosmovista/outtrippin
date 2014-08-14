@@ -119,7 +119,7 @@ class PlansController < ApplicationController
 
   # BOOKING ##########
   def add_booking
-    booking = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join, price: params[:price], location: params[:location], link: params[:link], type: params[:type] }
+    booking = { title: params[:title], body: params[:body], id: (0...8).map { (65 + rand(26)).chr }.join, price: params[:price], location: params[:location], link: params[:link], type: params[:type], zuji: params[:zuji]}
     @plan.bookings << booking
     @plan.save!
     respond_to do |format|
@@ -137,6 +137,7 @@ class PlansController < ApplicationController
         bk[:location] = params[:location]
         bk[:link] = params[:link]
         bk[:type] = params[:type]
+        bk[:zuji] = params[:zuji]
       end
     end
     @plan.save!
