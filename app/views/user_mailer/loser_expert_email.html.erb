@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+  <p>Hi <%= @expert.name.blank? ? "there" : @expert.name %>,</p>
+  <h3>Thanks for your <%= @itinerary.destination %> pitch :)</h3>
+  <p>The customer has chosen a winning pitch and on this occasion you weren't successful.</p>
+  <p>However, we like to help our experts get better and better, so I'm sharing the winning pitch so you can see what was chosen <%= link_to "here", itinerary_url(@itinerary) %>.</p>
+  <p>Wanna go again? Check out the latest story opportunities on the <%= link_to "Storyteller Dashboard", itineraries_url %></p>
+  <p>Onwards and upwards!<br />Indi</p>
+</body>
+</html>
