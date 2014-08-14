@@ -6,12 +6,12 @@
           <h4 class="no-margin serif subheader pitch-number"><em><%= pitch_counter + 1 %></em></h4>
         <% end %>
       </div>
-      <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
+      <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
       <div class="large-2 small-9 text-center right columns">
         <a href="#" data-reveal-id="confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif expert-connect" >Pick Me!</a>
       </div>
       <% end %>
-    
+
       <div class="large-8 large-centered small-12 columns">
         <%= link_to (image_tag "edit-circle.png"), edit_itinerary_pitch_path(pitch.itinerary, pitch), class: "right", id: "Edit-Pitch", title: "Edit Pitch", style: "width:25px;" if (current_user.is?("expert") && !pitch.winner) || current_user.is?("admin")  %>
         <%= link_to (image_tag "delete-circle.png"), remove_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "right", id: "Edit-Pitch", title: "Delete Pitch", style: "position: absolute; right:-60px; width:25px;" if current_user.is?("admin")  %>
@@ -54,7 +54,7 @@
       </div>
     </div>
   </div>
-  
+
   <div id="interestd" class="f-dropdown medium content" data-dropdown-content>
     <h5 class="subheader serif"><em>My travel interests:</em></h5>
     <p>
@@ -67,7 +67,7 @@
     <% end %>
     <em><%= link_to "...See my full profile", user_path(pitch.user), target: "_blank", title: "Storyteller's Profile", class: "expert-profile" %></em>
   </div>
-  
+
   <% if current_user && !current_user.is?("expert") && !@itinerary.has_winner_pitch? %>
     <hr style="border:1px #e6e6e6 solid">
   <% end %>
@@ -91,6 +91,7 @@
     </div>
     <a class="close-reveal-modal">&#215;</a>
   </div>
+>>>>>>> f5e0266992af8e31a904f6972226e135a0113f61
 <% end %>
 <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? && @itinerary.paid? %>
   <div id="confirm-<%= pitch_counter + 1 %>" class="reveal-modal small">
@@ -113,21 +114,21 @@
       <div class="large-2 small-3 left columns">
         <%= link_to (image_tag pitch.user.avatar.url(:thumb), class: "rounded"), user_path(pitch.user), target: "_blank", title: "User Profile", class: "auto-profile" %>
       </div>
-        <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>      
+        <% if current_user.owns?(pitch.itinerary) && !pitch.itinerary.has_winner_pitch? %>
         <div class="large-2 small-9 right columns">
           <a href="#" data-reveal-id="a-confirm-<%= pitch_counter + 1 %>" class= "button pickthis expand radius secondary small text-center serif auto-connect" >Connect</a>
         </div>
         <% end %>
         <div class="large-2 hide-for-small right columns">
-          <%= link_to "Profile", user_path(pitch.user), target: "_blank", class: "button auto-profile alt-button expand radius secondary small text-center serif", title: "User Profile" %> 
+          <%= link_to "Profile", user_path(pitch.user), target: "_blank", class: "button auto-profile alt-button expand radius secondary small text-center serif", title: "User Profile" %>
         </div>
         <%= link_to (image_tag "delete-circle.png"), remove_itinerary_pitch_path(pitch.itinerary, pitch), method: :put, class: "right", id: "Edit-Pitch", title: "Delete Pitch", style: "position: absolute; right:-60px; width:25px;" if current_user.is?("admin")  %>
         <div class="large-6 small-12 columns">
         <h3 >
-          <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black auto-profile", title: "User Profile" %> 
+          <%= link_to pitch.user.personal_info[:name], user_path(pitch.user), target: "_blank", class: "black auto-profile", title: "User Profile" %>
         </h3>
       </div>
-        
+
         <div class="large-10 right small-12 columns">
           <div class="panel pitch-auto">
             <p class="subheader serif" ><em><%= pitch.why_me %></em></p>
