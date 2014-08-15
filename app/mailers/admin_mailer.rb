@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
   def new_itinerary_email(itinerary)
     @itinerary = itinerary
     @user = @itinerary.user
-    mail to: ADMINS, subject: "[outtrippin.com] <%= @user.email %> submitted an itinerary"
+    mail to: ADMINS, subject: "[outtrippin.com] #{@user.email} submitted an itinerary"
   end
 
   def payment_received_email(itinerary)
