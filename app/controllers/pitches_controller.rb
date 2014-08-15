@@ -47,6 +47,12 @@ class PitchesController < ApplicationController
       @pitch.save
       UserMailer.delay.winner_expert_email(@pitch)
       AdminMailer.delay.winner_expert_email(@pitch)
+
+      # deliver loser emails
+      @itinerary.pitches.each do |p|
+        UserMailer.delay.loser_expert_email(p) unless p.winner
+      end
+
       @itinerary = Itinerary.find(params[:itinerary_id])
       @itinerary.published = !@itinerary.published
       @itinerary.save
