@@ -25,7 +25,7 @@
         <% Plan.all.each do |p| %>
         <tr>
           <td><%= p.target_user.email unless p.target_user.nil? %></td>
-          <td><%= p.itinerary.user_source %></td>
+          <td><%= highlight(p.itinerary.user_source, "Zuji") %></td>
           <td><%= link_to p.itinerary.destination, itinerary_plan_path(p.itinerary) unless p.itinerary.nil? %></td>
           <% unless p.user.nil? %>
             <td><%= link_to p.target_user.name, user_path(p.target_user) unless p.target_user.nil? %></td>
