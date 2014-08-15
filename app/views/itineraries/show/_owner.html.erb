@@ -661,26 +661,24 @@
   <% if @plan && @plan.published %>
     <%= render @plan %>
     <div id="login-modal" class="reveal-modal medium text-center">
-      <h3>Planning a trip to <%= @itinerary.destination %>?</h3>
-      <h4 style="margin-bottom:50px; margin-top:20px;" class="serif subheader"><em>Let travel experts like <%= @plan.user.personal_info[:name] %> help you plan your perfect trip.</em></h4>
+      <h3 style="margin-bottom:40px; margin-top:20px;" class="serif subheader"><em>Hate pop-ups? Like travel stories?</em></h3>
       <div class="row">
-        <div class="large-11 large-centered small-12 columns">
-          <%= form_for(Itinerary.new) do |f| %>
-            <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet..." %>
-            <%= f.submit "Blow My Mind!", class: "button serif radius pickthis in-input" %>
-          <% end %>
+        <div class="large-8 large-centered small-12 columns">
+          <div class="fb-like-box" data-href="https://www.facebook.com/outtrippin" data-width="603" data-height="350" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
         </div>
       </div>
-      <div class="row text-center medium-break">
-        <p class="sans">
-          <%= link_to "Already a member?", login_path, class: "sans", style: "font-size:.9em; padding-right:10px;" %> | 
-          <a class="sans otherClose" style="font-size:1em; padding-left:10px;" onclick="$('#login-modal').foundation('reveal', 'close');">No thanks, I'm just browsing...</a>
-          <a class="close-reveal-modal" >&#215;</a>
-        </p>
-      </div>
+      <a class="close-reveal-modal" >&#215;</a>
     </div>
-    
     <%= content_for :body do %>
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&appId=308332282528207&version=v2.0";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      </script>
       <script>
       function getScrollTop(){
         if(typeof pageYOffset!= 'undefined'){
@@ -711,9 +709,7 @@
         });
       </script>
       <script>
-        mixpanel.track_forms("#new_itinerary", "Started Contest", {
-          'From': 'Story'
-        });
+        mixpanel.register({ 'User Type': "Unregistered" });
       </script>
     <% end %>
     <%= content_for :head do %>
