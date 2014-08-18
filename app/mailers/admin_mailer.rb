@@ -4,7 +4,7 @@ class AdminMailer < ActionMailer::Base
 
   def new_expert_email(user)
     @user = user
-    mail to: ADMINS, subject: "New Expert Registered: #{@user.email} from #{@user.expert_info[:website]}"
+    mail to: ADMINS, subject: "*New Expert Registered:* #{@user.email} from #{@user.expert_info[:website]}."
   end
 
   def new_itinerary_email(itinerary)
@@ -30,7 +30,7 @@ class AdminMailer < ActionMailer::Base
     @expert = @pitch.user
     @itinerary = @pitch.itinerary
     @user = @itinerary.user
-    mail to: ADMINS, subject: "[outtrippin.com] An Expert was Picked!"
+    mail to: ADMINS, subject: "*An Expert was chosen:* #{@user.email} picked #{@expert.personal_info[:name]} for #{itinerary_url(@itinerary)}"
   end
 
   def plan_is_ready_email(plan)
