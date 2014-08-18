@@ -1,16 +1,16 @@
 class AdminMailer < ActionMailer::Base
-  default from: "\"OutTrippin\" <contact@outtrippin.com>"
+  default from: "\"OutTrippin Bot\" <contact@outtrippin.com>"
   ADMINS = %w(joao@outtrippin.com, indi@outtrippin.com, kunal@outtrippin.com)
 
   def new_expert_email(user)
     @user = user
-    mail to: ADMINS, subject: "[outtrippin.com] new expert registered"
+    mail to: ADMINS, subject: "New Expert Registered: #{@user.email} from #{@user.expert_info[:website]}"
   end
 
   def new_itinerary_email(itinerary)
     @itinerary = itinerary
     @user = @itinerary.user
-    mail to: ADMINS, subject: "[outtrippin.com] #{@user.email} submitted an itinerary"
+    mail to: ADMINS, subject: "[outtrippin.com] new itinerary submitted"
   end
 
   def payment_received_email(itinerary)
@@ -36,6 +36,6 @@ class AdminMailer < ActionMailer::Base
   def plan_is_ready_email(plan)
     @plan = plan
     @itinerary = @plan.itinerary
-    mail to: ADMINS, subject: "[outtrippin.com] A Story is ready for the customer!"
+    mail to: ADMINS, subject: "[outtrippin.com] A story is ready admin approval"
   end
 end
