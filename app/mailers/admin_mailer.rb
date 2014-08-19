@@ -22,7 +22,7 @@ class AdminMailer < ActionMailer::Base
     @pitch = pitch
     @itinerary = @pitch.itinerary
     @user = @pitch.user
-    mail to: ADMINS, subject: "[outtrippin.com] new pitch added"
+    mail to: ADMINS, subject: "*New pitch added:* #{@pitch.title} by #{@user.personal_info[:name]} to #{itinerary_url(@itinerary)}"
   end
 
   def winner_expert_email(pitch)
@@ -36,6 +36,6 @@ class AdminMailer < ActionMailer::Base
   def plan_is_ready_email(plan)
     @plan = plan
     @itinerary = @plan.itinerary
-    mail to: ADMINS, subject: "[outtrippin.com] A story is ready admin approval"
+    mail to: ADMINS, subject: "*A story is ready admin approval:* #{itinerary_plan_url(@itinerary)}"
   end
 end

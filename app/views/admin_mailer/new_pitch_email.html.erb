@@ -4,7 +4,7 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-  <p>A new pitch *<%= @pitch.title %>* was added by *<%= @user.personal_info[:name] %>* to <%= link_to itinerary_url(@itinerary) %></p>
+  <p>A new pitch *<%= @pitch.title %>* was added by *<%= @user.personal_info[:name] %>* to <%= link_to itinerary_url(@itinerary), itinerary_url(@itinerary) %></p>
   <p>*Summary:* <%= @pitch.summary %></p>
   <p>*About me:* <%= @pitch.why_me %></p>
 </body>
