@@ -1,0 +1,202 @@
+  
+  <div class="cover" style=" background-image: url('http://outtrippin.com/assets/1-3478fc79387dec242be55e97bff6deec.jpg');"></div>
+  <div id="overlay"></div>
+  <div class="header">
+    <div class="row">
+      <div class="large-12 small-12 text-center columns">
+        <h2 class="white text-center" style="margin-top:40px;"><%= image_tag "bubble-outtrippin.png", style: "width:300px;" %></h2>
+        
+        <h5 class="white serif subheader text-center">
+        
+        </h5>
+        <div class="large-1 small-2 text-center large-centered small-centered columns">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-9 large-centered small-12 columns">
+  <h3>Basic Elements</h3>
+  <h5>Buttons</h5>
+    <ul class="short-break small-block-grid-3">
+      <li><a href="#"  class= "button pickthis expand radius serif " >Primary</a></li>
+      <li><a href="#"  class= "button alt-button expand radius serif " >Secondary</a></li>
+      <li><a href="#"  class= "button pickthis-secondary expand small radius serif " >Other</a></li>
+    </ul> 
+  </div>
+</div>
+<div class="row">
+  <div class="large-9 large-centered small-12 columns">
+  <h5>Navigation</h5>
+</div>
+</div>
+  <style>
+.tabs {position: relative !important; background-color: #4a4a4a; top:0 !important; padding-top:30px; height:80px; background-image: url('http://www.outtrippin.com/assets/cover1-9d0c1876d98ad900a87777c118f9b1b0.jpg');}
+.act {height:auto !important; width:auto !important; }
+</style>
+<div class="tabs">
+  <div class="row">
+    <div class="large-12 large-centered small-centered small-12 columns">
+      <div class="large-9 large-centered small-centered small-12 columns">
+        <hr class="tab-border">
+        <ul id="cover-tabs" class="inline-list cover-tabs text-center sans">          
+          
+          <li><a href="#" id="slide1" class="active-tab">BOOKING</a></li>
+          <li><a href="#" id="slide2">MAPS</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="big-break row">
+  <div class="large-9 large-centered small-12 columns">
+    <h5>Forms</h5>
+    <form accept-charset="UTF-8" action="/itineraries" class="new_itinerary" id="new_itinerary" method="post">
+    <input autofocus="autofocus" id="itinerary_destination" name="itinerary[destination]" placeholder="Start with a place, city, country, continent, planet..." type="text" autocomplete="off">
+  </form>
+  <form class="custom" id="new_itinerary_details" method="post">
+    <ul class="short-break small-block-grid-2">
+      <li><input id="itinerary_details_name" name="itinerary_details[name]" placeholder="Our amazing adventure to Costa Rica!" type="text"></li>
+      <li><input id="itinerary_details_name" name="itinerary_details[name]" placeholder="Our amazing adventure to Costa Rica!" type="text" disabled></li>
+      <li><input id="itinerary_details_name" name="itinerary_details[name]" placeholder="Our amazing adventure to Costa Rica!" type="text" class="error"><small class="error">Invalid entry</small></li>
+       <li><select id="itinerary_details_departure" name="itinerary_details[departure]" >
+        <option value="Haven't decided">Haven't decided</option>
+      <option value="September, 2014">September, 2014</option>
+      <option value="October, 2014">October, 2014</option>
+      <option value="November, 2014">November, 2014</option>
+      <option value="December, 2014">December, 2014</option>
+    </select></li>
+    </ul>
+   </form>
+    <form class="custom" id="new_itinerary_details" method="post">
+      <ul class="small-block-grid-1 large-block-grid-4">
+        <li><input name="itinerary_details[booked][Flights]" type="hidden" value="0"><input id="itinerary_details_booked_Flights" name="itinerary_details[booked][Flights]" type="checkbox" value="1" class="hidden-field"><span class="custom checkbox"></span><label class="cbox" for="itinerary_details_booked_Flights">Flights</label></li>
+        <li><input name="itinerary_details[booked][Hotels]" type="hidden" value="0"><input id="itinerary_details_booked_Hotels" name="itinerary_details[booked][Hotels]" type="checkbox" value="1" class="hidden-field"><span class="custom checkbox"></span><label class="cbox" for="itinerary_details_booked_Hotels">Hotels</label></li>
+        <li><input name="itinerary_details[booked][Activities]" type="hidden" value="0"><input id="itinerary_details_booked_Activities" name="itinerary_details[booked][Activities]" type="checkbox" value="1" class="hidden-field"><span class="custom checkbox"></span><label class="cbox" for="itinerary_details_booked_Activities">Activities</label></li>
+        <li><input name="itinerary_details[booked][Activities]" type="hidden" value="0"><input id="itinerary_details_booked_Activities" name="itinerary_details[booked][Activities]" type="checkbox" value="1" class="hidden-field"><span class="custom checkbox"></span><label class="cbox" for="itinerary_details_booked_Activities">Other Stuff</label></li>
+      </ul>
+    </form>
+  </div>
+</div>
+<div class="short-break row">
+  <div class="large-9 large-centered small-12 columns">
+     <h5>Loading Indicator</h5>
+      <div class="spinner" style="margin-top:25px; margin-bottom:40px;">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+  </div>
+</div>
+<div class="short-break row">
+  <div class="large-9 large-centered small-12 columns">
+    <h5>Color Swatches</h5>
+    <div class="medium-break">
+    <ul class="small-block-grid-1 large-block-grid-4">
+      <li>
+        <div class="panel" style="background-color:#00bccf; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader" style="padding:0;">#00bccf</h6></div>
+        <div class="panel" style="background-color:#00a5b6; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader"style="padding:0;">#00a5b6</h6></div>
+      </li>
+      <li>
+        <div class="panel" style="background-color:#fdfdfd; margin:0; border-radius:0; padding:.8em;"><h6 class="text-center subheader" style="padding:0;">#fdfdfd</h6></div>
+        <div class="panel" style="background-color:#f3f3f3; margin:0; border-radius:0; padding:.8em;"><h6 class="text-center subheader"style="padding:0;">#f3f3f3</h6></div>
+      </li>
+      <li>
+        <div class="panel" style="background-color:#7e7e7e; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader" style="padding:0;">#7e7e7e</h6></div>
+        <div class="panel" style="background-color:#4c4c4c; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader"style="padding:0;">#4c4c4c</h6></div>
+      </li>
+      <li>
+        <div class="panel" style="background-color:#C46752; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader" style="padding:0;">#C46752</h6></div>
+        <div class="panel" style="background-color:#E93217; margin:0; border-radius:0; padding:.8em;"><h6 class="white text-center subheader"style="padding:0;">#E93217</h6></div>
+      </li>
+
+    </ul>
+  </div>
+  </div>
+</div>
+<hr style="border:1px #e6e6e6 solid">
+<div class="row">
+  <div class="large-9 large-centered small-12 columns">
+  <h3>Content</h3>
+  <h5>Profile & Avatars</h5>
+  <div class="written-by">
+    <hr>
+      <p class="sans subheader" style="margin-bottom:15px;"><small>BY OUTTRIPPIN STORYTELLER</small></p>
+      <div class="row">
+        <div class="large-12 small-12 columns">
+          <img alt="Thumb stephanie walsh   discoveringice " class="rounded avatar-footer" src="http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/459/thumb_Stephanie_Walsh_-_DiscoveringIce_.jpg">
+          <h5 class="no-margin no-padding"> <a class="black" href="/users/459" target="_blank" title="User Profile">Stephanie Walsh</a>
+            <a class="hide-for-small" href="http://facebook.com/DiscoveringIce" target="_blank"><img alt="Facebook 40" class="right" src="/assets/facebook_40-d0e39b5810da8323361b027685689a7e.png" style="width:20px; margin:2px;"></a>
+            
+            <a class="hide-for-small" href="http://twitter.com/DiscoveringIce" target="_blank"><img alt="Twitter 40" class="right" src="/assets/twitter_40-8bbf5c2f284a00cd0daf579cfd237d8d.png" style="width:20px; margin:2px;"></a>
+            
+            <a class="hide-for-small" href="http://instagram.com/DiscoveringIce" target="_blank"><img alt="Instagram" class="right" src="/assets/instagram-79cff73c6ff8724f432110201a1c10c7.png" style="width:25px"></a>
+          </h5>
+            <p style="font-size:90%" class="no-margin hide-for-small no-padding"><em>I blog at <a href="http://www.discoveringice.com" target="_blank">http://www.discoveringice.com</a></em></p>
+            <h5 class="subheader serif" style="line-height:1em;"><em><small>I am a girl on a quest to live life on my own terms. I want to make a living from my passions; photography, travel, documentary, writing and anything else I discover along the way. I've lived in four continents and have travelled around Latin America during the last three years. I hope to continue doing so, taking photos and making memories and friends as I go.</small></em>
+        </h5></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="large-9 large-centered small-12 columns">
+  <h5>Paragraph</h5>
+  <div class="short-break read">
+    <div class="row">
+      <div class="large-10 left columns">
+        <h3 style="margin-top:0;">Floating Gardens and Colonial Mansions</h3>
+        <div class="desc">
+          <div class="day-photo-C">
+          <img src="http://fc3d750e1b22019028ae-eb9d0534c31fede444754f378d638c42.r70.cf1.rackcdn.com/uploads/picture/source/1311/5753670494_1f649db9ce.jpg"></div>
+          <p >Enjoy a relaxing ride on a traditional ‘trajinera’, an old agricultural boat, through the beautiful floating gardens of Xochimilco for your final day in Mexico City.</p>
+          <p>This pre-Columbian agricultural city is now a UNESCO World Heritage Site, as the canals that were built by the Aztecs are almost all still intact.</p> <p>If you have little time before your return flight, you can visit the floating gardens independently and leave early. However, if you have more time, you can&nbsp;<a href="http://www.getyourguide.com/mexico-city-l194/xochimilco-aztec-canal-boat-trip-coyoacan-from-mexico-city-t3739/" target="_blank">do it with a tour</a>&nbsp;that also includes a visit to the National University of&nbsp;Mexico to see some impressive mural art and sculptures by renowned artist Juan O'Gorman. The tour then finishes the day off by visiting the colonial neighborhood of Coyoacan, which was used as a base during the Spanish conquest of the Aztec Empire. The area was once a village separated from Mexico City but has been part of the capital since 1857. It is famous for its many stunning 16<sup>th</sup> century colonial mansions and buildings.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="break row">
+  <div class="large-9 large-centered small-12 columns">
+    <h5>Quote</h5>
+  </div>
+  <div class="short-break row">
+      <div class="large-11 large-centered columns">
+        <div class="tips">
+          <h4 class="subheader black serif"><em><span style="font-size:120%;">Museums Galore!</span> If you're a museum fanatic, there are over 160 museums in Mexico City, the highest number in the world. Best of all, they're almost all free on Sundays!</em></h4>
+          <h6 class="subheader serif" style="padding-top:.8em;">
+            <img alt="Thumb stephanie walsh   discoveringice " class="rounded text-right tip-avatar" src="http://fe5f910fe9492af904f7-d923a624db3b3940ce48298d73fff237.r75.cf1.rackcdn.com/uploads/user/avatar/459/thumb_Stephanie_Walsh_-_DiscoveringIce_.jpg">
+            <em>A tip by Stephanie Walsh</em>
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="break row">
+  <div class="large-9 large-centered small-12 columns">
+    <h5>Comments (from Disqus)</h5>
+    <div id="disqus_thread" class="short-break"></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'outtrippin'; // required: replace example with your forum shortname
+      var disqus_url = '<%= "http://outtrippin.com/itineraries/3486" %>';
+
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  </div>
+</div>
+
+
+<%= content_for :head do %>
+<%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "browse", media: "all", "data-turbolinks-track" => true %>
+<% end %>

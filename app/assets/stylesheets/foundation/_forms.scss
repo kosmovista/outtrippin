@@ -24,7 +24,7 @@ $input-focus-border-color: darken(#fdfdfd, 40%) !default;
 $input-border-style: solid !default;
 $input-border-width: 1px !default;
 $input-border-radius: 2px !default;
-$input-disabled-bg: #ddd !default;
+$input-disabled-bg: #f6f6f6;
 $input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1) !default;
 $input-include-glowing-effect: true !default;
 
@@ -50,7 +50,7 @@ $input-prefix-font-color: #333 !default;
 $input-prefix-font-color-alt: #fdfdfd !default;
 
 // We use these to style the error states for inputs and labels
-$input-error-message-padding: em-calc(6 4) !default;
+$input-error-message-padding: em-calc(2 2) !default;
 $input-error-message-top: 0 !default; 
 $input-error-message-font-family: inherit !default;
 $input-error-message-font-size: em-calc(12) !default;

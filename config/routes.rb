@@ -54,6 +54,7 @@ Outtrippin::Application.routes.draw do
   get     'home'      => 'home#index'
   get     'browse'    => 'application#browsexperimental'
   get     'browsexperimental'    => 'application#browsexperimental'
+  get     'uikit'    => 'application#uikit'
 
   namespace :admin do
     get ''  => 'dashboard#index', as: '/'

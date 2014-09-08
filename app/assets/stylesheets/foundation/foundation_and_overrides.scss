@@ -340,7 +340,7 @@ $input-box-shadow: none;
 
 // We use these to style the error states for inputs and labels
 
-$input-error-message-padding: em-calc(10 10);
+$input-error-message-padding: em-calc(3 10);
 $input-error-message-top: 0;
 $input-error-message-font-family: $sans-font-family;
 $input-error-message-font-size: em-calc(14);
@@ -359,10 +359,10 @@ $input-error-message-font-weight: normal;
 
 // We use these to build padding for buttons.
 
-// $button-med: em-calc(12);
-// $button-tny: em-calc(7);
-// $button-sml: em-calc(9);
-// $button-lrg: em-calc(16);
+$button-med: em-calc(9);
+$button-tny: em-calc(6);
+$button-sml: em-calc(7);
+$button-lrg: em-calc(13);
 
 // We use this to control the display property.
 
@@ -374,10 +374,10 @@ $input-error-message-font-weight: normal;
 $button-font-family: $sans-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
-// $button-font-med: em-calc(16);
-$button-font-tny: em-calc(12);
-// $button-font-sml: em-calc(13);
-// $button-font-lrg: em-calc(20);
+$button-font-med: em-calc(14);
+$button-font-tny: em-calc(9);
+$button-font-sml: em-calc(12);
+$button-font-lrg: em-calc(16);
 // $button-font-weight: bold;
 // $button-font-align: center;
 
@@ -607,7 +607,7 @@ $alert-border-color: $primary-color;
 // $custom-form-border-color: #ccc;
 $custom-form-border-size: 2px;
 // $custom-form-bg: #fff;
-// $custom-form-bg-disabled: #ddd;
+$custom-form-bg-disabled: #eee;
 $custom-form-input-size: 25px;
 $custom-form-check-color: $primary-color;
 $custom-form-check-size: 25px;
