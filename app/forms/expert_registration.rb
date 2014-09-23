@@ -49,8 +49,6 @@ class ExpertRegistration
     },
     expert_info: {
       website:      website,
-      paypal:       paypal,
-      rss:          rss,
       countries:    countries,
       cities:       cities,
       style:        style,
@@ -61,6 +59,8 @@ class ExpertRegistration
       instagram:    instagram,
       google:       google,
       hometown:     hometown,
+      paypal:       paypal,
+      rss:          rss,
       current_location: current_location,
       story:        story,
       terms_of_use: terms_of_use

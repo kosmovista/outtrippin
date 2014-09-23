@@ -34,7 +34,7 @@
           <td><%= link_to i.destination, itinerary_path(i) %> </td>
           <td><%= time_ago_in_words i.created_at %></td>
           <td><%= i.paid %></td>
-          <td><%= i.user_source %></td>
+          <td><%= highlight(i.user_source, "Zuji") %></td>
           <td><%= i.extra_info[:reward] %></td>
           <td><%= link_to (i.published? ? "Unpublish" : "Publish"), admin_itinerary_toggle_published_path(i), method: 'post' %></td>
           <td><%= i.extra_info[:booked].join(', ').html_safe unless i.extra_info[:booked].blank? %></td>
@@ -42,6 +42,7 @@
         </tr>
         <% end %>
         <% end %>
+
       </tbody>
     </table>
   </div>

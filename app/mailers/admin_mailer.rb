@@ -1,10 +1,10 @@
 class AdminMailer < ActionMailer::Base
-  default from: "\"OutTrippin\" <contact@outtrippin.com>"
+  default from: "\"OutTrippin Bot\" <contact@outtrippin.com>"
   ADMINS = %w(joao@outtrippin.com, indi@outtrippin.com, kunal@outtrippin.com)
 
   def new_expert_email(user)
     @user = user
-    mail to: ADMINS, subject: "[outtrippin.com] new expert registered"
+    mail to: ADMINS, subject: "*New Expert Registered:* #{@user.email} from #{@user.expert_info[:website]}."
   end
 
   def new_itinerary_email(itinerary)
@@ -22,7 +22,7 @@ class AdminMailer < ActionMailer::Base
     @pitch = pitch
     @itinerary = @pitch.itinerary
     @user = @pitch.user
-    mail to: ADMINS, subject: "[outtrippin.com] new pitch added"
+    mail to: ADMINS, subject: "*New pitch added:* #{@pitch.title} by #{@user.personal_info[:name]} to #{itinerary_url(@itinerary)}"
   end
 
   def winner_expert_email(pitch)
@@ -30,12 +30,12 @@ class AdminMailer < ActionMailer::Base
     @expert = @pitch.user
     @itinerary = @pitch.itinerary
     @user = @itinerary.user
-    mail to: ADMINS, subject: "[outtrippin.com] An Expert was Picked!"
+    mail to: ADMINS, subject: "*An Expert was chosen:* #{@user.email} picked #{@expert.personal_info[:name]} for #{itinerary_url(@itinerary)}"
   end
 
   def plan_is_ready_email(plan)
     @plan = plan
     @itinerary = @plan.itinerary
-    mail to: ADMINS, subject: "[outtrippin.com] A Story is ready for the customer!"
+    mail to: ADMINS, subject: "*A story is ready admin approval:* #{itinerary_plan_url(@itinerary)}"
   end
 end

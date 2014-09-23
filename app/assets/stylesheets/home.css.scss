@@ -258,14 +258,14 @@ div#featuring {
   margin-left:-1px !important;
   }
 
-.pickthis {
+.pickthis-secondary {
   border: 2px #aeaeae solid !important;
   background-color: rgba(0,0,0,0) !important;
   border-top: 0px;
   padding-top: 0.2em !important;
   padding-bottom: 0.3em !important;
   transition: all 200ms linear;
-  font-weight: normal;
+  font-weight: normal !important;
   font-size: 1.1em !important;
   font-style: italic;
   color: #4a4a4a !important;
