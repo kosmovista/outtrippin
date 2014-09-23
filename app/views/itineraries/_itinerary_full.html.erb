@@ -24,7 +24,7 @@
        <% if current_user && !@itinerary.has_winner_pitch? %>
        <br>
           <%= image_tag "clock.png", style: "width:17px; opacity:0.7; margin:-4px 4px 0;" %>
-          <%= ("Closes on " + @itinerary.extra_info[:countdown] + ". ") unless @itinerary.extra_info[:countdown].blank? %><%= pitches_so_far itinerary if current_user && current_user.is?("admin") %>
+          <%= ("Closes on " + @itinerary.extra_info[:countdown] + ". ") unless @itinerary.extra_info[:countdown].blank? %><%= pitches_so_far @itinerary if current_user && current_user.is?("admin") %>
 
         <% end %>
     </em></p>
