@@ -6,7 +6,7 @@ class ExpertRegistration
     false
   end
 
-  ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :rss, :paypal, :instagram, :google, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack, :terms_of_use]
+  ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :rss, :paypal, :instagram, :google, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack, :terms_of_use, :pinterest]
 
   attr_accessor *ATTRIBUTES
 
@@ -63,7 +63,8 @@ class ExpertRegistration
       rss:          rss,
       current_location: current_location,
       story:        story,
-      terms_of_use: terms_of_use
+      terms_of_use: terms_of_use,
+      pinterest: pinterest
     })
     return @user
   end
