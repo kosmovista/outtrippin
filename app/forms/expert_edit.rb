@@ -6,7 +6,7 @@ class ExpertEdit
   end
 
   ATTRIBUTES = [:name, :email, :avatar, :password, :password_confirmation, :countries, :cities, :style, :bio, :website, :paypal, :rss, :instagram, :google, :hometown, :current_location, :facebook, :twitter, :story, :travel_hack, :pinterest ]
-  EXPERT_ATTRIBUTES = %w(countries cities style bio website paypal rss instagram google hometown current_location facebook twitter story travel_hack)
+  EXPERT_ATTRIBUTES = %w(countries cities style bio website paypal rss instagram google hometown current_location facebook twitter story travel_hack pinterest)
 
   attr_accessor *ATTRIBUTES
 
