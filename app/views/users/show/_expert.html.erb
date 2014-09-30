@@ -15,6 +15,7 @@
   <h5 class="subheader serif text-center" style="margin-bottom:20px"><em><%= @user.expert_info[:bio] %></em></h5>
   <%= link_to (image_tag "facebook_40.png", style: "width:35px; margin:5px;"), "http://" + @user.facebook, title: "Facebook",  target: '_blank' unless @user.facebook.blank? %>
   <%= link_to (image_tag "twitter_40.png", style: "width:35px; margin:5px;"), "http://twitter.com/" + @user.twitter, title: "Twitter", target: '_blank' unless @user.twitter.blank? %>
+  <%= link_to (image_tag "pinterest_40.png", style: "width:33px; margin:3px;"), "http://pinterest.com/" + @user.pinterest, title: "Pinterest", target: '_blank' unless @user.pinterest.blank? %>
   <%= link_to (image_tag "instagram.png", style: "width:40px"), "http://instagram.com/" + @user.instagram, title: "Instagram", target: '_blank' unless @user.instagram.blank? %>
   <%= link_to (image_tag "google.png", style: "width:35px; margin:5px;"), "http://" + @user.google, title: "Instagram", target: '_blank' unless @user.google.blank? %>
   <% if current_user == @user || (current_user && current_user.admin?)  %>
