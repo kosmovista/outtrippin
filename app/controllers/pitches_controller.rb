@@ -33,7 +33,12 @@ class PitchesController < ApplicationController
 
   def update
     @pitch_edit = PitchEdit.new(itinerary: @itinerary, user: current_user, pitch: @pitch, attributes: params[:pitch_edit])
-    @pitch.auto = false
+    if @pitch.auto == true
+      AdminMailer.delay.new_pitch_email(@pitch)
+      UserMailer.delay.new_pitch_email(@pitch)
+      UserMailer.delay.new_pitch_expert_email(@pitch)
+      @pitch.auto = false
+    end
     if @pitch_edit.save
       redirect_to itinerary_path(@itinerary)
     else
@@ -50,7 +55,7 @@ class PitchesController < ApplicationController
 
       # deliver loser emails
       @itinerary.pitches.each do |p|
-        UserMailer.delay.loser_expert_email(p) unless p.winner
+        UserMailer.delay.loser_expert_email(p) unless p.winner || p.auto
       end
 
       @itinerary = Itinerary.find(params[:itinerary_id])

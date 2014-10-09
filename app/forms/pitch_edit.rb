@@ -45,7 +45,6 @@ class PitchEdit
   def save
     return false unless valid?
     if update_objects
-      AdminMailer.delay.new_pitch_email(@pitch)
       true
     else
       false
