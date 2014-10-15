@@ -6,4 +6,8 @@ class HomeController < ApplicationController
     @itinerary = Itinerary.new
     @featuring_stories = FeaturedPlan.all.map { |p| p.plan }
   end
+  
+  def hotels
+  	@itinerary = Itinerary.new
+  end
 end

@@ -25,6 +25,7 @@
   <p class="lead">Thought so! Okay, do you have a general idea of where you'd like to go?</p>
   <%= form_for @itinerary do |f| %>
     <%= f.text_field :destination, placeholder: "Start with a place, city, country, continent, planet...", :autofocus => true %>
+    <%= f.hidden_field :source, :value => "OutTrippin" %>
     <%= f.submit "Let's get started!", class: "tertiary button radius" %>
   <% end %>
 </div>

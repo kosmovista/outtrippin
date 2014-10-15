@@ -7,6 +7,8 @@ class Itinerary < ActiveRecord::Base
   has_many :pitches, inverse_of: :itinerary
   has_many :plans, inverse_of: :itinerary
 
+  attr_accessor :source
+
   default_scope { order('created_at DESC') }
 
   serialize :extra_info, Hash
@@ -28,7 +30,13 @@ class Itinerary < ActiveRecord::Base
 
   def user_source
     if self.extra_info.has_key?(:source)
-      "Zuji"
+      if self.extra_info[:source] == "hotel"
+        "Hotel"
+      elsif self.extra_info[:source] == "OutTrippin"
+        "OutTrippin"
+      else
+        "Zuji"
+      end
     else
       "OutTrippin"
     end

@@ -8,7 +8,7 @@
   <div id="destinations">
     <div class="row">
       <div class="large-12 small-12 columns">
-        <h1 id="header" class="no-margin" ><%= homepage("header") %></h1>
+        <h1 id="header" class="no-margin" >Engage your guests like never before.</h1>
         <h3 id="sub-header" class="white subheader"><%= homepage("subheader") %></h3>
         <%= form_for @itinerary do |f| %>
         <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
@@ -16,7 +16,7 @@
           <%= errors_for(@itinerary, :destination) %>
         </div>
         <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
-          <%= f.hidden_field :source, :value => "OutTrippin" %>
+          <%= f.hidden_field :source, :value => "hotel" %>
           <%= f.submit homepage("submit"), class: "button radius expand" %>
         </div>
         <% end %>

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  ROLES = %w[admin expert]
+  ROLES = %w[admin expert hotel]
 
   acts_as_voter
 
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
 
   def admin?
     self.is?("admin")
+  end
+
+  def hotel?
+    self.is?("hotel")
   end
   # (end) ROLE MANAGER LOGIC
 

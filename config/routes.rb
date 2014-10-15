@@ -52,6 +52,7 @@ Outtrippin::Application.routes.draw do
   delete  'logout'    => 'user_sessions#destroy'
   get     'register'  => 'experts#new'
   get     'home'      => 'home#index'
+  get     'hotels'    => 'home#hotels'
   get     'browse'    => 'application#browsexperimental'
   get     'browsexperimental'    => 'application#browsexperimental'
   get     'uikit'    => 'application#uikit'
@@ -72,8 +73,6 @@ Outtrippin::Application.routes.draw do
       post 'toggle_featured'
     end
   end
-
-
 
   # API ###########################################################
   namespace :api do

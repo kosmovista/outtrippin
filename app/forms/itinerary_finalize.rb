@@ -57,8 +57,12 @@ class ItineraryFinalize
 
   def create_objects
     ActiveRecord::Base.transaction do
-      extra_info = { activity_budget: activity_budget, accommodation_budget: accommodation_budget, details: details, must: must, avoid: avoid, style: @itinerary.extra_info[:style], personality: personality, booked: @itinerary.extra_info[:booked], name: @itinerary.name, travelers: @itinerary.travelers }
+      extra_info = { activity_budget: activity_budget, accommodation_budget: accommodation_budget, details: details, must: must, avoid: avoid, style: @itinerary.extra_info[:style], personality: personality, booked: @itinerary.extra_info[:booked], name: @itinerary.name, travelers: @itinerary.travelers, source: @itinerary.extra_info[:source] }
       user.save!
+      if @itinerary.extra_info[:source] == "hotel"
+        @user.roles = ["hotel"]
+        user.save
+      end
       if @itinerary.user.nil?
         @itinerary.update_attributes(extra_info: extra_info, user: user)
       else
