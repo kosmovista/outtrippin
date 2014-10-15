@@ -21,7 +21,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @password = password
     @itinerary = itinerary
-    if @itinerary.extra_info.has_key?(:source)
+    if @itinerary.user_source == "Zuji"
       mail to: @user.email, subject: "Welcome to Zuji!", from: "\"Zuji\" <planmytrip@zuji.com.au>"
     else
       mail to: @user.email, subject: "Welcome to OutTrippin!"
@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
 
     @user = user
     @itinerary = itinerary
-    if @itinerary.extra_info.has_key?(:source)
+    if @itinerary.user_source == "Zuji"
       mail to: @user.email, subject: "Thanks for submitting your Zuji trip and payment.", from: "\"Zuji\" <planmytrip@zuji.com.au>"
     else
       mail to: @user.email, subject: "Thanks for submitting your OutTrippin trip and payment."
@@ -100,7 +100,7 @@ class UserMailer < ActionMailer::Base
     @itinerary = @pitch.itinerary
     @user = @itinerary.user
 
-    if @itinerary.extra_info.has_key?(:source)
+    if @itinerary.user_source == "Zuji"
       mail to: @user.email, subject: "New Zuji Pitch Received!", from: "\"Zuji\" <planmytrip@zuji.com.au>"
     else
       mail to: @user.email, subject: "New OutTrippin Pitch Received!"
