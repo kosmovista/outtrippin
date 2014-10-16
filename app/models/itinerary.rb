@@ -25,7 +25,11 @@ class Itinerary < ActiveRecord::Base
   end
 
   def price_in_cents(plan)
-    plan * self.duration.to_i * 100
+    if plan == "Single"
+      50000
+    else
+      plan.to_i * self.duration.to_i * 100
+    end
   end
 
   def user_source

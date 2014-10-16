@@ -2,12 +2,20 @@ module Chargeable
   extend ActiveSupport::Concern
 
   def charge(token, plan)
-    charge = Stripe::Charge.create(
-      :amount => self.price_in_cents(plan),
-      :currency => "usd",
-      :card => token,
-      :description => self.user.email
-    )
+    if plan == "Single"
+      customer = Stripe::Customer.create(
+        :card => token,
+        :plan => plan,
+        :email => self.user.email
+      )
+    else
+      charge = Stripe::Charge.create(
+        :amount => self.price_in_cents(plan),
+        :currency => "usd",
+        :card => token,
+        :description => self.user.email
+      )
+    end
   end
 
   def price(plan)

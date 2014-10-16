@@ -1,9 +1,76 @@
 <%= render 'utils/errors', object: @itinerary %>
 
-<%= content_for :left_col do %>
-  <%= render 'itinerary_left_col' %>
-<% end %>
+<% if @itinerary.user_source == "Hotel" %>
 
+<% set_page_title("Pricing - OutTrippin") %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "itineraries", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+<style>
+.cover { background-image: url(<%= asset_path('ocean.jpg') %>) !important; margin-bottom:0; background-position: 50% 0%; opacity:.8; height:450px;}
+.header {overflow: visible; top:50px;height:0; }
+.tabs {height:0;}
+#overlay {height:450px;}
+</style>
+<div class="cover" title="Photo by: Matt Catalano / @mattp_aul"></div>
+<div id="overlay"></div>
+<div class="header"></div>
+<div class="tabs"></div>
+<div class="row" style="margin-top:-380px;">
+  <div class="large-12 no-margin no-padding text-center small-12 columns">
+    <h1 class="white text-center">An ocean of options</h1>
+  </div>
+</div>
+<div class="row medium-break">
+	<div class="large-10 large-centered small-12 columns">
+		<div class="large-4 push-4 columns">
+			<div class="panel text-center pricing pop" >
+				<div class="popular">
+					<h5 class="no-margin">POPULAR</h5>
+				</div>
+				<H5 class="option-title">PLENTY O' FISH</H5>
+				<h3 class="serif price">$<span class="larger"><%= (@itinerary.duration).to_i * (6) %></span><span class="white" style="vertical-align:bottom; font-size:40%; line-height:.3em;"><br>( $6 per travel day )</h3>
+				<%= image_tag "comp-fish.png", style: "margin-top:15px;" %>
+				<h6 class="white serif option-detail"><em>3+ storytellers compete</em></h6>
+				<h6 class="white option-text serif subheader"><em>to write your day-by-day tailored travel story</span></em></h6>
+	  			<%= button_to "I'm hooked!", purchase_itinerary_path, method: :put, class: "expand radius small button checkout-btn", id: "Single" %>
+	  		</div>
+		</div>
+	</div>
+</div>
+
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+
+<%= image_tag "logo128.png", style:"display:none" %>
+
+<script>
+  $('.checkout-btn').click(function() {
+    var plan = $(this).attr("id");
+    var duration = parseInt("<%= @itinerary.duration.to_i %>");
+    var token = function(res) {
+      $('div.hold').show();
+      var $input1 = $('<input type=hidden name=stripeToken />').val(res.id);
+      var $input2 = $('<input type=hidden name=plan />').val(plan);
+      $('form').append($input1, $input2).submit();
+    };
+
+    StripeCheckout.open({
+      key:         '<%= Rails.configuration.stripe[:publishable_key] %>',
+      image:       '<%= asset_path('o-color.png') %>',
+      email:       '<%= current_user.email %>',
+      currency:    'usd',
+      name:        'OutTrippin',
+      description: '100% money back guarantee',
+      panelLabel:  'Checkout',
+      token:       token
+    });
+
+    return false;
+  });
+</script>
+
+<% else %>
 
 <% set_page_title("Pricing - OutTrippin") %>
 <%= content_for :head do %>
@@ -291,4 +358,6 @@
 
 <%= content_for :head do %>
 <%= stylesheet_link_tag "home", media: "all", "data-turbolinks-track" => true %>
+<% end %>
+
 <% end %>
