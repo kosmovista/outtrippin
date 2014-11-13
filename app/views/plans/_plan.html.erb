@@ -161,7 +161,7 @@
         </div>
         <div class="large-7 small-12 columns">
           <h3 style="margin-bottom:0px;"><%= bk[:title] %></h3>
-          <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], "#" %></em></p>
+          <p><em><%= image_tag "marker.png", style:"width:25px; opacity:0.8; margin-top:-6px;" %><%= link_to bk[:location], bk[:link] %></em></p>
           <p><%= simple_format(bk[:body]) %></p>
         </div>
         <div class="large-2 small-12 text-center columns">
