@@ -1,4 +1,4 @@
-window.itineraryApp = angular
+itineraryApp = angular
   .module('itineraryApp', [
     'itineraryServices',
     'ngAnimate', 
