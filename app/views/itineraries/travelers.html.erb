@@ -1,0 +1,19 @@
+<h1 class="primary text-center very-bold">FILLING IN THE BLANKS</h1>
+<div class="form-group">
+    <h2 class="white serif subheader text-center" style="line-height:1.8; font-size:2.2em; width: 900px; margin-left: auto; margin-right: auto;">
+    	{{itinerary.extra_info.name}} typically stay for  <span class="pink" ng-click="subtractDuration();">-</span><span class="duration"><span class="primary select-container has-tip" data-tooltip title="Click + or - to adjust average number of nights">{{duration}}</span></span><span class="pink" style="font-size:90%;" ng-click="addDuration();">+</span> nights <br>
+    	over a <span ng-switch="itinerary.extra_info.time_frame" class="primary dropdown-container">
+    		<span  ng-switch-default ng-click="itinerary.extra_info.time_frame='week'">weekend,<span class="pink small"> &#9662;</span></span>
+    		<span  ng-switch-when="weekend" ng-click="itinerary.extra_info.time_frame='week'">weekend,<span class="pink small"> &#9662;</span></span>
+    		<span  ng-switch-when="week" ng-click="itinerary.extra_info.time_frame='weekend'">week,<span class="pink small"> &#9662;</span></span>
+    	</span>
+    	<br>
+    	and are mostly
+    	<span ng-switch="itinerary.extra_info.guest_type" class="primary dropdown-container">
+    		<span ng-switch-default ng-click="itinerary.extra_info.guest_type='onetime'">repeat guests.<span class="pink small"> &#9662;</span></span>
+    		<span ng-switch-when="repeat" ng-click="itinerary.extra_info.guest_type='onetime'">repeat guests.<span class="pink small"> &#9662;</span></span>
+    		<span ng-switch-when="onetime" ng-click="itinerary.extra_info.guest_type='repeat'">one time visitors.<span class="pink small"> &#9662;</span></span>
+    	</span>
+    </h2>
+    <input type='submit' class="tertiary serif button" ng-click="itinerary.duration=duration;save();setStep(4)"></input>
+</div>

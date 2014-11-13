@@ -1,0 +1,10 @@
+<h1 class="primary text-center very-bold">NOW FOR THE NUMBERS</h1>
+<div class="form-group">
+    <h2 class="white serif text-center subheader" style="text-align:left; line-height:1.8; font-size:2.2em; width: 900px; margin-left: auto; margin-right: auto;">
+        {{itinerary.extra_info.name}} are between the ages of <span class="select-container primary" ng-click="age_group=nextagegroup(age_group);">{{age_group}}<span class="pink small"> &#9662;</span></span><br>
+        and spend <span class="primary select-container "  ng-click="food_budget=nextbudgetitem(food_budget);">{{food_budget}}<span class="pink small"> &#9662;</span></span>
+        </span> on food per day<br>
+        and <span class="primary select-container " ng-click="activity_budget=nextbudgetitem(activity_budget);">{{activity_budget}}<span class="pink small"> &#9662;</span></span> on activities.
+    </h2>
+    <input type='submit' class="tertiary serif button" ng-click="itinerary.extra_info.age_group=age_group;itinerary.extra_info.food_budget=food_budget;itinerary.extra_info.activity_budget=activity_budget;save();setStep(5)"></input>
+</div>

@@ -22,7 +22,11 @@ class ItinerariesController < ApplicationController
     end
     
     if @itinerary.save
-      redirect_to details_itinerary_path(@itinerary)
+      if @itinerary.extra_info[:source] == "hotel"
+        redirect_to gp_itinerary_path(@itinerary)
+      else
+        redirect_to details_itinerary_path(@itinerary)
+      end
     else
       render 'home/index', layout: 'application'
     end
@@ -49,6 +53,89 @@ class ItinerariesController < ApplicationController
   def details
     @itinerary_details = ItineraryDetails.new(itinerary: @itinerary)
   end
+
+  def user
+    if @user
+      return @user
+    else
+      @password = generate_password
+      @user ||= User.new(email: @email, password: @password, password_confirmation: @password)
+    end
+  end
+  
+  attr_accessor :email
+
+  def save 
+    itinerary = params[:itinerary]
+    newuser = params[:user]
+    @itinerary.duration = itinerary[:duration]
+    @itinerary.departure = itinerary[:departure]
+    @itinerary.extra_info[:travelers] = itinerary[:extra_info][:travelers]
+    @itinerary.extra_info[:name] = itinerary[:extra_info][:name]
+    @itinerary.extra_info[:type] = itinerary[:extra_info][:type]
+    @itinerary.extra_info[:time_frame] = itinerary[:extra_info][:time_frame]
+    @itinerary.extra_info[:guest_type] = itinerary[:extra_info][:guest_type]
+    @itinerary.extra_info[:activity_budget] = itinerary[:extra_info][:activity_budget]
+    @itinerary.extra_info[:food_budget] = itinerary[:extra_info][:food_budget]
+    @itinerary.extra_info[:age_group] = itinerary[:extra_info][:age_group]
+    @itinerary.extra_info[:styles] = itinerary[:extra_info][:styles]
+    @itinerary.extra_info[:details] = itinerary[:extra_info][:details]
+    @itinerary.extra_info[:subtype] = itinerary[:extra_info][:subtype]
+    @itinerary.extra_info[:printType] = itinerary[:extra_info][:printType]
+    @itinerary.extra_info[:subscription_id] = itinerary[:extra_info][:subscription_id]
+    @email = newuser[:email]
+    @user = User.find_by_email(@email)
+    user.save!
+    if @itinerary.user.nil? 
+      @itinerary.user = @user
+    end
+    @itinerary.save!
+
+    respond_to do |format|
+      format.json { render :json => @export_data.to_json(:include => :user) }
+    end
+  end
+
+  def gp
+     render layout: 'hotelapp'
+  end 
+
+  def email_form
+    render layout: false
+  end 
+  
+  def travelers
+    render layout: false
+  end 
+  
+  def duration
+    render layout: false
+  end
+
+  def budget
+    render layout: false
+  end  
+
+  def interests
+    render layout: false
+  end  
+
+  def subscription
+    render layout: false
+  end  
+
+  def subscription_add
+    render layout: false
+  end  
+
+  def checkout_form
+    render layout: false
+  end  
+
+  def checkout_add
+    render layout: false
+  end  
+
 
   def finalize
     @itinerary_finalize = ItineraryFinalize.new(itinerary: @itinerary)
@@ -133,6 +220,11 @@ class ItinerariesController < ApplicationController
   end
 
   private
+
+  def generate_password
+    o = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten
+    (0...8).map{ o[rand(o.length)] }.join
+  end
 
   def set_itinerary
     @itinerary = Itinerary.find(params[:id])

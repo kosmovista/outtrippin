@@ -1,0 +1,70 @@
+
+<style>body{overflow-y:scroll;}</style>
+<div style="background:#fdfdfd; position:relative;">
+  <div class="large-12 large-centered text-center small-12 columns">
+    <h2 class="primary very-bold break" style="margin-bottom:0;">YOUR SUBSCRIPTION INCLUDES</h2>
+    <div class="large-7 large-centered small-12 columns">
+      <ul class="break small-block-grid-2">
+        <li><div class="alert-box subscription sans">Monthly City Guide Updates</div></li>
+        <li><div class="alert-box subscription sans">{{pricing[subscription_id].personas}} Guest Persona(s)</div></li>
+        <li><div class="alert-box subscription sans">1 City Guide per Guest Persona</div></li>
+        <li><div class="alert-box subscription sans">Digital City Guides for Laptop, Tablet & Mobile</div></li>
+        <li ng-if="itinerary.extra_info.printType=='Delivered'"><div class="alert-box subscription sans">Printed Guides Delivered Monthly</div></li>
+        <li ng-if="itinerary.extra_info.printType=='In House'"><div class="alert-box subscription sans">Printable PDF Guides for In House Printing</div></li>
+        <li><div class="alert-box subscription sans">Free Setup Guidance</div></li>
+        <li><div class="alert-box subscription sans">Dedicated Customer Success Manager</div></li>
+        <li><div class="alert-box subscription sans">City Guide(s) Personalized to Hotel Location</div></li>
+        <li><div class="alert-box subscription sans">Exclusive Content with Hotel Branding</div></li>
+        <li><div class="alert-box subscription sans">Promotion Space for Hotel Initiatives</div></li>
+        <li><div class="alert-box subscription sans">High Quality Customized Local Maps</div></li>
+        <li><div class="alert-box subscription sans">Cross Platform/Device Support</div></li>
+        <li><div class="alert-box subscription sans">Same Day Email + Phone Support</div></li>
+        <li><div class="alert-box subscription sans">Onboarding Speacialists</div></li>
+       
+      </ul>  
+   </div>
+ </div>
+ <div class="big-break" style="background:#f2665f; padding: 80px 100px;" >
+  <h1 class="dark very-bold text-center">The way people find and research travel is evolving.</h1>
+  <h3 class="white serif subheader text-center" style="max-width:960px; margin-right:auto; margin-left:auto">To engage millenials, hotel brands must find smart ways to differentiate themselves and tailor their offering to the individual guest.</h3>
+</div>
+</div>
+
+<div  >
+  <div class="large-12 large-centered text-center small-12 columns" >
+    <h2 class="DARK very-bold break" style="margin-bottom:0;">COMMON QUESTIONS</h2>
+    <div class="large-7 large-centered small-12 columns">
+      <ul class="medium-break text-left small-block-grid-1 large-block-grid-1">
+        <li>
+          <h5>Who creates the content?</h5>
+          <p style="font-size:90%;">A community of 300+ engaged travel bloggers and writers who are contributing content on the OutTrippin platform while on their travels for over 900+ destinations worldwide.</p>
+        </li>
+        <li>
+          <h5>How does it work?</h5>
+          <p style="font-size:90%;">Answer a few questions about each of your target guest personas (like you've just done for {{itinerary.extra_info.name}}) and we deliver monthly digital and print City Guides straight to your hotel’s inbox. Basically, you tell us who you'd like to target and we handle everything else.</p>
+        </li>
+        <li>
+          <h5>Does OutTrippin hold the permissions and rights to use for all of it's content?</h5>
+          <p style="font-size:90%;">Absolutely!</p>
+        </li>
+        <li>
+          <h5>Why monthly updates?</h5>
+          <p style="font-size:90%;">Monthly and seasonal updates keeps our guides fresh, relevant and hyper-timely so your guests never miss out and are always in the know of what's happening around your hotel and in your city.</p>
+        </li>
+        <li>
+          <h5>How do we get content so local to the hotel?</h5>
+          <p style="font-size:90%;">Our community of bloggers and writers are real travelers (not somef faceless lonely planet editors). So wherever your hotel is, our experts can help you inspire amazing guest experiences with recommendations for the best things to do, see, buy, photograph, eat, drink, dance to, laugh at, and the list keeps going... </p>
+        </li>
+      </ul>
+   </div>
+ </div>
+</div>
+
+<!-- <div class="big-break support" style="height:500px; background-image:url(<%= asset_path('support.jpg') %>); background-size:cover;">
+  <DIV CLASS="large-5 right small-12 columns">
+    <h2 class="white very-bold">QUESTIONS?</h2>
+    <h3 CLASS="white serif subheader">Talk to someone smart, quickly.</h3>
+    <h5 class="white" >Help &amp; Support</h5>
+    <a class="white" href="mailto:contact@outtrippin.com">contact@outtrippin.com.com</a>
+  </div>
+</div> -->

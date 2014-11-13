@@ -2,7 +2,7 @@ module Chargeable
   extend ActiveSupport::Concern
 
   def charge(token, plan)
-    if plan == "Single"
+    if ['Single', "Double", "Triple"].include? plan
       customer = Stripe::Customer.create(
         :card => token,
         :plan => plan,

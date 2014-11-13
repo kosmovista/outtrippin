@@ -1,0 +1,31 @@
+
+<h1 class="primary text-center very-bold">SUBSCRIPTION PREFERENCES</h1>
+
+<div class="form-group" style="width: 800px; margin-left: auto; margin-right: auto; padding-top:30px;">
+    <span ng-repeat="subType in subTypes">
+      <input type='radio' name="subTypes" id="{{subType}}" value="{{subType}}" ng-model="itinerary.extra_info.subtype">
+        <label for="{{subType}}" class="tertiary serif button"> {{subType}} </label>
+      </input>
+    </span>
+     
+
+    <div ng-if="itinerary.extra_info.subtype == 'Digital + Print'">
+      <hr class="tab-border" style="width:485px; margin-right:auto; margin-left:auto;">
+      <h6 class="white subheader" style="font-size:0.75em; letter-spacing:0.12em; width: 485PX; text-align: left; margin-right: auto; margin-left: auto;">PRINT OPTIONS</h6>
+      <span ng-repeat="printType in printTypes">
+        <input type='radio' name="printTypes" id="{{printType}}" value="{{printType}}" ng-model="itinerary.extra_info.printType">
+          <label for="{{printType}}" class="tertiary skinny serif button"> {{printType}} </label>
+        </input>
+      </span>
+    </div>
+
+    <div ng-if="itinerary.extra_info.printType == 'In House'">
+      <h6 class="white serif subheader" style="text-align:left; margin-top:15px; font-size:0.8em;width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png", style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>Simple formatted A3 or A4 sized map and content to supplement digital content library. Details below.</em></h6>
+    </div>
+
+    <div ng-if="itinerary.extra_info.printType == 'Delivered'">
+      <h6 class="white serif subheader"  style="text-align:left;  margin-top:15px;  font-size:0.8em; width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png",  style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>Standalone foldable pocket-sized city guide with maps and supplementary content. Details below.</em></h6>
+    </div>
+    <%= image_tag "subscription.png", style:"position:absolute; bottom:5%; width:300px; left:10%;" %>
+    <input type='submit' class="tertiary serif button" ng-click="save();setStep(7)"></input>
+</div>

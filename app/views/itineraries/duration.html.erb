@@ -1,0 +1,14 @@
+
+<h1 class="primary text-center very-bold" style="position:relative"><%= image_tag "monthly.png", style:"position: absolute;width: 250px;margin-left:-270px;top: 120px;" %>YOUR TARGET GUEST</h1>
+<div class="form-group" style="width: 600px; margin-left: auto; margin-right: auto;">
+    <span ng-repeat="persona in personas">
+        <input type='radio' name="personas" id="{{persona}}" value="{{persona}}" ng-model="itinerary.extra_info.name">
+          <label for="{{persona}}" class="tertiary skinny serif button"> {{persona}} </label>
+        </input>
+      </span>
+       <input type="text" name="persona" style="background-image:none;" placeholder="Other" ng-model="itinerary.extra_info.name">
+
+    <input type='submit' name="Next" class="tertiary button serif" ng-click="save();setStep(3)"></input>
+</div>
+
+

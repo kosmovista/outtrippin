@@ -1,0 +1,58 @@
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "hotels", media: "all" %>
+  <%= stylesheet_link_tag "fullpage", media: "all" %>
+<% end %>
+<% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
+<style> body {overflow:hidden;}</style>
+<div id="fullpage">
+  <div id="homecover" class="section home-cover" style="position:relative; background-image:url(<%= asset_path('map.jpg') %>);">
+  	<div id="overlay1"></div>
+    <div id="guestprofile" style="position:relative; z-index:1;">
+       	<!-- use ng-submit to catch the gp submission and use our Angular function -->
+			<form class="form-container" >
+				<div class="signup-form" ng-switch="step">
+			      <div class="form-views" ng-switch-when="1">
+			         <div ng-include src="'email_form.html'"></div>
+		
+			      </div>
+			      <div class="form-views" ng-switch-when="2">
+			         <div  ng-include src="'duration.html'"></div>
+		
+			      </div>
+			      <div class="form-views" ng-switch-when="3">
+			         <div ng-include src="'travelers.html'"></div>
+			          
+			      </div>
+			      <div class="form-views" ng-switch-when="4">
+			         <div ng-include src="'budget.html'"></div>
+			      </div>
+			      <div class="form-views" ng-switch-when="5">
+			         <div ng-include src="'interests.html'"></div>
+			      </div>
+			      <div class="form-views" ng-switch-when="6">
+			         <div ng-include src="'subscription.html'"></div>
+			      </div>
+			      <div class="form-views" ng-switch-when="7">
+			         <div ng-include src="'checkout_form.html'"></div>
+			      </div>
+			 	</div>
+			</form>
+<!--   <pre class="white">{{itinerary}}</pre> -->
+  	</div>
+	</div>
+	<div ng-switch="step">
+		<div ng-switch-when="6">
+			<div ng-include src="'subscription_add.html'"></div>
+		</div>
+		<div ng-switch-when="7">
+			<div ng-include src="'checkout_add.html'"></div>
+		</div>
+	</div> 
+</div>
+
+
+
+
+		
+
+	

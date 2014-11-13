@@ -57,8 +57,8 @@ window.nextBg = ->
 # SCROLL DOWN
 window.scrollDown = ->
   $('html, body').animate({
-    scrollTop: $("#steps").offset().top
-  }, 1000, 'easeOutQuart')
+    scrollTop: $(window).scrollTop() + $(window).height()
+  }, 800, 'easeInQuart')
 
 # SCROLL UP
 window.scrollUp = ->
@@ -90,9 +90,17 @@ $("a[href='#scroll-up']").on "click", ->
 
 $(window).resize ->
   $('.home-cover').css("height", $(window).height())
+  $('#overlay1').css("height", $(window).height())
+  $('.section').css("height", $(window).height())
+  $('.background').css("height", $(window).height())
+  $('#guestprofile').css("height", $(window).height())
 
 $(window).load ->
   $('.home-cover').css("height", $(window).height())
+  $('#overlay1').css("height", $(window).height())
+  $('.section').css("height", $(window).height())
+  $('#guestprofile').css("height", $(window).height())
+  $('.background').css("height", $(window).height())
   $("#dest").show()
   $("#header").show()
   $("#sub-header").show()

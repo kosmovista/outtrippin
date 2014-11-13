@@ -1,150 +1,85 @@
-<div id="image-loader">
-  <% homepage_pics.each do |p| %>
-    <%= image_tag p[1]["src"], class: p[0] %>
-  <% end %>
-</div>
-<% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
-<div class="home-cover">
-  <div id="destinations">
-    <div class="row">
-      <div class="large-12 small-12 columns">
-        <h1 id="header" class="no-margin" >Engage your guests like never before.</h1>
-        <h3 id="sub-header" class="white subheader"><%= homepage("subheader") %></h3>
-        <%= form_for @itinerary do |f| %>
-        <div id="dest" class="large-5 no-margin no-padding left small-12 columns">
-          <%= f.text_field :destination, placeholder: homepage("placeholder"), :autofocus => true %>
-          <%= errors_for(@itinerary, :destination) %>
-        </div>
-        <div id="contestbtn" class="large-2 left no-margin no-padding small-12 columns">
-          <%= f.hidden_field :source, :value => "hotel" %>
-          <%= f.submit homepage("submit"), class: "button radius expand" %>
-        </div>
-        <% end %>
-      </div>
-    </div>
-    <div class="large-12 left no-margin no-padding small-12 columns">
-      <p class="serif"><em></em></p>
-    </div>
-
-    <div class="row">
-      <div class="large-12 small-12 columns">
-        <p id="browse-link" ><em><%= link_to "Just window shopping? Try these trips on for size.", browse_path, id:"browselink", class: "white" %></em></p>
-      </div>
-    </div>
-
-    <div class="navig hide-for-small">
-      <div id="expert-loader">
-        <% homepage_pics.each do |p| %>
-        <div class="row large-5 no-padding columns right expert <%= p[0] %>">
-          <div class="large-9 small-9 text-right columns">
-            <h5><%= p[1]["title"] %></h5>
-            <p><em class="hide-for-small">"<%= p[1]["text"] %>"</em> - <strong class="sans"><%= p[1]["expert"].html_safe %></strong></p>
-          </div>
-          <div class="large-3 small-3 right columns">
-            <%= image_tag p[1]["avatar"], class: "th rounded" %>
-          </div>
-        </div> 
-
-        <% end %>
-      </div>
-    </div>
-    <a href="" class="text-center hide-for-small"><%= image_tag "down.png", id: "scroll-down" %></a>
-  </div>
-</div>
-
-<div id="steps" class="row break">
-  <div class="large-10 large-centered text-center small-12 columns">
-    <h3 class="subheader serif" style="margin-bottom:60px;"><em><%= homepage(["process", "text"]).html_safe %></em></h3>
-    <hr style="border:1px #e6e6e6 solid;">
-    <div class="break">
-      <h3><%= homepage(["process", "step1", "title"]).html_safe %></h3>
-      <div class="large-6 small-12 text-center columns">
-        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step1", "text"]).html_safe %></em></h4>
-      </div>
-      <div class="large-5 large-offset-1 small-12 text-center columns">
-        <%= image_tag 'describe.png', style: "margin-top:28px !important;" %>
-      </div>
-      <hr style="border:1px #e6e6e70px6 solid;">
-    </div>
-    <div class="short-break">
-      <h3><%= homepage(["process", "step2", "title"]).html_safe %></h3>
-      <div class="large-6 small-12 text-center columns">
-        <h4 class="subheader serif step-detail"  ><em><%= homepage(["process", "step2", "text"]).html_safe %></em></h4>
-      </div>
-      <div class="large-5 large-offset-1 small-12 text-center columns">
-        <%= image_tag 'pick.png' %>
-      </div>
-      <hr style="border:1px #e6e6e6 solid;">
-    </div>
-    <div class="short-break">
-      <h3><%= homepage(["process", "step3", "title"]).html_safe %></h3>
-      <div class="large-6 small-12 text-center columns">
-        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step3", "text"]).html_safe %></em></h4>
-      </div>
-      <div class="large-5 large-offset-1 small-12 text-center columns">
-        <%= image_tag 'script.png' %>
-      </div>
-      <hr style="border:1px #e6e6e6 solid;">
-    </div>
-    <div class="short-break">
-      <h3><%= homepage(["process", "step4", "title"]).html_safe %></h3>
-      <div class="large-6 small-12 text-center columns">
-        <h4 class="subheader serif step-detail" ><em><%= homepage(["process", "step4", "text"]).html_safe %></em></h4>
-      </div>
-      <div class="large-5 large-offset-1 small-12 text-center columns">
-        <%= image_tag 'ready.png', style: "margin-top:57px;" %>
-      </div>
-      <hr style="border:1px #e6e6e6 solid;">
-    </div>
-  </div>
-</div>
-
-<% unless @featuring_stories.blank? %>
-<div id="featuring" class="break">
-  <div class="row">
-    <div class="large-12 small-12 columns">
-      <h3 class="text-center serif subheader black"><em>Need ideas? Here are some featured stories created for OutTrippin customers.</em></h3>
-    </div>
-  </div>
-  <div id="loading" class="text-center" >
-      <div class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
-      </div>
-      <h6 class="subheader primary serif"><em>Hang tight, we're just loading up...<br>:: beep beep boop ::</em></h6>
-    </div>
-  <div id="detail-loader" >
-    <%= render partial: 'plans/featured', collection: @featuring_stories, as: :plan %>
-  </div>
-  <div class="row">
-    <div class="large-12 small-12 columns navigate">
-      <!-- adds jquery navigation -->
-    </div>
-  </div>
-  <div class="row medium-break">
-    <div class="large-3 large-centered small-12 columns">
-      <%= link_to "Explore more trips", browse_path, class: "button pickthis-secondary expand radius secondary small text-center serif", style: "margin-top:5px;", id: "browse1" %>
-    </div>
-  </div>
-</div>
-
-<div class="row top" style="margin-top: 50px;margin-bottom: 150px;">
- <div class="large-12 text-center small-12 columns">
-   <h2 class="serif subheader black">
-     <em>Have a better vacation, or your money back!</em>
-   </h2>
-   <a class="large button radius" id="scrollup" href="#scroll-up" style="margin-top:50px;">Hook me up!</a>
- </div>
-</div>
-
-
-<div id="trip-loader">
-  <% @featuring_stories.each do |i| %>
-    <%= image_tag i.cover %>
-  <% end %>
-</div>
-
+<%= content_for :head do %>
+  <%= stylesheet_link_tag "hotels", media: "all" %>
+  <%= stylesheet_link_tag "fullpage", media: "all" %>
 <% end %>
+<style>body {overflow-x:hidden;}</style>
+<% set_page_title("Tailored travel planning & expert travel advice, on tap - OutTrippin") %>
+<div id="fullpage">
+  <div id="homecover" class="section home-cover" style="background-image:url(<%= asset_path('map.jpg') %>);">
+    <div id="overlay1" style="background-color: rgba(0, 0, 0, 0);"></div>
+    <div id="destination" class="text-center" style="background:none;" >
+      <h1 class="no-margin primary scribble" >WOW EVERY GUEST</h1>
+      <h3 class="white serif text-center subheader" style="font-weight:400; max-width:740px; margin-top:-15px; margin-left:auto; margin-right:auto;">with a monthly city guide that knows<br>what’s happening near your hotel, right now.</h3>
+      <%= form_for @itinerary do |f| %>
+      <div class="text-center small-12 columns" style="padding-top:80px;">
+        <%= f.text_field :destination, placeholder: "My hotel name is...", :autofocus => true %>
+        <%= errors_for(@itinerary, :destination) %>
+        <%= f.hidden_field :source, :value => "hotel" %>
+        <%= f.submit "Yes please!", class: "tertiary button serif radius" %>
+      </div>
+      <% end %>
+     <a href="" class="text-center hide-for-small"><%= image_tag "down-arrow.png", id: "scroll-down"%></a>
+    </div>
+  </div>
+  <div id="wipe" class="section" style="background-image:url(<%= asset_path('mobile.jpg') %>); background-position:0 0; position:relative;">
+    <div class="row">
+      <div id="freshcontent" class="large-12 large-centered text-center small-12 columns" style="padding-top:100px;" >
+        <h1 id="pin1" class="pink scribble" style="margin-bottom:0; font-size:4.3em;">FRESH-BAKED CONTENT</h1>
+        <h3 class="white serif subheader" style="margin-top:-10PX; WIDTH:740px; margin-left:auto;margin-right:auto">Our City Guides are updated monthly so your guests never miss out.</h3>
+      </div>
+    </div>
+  </div>
+  <div id="pin3" class="section" style="background:#fdfdfd; position:relative">
+    <div class="row" style="height:38%;top:0; width:100%">
+      <div class="large-12 large-centered text-center small-12 columns" style="padding-top:2%;">
+        <h2  class="primary scribble" style="margin-bottom:0;">GET PERSONAL</h2>
+        <h3 class="serif subheader" style="margin-top:-10px; WIDTH:740px; margin-left:auto;margin-right:auto">Using guest data and set profiles, we splice up the most relevant and exciting local experiences every month.</h3>
+         <h5 class="subheader text-center serif" style="width:600px;margin-top:50px; margin-left:auto; margin-right:auto;"><em></em> </h5>
+      </div>
+    </div>
+    <ul id="ideas-container" style=" position:absolute; bottom:7%; width:100%; height:54%;">
+      <li style="background-image:url(<%= asset_path('Personaexample1.jpg') %>); background-size:cover;"></li>
+      <li style="background-image:url(<%= asset_path('Personaexample2.jpg') %>); background-size:cover;"></li>
+      <li style="background-image:url(<%= asset_path('Personaexample3.jpg') %>); background-size:cover;"></li>
+    </ul>
+  </div>
+  <div id="empower" class="section" style="background-image:url(<%= asset_path('empower.jpg') %>); position:relative;">
+    <div class="row">
+      <div id="empowercontent" class="large-12 large-centered text-center small-12 columns" style="padding-top:70px;">
+        <h2 id="pin2" class="pink scribble" style="margin-bottom:0;">EMPOWER GUESTS</h2>
+        <h3 class="serif white subheader" style="margin-top:-10px; WIDTH:600px; margin-left:auto;margin-right:auto">With trusted local knowledge from OutTrippin travel writers.</h3>
+         <h5 class="subheader text-center serif" style="width:600px;margin-top:50px; margin-left:auto; margin-right:auto;"><em></em> </h5>
+      </div>
+    </div>
+  </div>
+  <div id="format" class="section" style="background:#fdfdfd; position:relative;">
+    <div id="formatcontent" class="row" style="height:38%;top:0; width:100%">
+      <div class="large-12 large-centered text-center small-12 columns" style="padding-top:2%;">
+        <h2  class="primary scribble" style="margin-bottom:0;">IN EVERY HAND</h2>
+        <h3 class="serif subheader" style="margin-top:-10px; WIDTH:750px; margin-left:auto;margin-right:auto">Your brand goes everywhere your guest does with social, multi-format products both online and offline.</h3>
+         <h5 class="subheader text-center serif" style="width:600px;margin-top:50px; margin-left:auto; margin-right:auto;"><em></em> </h5>
+      </div>
+    </div>
+    <div id="formatpic" style="background-image:url(<%= asset_path('digital.jpg') %>); bottom: 0; width: 90%; position: absolute; border-radius: 4px 4px 0 0; right: 5%; left: 5%; background-position: 0 20%; background-size: cover; height:62%;">
+      
+    </div>
+  </div>
+    
+
+
+  <div class="section" style="background:#f2665f;">
+    <div class="row">
+      <div class="large-12 large-centered text-center small-12 columns" style="padding-top:50px;">
+        <h2 id="pin2" class="dark scribble" style="margin-bottom:0;">INSPIRE LOYALTY</h2>
+        <h3 class="serif white subheader" style="margin-top:-10px; WIDTH:740px; margin-left:auto;margin-right:auto">A place to sleep is only part of what a guest values, give them a special reason to keep coming back.</h3>
+         <h5 class="subheader text-center serif" style="width:600px;margin-top:50px; margin-left:auto; margin-right:auto;"><em></em> </h5>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+    
 
 <%= content_for :head do %>
 <script src="http://maps.googleapis.com/maps/api/js?libraries=places&amp;sensor=false"></script>
@@ -152,9 +87,75 @@
 
 <%= content_for :body do %>
   <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenMax.min.js"></script>
+  <%= javascript_include_tag "scrollmagic", "data-turbolinks-track" => true %>
+
+  <script>
+
+    // init controller
+    var controller = new ScrollMagic();
+    var tween = new TimelineMax ()
+                .add([
+                  TweenMax.to("#destination", 1, {opacity:0, ease: Quad.easeOut}),
+                  TweenMax.to("#overlay1", 1, {backgroundColor:"rgba(0,0,0,0.8)", delay:0.1} )
+                ]);
+
+    var tween1 = new TimelineMax ()
+                .add([
+                  TweenMax.to("#wipe", 1, {backgroundPosition: "0 100%", delay: 0.5}),
+                  TweenMax.to("#freshcontent", 1, {css:{scaleX:0.9, scaleY:0.9, paddingTop: "20px", delay:0.7} })
+                ]);
+    var tween2 = new TimelineMax()
+                .add([
+                  TweenMax.to("#ideas-container > li:first-child", 1, {backgroundPosition: "center 50%", ease: Quad.easeOut, delay: 2}),
+                  TweenMax.to("#ideas-container > li:nth-child(2)", 1, {backgroundPosition:"center 50%", ease: Quad.easeOut, delay: 2}),
+                  TweenMax.to("#ideas-container > li:last-child", 1, {backgroundPosition:"center 50%", ease: Quad.easeOut, delay: 2})
+                  ])
+                .add([
+                  TweenMax.to("#ideas-container > li:first-child", 1, {backgroundPosition: "center 100%", ease: Quad.easeOut, delay: 2}),
+                  TweenMax.to("#ideas-container > li:nth-child(2)", 1, {backgroundPosition:"center 100%", ease: Quad.easeOut, delay: 2}),
+                  TweenMax.to("#ideas-container > li:last-child", 1, {backgroundPosition:"center 100%", ease: Quad.easeOut, delay: 2})
+                  ]);
+    var tween3 = new TimelineMax ()
+                .add([
+                  TweenMax.to("#empower", 1, {backgroundPosition: "0 100%", delay:0.2}),
+                  TweenMax.to("#empowercontent", 1, {css:{scaleX:1.1, scaleY:1.1, paddingTop: "20px", delay:0.8} })
+                ]);
+    var tween4 = new TimelineMax ()
+                .add([
+                  TweenMax.from("#formatpic", 1, {backgroundPosition: "0 2%", height:"44%"}),
+                  TweenMax.from("#formatcontent", 1, {css:{scaleX:1.1, scaleY:1.1, paddingTop: "4%", height:"56%"} })
+                ])
+                .add([
+                  TweenMax.to("#formatpic", 1, {backgroundPosition: "0 70%", height:"80%"}),
+                  TweenMax.to("#formatcontent", 1, {css:{scaleX:0.7, scaleY:0.7, paddingTop: "0", height:"20%"} })
+                ]);
+    // assign handler "scene" and add it to Controller
+  var scene = new ScrollScene({triggerElement: "#homecover", triggerHook:"onLeave", duration: $(window).height()})
+                .setTween(tween)
+                .addTo(controller);
+
+  var scene1 = new ScrollScene({triggerElement: "#wipe",  duration: $(window).height()})
+                .setTween(tween1)
+                .addTo(controller);
+
+  var scene2 = new ScrollScene({triggerElement: "#pin3",  triggerHook:"onLeave", duration:500})
+                .setTween(tween2)
+                .setPin("#pin3")    
+                .addTo(controller);
+
+  var scene3 = new ScrollScene({triggerElement: "#empower",  duration: $(window).height()})
+                .setTween(tween3)
+                .addTo(controller);
+
+  var scene4 = new ScrollScene({triggerElement: "#format", duration: $(window).height()})
+                .setTween(tween4)
+                .addTo(controller);
+
+  </script>
   <script>
   $(window).load(function() {
-    autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['geocode']})
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('itinerary_destination'), {types: ['establishment']})
   });
   </script>
   <script type="text/javascript">

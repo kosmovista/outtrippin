@@ -1,0 +1,19 @@
+<h1 class="primary text-center very-bold">Pricing</h1>
+<div class="form-group" style="padding-top:120px;">
+  <div class="large-10 large-centered columns">
+    <div class="large-6 columns">
+      <h3 class="white serif subheader" style=" font-size:2.2em; margin-bottom:0"># of guest personas</h3>
+      <h2 class="white subheader" style="font-size:6em; margin:0;"><span class="pink small" ng-click="remPersona();">- </span><span class="duration"><span class="primary transition" animate-on-change='persona' >{{pricing[subscription_id].personas}}</span></span><span class="pink small"  ng-click="addPersona();"> &#43;</span> </h2>
+    </div>
+
+    <div class="large-6 columns">
+      <h3 class="white serif subheader" style="font-size:2.2em;">Monthly Subscription</h3>
+      <h1 class="primary subheader" style="font-size:4em;padding-top: 0;">$ <span style="font-size: 130%;">{{pricing[subscription_id].fee}}</span><span class="pink" style="vertical-align:bottom; font-size:40%; line-height: 3.4em;"> / mo</h1>
+    </div>
+  </div>
+  <%= image_tag "subscriptiondetails.png", style:"position:absolute; bottom:2%; width:300px; right:10%;" %>
+</form>
+
+  <%= button_to("I'm hooked!", purchase_itinerary_path, method: :put, :"ng-click" => "itinerary.extra_info.subscription_id=subscription_id;plan=pricing[subscription_id].plan;save();checkout();", class: "tertiary serif button checkout-btn", id: "Single") %>
+    
+</div>

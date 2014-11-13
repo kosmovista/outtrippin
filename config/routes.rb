@@ -10,6 +10,18 @@ Outtrippin::Application.routes.draw do
   resources 'itineraries', only: [:index, :show, :create, :update] do
     member do
       get 'details'
+      get 'gp'
+      get 'email_form'
+      get 'duration'
+      get 'travelers'
+      get 'budget'
+      get 'interests'
+      get 'subscription'
+      get 'subscription_add'
+      get 'checkout_form'
+      get 'checkout_add'
+      post 'gp', action: 'save'
+      get 'itinerary'
       get 'finalize'
       put 'publish'
       get 'checkout'

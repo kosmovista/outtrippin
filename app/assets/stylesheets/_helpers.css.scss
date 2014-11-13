@@ -2,11 +2,13 @@
 .primary { color: $primary-color; }
 .white { color: #fff !important; @media only print {-webkit-print-color-adjust: exact;} }
 .black {color: #4a4a4a !important;}
+.dark {color: #203250 !important;}
 
 // TYPE
 .sans { font-family: $sans-font-family; }
 .serif { font-family: $serif-font-family; }
 .hide { display: none !important; }
+.very-bold {font-weight: 900;}
 .top { padding-top: 100px; }
 .break {margin-top:50px !important; @media only print {margin-top:0px !important;}}
 .medium-break {margin-top:35px !important;}
