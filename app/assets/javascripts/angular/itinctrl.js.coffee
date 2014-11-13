@@ -1,7 +1,7 @@
 itineraryApp = angular
   .module('itineraryApp', [
     'itineraryServices',
-    'ngAnimate', 
+    'ngAnimate' 
   ])
 
   .config(["$httpProvider", (provider) ->
@@ -11,7 +11,7 @@ itineraryApp = angular
     $locationProvider.html5Mode(true)
   ])
 
-  .controller 'ItineraryCtrl', ($scope, $http, Itinerary, $timeout, $window) ->
+  .controller('ItineraryCtrl', ['$scope', '$http', 'Itinerary', '$timeout', '$window', ($scope, $http, Itinerary, $timeout, $window) ->
     $http.get("gp.json").then (res) ->
       $scope.itinerary = res.data
       $scope.duration = $scope.itinerary.duration || 3
@@ -170,6 +170,7 @@ itineraryApp = angular
         description: $scope.plan
       event.preventDefault()
       return
+  ])
 
 
   .directive "checkList", ->
@@ -202,7 +203,7 @@ itineraryApp = angular
       scope.$watch "list", setupHandler, true
       return
   
-  .directive "animateOnChange", ($animate) ->
+  .directive "animateOnChange", (['$animate', ($animate) ->
     (scope, elem, attr) ->
       scope.$watch attr.animateOnChange, (nv, ov) ->
         unless nv is ov
@@ -210,10 +211,9 @@ itineraryApp = angular
           $animate.addClass elem, c, ->
             $animate.removeClass elem, c
             return
-
         return
-
       return
+  ])
 
   
 
