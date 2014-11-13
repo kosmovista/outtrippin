@@ -43,7 +43,7 @@
       <li style="background-image:url(<%= asset_path('Personaexample3.jpg') %>); background-size:cover;"></li>
     </ul>
   </div>
-  <div id="empower" class="section" style="background-image:url(<%= asset_path('empower.jpg') %>); position:relative;">
+  <div id="empower" class="section" style="background-image:url(<%= asset_path('empower.jpg') %>); background-position: 0 100%; position:relative;">
     <div class="row">
       <div id="empowercontent" class="large-12 large-centered text-center small-12 columns" style="padding-top:70px;">
         <h2 id="pin2" class="pink scribble" style="margin-bottom:0;">EMPOWER GUESTS</h2>
@@ -118,7 +118,7 @@
                   ]);
     var tween3 = new TimelineMax ()
                 .add([
-                  TweenMax.to("#empower", 1, {backgroundPosition: "0 100%", delay:0.2}),
+                  TweenMax.to("#empower", 1, {backgroundPosition: "0 2%", delay:0.2}),
                   TweenMax.to("#empowercontent", 1, {css:{scaleX:1.1, scaleY:1.1, paddingTop: "20px", delay:0.8} })
                 ]);
     var tween4 = new TimelineMax ()
