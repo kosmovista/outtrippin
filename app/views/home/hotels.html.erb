@@ -67,11 +67,11 @@
     
 
 
-  <div class="section" style="background:#f3f3f3;">
+  <div class="section" id="loyalty" style="background-image:url(<%= asset_path('loyalty.jpg') %>); background-position: 0 30%;">
     <div class="row">
-      <div class="large-12 large-centered text-center small-12 columns" style="padding-top:50px;">
+      <div id="loyaltycontent" class="large-12 large-centered text-center small-12 columns" style="padding-top:80px;">
         <h2 id="pin2" class="dark scribble" style="margin-bottom:0;">INSPIRE LOYALTY</h2>
-        <h3 class="serif subheader" style="margin-top:-10px; WIDTH:740px; margin-left:auto;margin-right:auto">A place to sleep is only part of what your guests value, so give them experiences that keep them coming back.</h3>
+        <h3 class="serif white subheader" style="margin-top:-10px; WIDTH:740px; margin-left:auto;margin-right:auto">A place to sleep is only part of what your guests value, so give them experiences that keep them coming back.</h3>
         <!--<h5 class="serif subheader" style="margin-top:-10px; WIDTH:740px; margin-left:auto;margin-right:auto">Sign up for a free whitepaper on how we can help you take your hotel's guest engagement to the next level.</h5> -->
          <a class="tertiary button serif large" id="scrollup" href="#scroll-up" style="margin-top:150px;">Next level guest engagement begins here!</a>
       </div>
@@ -98,13 +98,13 @@
     var tween = new TimelineMax ()
                 .add([
                   TweenMax.to("#destination", 1, {opacity:0, ease: Quad.easeOut}),
-                  TweenMax.to("#overlay1", 1, {backgroundColor:"rgba(0,0,0,0.8)", delay:0.1} )
+                  TweenMax.to("#overlay1", 1, {backgroundColor:"rgba(0,0,0,0.8)", delay:0.1})
                 ]);
 
     var tween1 = new TimelineMax ()
                 .add([
                   TweenMax.to("#wipe", 1, {backgroundPosition: "0 100%", delay: 0.5}),
-                  TweenMax.to("#freshcontent", 1, {css:{scaleX:0.9, scaleY:0.9, paddingTop: "20px", delay:0.7} })
+                  TweenMax.to("#freshcontent", 1, {css:{scaleX:0.9, scaleY:0.9, paddingTop: "20px"}})
                 ]);
     var tween2 = new TimelineMax()
                 .add([
@@ -120,7 +120,7 @@
     var tween3 = new TimelineMax ()
                 .add([
                   TweenMax.to("#empower", 1, {backgroundPosition: "0 2%", delay:0.2}),
-                  TweenMax.to("#empowercontent", 1, {css:{scaleX:1.1, scaleY:1.1, paddingTop: "20px", delay:0.8} })
+                  TweenMax.to("#empowercontent", 1, {css:{scaleX:1.1, scaleY:1.1, paddingTop: "20px"}, delay:0.8 })
                 ]);
     var tween4 = new TimelineMax ()
                 .add([
@@ -130,6 +130,11 @@
                 .add([
                   TweenMax.to("#formatpic", 1, {backgroundPosition: "0 70%", height:"80%"}),
                   TweenMax.to("#formatcontent", 1, {css:{scaleX:0.7, scaleY:0.7, paddingTop: "0", height:"20%"} })
+                ]);
+    var tween5 = new TimelineMax ()
+                .add([
+                  TweenMax.to("#loyalty", 1, {backgroundPosition: "0 100%"}),
+                  TweenMax.to("#loyaltycontent", 1, {css:{scaleX:0.9, scaleY:0.9, paddingTop: "20px"}, delay:0.7 })
                 ]);
     // assign handler "scene" and add it to Controller
   var scene = new ScrollScene({triggerElement: "#homecover", triggerHook:"onLeave", duration: $(window).height()})
@@ -151,6 +156,10 @@
 
   var scene4 = new ScrollScene({triggerElement: "#format", duration: $(window).height()})
                 .setTween(tween4)
+                .addTo(controller);
+
+  var scene5 = new ScrollScene({triggerElement: "#loyalty", duration: $(window).height()})
+                .setTween(tween5)
                 .addTo(controller);
 
   </script>
