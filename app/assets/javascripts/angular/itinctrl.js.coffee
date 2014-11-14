@@ -11,7 +11,7 @@ itineraryApp = angular
     $locationProvider.html5Mode(true)
   ])
 
-  .controller('ItineraryCtrl', ['$scope', '$http', 'Itinerary', '$timeout', '$window', ($scope, $http, Itinerary, $timeout, $window) ->
+  .controller('ItineraryCtrl', ['$scope', '$http', 'Itinerary', '$timeout', '$location', '$window', ($scope, $http, Itinerary, $timeout, $location, $window) ->
     $http.get("gp.json").then (res) ->
       $scope.itinerary = res.data
       $scope.duration = $scope.itinerary.duration || 3
@@ -29,7 +29,7 @@ itineraryApp = angular
       $scope.showstyles = showstyles
       return
     
-    $scope.step = 1
+    $scope.step = $location.hash() || 1
     $scope.setStep = (step) ->
       $scope.step = step
       return

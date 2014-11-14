@@ -9,5 +9,6 @@ class HomeController < ApplicationController
   
   def hotels
   	@itinerary = Itinerary.new
+  	render layout: 'hotel'
   end
 end
