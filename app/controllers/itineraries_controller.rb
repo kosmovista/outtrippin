@@ -59,8 +59,8 @@ class ItinerariesController < ApplicationController
       return @user
     else
       @password = generate_password
+      @send_user_email = true 
       @user ||= User.new(email: @email, password: @password, password_confirmation: @password)
-      UserMailer.delay.welcome_user_email(@user, @password, @itinerary)
     end
   end
   
@@ -92,6 +92,7 @@ class ItinerariesController < ApplicationController
       @user.roles = ["hotel"]
       user.save
       AdminMailer.delay.new_itinerary_email(@itinerary)
+      UserMailer.delay.welcome_user_email(@user, @password, @itinerary) if @send_user_email
     end
     @itinerary.save!
 
