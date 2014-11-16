@@ -60,7 +60,7 @@ class ItinerariesController < ApplicationController
     else
       @password = generate_password
       @user ||= User.new(email: @email, password: @password, password_confirmation: @password)
-      UserMailer.delay.welcome_user_email(user, @password, @itinerary)
+      UserMailer.delay.welcome_user_email(@user, @password, @itinerary)
     end
   end
   
