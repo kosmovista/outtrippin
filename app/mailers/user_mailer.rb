@@ -21,6 +21,7 @@ class UserMailer < ActionMailer::Base
     @user = user
     @password = password
     @itinerary = itinerary
+    @subscription_url = "#{itinerary_url(@itinerary)}/gp#7"
     if @itinerary.user_source == "Zuji"
       mail to: @user.email, subject: "Welcome to Zuji!", from: "\"Zuji\" <planmytrip@zuji.com.au>"
     else
