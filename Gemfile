@@ -48,7 +48,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 gem 'capistrano', '= 2.15.5', group: :development
-gem 'therubyracer', group: :development
 
 group :production do
   gem 'pg'
