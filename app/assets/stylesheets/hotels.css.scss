@@ -9,16 +9,16 @@
 $font-headings: "Calluna Sans", 'Helvetica Neue', 'Helvetica';
 
 .scribble {
+  font-size:3em; 
+  font-weight:900;
+  padding-bottom: 15px;
   @media only screen and (min-width: 1024px) {
-    font-size:4.5em; 
+    font-size:4.5em !important; 
     padding-bottom: 0;
   }
   @media only screen and (min-width: 640px) {
     font-size:3.5em; 
   }
-  font-size:3em; 
-  font-weight:900;
-  padding-bottom: 15px;
 }
 
 
