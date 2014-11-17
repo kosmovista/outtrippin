@@ -9,8 +9,16 @@
 $font-headings: "Calluna Sans", 'Helvetica Neue', 'Helvetica';
 
 .scribble {
-  font-size:4.6em; 
+  @media only screen and (min-width: 1024px) {
+    font-size:4.5em; 
+    padding-bottom: 0;
+  }
+  @media only screen and (min-width: 640px) {
+    font-size:3.5em; 
+  }
+  font-size:3em; 
   font-weight:900;
+  padding-bottom: 15px;
 }
 
 
@@ -29,7 +37,7 @@ form#new_itinerary input[type="text"] {
   @media only screen and (min-width: 640px) { 
     margin:0;
     padding-right: 180px;
-    width: 650px;
+    width: 640px;
     display:inline;
   }
 }
@@ -105,12 +113,19 @@ form#new_itinerary input[type="submit"] {
   font-weight: normal;
   font-style: italic;
   padding: 0.25em .9em 0.4em !important;
-  font-size: 1.25em !important;
+  font-size: 1.25em;
   border: 2px #00bccf solid !important;
   background-color: #00bccf !important;
   transition: all 300ms ease-out;
   border-radius:2px;
   color: white !important;
+  &.large {
+  font-size:1.425em !important;
+    &:hover {
+      background-color: #00a5b6 !important;
+      border: 2px #00a5b6 solid !important;
+    }
+  }
   &:hover {
     border: 2px #00bccf solid;
     background-color: rgba(255,255,255,0.2) !important;
@@ -159,8 +174,8 @@ ul#ideas-container li  {
   height:100%;
   width: 29.3%;
   margin-right:2%;
-  @media screen and (max-width: 1160px) { width: 50%; padding-bottom:45%; }
-  @media screen and (max-width: 650px) { width: 100%; padding-bottom:100%; }
+  @media screen and (max-width: 1160px) { width: 45%;padding-bottom: 42%;overflow: hidden; }
+  @media screen and (max-width: 650px) { width: 92%; padding-bottom:87%; }
 }
 
 
