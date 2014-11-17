@@ -152,7 +152,15 @@ itineraryApp = angular
      console.log($scope.itinerary)
      $http.post('gp.json', $scope.itinerary)
      return true
-    
+
+    $scope.validate = ->
+      if $scope.form_container.$valid
+        console.log($scope.itinerary)
+        $http.post('gp.json', $scope.itinerary)
+        $scope.setStep(2)
+        return true
+      else
+        $scope.form_container.submitted = true
 
     handler = StripeCheckout.configure(
       key: "pk_live_0qczMRuqwWxJ243elqtJzrx8"

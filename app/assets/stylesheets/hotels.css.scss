@@ -303,9 +303,14 @@ div#guestprofile label.styles {
 /* ANIMATION STYLINGS
 ============================================================================= */
 
-form.form-container {
+form.form_container {
   overflow:hidden;
   margin:0 !important;
+}
+
+span.error, small.error {
+padding: 1em;
+border-radius: 4px;
 }
 
 .form-group {

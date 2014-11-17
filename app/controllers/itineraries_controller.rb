@@ -203,9 +203,17 @@ class ItinerariesController < ApplicationController
       UserMailer.delay.payment_received_email(@itinerary.user, @itinerary)
       AdminMailer.delay.payment_received_email(@itinerary)
       flash[:fresh_purchase] = true
-      redirect_to thankyou_itinerary_path(@itinerary)
+      if @itinerary.extra_info[:source] == "hotel"
+        redirect_to itineraries_path
+      else
+        redirect_to thankyou_itinerary_path(@itinerary)
+      end
     else
-      render 'checkout'
+      if @itinerary.extra_info[:source] == "hotel"
+        render 'gp'
+      else
+        render 'checkout'
+      end
     end
   end
 

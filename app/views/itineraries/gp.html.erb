@@ -9,7 +9,7 @@
   	<div id="overlay1"></div>
     <div id="guestprofile" style="position:relative; z-index:1;">
        	<!-- use ng-submit to catch the gp submission and use our Angular function -->
-			<form class="form-container" >
+			<form name="form_container" novalidate class="form_container" >
 				<div class="signup-form" ng-switch="step">
 			      <div class="form-views" ng-switch-when="1">
 			         <div ng-include src="'email_form.html'"></div>
