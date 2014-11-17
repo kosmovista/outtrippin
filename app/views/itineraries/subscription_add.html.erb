@@ -12,18 +12,18 @@
 </div>
 <div class="section" style="background:#f3f3f3; position:relative; height:{{winHeight}}">
   <div class="large-12 large-centered text-center small-12 columns" style="height: 30%;position: Absolute;top: 0;padding-top: 20px;" >
-    <h2 class="dark very-bold" style="margin-bottom:0;">PRINT SUBSCRIPTION</h2>
+    <h2 class="dark very-bold" style="margin-bottom:0;">PRINT OPTIONS</h2>
     <ul class="short-break large-5 columns large-centered small-12 small-block-grid-2">
       <li><a href="#" ng-class="{'active' : !inhouse}" class="button radius expand serif pickthis " ng-click="inhouse=false">Delivered</a></li>
       <li><a href="#" ng-class="{'active' : inhouse}" class="button radius expand serif pickthis" ng-click="inhouse=true">In House</a></li>
     </ul>
   </div>
   <div ng-show="!inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute; border-radius: 4px 4px 0 0; left: 10%; background-position: 0 40%; background-size: cover;">
-    <div style="width:30%; float:left;"><h3 class="serif subheader" style="padding-right:2em; padding-top:1em;">Place your brand in <em>every pocket</em> with high quality printed, foldable city guides to share with guests in rooms, reservation counters, etc.</h3></div>
+    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Place your brand in <em>every pocket</em> with high quality printed, foldable city guides to share with guests in rooms, reservation counters, etc.</h3></div>
     <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('printedguide.png') %>); background-size: cover; background-position: 0 50%;"></div>
   </div>
   <div ng-show="inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute; border-radius: 4px 4px 0 0; left: 10%; background-position: 0 40%; background-size: cover;">
-    <div style="width:30%; float:left;"><h3 class="serif subheader" style="padding-right:2em; padding-top:1em;">Self-printable A3 or A4 sized maps with content to supplement digital subscription to place in rooms, reservation counters, etc.</h3></div>
+    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Self-printable A3 or A4 sized maps with content to supplement digital subscription to place in rooms, reservation counters, etc.</h3></div>
     <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('digital.png') %>); background-size: cover; background-position: 0 50%;"></div>
   </div>
     

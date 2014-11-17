@@ -20,11 +20,11 @@
     </div>
 
     <div ng-if="itinerary.extra_info.printType == 'In House'">
-      <h6 class="white serif subheader" style="text-align:left; margin-top:15px; font-size:0.8em;width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png", style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>Simple formatted A3 or A4 sized map and content to supplement digital content library. Details below.</em></h6>
+      <h6 class="white serif subheader" style="text-align:left; margin-top:15px; font-size:0.8em;width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png", style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>We supply a print-ready A3 or A4 PDF city guide file with map and monthly content to supplement digital content. Details below.</em></h6>
     </div>
 
     <div ng-if="itinerary.extra_info.printType == 'Delivered'">
-      <h6 class="white serif subheader"  style="text-align:left;  margin-top:15px;  font-size:0.8em; width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png",  style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>Standalone foldable pocket-sized city guide with maps and supplementary content. Details below.</em></h6>
+      <h6 class="white serif subheader"  style="text-align:left;  margin-top:15px;  font-size:0.8em; width:485px; margin-right:auto; margin-left:auto;"><%= image_tag "question-w.png",  style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>We print, fold and deliver A3 or A4 pocket-sized city guides with map and monthly content. Details below.</em></h6>
     </div>
     <%= image_tag "subscription.png", style:"position:absolute; bottom:5%; width:300px; left:10%;" %>
     <input type='submit' class="tertiary serif button" ng-click="save();setStep(7)"></input>
