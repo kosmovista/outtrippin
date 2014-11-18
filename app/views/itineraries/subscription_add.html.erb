@@ -18,13 +18,15 @@
       <li><a href="#" ng-class="{'active' : inhouse}" class="button radius expand serif pickthis" ng-click="inhouse=true">In House</a></li>
     </ul>
   </div>
-  <div ng-show="!inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute; border-radius: 4px 4px 0 0; left: 10%; background-position: 0 40%; background-size: cover;">
-    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Place your brand in <em>every pocket</em> with high quality printed, foldable city guides to share with guests in rooms, reservation counters, etc.</h3></div>
-    <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('printedguide.png') %>); background-size: cover; background-position: 0 50%;"></div>
+  <div ng-show="!inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute; left: 10%; ">
+    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Place your brand in <em>every pocket</em> with high quality printed, foldable city guides to share with guests in rooms, reservation counters, etc.</h3>
+      <h6 class="serif big-break subheader"  style="padding-right:2em; font-size:0.8em;"><%= image_tag "question.png",  style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>We work with local printers to print, fold and deliver A3 or A4 pocket-sized City Guides with map and monthly content every month. Depending on the number of copies requested, print costs are between $0.25-$0.45 per print.</em></h6></div>
+    <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('printedguide.jpg') %>); background-size: cover; background-position: 0 50%;"></div>
   </div>
-  <div ng-show="inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute; border-radius: 4px 4px 0 0; left: 10%; background-position: 0 40%; background-size: cover;">
-    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Self-printable A3 or A4 sized maps with content to supplement digital subscription to place in rooms, reservation counters, etc.</h3></div>
-    <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('digital.png') %>); background-size: cover; background-position: 0 50%;"></div>
+  <div ng-show="inhouse" style="height: 70%; bottom: 0; width: 90%; position: absolute;left: 10%; ">
+    <div style="width:30%; float:left;"><h4 class="serif subheader" style="padding-right:2em; padding-top:1em;">Self-printable A3 or A4 sized maps with content to supplement digital subscription to place in rooms, reservation counters, etc.</h3>
+    <h6 class="big-break serif subheader" style=" padding-right:2em; font-size:0.8em;"><%= image_tag "question.png", style: "width: 12px;margin-right: 5px;margin-top: -3px;" %><em>We supply a print-ready A3 or A4 PDF city guide file with map and monthly content to supplement the digital content. This can be delivered straight to your hotel's print/marketing contact to do print runs in house.</em></h6></div>
+    <div style="width:70%; float:right; height:100%; background-image:url(<%= asset_path('inhouse-print.jpg') %>); background-size: cover; background-position: 0 0;"></div>
   </div>
     
 </div>
