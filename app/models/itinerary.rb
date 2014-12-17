@@ -45,7 +45,7 @@ class Itinerary < ActiveRecord::Base
       "OutTrippin"
     end
   end
-
+  
   def process_payment(token, plan)
     if self.valid?
       self.charge(token, plan)
