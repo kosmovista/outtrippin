@@ -49,9 +49,13 @@ gem 'turbolinks'
 
 gem 'capistrano', '= 2.15.5', group: :development
 
-group :production do
+group :production, :staging do
   gem 'pg'
   gem 'unicorn'
+end
+
+group :staging do
+  gem 'rails_12factor', '~> 0.0.2'
 end
 
 group :development, :test do

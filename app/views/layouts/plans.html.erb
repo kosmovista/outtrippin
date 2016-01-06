@@ -27,8 +27,8 @@
   <%= javascript_include_tag "angular-resource.min.js" %>
   <%= javascript_include_tag "angular/services.js" %>
   <%= javascript_include_tag "angular/controllers.js" %>
-  <script type="text/javascript" src="//use.typekit.net/ijb7oxv.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script src="https://use.typekit.net/rpy6inf.js"></script>
+  <script>try{Typekit.load({ async: true });}catch(e){}</script>
   <%= csrf_meta_tags %>
    <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -43,7 +43,7 @@
   <%= yield :head %>
 </head>
 
-  
+
 <body ng-controller="PlanCtrl">
   <%= render 'layouts/parts/topbar' %>
 
@@ -53,6 +53,6 @@
 
   <%= javascript_include_tag "itinerary_builder", "data-turbolinks-track" => true %>
   <%= yield :body %>
-  
+
 </body>
 </html>
